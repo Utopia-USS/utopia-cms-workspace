@@ -2,8 +2,8 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
 import 'package:loop_page_view/loop_page_view.dart';
-import 'package:utopia_cms/src/ui/attachment_preview/cms_media_type.dart';
-import 'package:utopia_cms/src/ui/attachment_preview/state/cms_media_preview_page_state.dart';
+import 'package:utopia_cms/src/ui/media_preview/cms_media_type.dart';
+import 'package:utopia_cms/src/ui/media_preview/state/cms_media_preview_page_state.dart';
 import 'package:utopia_cms/src/ui/widget/video/cms_video_player.dart';
 import 'package:utopia_save_file/utopia_save_file.dart';
 
