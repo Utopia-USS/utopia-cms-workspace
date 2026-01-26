@@ -1,5 +1,5 @@
 export 'package:utopia_cms/src/ui/media_preview/cms_media_type.dart';
-
+export 'src/delegate/cms_delegate_exception.dart';
 export 'src/delegate/cms_delegate.dart';
 export 'src/delegate/cms_to_many_delegate.dart';
 export 'src/delegate/media/cms_media_delegate.dart';
@@ -48,4 +48,3 @@ export 'src/ui/widget/video/cms_video_player_state.dart';
 export 'src/ui/widget/wrapper/cms_field_wrapper.dart';
 export 'src/util/json_map.dart';
 export 'src/util/map_extensions.dart';
-

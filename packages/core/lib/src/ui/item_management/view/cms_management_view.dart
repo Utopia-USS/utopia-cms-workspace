@@ -191,28 +191,42 @@ class CmsManagementView extends HookWidget {
             colors: [context.colors.canvas, context.colors.canvas.withValues(alpha: 0)],
           ),
         ),
-        child: Row(
+        child: Column(
+          spacing: 16,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Spacer(),
-            if (state.canDelete)
-              CmsButton(
-                maxWidth: context.theme.shortButtonWidth,
-                colors: [context.colors.error, context.colors.error.withValues(alpha: 0.95)],
-                onTap: state.onDelete,
-                loading: state.isDeleting,
-                dense: true,
-                child: const Text("Delete"),
-              ),
-            const SizedBox(width: 12),
-            if (state.canCreate || !state.isEdit)
-              CmsButton(
-                maxWidth: context.theme.shortButtonWidth,
-                onTap: state.onSubmit,
-                loading: state.isUploading,
-                dense: true,
-                isEnabled: state.isButtonAvailable,
-                child: const Text("Continue"),
-              ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (state.canDelete)
+                  CmsButton(
+                    maxWidth: context.theme.shortButtonWidth,
+                    colors: [context.colors.error, context.colors.error.withValues(alpha: 0.95)],
+                    onTap: state.onDelete,
+                    loading: state.isDeleting,
+                    dense: true,
+                    child: const Text("Delete"),
+                  ),
+                const SizedBox(width: 12),
+                if (state.canCreate || !state.isEdit)
+                  CmsButton(
+                    maxWidth: context.theme.shortButtonWidth,
+                    onTap: state.onSubmit,
+                    loading: state.isUploading,
+                    dense: true,
+                    isEnabled: state.isButtonAvailable,
+                    child: const Text("Continue"),
+                  ),
+              ],
+            ),
+            if (state.errorMessage != null)
+              Text(
+                state.errorMessage!,
+                style: context.textStyles.label.copyWith(color: context.colors.error),
+                textAlign: TextAlign.end,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              )
           ],
         ),
       ),
