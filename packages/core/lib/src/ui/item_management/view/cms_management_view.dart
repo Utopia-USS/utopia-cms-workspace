@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:utopia_cms/src/model/item_management/cms_management_section_entry.dart';
-import 'package:utopia_cms/src/model/cms_management_section_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/ui/item_management/state/cms_management_state.dart';
 import 'package:utopia_cms/src/ui/widget/button/cms_button.dart';

@@ -18,7 +18,6 @@ export 'src/model/entry/primitives/cms_num_entry.dart';
 export 'src/model/entry/primitives/cms_text_entry.dart';
 export 'src/model/entry/primitives/cms_to_many_dropdown_entry.dart';
 export 'src/model/filter_entry/cms_date_filter_entry.dart';
-export 'src/model/cms_management_section_entry.dart';
 export 'src/model/item_management/cms_management_section_entry.dart';
 export 'src/model/filter_entry/cms_filter_entry.dart';
 export 'src/model/filter_entry/cms_search_filter_entry.dart';
