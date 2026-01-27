@@ -113,6 +113,7 @@ class CmsManagementView extends HookWidget {
             _buildSingularSection(editableExpanded),
           ],
           for (final entry in sectionEntries) ..._buildCustomSection(context, entry),
+          SliverToBoxAdapter(child: SizedBox(height: 100)),
         ],
       );
     });
