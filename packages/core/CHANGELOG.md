@@ -1,3 +1,7 @@
+## 0.2.3
+
+ - **FEAT**: Delegate error handling.
+
 ## 0.2.2
 
  - **FEAT**: multiple custom management entries.

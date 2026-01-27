@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-01-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`utopia_cms` - `v0.2.3`](#utopia_cms---v023)
+ - [`utopia_cms_firebase` - `v0.2.0+7`](#utopia_cms_firebase---v0207)
+ - [`utopia_cms_graphql` - `v0.3.0+7`](#utopia_cms_graphql---v0307)
+ - [`utopia_cms_hasura` - `v0.3.0+7`](#utopia_cms_hasura---v0307)
+ - [`utopia_cms_supabase` - `v0.1.0+5`](#utopia_cms_supabase---v0105)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `utopia_cms_firebase` - `v0.2.0+7`
+ - `utopia_cms_graphql` - `v0.3.0+7`
+ - `utopia_cms_hasura` - `v0.3.0+7`
+ - `utopia_cms_supabase` - `v0.1.0+5`
+
+---
+
+#### `utopia_cms` - `v0.2.3`
+
+ - **FEAT**: Delegate error handling.
+
+
 ## 2025-12-01
 
 ### Changes
