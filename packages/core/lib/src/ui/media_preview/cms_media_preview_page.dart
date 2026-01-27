@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:utopia_cms/src/ui/attachment_preview/cms_media_preview_page_view.dart';
-import 'package:utopia_cms/src/ui/attachment_preview/cms_media_type.dart';
-import 'package:utopia_cms/src/ui/attachment_preview/state/cms_media_preview_page_state.dart';
+import 'package:utopia_cms/src/ui/media_preview/cms_media_preview_page_view.dart';
+import 'package:utopia_cms/src/ui/media_preview/cms_media_type.dart';
+import 'package:utopia_cms/src/ui/media_preview/state/cms_media_preview_page_state.dart';
 import 'package:utopia_hooks/utopia_hooks.dart';
 
 class CmsMediaPreviewPageArgs {

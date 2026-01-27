@@ -7,6 +7,7 @@ import 'package:utopia_cms/src/util/json_map.dart';
 ///  * [CmsDelegate] is a main interface for handling [CmsTable] items.
 ///
 /// It is not suitable on its own for handling toMany relationships. For this functionality check out [CmsToManyDelegate]
+/// [CmsDelegate] supports basic error handling via throwing [CmsDelegateException].
 abstract class CmsDelegate {
   abstract final String idKey;
 
@@ -18,7 +19,7 @@ abstract class CmsDelegate {
   });
 
   /// Responsible for updating existing item within the table
-  Future<JsonMap> update(JsonMap value,JsonMap oldValue);
+  Future<JsonMap> update(JsonMap value, JsonMap oldValue);
 
   /// Responsible for creating new object
   Future<JsonMap> create(JsonMap value);

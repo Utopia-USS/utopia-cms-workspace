@@ -1,9 +1,10 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:utopia_arch/utopia_arch.dart';
-import 'package:utopia_cms/src/model/cms_table_page_params.dart';
+import 'package:utopia_cms/src/delegate/cms_delegate_exception.dart';
+import 'package:utopia_cms/src/model/table/cms_table_page_params.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
-import 'package:utopia_cms/src/ui/management/cms_management_page.dart';
+import 'package:utopia_cms/src/ui/item_management/cms_management_page.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 import 'package:utopia_cms/src/util/map_extensions.dart';
 import 'package:utopia_hooks/utopia_hooks.dart';
@@ -36,6 +37,7 @@ class CmsItemManagementState implements CmsManagementBaseState {
   final bool isDeleting;
   final bool isSubmitEnabled;
   final bool isEdit;
+  final String? errorMessage;
   final ScrollController scrollController;
   final CmsTableParams params;
 
@@ -55,6 +57,7 @@ class CmsItemManagementState implements CmsManagementBaseState {
     required this.isDeleting,
     required this.isSubmitEnabled,
     required this.isEdit,
+    required this.errorMessage,
     required this.scrollController,
     required this.addOnSavedCallback,
     required this.onDelete,
@@ -75,17 +78,24 @@ CmsItemManagementState useCmsItemManagementState({
   }
 
   final onSavedCallbacksState = useState<IList<OnSavedCallback>>(IList());
+  final errorMessageState = useState<String?>(null);
 
   final uploadSubmitState = useSubmitState();
   Future<void> onSubmit() async {
-    await uploadSubmitState.run(() async {
-      final result = await args.uploadChanges(state.value, args.initialValue);
-      await Future.wait([for (final callback in onSavedCallbacksState.value) callback(result)]);
-      moveBack(true);
-    });
+    await uploadSubmitState.runSimple<void, String>(
+      submit: () async {
+        errorMessageState.value = null;
+        final result = await args.uploadChanges(state.value, args.initialValue);
+        await Future.wait([for (final callback in onSavedCallbacksState.value) callback(result)]);
+        moveBack(true);
+      },
+      mapError: (exception) => exception is CmsDelegateException ? exception.message : null,
+      afterKnownError: (errorMessage) => errorMessageState.value = errorMessage,
+    );
   }
 
   final deleteSubmitState = useSubmitState();
+
   Future<void> onDelete() async {
     await deleteSubmitState.run(() async {
       await args.deleteItem?.call();
@@ -108,6 +118,7 @@ CmsItemManagementState useCmsItemManagementState({
     isUploading: uploadSubmitState.inProgress,
     isDeleting: deleteSubmitState.inProgress,
     isEdit: args.initialValue != null,
+    errorMessage: errorMessageState.value,
     scrollController: scrollController,
     params: args.params,
     entries: args.entries,

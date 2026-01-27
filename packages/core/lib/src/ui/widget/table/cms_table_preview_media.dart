@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:utopia_cms/src/ui/attachment_preview/cms_media_type.dart';
+import 'package:utopia_cms/src/ui/media_preview/cms_media_type.dart';
 import 'package:utopia_cms/src/ui/widget/media/cms_media_preview_item.dart';
 
 class CmsTablePreviewFile extends StatelessWidget {

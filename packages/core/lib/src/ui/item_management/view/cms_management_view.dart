@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
-import 'package:utopia_cms/src/model/cms_management_section_entry.dart';
+import 'package:utopia_cms/src/model/item_management/cms_management_section_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
-import 'package:utopia_cms/src/ui/management/state/cms_management_state.dart';
+import 'package:utopia_cms/src/ui/item_management/state/cms_management_state.dart';
 import 'package:utopia_cms/src/ui/widget/button/cms_button.dart';
 import 'package:utopia_cms/src/ui/widget/header/cms_header.dart';
 import 'package:utopia_cms/src/ui/widget/header/cms_title.dart';
@@ -113,6 +113,7 @@ class CmsManagementView extends HookWidget {
             _buildSingularSection(editableExpanded),
           ],
           for (final entry in sectionEntries) ..._buildCustomSection(context, entry),
+          SliverToBoxAdapter(child: SizedBox(height: 100)),
         ],
       );
     });
@@ -191,28 +192,42 @@ class CmsManagementView extends HookWidget {
             colors: [context.colors.canvas, context.colors.canvas.withValues(alpha: 0)],
           ),
         ),
-        child: Row(
+        child: Column(
+          spacing: 16,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Spacer(),
-            if (state.canDelete)
-              CmsButton(
-                maxWidth: context.theme.shortButtonWidth,
-                colors: [context.colors.error, context.colors.error.withValues(alpha: 0.95)],
-                onTap: state.onDelete,
-                loading: state.isDeleting,
-                dense: true,
-                child: const Text("Delete"),
-              ),
-            const SizedBox(width: 12),
-            if (state.canCreate || !state.isEdit)
-              CmsButton(
-                maxWidth: context.theme.shortButtonWidth,
-                onTap: state.onSubmit,
-                loading: state.isUploading,
-                dense: true,
-                isEnabled: state.isButtonAvailable,
-                child: const Text("Continue"),
-              ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (state.canDelete)
+                  CmsButton(
+                    maxWidth: context.theme.shortButtonWidth,
+                    colors: [context.colors.error, context.colors.error.withValues(alpha: 0.95)],
+                    onTap: state.onDelete,
+                    loading: state.isDeleting,
+                    dense: true,
+                    child: const Text("Delete"),
+                  ),
+                const SizedBox(width: 12),
+                if (state.canCreate || !state.isEdit)
+                  CmsButton(
+                    maxWidth: context.theme.shortButtonWidth,
+                    onTap: state.onSubmit,
+                    loading: state.isUploading,
+                    dense: true,
+                    isEnabled: state.isButtonAvailable,
+                    child: const Text("Continue"),
+                  ),
+              ],
+            ),
+            if (state.errorMessage != null)
+              Text(
+                state.errorMessage!,
+                style: context.textStyles.label.copyWith(color: context.colors.error),
+                textAlign: TextAlign.end,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              )
           ],
         ),
       ),

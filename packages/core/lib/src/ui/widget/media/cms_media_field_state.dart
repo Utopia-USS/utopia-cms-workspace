@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/delegate/media/cms_media_delegate.dart';
-import 'package:utopia_cms/src/ui/attachment_preview/cms_media_preview_page.dart';
-import 'package:utopia_cms/src/ui/attachment_preview/cms_media_type.dart';
-import 'package:utopia_cms/src/ui/management/state/cms_management_state.dart';
+import 'package:utopia_cms/src/ui/media_preview/cms_media_preview_page.dart';
+import 'package:utopia_cms/src/ui/media_preview/cms_media_type.dart';
+import 'package:utopia_cms/src/ui/item_management/state/cms_management_state.dart';
 import 'package:utopia_cms/src/ui/widget/dialog/cms_dialog.dart';
 
 class CmsMediaFieldState {
