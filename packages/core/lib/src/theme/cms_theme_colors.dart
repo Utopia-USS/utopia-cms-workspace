@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'cms_theme_colors.freezed.dart';
 
 @freezed
-class CmsThemeColors with _$CmsThemeColors {
+abstract class CmsThemeColors with _$CmsThemeColors {
   const CmsThemeColors._();
 
   factory CmsThemeColors({

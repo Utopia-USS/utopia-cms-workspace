@@ -8,7 +8,7 @@ class CmsFilter with _$CmsFilter {
 
   const factory CmsFilter.equals(String field, Object? value) = CmsFilterEquals;
 
-  const factory CmsFilter.notEquals(String field, Object value) = CmsFilterNotEquals;
+  const factory CmsFilter.notEquals(String field, Object? value) = CmsFilterNotEquals;
 
   const factory CmsFilter.containsString(String field, String value, {@Default(false) bool caseSensitive}) =
       CmsFilterContains;

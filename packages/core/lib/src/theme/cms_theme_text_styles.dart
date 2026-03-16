@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'cms_theme_text_styles.freezed.dart';
 
 @freezed
-class CmsThemeTextStyles with _$CmsThemeTextStyles {
+abstract class CmsThemeTextStyles with _$CmsThemeTextStyles {
   const CmsThemeTextStyles._();
 
   const factory CmsThemeTextStyles({

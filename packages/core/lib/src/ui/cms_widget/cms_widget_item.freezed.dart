@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,598 +9,388 @@ part of 'cms_widget_item.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
 /// @nodoc
 mixin _$CmsWidgetItem {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            Widget icon, Widget title, String id, Widget content)
-        page,
-    required TResult Function(
-            Widget icon, Widget title, void Function() onPressed)
-        action,
-    required TResult Function(int? flex, Widget child) custom,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Widget icon, Widget title, String id, Widget content)?
-        page,
-    TResult? Function(Widget icon, Widget title, void Function() onPressed)?
-        action,
-    TResult? Function(int? flex, Widget child)? custom,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Widget icon, Widget title, String id, Widget content)?
-        page,
-    TResult Function(Widget icon, Widget title, void Function() onPressed)?
-        action,
-    TResult Function(int? flex, Widget child)? custom,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsWidgetItemPage value) page,
-    required TResult Function(CmsWidgetItemAction value) action,
-    required TResult Function(CmsWidgetItemCustom value) custom,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsWidgetItemPage value)? page,
-    TResult? Function(CmsWidgetItemAction value)? action,
-    TResult? Function(CmsWidgetItemCustom value)? custom,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsWidgetItemPage value)? page,
-    TResult Function(CmsWidgetItemAction value)? action,
-    TResult Function(CmsWidgetItemCustom value)? custom,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsWidgetItem);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CmsWidgetItem()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CmsWidgetItemCopyWith<$Res> {
-  factory $CmsWidgetItemCopyWith(
-          CmsWidgetItem value, $Res Function(CmsWidgetItem) then) =
-      _$CmsWidgetItemCopyWithImpl<$Res, CmsWidgetItem>;
+class $CmsWidgetItemCopyWith<$Res>  {
+$CmsWidgetItemCopyWith(CmsWidgetItem _, $Res Function(CmsWidgetItem) __);
 }
 
-/// @nodoc
-class _$CmsWidgetItemCopyWithImpl<$Res, $Val extends CmsWidgetItem>
-    implements $CmsWidgetItemCopyWith<$Res> {
-  _$CmsWidgetItemCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [CmsWidgetItem].
+extension CmsWidgetItemPatterns on CmsWidgetItem {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CmsWidgetItemPage value)?  page,TResult Function( CmsWidgetItemAction value)?  action,TResult Function( CmsWidgetItemCustom value)?  custom,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case CmsWidgetItemPage() when page != null:
+return page(_that);case CmsWidgetItemAction() when action != null:
+return action(_that);case CmsWidgetItemCustom() when custom != null:
+return custom(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CmsWidgetItemPage value)  page,required TResult Function( CmsWidgetItemAction value)  action,required TResult Function( CmsWidgetItemCustom value)  custom,}){
+final _that = this;
+switch (_that) {
+case CmsWidgetItemPage():
+return page(_that);case CmsWidgetItemAction():
+return action(_that);case CmsWidgetItemCustom():
+return custom(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CmsWidgetItemPage value)?  page,TResult? Function( CmsWidgetItemAction value)?  action,TResult? Function( CmsWidgetItemCustom value)?  custom,}){
+final _that = this;
+switch (_that) {
+case CmsWidgetItemPage() when page != null:
+return page(_that);case CmsWidgetItemAction() when action != null:
+return action(_that);case CmsWidgetItemCustom() when custom != null:
+return custom(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( Widget icon,  Widget title,  String id,  Widget content)?  page,TResult Function( Widget icon,  Widget title,  void Function() onPressed)?  action,TResult Function( int? flex,  Widget child)?  custom,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case CmsWidgetItemPage() when page != null:
+return page(_that.icon,_that.title,_that.id,_that.content);case CmsWidgetItemAction() when action != null:
+return action(_that.icon,_that.title,_that.onPressed);case CmsWidgetItemCustom() when custom != null:
+return custom(_that.flex,_that.child);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( Widget icon,  Widget title,  String id,  Widget content)  page,required TResult Function( Widget icon,  Widget title,  void Function() onPressed)  action,required TResult Function( int? flex,  Widget child)  custom,}) {final _that = this;
+switch (_that) {
+case CmsWidgetItemPage():
+return page(_that.icon,_that.title,_that.id,_that.content);case CmsWidgetItemAction():
+return action(_that.icon,_that.title,_that.onPressed);case CmsWidgetItemCustom():
+return custom(_that.flex,_that.child);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( Widget icon,  Widget title,  String id,  Widget content)?  page,TResult? Function( Widget icon,  Widget title,  void Function() onPressed)?  action,TResult? Function( int? flex,  Widget child)?  custom,}) {final _that = this;
+switch (_that) {
+case CmsWidgetItemPage() when page != null:
+return page(_that.icon,_that.title,_that.id,_that.content);case CmsWidgetItemAction() when action != null:
+return action(_that.icon,_that.title,_that.onPressed);case CmsWidgetItemCustom() when custom != null:
+return custom(_that.flex,_that.child);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$CmsWidgetItemPageCopyWith<$Res> {
-  factory _$$CmsWidgetItemPageCopyWith(
-          _$CmsWidgetItemPage value, $Res Function(_$CmsWidgetItemPage) then) =
-      __$$CmsWidgetItemPageCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Widget icon, Widget title, String id, Widget content});
-}
-
-/// @nodoc
-class __$$CmsWidgetItemPageCopyWithImpl<$Res>
-    extends _$CmsWidgetItemCopyWithImpl<$Res, _$CmsWidgetItemPage>
-    implements _$$CmsWidgetItemPageCopyWith<$Res> {
-  __$$CmsWidgetItemPageCopyWithImpl(
-      _$CmsWidgetItemPage _value, $Res Function(_$CmsWidgetItemPage) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? icon = null,
-    Object? title = null,
-    Object? id = null,
-    Object? content = null,
-  }) {
-    return _then(_$CmsWidgetItemPage(
-      icon: null == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as Widget,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as Widget,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as Widget,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$CmsWidgetItemPage extends CmsWidgetItemPage {
-  _$CmsWidgetItemPage(
-      {required this.icon,
-      required this.title,
-      required this.id,
-      required this.content})
-      : super._();
-
-  @override
-  final Widget icon;
-  @override
-  final Widget title;
-  @override
-  final String id;
-  @override
-  final Widget content;
-
-  @override
-  String toString() {
-    return 'CmsWidgetItem.page(icon: $icon, title: $title, id: $id, content: $content)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsWidgetItemPage &&
-            (identical(other.icon, icon) || other.icon == icon) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.content, content) || other.content == content));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, icon, title, id, content);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsWidgetItemPageCopyWith<_$CmsWidgetItemPage> get copyWith =>
-      __$$CmsWidgetItemPageCopyWithImpl<_$CmsWidgetItemPage>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            Widget icon, Widget title, String id, Widget content)
-        page,
-    required TResult Function(
-            Widget icon, Widget title, void Function() onPressed)
-        action,
-    required TResult Function(int? flex, Widget child) custom,
-  }) {
-    return page(icon, title, id, content);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Widget icon, Widget title, String id, Widget content)?
-        page,
-    TResult? Function(Widget icon, Widget title, void Function() onPressed)?
-        action,
-    TResult? Function(int? flex, Widget child)? custom,
-  }) {
-    return page?.call(icon, title, id, content);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Widget icon, Widget title, String id, Widget content)?
-        page,
-    TResult Function(Widget icon, Widget title, void Function() onPressed)?
-        action,
-    TResult Function(int? flex, Widget child)? custom,
-    required TResult orElse(),
-  }) {
-    if (page != null) {
-      return page(icon, title, id, content);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsWidgetItemPage value) page,
-    required TResult Function(CmsWidgetItemAction value) action,
-    required TResult Function(CmsWidgetItemCustom value) custom,
-  }) {
-    return page(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsWidgetItemPage value)? page,
-    TResult? Function(CmsWidgetItemAction value)? action,
-    TResult? Function(CmsWidgetItemCustom value)? custom,
-  }) {
-    return page?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsWidgetItemPage value)? page,
-    TResult Function(CmsWidgetItemAction value)? action,
-    TResult Function(CmsWidgetItemCustom value)? custom,
-    required TResult orElse(),
-  }) {
-    if (page != null) {
-      return page(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CmsWidgetItemPage extends CmsWidgetItem {
-  factory CmsWidgetItemPage(
-      {required final Widget icon,
-      required final Widget title,
-      required final String id,
-      required final Widget content}) = _$CmsWidgetItemPage;
-  CmsWidgetItemPage._() : super._();
-
-  Widget get icon;
-  Widget get title;
-  String get id;
-  Widget get content;
-  @JsonKey(ignore: true)
-  _$$CmsWidgetItemPageCopyWith<_$CmsWidgetItemPage> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$CmsWidgetItemActionCopyWith<$Res> {
-  factory _$$CmsWidgetItemActionCopyWith(_$CmsWidgetItemAction value,
-          $Res Function(_$CmsWidgetItemAction) then) =
-      __$$CmsWidgetItemActionCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Widget icon, Widget title, void Function() onPressed});
-}
-
-/// @nodoc
-class __$$CmsWidgetItemActionCopyWithImpl<$Res>
-    extends _$CmsWidgetItemCopyWithImpl<$Res, _$CmsWidgetItemAction>
-    implements _$$CmsWidgetItemActionCopyWith<$Res> {
-  __$$CmsWidgetItemActionCopyWithImpl(
-      _$CmsWidgetItemAction _value, $Res Function(_$CmsWidgetItemAction) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? icon = null,
-    Object? title = null,
-    Object? onPressed = null,
-  }) {
-    return _then(_$CmsWidgetItemAction(
-      icon: null == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as Widget,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as Widget,
-      onPressed: null == onPressed
-          ? _value.onPressed
-          : onPressed // ignore: cast_nullable_to_non_nullable
-              as void Function(),
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CmsWidgetItemAction extends CmsWidgetItemAction {
-  _$CmsWidgetItemAction(
-      {required this.icon, required this.title, required this.onPressed})
-      : super._();
 
-  @override
-  final Widget icon;
-  @override
-  final Widget title;
-  @override
-  final void Function() onPressed;
+class CmsWidgetItemPage extends CmsWidgetItem {
+   CmsWidgetItemPage({required this.icon, required this.title, required this.id, required this.content}): super._();
+  
 
-  @override
-  String toString() {
-    return 'CmsWidgetItem.action(icon: $icon, title: $title, onPressed: $onPressed)';
-  }
+ final  Widget icon;
+ final  Widget title;
+ final  String id;
+ final  Widget content;
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsWidgetItemAction &&
-            (identical(other.icon, icon) || other.icon == icon) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.onPressed, onPressed) ||
-                other.onPressed == onPressed));
-  }
+/// Create a copy of CmsWidgetItem
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsWidgetItemPageCopyWith<CmsWidgetItemPage> get copyWith => _$CmsWidgetItemPageCopyWithImpl<CmsWidgetItemPage>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, icon, title, onPressed);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsWidgetItemActionCopyWith<_$CmsWidgetItemAction> get copyWith =>
-      __$$CmsWidgetItemActionCopyWithImpl<_$CmsWidgetItemAction>(
-          this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            Widget icon, Widget title, String id, Widget content)
-        page,
-    required TResult Function(
-            Widget icon, Widget title, void Function() onPressed)
-        action,
-    required TResult Function(int? flex, Widget child) custom,
-  }) {
-    return action(icon, title, onPressed);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Widget icon, Widget title, String id, Widget content)?
-        page,
-    TResult? Function(Widget icon, Widget title, void Function() onPressed)?
-        action,
-    TResult? Function(int? flex, Widget child)? custom,
-  }) {
-    return action?.call(icon, title, onPressed);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Widget icon, Widget title, String id, Widget content)?
-        page,
-    TResult Function(Widget icon, Widget title, void Function() onPressed)?
-        action,
-    TResult Function(int? flex, Widget child)? custom,
-    required TResult orElse(),
-  }) {
-    if (action != null) {
-      return action(icon, title, onPressed);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsWidgetItemPage value) page,
-    required TResult Function(CmsWidgetItemAction value) action,
-    required TResult Function(CmsWidgetItemCustom value) custom,
-  }) {
-    return action(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsWidgetItemPage value)? page,
-    TResult? Function(CmsWidgetItemAction value)? action,
-    TResult? Function(CmsWidgetItemCustom value)? custom,
-  }) {
-    return action?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsWidgetItemPage value)? page,
-    TResult Function(CmsWidgetItemAction value)? action,
-    TResult Function(CmsWidgetItemCustom value)? custom,
-    required TResult orElse(),
-  }) {
-    if (action != null) {
-      return action(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsWidgetItemPage&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.title, title) || other.title == title)&&(identical(other.id, id) || other.id == id)&&(identical(other.content, content) || other.content == content));
 }
 
-abstract class CmsWidgetItemAction extends CmsWidgetItem {
-  factory CmsWidgetItemAction(
-      {required final Widget icon,
-      required final Widget title,
-      required final void Function() onPressed}) = _$CmsWidgetItemAction;
-  CmsWidgetItemAction._() : super._();
 
-  Widget get icon;
-  Widget get title;
-  void Function() get onPressed;
-  @JsonKey(ignore: true)
-  _$$CmsWidgetItemActionCopyWith<_$CmsWidgetItemAction> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+int get hashCode => Object.hash(runtimeType,icon,title,id,content);
+
+@override
+String toString() {
+  return 'CmsWidgetItem.page(icon: $icon, title: $title, id: $id, content: $content)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CmsWidgetItemCustomCopyWith<$Res> {
-  factory _$$CmsWidgetItemCustomCopyWith(_$CmsWidgetItemCustom value,
-          $Res Function(_$CmsWidgetItemCustom) then) =
-      __$$CmsWidgetItemCustomCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int? flex, Widget child});
+abstract mixin class $CmsWidgetItemPageCopyWith<$Res> implements $CmsWidgetItemCopyWith<$Res> {
+  factory $CmsWidgetItemPageCopyWith(CmsWidgetItemPage value, $Res Function(CmsWidgetItemPage) _then) = _$CmsWidgetItemPageCopyWithImpl;
+@useResult
+$Res call({
+ Widget icon, Widget title, String id, Widget content
+});
+
+
+
+
+}
+/// @nodoc
+class _$CmsWidgetItemPageCopyWithImpl<$Res>
+    implements $CmsWidgetItemPageCopyWith<$Res> {
+  _$CmsWidgetItemPageCopyWithImpl(this._self, this._then);
+
+  final CmsWidgetItemPage _self;
+  final $Res Function(CmsWidgetItemPage) _then;
+
+/// Create a copy of CmsWidgetItem
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? icon = null,Object? title = null,Object? id = null,Object? content = null,}) {
+  return _then(CmsWidgetItemPage(
+icon: null == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
+as Widget,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as Widget,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,content: null == content ? _self.content : content // ignore: cast_nullable_to_non_nullable
+as Widget,
+  ));
 }
 
-/// @nodoc
-class __$$CmsWidgetItemCustomCopyWithImpl<$Res>
-    extends _$CmsWidgetItemCopyWithImpl<$Res, _$CmsWidgetItemCustom>
-    implements _$$CmsWidgetItemCustomCopyWith<$Res> {
-  __$$CmsWidgetItemCustomCopyWithImpl(
-      _$CmsWidgetItemCustom _value, $Res Function(_$CmsWidgetItemCustom) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? flex = freezed,
-    Object? child = null,
-  }) {
-    return _then(_$CmsWidgetItemCustom(
-      flex: freezed == flex
-          ? _value.flex
-          : flex // ignore: cast_nullable_to_non_nullable
-              as int?,
-      child: null == child
-          ? _value.child
-          : child // ignore: cast_nullable_to_non_nullable
-              as Widget,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CmsWidgetItemCustom extends CmsWidgetItemCustom {
-  _$CmsWidgetItemCustom({this.flex, this.child = const SizedBox()}) : super._();
 
-  @override
-  final int? flex;
-  @override
-  @JsonKey()
-  final Widget child;
+class CmsWidgetItemAction extends CmsWidgetItem {
+   CmsWidgetItemAction({required this.icon, required this.title, required this.onPressed}): super._();
+  
 
-  @override
-  String toString() {
-    return 'CmsWidgetItem.custom(flex: $flex, child: $child)';
-  }
+ final  Widget icon;
+ final  Widget title;
+ final  void Function() onPressed;
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsWidgetItemCustom &&
-            (identical(other.flex, flex) || other.flex == flex) &&
-            (identical(other.child, child) || other.child == child));
-  }
+/// Create a copy of CmsWidgetItem
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsWidgetItemActionCopyWith<CmsWidgetItemAction> get copyWith => _$CmsWidgetItemActionCopyWithImpl<CmsWidgetItemAction>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, flex, child);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsWidgetItemCustomCopyWith<_$CmsWidgetItemCustom> get copyWith =>
-      __$$CmsWidgetItemCustomCopyWithImpl<_$CmsWidgetItemCustom>(
-          this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            Widget icon, Widget title, String id, Widget content)
-        page,
-    required TResult Function(
-            Widget icon, Widget title, void Function() onPressed)
-        action,
-    required TResult Function(int? flex, Widget child) custom,
-  }) {
-    return custom(flex, child);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Widget icon, Widget title, String id, Widget content)?
-        page,
-    TResult? Function(Widget icon, Widget title, void Function() onPressed)?
-        action,
-    TResult? Function(int? flex, Widget child)? custom,
-  }) {
-    return custom?.call(flex, child);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Widget icon, Widget title, String id, Widget content)?
-        page,
-    TResult Function(Widget icon, Widget title, void Function() onPressed)?
-        action,
-    TResult Function(int? flex, Widget child)? custom,
-    required TResult orElse(),
-  }) {
-    if (custom != null) {
-      return custom(flex, child);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsWidgetItemPage value) page,
-    required TResult Function(CmsWidgetItemAction value) action,
-    required TResult Function(CmsWidgetItemCustom value) custom,
-  }) {
-    return custom(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsWidgetItemPage value)? page,
-    TResult? Function(CmsWidgetItemAction value)? action,
-    TResult? Function(CmsWidgetItemCustom value)? custom,
-  }) {
-    return custom?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsWidgetItemPage value)? page,
-    TResult Function(CmsWidgetItemAction value)? action,
-    TResult Function(CmsWidgetItemCustom value)? custom,
-    required TResult orElse(),
-  }) {
-    if (custom != null) {
-      return custom(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsWidgetItemAction&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.title, title) || other.title == title)&&(identical(other.onPressed, onPressed) || other.onPressed == onPressed));
 }
 
-abstract class CmsWidgetItemCustom extends CmsWidgetItem {
-  factory CmsWidgetItemCustom({final int? flex, final Widget child}) =
-      _$CmsWidgetItemCustom;
-  CmsWidgetItemCustom._() : super._();
 
-  int? get flex;
-  Widget get child;
-  @JsonKey(ignore: true)
-  _$$CmsWidgetItemCustomCopyWith<_$CmsWidgetItemCustom> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+int get hashCode => Object.hash(runtimeType,icon,title,onPressed);
+
+@override
+String toString() {
+  return 'CmsWidgetItem.action(icon: $icon, title: $title, onPressed: $onPressed)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class $CmsWidgetItemActionCopyWith<$Res> implements $CmsWidgetItemCopyWith<$Res> {
+  factory $CmsWidgetItemActionCopyWith(CmsWidgetItemAction value, $Res Function(CmsWidgetItemAction) _then) = _$CmsWidgetItemActionCopyWithImpl;
+@useResult
+$Res call({
+ Widget icon, Widget title, void Function() onPressed
+});
+
+
+
+
+}
+/// @nodoc
+class _$CmsWidgetItemActionCopyWithImpl<$Res>
+    implements $CmsWidgetItemActionCopyWith<$Res> {
+  _$CmsWidgetItemActionCopyWithImpl(this._self, this._then);
+
+  final CmsWidgetItemAction _self;
+  final $Res Function(CmsWidgetItemAction) _then;
+
+/// Create a copy of CmsWidgetItem
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? icon = null,Object? title = null,Object? onPressed = null,}) {
+  return _then(CmsWidgetItemAction(
+icon: null == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
+as Widget,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as Widget,onPressed: null == onPressed ? _self.onPressed : onPressed // ignore: cast_nullable_to_non_nullable
+as void Function(),
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CmsWidgetItemCustom extends CmsWidgetItem {
+   CmsWidgetItemCustom({this.flex, this.child = const SizedBox()}): super._();
+  
+
+ final  int? flex;
+@JsonKey() final  Widget child;
+
+/// Create a copy of CmsWidgetItem
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsWidgetItemCustomCopyWith<CmsWidgetItemCustom> get copyWith => _$CmsWidgetItemCustomCopyWithImpl<CmsWidgetItemCustom>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsWidgetItemCustom&&(identical(other.flex, flex) || other.flex == flex)&&(identical(other.child, child) || other.child == child));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,flex,child);
+
+@override
+String toString() {
+  return 'CmsWidgetItem.custom(flex: $flex, child: $child)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CmsWidgetItemCustomCopyWith<$Res> implements $CmsWidgetItemCopyWith<$Res> {
+  factory $CmsWidgetItemCustomCopyWith(CmsWidgetItemCustom value, $Res Function(CmsWidgetItemCustom) _then) = _$CmsWidgetItemCustomCopyWithImpl;
+@useResult
+$Res call({
+ int? flex, Widget child
+});
+
+
+
+
+}
+/// @nodoc
+class _$CmsWidgetItemCustomCopyWithImpl<$Res>
+    implements $CmsWidgetItemCustomCopyWith<$Res> {
+  _$CmsWidgetItemCustomCopyWithImpl(this._self, this._then);
+
+  final CmsWidgetItemCustom _self;
+  final $Res Function(CmsWidgetItemCustom) _then;
+
+/// Create a copy of CmsWidgetItem
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? flex = freezed,Object? child = null,}) {
+  return _then(CmsWidgetItemCustom(
+flex: freezed == flex ? _self.flex : flex // ignore: cast_nullable_to_non_nullable
+as int?,child: null == child ? _self.child : child // ignore: cast_nullable_to_non_nullable
+as Widget,
+  ));
+}
+
+
+}
+
+// dart format on

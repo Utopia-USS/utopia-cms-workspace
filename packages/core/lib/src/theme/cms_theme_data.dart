@@ -6,7 +6,7 @@ import 'package:utopia_cms/src/theme/cms_theme_text_styles.dart';
 part 'cms_theme_data.freezed.dart';
 
 @freezed
-class CmsThemeData with _$CmsThemeData {
+abstract class CmsThemeData with _$CmsThemeData {
   const CmsThemeData._();
 
   const factory CmsThemeData({
