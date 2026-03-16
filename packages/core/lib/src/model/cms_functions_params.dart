@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'cms_functions_params.freezed.dart';
 
 @freezed
-class CmsFunctionsSortingParams with _$CmsFunctionsSortingParams {
+abstract class CmsFunctionsSortingParams with _$CmsFunctionsSortingParams {
   const factory CmsFunctionsSortingParams({
     required bool sortDesc,
     @Default(false) bool invertNulls,

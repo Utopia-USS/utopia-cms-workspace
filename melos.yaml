@@ -1,7 +1,2 @@
-name: utopia_cms
-
-scripts:
-  release: melos version --yes && git push --follow-tags && melos publish --yes --no-dry-run
-
-packages:
-  - packages/*
+name: utopia_cms_repo
+sdkPath: .fvm/flutter_sdk
