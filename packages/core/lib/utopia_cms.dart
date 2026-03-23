@@ -32,6 +32,7 @@ export 'src/ui/table_page/cms_table_page.dart';
 export 'src/ui/widget/button/cms_button.dart';
 export 'src/ui/widget/country_picker/cms_country_field.dart';
 export 'src/ui/widget/date_picker/cms_date_picker.dart';
+export 'src/ui/widget/dropdown/cms_dropdown_field.dart';
 export 'src/ui/widget/header/cms_header.dart';
 export 'src/ui/widget/loading/cms_loader.dart';
 export 'src/ui/widget/loading/cms_mock_loading_box.dart';
