@@ -8,11 +8,7 @@ class CmsMediaFieldAddButton extends StatelessWidget {
   final CmsMediaFieldState state;
   final double size;
 
-  const CmsMediaFieldAddButton({
-    super.key,
-    required this.state,
-    required this.size,
-  });
+  const CmsMediaFieldAddButton({super.key, required this.state, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +33,6 @@ class CmsMediaFieldAddButton extends StatelessWidget {
                 child: Center(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Icon(Icons.upload, color: context.textStyles.text.color, size: 36),
                       const SizedBox(height: 8),

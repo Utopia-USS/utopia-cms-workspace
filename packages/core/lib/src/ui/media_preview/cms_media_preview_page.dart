@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/ui/media_preview/cms_media_preview_page_view.dart';
 import 'package:utopia_cms/src/ui/media_preview/cms_media_type.dart';
 import 'package:utopia_cms/src/ui/media_preview/state/cms_media_preview_page_state.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
 
 class CmsMediaPreviewPageArgs {
   final int initialIndex;
@@ -26,14 +26,7 @@ class CmsMediaPreviewPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = useCmsMediaPreviewPageState(
-      initialIndex: args.initialIndex,
-      items: args.items,
-    );
-    return CmsMediaPreviewPageView(
-      state: state,
-      urlBuilder: args.urlBuilder,
-      mediaTypeBuilder: args.mediaTypeBuilder,
-    );
+    final state = useCmsMediaPreviewPageState(initialIndex: args.initialIndex, items: args.items);
+    return CmsMediaPreviewPageView(state: state, urlBuilder: args.urlBuilder, mediaTypeBuilder: args.mediaTypeBuilder);
   }
 }

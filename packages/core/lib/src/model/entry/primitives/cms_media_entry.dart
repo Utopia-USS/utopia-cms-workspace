@@ -45,11 +45,8 @@ class CmsMediaEntry extends CmsEntry<Iterable<dynamic>?> {
   final CmsEntryModifier modifier;
 
   @override
-  Widget buildPreview(BuildContext context, Iterable<dynamic>? value) => CmsTablePreviewFile(
-        media: value,
-        urlBuilder: urlBuilder,
-        mediaTypeBuilder: mediaTypeBuilder,
-      );
+  Widget buildPreview(BuildContext context, Iterable<dynamic>? value) =>
+      CmsTablePreviewFile(media: value, urlBuilder: urlBuilder, mediaTypeBuilder: mediaTypeBuilder);
 
   @override
   Widget buildEditField({

@@ -3,15 +3,11 @@ import 'package:utopia_cms/src/util/context_extensions.dart';
 
 class CmsSwitch extends StatelessWidget {
   final bool value;
+  // ignore: avoid_positional_boolean_parameters
   final void Function(bool)? onChanged;
   final bool readOnly;
 
-  const CmsSwitch({
-    super.key,
-    required this.value,
-    this.onChanged,
-    this.readOnly = false,
-  });
+  const CmsSwitch({super.key, required this.value, this.onChanged, this.readOnly = false});
 
   @override
   Widget build(BuildContext context) {

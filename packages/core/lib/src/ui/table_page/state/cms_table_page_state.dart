@@ -1,16 +1,16 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
+import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/delegate/cms_delegate.dart';
 import 'package:utopia_cms/src/model/cms_filter.dart';
 import 'package:utopia_cms/src/model/cms_functions_params.dart';
-import 'package:utopia_cms/src/model/item_management/cms_management_section_entry.dart';
-import 'package:utopia_cms/src/model/table/cms_table_page_params.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/filter_entry/cms_filter_entry.dart';
+import 'package:utopia_cms/src/model/item_management/cms_management_section_entry.dart';
+import 'package:utopia_cms/src/model/table/cms_table_page_params.dart';
 import 'package:utopia_cms/src/ui/item_management/cms_management_page.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 import 'package:utopia_cms/src/util/map_extensions.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
 
 class CmsTablePageState {
   final MutableComputedState<void> computedState;
@@ -80,10 +80,12 @@ CmsTablePageState useCmsTablePageState({
     final fixedValues = filterEntries.where((a) => filtersState.value[a.entryKey] != null);
     if (fixedValues.isEmpty) return const CmsFilterAll();
     if (fixedValues.length == 1) return fixedValues.first.filterFromValues(filtersState.value);
-    return CmsFilterAnd(filterEntries
-        .where((a) => filtersState.value[a.entryKey] != null)
-        .map((e) => e.filterFromValues(filtersState.value))
-        .toList());
+    return CmsFilterAnd(
+      filterEntries
+          .where((a) => filtersState.value[a.entryKey] != null)
+          .map((e) => e.filterFromValues(filtersState.value))
+          .toList(),
+    );
   }
 
   final state = useAutoComputedState<void>(
@@ -97,8 +99,9 @@ CmsTablePageState useCmsTablePageState({
         if (pagingLimit == null || result.length < pagingLimit) pagingEnabledState.value = false;
 
         if (result.isNotEmpty) {
-          final filtered =
-              result.where((e1) => !itemsState.value.any((e2) => e1[delegate.idKey] == e2[delegate.idKey]));
+          final filtered = result.where(
+            (e1) => !itemsState.value.any((e2) => e1[delegate.idKey] == e2[delegate.idKey]),
+          );
           itemsState.value = itemsState.value.addAll(filtered);
           pagingOffsetState.value += result.length;
         }
@@ -130,7 +133,7 @@ CmsTablePageState useCmsTablePageState({
         barrierColor: Colors.black45,
         transitionDuration: const Duration(milliseconds: 400),
         reverseTransitionDuration: const Duration(milliseconds: 400),
-        pageBuilder: (_, animation, ___) => CmsManagementOverlay(
+        pageBuilder: (_, animation, _) => CmsManagementOverlay(
           args: CmsManagementArgs(
             uploadChanges: (newJson, oldJson) =>
                 value != null ? delegate.update(newJson, oldJson!) : delegate.create(newJson),
@@ -160,7 +163,7 @@ CmsTablePageState useCmsTablePageState({
     final currentValue = sortingParamsState.value;
     final isCurrent = entry.key == currentValue?.fieldKey;
     sortingParamsState.value = CmsFunctionsSortingParams(
-      sortDesc: (currentValue == null || !isCurrent) ? false : !currentValue.sortDesc,
+      sortDesc: !(currentValue == null || !isCurrent) && !currentValue.sortDesc,
       invertNulls: entry.sortInvertNulls,
       fieldKey: entry.key,
     );

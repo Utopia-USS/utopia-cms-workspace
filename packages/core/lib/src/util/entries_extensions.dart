@@ -1,7 +1,7 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
+import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/primitives/cms_text_entry.dart';
-import 'package:utopia_utils/utopia_utils.dart';
 
 extension EntriesExtensions on IList<CmsEntry<dynamic>> {
   IList<CmsEntry<dynamic>> editable({required bool isCreate, required bool isPageEditable}) =>

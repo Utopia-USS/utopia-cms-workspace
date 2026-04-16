@@ -39,10 +39,7 @@ class CmsButton extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           borderRadius: context.theme.borderRadius,
           isEnabled: isEnabled,
-          child: Center(
-            heightFactor: 1,
-            child: _buildTitle(context),
-          ),
+          child: Center(heightFactor: 1, child: _buildTitle(context)),
         ),
       ),
     );
@@ -55,10 +52,7 @@ class CmsButton extends StatelessWidget {
     } else {
       return IconTheme.merge(
         data: IconThemeData(color: style.color),
-        child: DefaultTextStyle(
-          style: style,
-          child: child,
-        ),
+        child: DefaultTextStyle(style: style, child: child),
       );
     }
   }

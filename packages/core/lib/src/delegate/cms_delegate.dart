@@ -1,8 +1,10 @@
+import 'package:utopia_cms/src/delegate/cms_delegate_exception.dart' show CmsDelegateException;
 import 'package:utopia_cms/src/delegate/cms_to_many_delegate.dart';
 import 'package:utopia_cms/src/model/cms_filter.dart';
 import 'package:utopia_cms/src/model/cms_functions_params.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
+import 'package:utopia_cms/utopia_cms.dart' show CmsDelegateException;
 
 ///  * [CmsDelegate] is a main interface for handling [CmsTable] items.
 ///

@@ -16,8 +16,7 @@ class CmsSupabase {
     required SupabaseClient client,
     required CmsSupabaseDataTable table,
     CmsFilterNotEquals? archivedFilter,
-  }) =>
-      CmsSupabaseDelegate(service, client: client, table: table, archivedFilter: archivedFilter);
+  }) => CmsSupabaseDelegate(service, client: client, table: table, archivedFilter: archivedFilter);
 
   CmsSupabaseOneToManyDelegate oneToManyDelegate({
     required SupabaseClient client,
@@ -49,4 +48,3 @@ class CmsSupabase {
     );
   }
 }
-

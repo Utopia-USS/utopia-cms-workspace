@@ -1,6 +1,6 @@
 import 'package:dropdown_search/dropdown_search.dart';
-import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
+import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/delegate/cms_to_many_delegate.dart';
 import 'package:utopia_cms/src/model/cms_filter.dart';
 import 'package:utopia_cms/src/ui/widget/button/cms_button.dart';
@@ -9,7 +9,6 @@ import 'package:utopia_cms/src/ui/widget/loading/cms_loader.dart';
 import 'package:utopia_cms/src/ui/widget/wrapper/cms_field_wrapper.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
 
 class CmsToManyDropdownField extends HookWidget {
   final CmsToManyDelegate delegate;
@@ -37,9 +36,7 @@ class CmsToManyDropdownField extends HookWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildDropDown(context, state),
-        ],
+        children: [_buildDropDown(context, state)],
       ),
     );
   }
@@ -49,15 +46,12 @@ class CmsToManyDropdownField extends HookWidget {
     final labelStyle = context.textStyles.label;
     return DropdownSearch<JsonMap>.multiSelection(
       items: (filter, props) async {
-        return state.getItems(
-          filter: filterBuilder?.call(filter) ?? _buildFilter(filter),
-        );
+        return state.getItems(filter: filterBuilder?.call(filter) ?? _buildFilter(filter));
       },
-
 
       suffixProps: DropdownSuffixProps(
         dropdownButtonProps: DropdownButtonProps(color: context.colors.accent),
-        clearButtonProps: const ClearButtonProps(color: Colors.red)
+        clearButtonProps: const ClearButtonProps(color: Colors.red),
       ),
       itemAsString: valueLabelBuilder,
       onChanged: (value) => state.onChanged(value.toISet()),
@@ -73,7 +67,7 @@ class CmsToManyDropdownField extends HookWidget {
           isDense: true,
         ),
       ),
-      dropdownBuilder: (__, values) {
+      dropdownBuilder: (_, values) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -87,13 +81,13 @@ class CmsToManyDropdownField extends HookWidget {
         showSelectedItems: true,
         showSearchBox: true,
         scrollbarProps: const ScrollbarProps(thumbColor: Colors.transparent, trackColor: Colors.transparent),
-        loadingBuilder: (_, __) => const CmsLoader(),
-        itemBuilder: (context, value,isDisabled, isSelected) => Padding(
+        loadingBuilder: (_, _) => const CmsLoader(),
+        itemBuilder: (context, value, isDisabled, isSelected) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 18),
           child: Text(valueLabelBuilder(value), style: style),
         ),
         validationBuilder: (context, value) => _buildValidator(context, value, state),
-        checkBoxBuilder: (context, value, isDisabled,isSelected) => _buildCheckBox(isSelected, context),
+        checkBoxBuilder: (context, value, isDisabled, isSelected) => _buildCheckBox(isSelected, context),
         searchFieldProps: _buildSearchProps(context),
       ),
     );
@@ -164,5 +158,5 @@ class CmsToManyDropdownField extends HookWidget {
   }
 
   CmsFilter _buildFilter(String filter) =>
-      CmsFilter.or([for (final field in filterFields!) CmsFilter.containsString(field, filter, caseSensitive: false)]);
+      CmsFilter.or([for (final field in filterFields!) CmsFilter.containsString(field, filter)]);
 }

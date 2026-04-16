@@ -6,11 +6,7 @@ class CmsHeader extends StatelessWidget {
   final String text;
   final bool navigateBack;
 
-  const CmsHeader({
-    super.key,
-    required this.text,
-    this.navigateBack = false,
-  });
+  const CmsHeader({super.key, required this.text, this.navigateBack = false});
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,11 @@
 import 'package:flutter/animation.dart';
 import 'package:loop_page_view/loop_page_view.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
+import 'package:utopia_arch/utopia_arch.dart';
 
 class CmsMediaPreviewPageState {
   final LoopPageController controller;
   final List<dynamic> items;
-  final Future<void> Function( int index) animateTo;
+  final Future<void> Function(int index) animateTo;
   final int initialIndex;
 
   const CmsMediaPreviewPageState({
@@ -18,13 +18,10 @@ class CmsMediaPreviewPageState {
   int get fixedIndex => !controller.hasClients ? initialIndex : controller.page.round();
 }
 
-CmsMediaPreviewPageState useCmsMediaPreviewPageState({
-  required int initialIndex,
-  required Iterable<dynamic> items,
-}) {
+CmsMediaPreviewPageState useCmsMediaPreviewPageState({required int initialIndex, required Iterable<dynamic> items}) {
   final controller = useMemoized(() => LoopPageController(initialPage: initialIndex));
   useListenable(controller);
-  Future<void> animateTo( int index) async {
+  Future<void> animateTo(int index) async {
     await controller.animateToPage(index, duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
   }
 
