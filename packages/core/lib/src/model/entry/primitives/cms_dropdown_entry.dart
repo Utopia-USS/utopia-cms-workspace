@@ -46,11 +46,7 @@ class CmsDropdownEntry<T> extends CmsEntry<T> {
   Widget buildPreview(BuildContext context, T? value) => CmsTablePreviewText(valueLabelBuilder(value));
 
   @override
-  Widget buildEditField({
-    required BuildContext context,
-    required T? value,
-    required void Function(T value) onChanged,
-  }) {
+  Widget buildEditField({required BuildContext context, required T? value, required void Function(T value) onChanged}) {
     return IgnorePointer(
       ignoring: !modifier.editable,
       child: CmsDropdownField<T>(
@@ -62,5 +58,4 @@ class CmsDropdownEntry<T> extends CmsEntry<T> {
       ),
     );
   }
-
 }

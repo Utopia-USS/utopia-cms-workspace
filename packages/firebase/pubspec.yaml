@@ -6,9 +6,9 @@ homepage: https://github.com/Utopia-USS/utopia_cms
 
 environment:
   sdk: ^3.11.0
-  flutter: ">=3.0.0"
 
 dependencies:
+  utopia_cms: ^0.2.1+1
+
   cloud_firestore: ^6.1.0
-  utopia_cms:
-  utopia_utils: ^0.3.3
+

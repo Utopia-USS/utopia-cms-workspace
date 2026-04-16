@@ -1,10 +1,10 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
+import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 import 'package:utopia_cms/src/util/map_extensions.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
 
 class CmsTableItem extends HookWidget {
   final JsonMap data;
@@ -17,7 +17,8 @@ class CmsTableItem extends HookWidget {
   final EdgeInsets itemPadding;
   final void Function()? onManagePressed;
 
-  const CmsTableItem({super.key, 
+  const CmsTableItem({
+    super.key,
     required this.data,
     required this.entries,
     required this.actionsWidth,
@@ -54,10 +55,7 @@ class CmsTableItem extends HookWidget {
                     padding: itemPadding,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: e.buildPreview(
-                        context,
-                        e.fromJson(data.getAtPath(e.key)),
-                      ),
+                      child: e.buildPreview(context, e.fromJson(data.getAtPath(e.key))),
                     ),
                   ),
                 ),

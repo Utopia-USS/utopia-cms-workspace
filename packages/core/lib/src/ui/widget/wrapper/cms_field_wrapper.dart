@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
 
 class CmsFieldWrapper extends HookWidget {
   final Widget child;
@@ -16,10 +16,7 @@ class CmsFieldWrapper extends HookWidget {
     return Container(
       decoration: fieldTheme,
       padding: includePadding ? const EdgeInsets.symmetric(vertical: 4.0) : EdgeInsets.zero,
-      child: Padding(
-        padding: themeValues.fieldContentPadding,
-        child: child,
-      ),
+      child: Padding(padding: themeValues.fieldContentPadding, child: child),
     );
   }
 }

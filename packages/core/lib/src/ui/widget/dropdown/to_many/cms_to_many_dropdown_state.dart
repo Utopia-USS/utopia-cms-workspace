@@ -24,28 +24,21 @@ class CmsToManyDropdownState {
   });
 }
 
-CmsToManyDropdownState useCmsToManyDropdownState({
-  required CmsToManyDelegate delegate,
-  required Object? originId,
-}) {
+CmsToManyDropdownState useCmsToManyDropdownState({required CmsToManyDelegate delegate, required Object? originId}) {
   final baseState = useProvided<CmsManagementBaseState>();
   final selectedItemsState = useState<ISet<JsonMap>>(ISet());
   final searchState = useFieldState(initialValue: '');
-  final initialSelectedValuesState = useAutoComputedState<ISet<JsonMap>>(
-     () async {
-      if (originId != null) {
-        final result = await delegate.get(originId: originId);
-        selectedItemsState.value = result.toISet();
-        return result.toISet();
-      } else {
-        return ISet();
-      }
-    },
-    keys: [],
-  );
+  final initialSelectedValuesState = useAutoComputedState<ISet<JsonMap>>(() async {
+    if (originId != null) {
+      final result = await delegate.get(originId: originId);
+      selectedItemsState.value = result.toISet();
+      return result.toISet();
+    } else {
+      return ISet();
+    }
+  }, keys: []);
 
   final initialSelectedValuesOrPrevious = usePreviousIfNull(initialSelectedValuesState.valueOrNull);
-
 
   useEffect(() {
     baseState.addOnSavedCallback((value) async {
@@ -60,10 +53,7 @@ CmsToManyDropdownState useCmsToManyDropdownState({
   }, []);
 
   Future<List<JsonMap>> getItems({required CmsFilter filter}) async {
-    final result = await delegate.get(
-      originId: null,
-      filter: filter,
-    );
+    final result = await delegate.get(filter: filter);
     final ids = selectedItemsState.value.map((it) => it[delegate.foreignIdKey] as Object).toISet();
     final sorted = result.toSortedList(compareBy([(it) => ids.contains(it[delegate.foreignIdKey]) ? 0 : 1]));
     return sorted;

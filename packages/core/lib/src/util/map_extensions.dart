@@ -6,7 +6,7 @@ extension JsonMapExtensions on JsonMap {
     dynamic value = this;
     for (final component in path.split('.')) {
       value = (value as JsonMap)[component];
-      if(value == null) break;
+      if (value == null) break;
     }
     return value;
   }

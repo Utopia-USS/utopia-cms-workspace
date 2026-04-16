@@ -51,7 +51,11 @@ class CmsTextField extends HookWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          if (error != null) DefaultTextStyle(style: textStyles.caption.copyWith(color: colors.error), child: error!),
+          if (error != null)
+            DefaultTextStyle(
+              style: textStyles.caption.copyWith(color: colors.error),
+              child: error!,
+            ),
           _buildField(context, controller),
         ].separatedWith(const SizedBox(height: 6)),
       ),
@@ -64,7 +68,7 @@ class CmsTextField extends HookWidget {
       child: Row(
         children: [
           Flexible(child: _buildTextField(context, controller)),
-          if(suffix != null) suffix!,
+          ?suffix,
         ],
       ),
     );

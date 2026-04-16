@@ -78,12 +78,6 @@ class CmsMenuTile extends StatelessWidget {
   }
 
   Widget _buildIcon() {
-    return SimpleShadow(
-      opacity: 0.1,
-      color: Colors.black,
-      offset: const Offset(2, 2),
-      sigma: 3,
-      child: item.icon,
-    );
+    return SimpleShadow(opacity: 0.1, sigma: 3, child: item.icon);
   }
 }

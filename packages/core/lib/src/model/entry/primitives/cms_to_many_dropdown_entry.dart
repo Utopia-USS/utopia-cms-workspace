@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/delegate/cms_delegate.dart';
 import 'package:utopia_cms/src/delegate/cms_to_many_delegate.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry_modifier.dart';
+import 'package:utopia_cms/src/ui/item_management/view/cms_management_view.dart' show CmsManagementView;
 import 'package:utopia_cms/src/ui/widget/dropdown/to_many/cms_to_many_dropdown_field.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table_preview_text.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
 
 /// [CmsEntry] for handling toMany relationships
 class CmsToManyDropdownEntry extends CmsEntry<Object> {
@@ -52,11 +53,13 @@ class CmsToManyDropdownEntry extends CmsEntry<Object> {
   @override
   Widget buildPreview(BuildContext context, Object value) {
     // TODO revisit
-    return HookBuilder(builder: (context) {
-      final values = useMemoizedFuture(() async => delegate.get(originId: value), initialData: null);
+    return HookBuilder(
+      builder: (context) {
+        final values = useMemoizedFuture(() async => delegate.get(originId: value));
 
-      return CmsTablePreviewText(values.data?.map(previewDisplayBuilder ?? fieldDisplayBuilder).join(', ') ?? '-');
-    });
+        return CmsTablePreviewText(values.data?.map(previewDisplayBuilder ?? fieldDisplayBuilder).join(', ') ?? '-');
+      },
+    );
   }
 
   @override

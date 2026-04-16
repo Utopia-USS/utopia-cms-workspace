@@ -6,10 +6,7 @@ import 'package:utopia_cms/src/util/context_extensions.dart';
 class CmsTablePreviewText extends StatelessWidget {
   final String? text;
 
-  const CmsTablePreviewText(
-    this.text, {
-    super.key,
-  });
+  const CmsTablePreviewText(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,30 +14,17 @@ class CmsTablePreviewText extends StatelessWidget {
 
     return Align(
       alignment: Alignment.centerLeft,
-      child: MultiWidget(
-        [
-          if (text != null)
-            (child) => Tooltip(
-                  message: text!,
-                  child: child,
-                ),
-          (_) => _buildContent(style: style, context: context)
-        ],
-      ),
+      child: MultiWidget([
+        if (text != null) (child) => Tooltip(message: text!, child: child),
+        (_) => _buildContent(style: style, context: context),
+      ]),
     );
   }
 
-  Widget _buildContent({
-    required TextStyle style,
-    required BuildContext context,
-  }) {
+  Widget _buildContent({required TextStyle style, required BuildContext context}) {
     return _buildGestureDetector(
       context: context,
-      child: Text(
-        text ?? '-',
-        style: style,
-        overflow: TextOverflow.ellipsis,
-      ),
+      child: Text(text ?? '-', style: style, overflow: TextOverflow.ellipsis),
     );
   }
 
@@ -53,8 +37,11 @@ class CmsTablePreviewText extends StatelessWidget {
       child: GestureDetector(
         onTap: () async {
           if (text != null) {
-            await Clipboard.setData(ClipboardData(text: text!)).then((value) => ScaffoldMessenger.of(context)
-                .showSnackBar(_buildSnackBar(snackbarTextStyle, snackbarBackgroundColor, screenWidth)));
+            await Clipboard.setData(ClipboardData(text: text!));
+            if (!context.mounted) return;
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(_buildSnackBar(snackbarTextStyle, snackbarBackgroundColor, screenWidth));
           }
         },
         child: child,

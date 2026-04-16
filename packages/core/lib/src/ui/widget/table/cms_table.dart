@@ -1,5 +1,6 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
+import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/model/cms_functions_params.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/ui/widget/loading/cms_mock_loading_box.dart';
@@ -7,7 +8,6 @@ import 'package:utopia_cms/src/ui/widget/table/cms_table_header.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table_item.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
 
 class CmsTable extends HookWidget {
   final bool showLoader;
@@ -53,23 +53,27 @@ class CmsTable extends HookWidget {
         else
           Expanded(
             child: ListView.builder(
-                padding: const EdgeInsets.only(right: 14),
-                controller: scrollController,
-                itemCount: values.length,
-                itemExtent: tileHeight,
-                itemBuilder: (context, index) {
-                  return CmsTableItem(
-                    onManagePressed: () => onManagePressed?.call(values[index], index),
-                    data: values[index],
-                    entries: entries,
-                    actionsWidth: actionsWidth,
-                    tileHeight: tileHeight,
-                    contentPadding: contentPadding,
-                    itemPadding: itemPadding,
-                    color: index.isOdd ? Colors.transparent : context.colors.field,
-                    actionsBuilder: actionsBuilder?.let((it) => (e) => it(e, index)),
-                  );
-                }),
+              padding: const EdgeInsets.only(right: 14),
+              controller: scrollController,
+              itemCount: values.length,
+              itemExtent: tileHeight,
+              itemBuilder: (context, index) {
+                return CmsTableItem(
+                  onManagePressed: () => onManagePressed?.call(values[index], index),
+                  data: values[index],
+                  entries: entries,
+                  actionsWidth: actionsWidth,
+                  tileHeight: tileHeight,
+                  contentPadding: contentPadding,
+                  itemPadding: itemPadding,
+                  color: index.isOdd ? Colors.transparent : context.colors.field,
+                  actionsBuilder: actionsBuilder?.let(
+                    (it) =>
+                        (e) => it(e, index),
+                  ),
+                );
+              },
+            ),
           ),
       ],
     );
@@ -79,13 +83,10 @@ class CmsTable extends HookWidget {
     return ListView.builder(
       itemCount: 20,
       physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (_, __) {
+      itemBuilder: (_, _) {
         return const Padding(
           padding: EdgeInsets.only(bottom: CmsTable.tileHeight),
-          child: CmsMockLoadingBox(
-            width: double.infinity,
-            height: CmsTable.tileHeight,
-          ),
+          child: CmsMockLoadingBox(width: double.infinity, height: CmsTable.tileHeight),
         );
       },
     );

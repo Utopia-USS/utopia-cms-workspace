@@ -3,14 +3,18 @@ import 'package:gql/ast.dart';
 extension GraphQLValueNodeMapExtensions on Map<String, ValueNode> {
   ObjectValueNode toValueNode() {
     return ObjectValueNode(
-      fields: [for (final entry in entries) ObjectFieldNode(name: NameNode(value: entry.key), value: entry.value)],
+      fields: [
+        for (final entry in entries)
+          ObjectFieldNode(
+            name: NameNode(value: entry.key),
+            value: entry.value,
+          ),
+      ],
     );
   }
 
   List<ArgumentNode> toArgumentNodes() {
-    return [
-      for (final entry in entries) ArgumentNode(name: entry.key.toNameNode(), value: entry.value),
-    ];
+    return [for (final entry in entries) ArgumentNode(name: entry.key.toNameNode(), value: entry.value)];
   }
 }
 

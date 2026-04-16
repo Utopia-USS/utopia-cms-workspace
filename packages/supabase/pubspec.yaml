@@ -8,11 +8,8 @@ environment:
   sdk: ^3.11.0
 
 dependencies:
-  flutter:
-    sdk: flutter
+  utopia_cms: ^0.2.1+1
 
   supabase_flutter: ^2.0.0
-  utopia_cms:
-  utopia_utils: ^0.3.3
   fast_immutable_collections: ^11.1.0
 

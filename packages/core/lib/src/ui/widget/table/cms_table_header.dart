@@ -32,15 +32,8 @@ class CmsTableHeader extends StatelessWidget {
         ),
         child: Row(
           children: [
-            ...entries.map(
-              (e) => Expanded(flex: e.flex, child: _buildHeaderItem(e, style)),
-            ),
-            if (hasActions)
-              _buildRowCellPadding(
-                child: const SizedBox(
-                  width: CmsTable.actionsWidth,
-                ),
-              ),
+            ...entries.map((e) => Expanded(flex: e.flex, child: _buildHeaderItem(e, style))),
+            if (hasActions) _buildRowCellPadding(child: const SizedBox(width: CmsTable.actionsWidth)),
           ],
         ),
       ),
@@ -48,26 +41,20 @@ class CmsTableHeader extends StatelessWidget {
   }
 
   Widget _buildHeaderItem(CmsEntry entry, TextStyle style) {
-    return MultiWidget(
-      [
-        if (entry.sortable) (child) => MouseRegion(cursor: SystemMouseCursors.click, child: child),
-        if (entry.sortable) (child) => GestureDetector(onTap: () => onSortPressed(entry), child: child),
-        (child) => _buildRowCellPadding(child: child),
-        (_) => Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (entry.sortable) _buildSortingIcons(entry, style.color!),
-                Flexible(
-                  child: Text(
-                    entry.fixedLabel,
-                    style: style,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-      ],
-    );
+    return MultiWidget([
+      if (entry.sortable) (child) => MouseRegion(cursor: SystemMouseCursors.click, child: child),
+      if (entry.sortable) (child) => GestureDetector(onTap: () => onSortPressed(entry), child: child),
+      (child) => _buildRowCellPadding(child: child),
+      (_) => Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (entry.sortable) _buildSortingIcons(entry, style.color!),
+          Flexible(
+            child: Text(entry.fixedLabel, style: style, overflow: TextOverflow.ellipsis),
+          ),
+        ],
+      ),
+    ]);
   }
 
   Widget _buildSortingIcons(CmsEntry entry, Color color) {
@@ -96,9 +83,6 @@ class CmsTableHeader extends StatelessWidget {
   }
 
   Widget _buildRowCellPadding({required Widget child}) {
-    return Padding(
-      padding: CmsTable.itemPadding,
-      child: child,
-    );
+    return Padding(padding: CmsTable.itemPadding, child: child);
   }
 }

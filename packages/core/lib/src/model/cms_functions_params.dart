@@ -15,8 +15,5 @@ class CmsFunctionsPagingParams {
   final int offset;
   final int? limit;
 
-  CmsFunctionsPagingParams({
-    required this.offset,
-    required this.limit,
-  });
+  CmsFunctionsPagingParams({required this.offset, required this.limit});
 }

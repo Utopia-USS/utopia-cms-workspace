@@ -9,5 +9,6 @@ extension StringExtensions on String {
     throw '"$this" can not be parsed to boolean.';
   }
 
+  // ignore: avoid_positional_boolean_parameters
   String modifyRequired(bool isRequired) => isRequired ? '$this*' : this;
 }

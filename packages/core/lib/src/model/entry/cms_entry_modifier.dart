@@ -1,6 +1,6 @@
-
 import 'package:utopia_cms/src/delegate/cms_delegate.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
+import 'package:utopia_cms/src/ui/item_management/view/cms_management_view.dart' show CmsManagementView;
 import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
 
 /// Modifies the behavior of the [CmsEntry]

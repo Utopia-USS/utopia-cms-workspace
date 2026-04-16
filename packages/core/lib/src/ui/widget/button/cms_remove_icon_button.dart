@@ -13,11 +13,7 @@ class CmsRemoveIconButton extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: onPressed,
-        child: Icon(
-          Icons.clear,
-          color: colors.text,
-          size: 18,
-        ),
+        child: Icon(Icons.clear, color: colors.text, size: 18),
       ),
     );
   }

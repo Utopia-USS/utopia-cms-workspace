@@ -16,9 +16,7 @@ class CmsVideoPlayerState {
   });
 }
 
-CmsVideoPlayerState useCmsVidePlayerState({
-  required String url,
-}) {
+CmsVideoPlayerState useCmsVidePlayerState({required String url}) {
   final controllerState = useState<VideoPlayerController?>(null);
 
   useEffect(() async {
@@ -32,7 +30,8 @@ CmsVideoPlayerState useCmsVidePlayerState({
   }, []);
 
   final controllerValue = useValueListenable(
-      controllerState.value ?? ValueNotifier(const VideoPlayerValue.uninitialized()));
+    controllerState.value ?? ValueNotifier(const VideoPlayerValue.uninitialized()),
+  );
   final focusNode = useMemoized(FocusNode.new);
   final animationController = useAnimationController(duration: const Duration(milliseconds: 300));
   final isPlayingState = useState<bool>(false);
