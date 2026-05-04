@@ -48,7 +48,10 @@ class CmsTablePageView extends HookWidget {
   Widget _buildNotificationListener({required Widget child}) {
     return NotificationListener<ScrollNotification>(
       onNotification: (scrollInfo) {
-        if (scrollInfo.metrics.extentAfter < 50 && state.pagingEnabled && state.items.isNotEmpty) {
+        if (scrollInfo.metrics.extentAfter < 50 &&
+            state.pagingEnabled &&
+            state.items.isNotEmpty &&
+            state.computedState.value is! ComputedStateValueInProgress) {
           unawaited(state.computedState.refresh());
         }
         return false;
