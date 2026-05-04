@@ -21,13 +21,11 @@ class CmsMediaPreviewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiWidget(
-      [
-        if (onPressed != null) (child) => GestureDetector(onTap: onPressed, child: child),
-        if (onPressed != null) (child) => MouseRegion(cursor: SystemMouseCursors.click, child: child),
-        (_) => _buildWrapper(child: _buildItem(item)),
-      ],
-    );
+    return MultiWidget([
+      if (onPressed != null) (child) => GestureDetector(onTap: onPressed, child: child),
+      if (onPressed != null) (child) => MouseRegion(cursor: SystemMouseCursors.click, child: child),
+      (_) => _buildWrapper(child: _buildItem(item)),
+    ]);
   }
 
   Widget _buildWrapper({required Widget child, EdgeInsets? padding}) {
@@ -37,7 +35,7 @@ class CmsMediaPreviewItem extends StatelessWidget {
       margin: padding,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        boxShadow: const [BoxShadow(color: Colors.black12, spreadRadius: 0, blurRadius: 4)],
+        boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 4)],
         border: Border.all(color: Colors.white, width: 2),
       ),
       child: child,

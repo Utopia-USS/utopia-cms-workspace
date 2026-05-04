@@ -10,11 +10,7 @@ class CmsSupabaseTable {
 class CmsSupabaseDataTable extends CmsSupabaseTable {
   final String idKey;
 
-  const CmsSupabaseDataTable(
-    String name, {
-    this.idKey = 'id',
-    String? schema,
-  }) : super(name, schema: schema);
+  const CmsSupabaseDataTable(super.name, {this.idKey = 'id', super.schema});
 }
 
 class CmsSupabaseAssociationTable extends CmsSupabaseTable {
@@ -22,13 +18,13 @@ class CmsSupabaseAssociationTable extends CmsSupabaseTable {
   final String originKey, foreignKey;
 
   const CmsSupabaseAssociationTable(
-    String name, {
+    super.name, {
     required this.originTable,
     required this.foreignTable,
     required this.originKey,
     required this.foreignKey,
-    String? schema,
-  }) : super(name, schema: schema);
+    super.schema,
+  });
 
   CmsSupabaseAssociationTable get reversed {
     return CmsSupabaseAssociationTable(
@@ -41,4 +37,3 @@ class CmsSupabaseAssociationTable extends CmsSupabaseTable {
     );
   }
 }
-

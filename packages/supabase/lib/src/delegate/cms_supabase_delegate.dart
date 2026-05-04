@@ -11,12 +11,7 @@ class CmsSupabaseDelegate implements CmsDelegate {
 
   final CmsFilterNotEquals? archivedFilter;
 
-  const CmsSupabaseDelegate(
-    this.supabaseService, {
-    required this.client,
-    required this.table,
-    this.archivedFilter,
-  });
+  const CmsSupabaseDelegate(this.supabaseService, {required this.client, required this.table, this.archivedFilter});
 
   @override
   String get idKey => table.idKey;
@@ -28,13 +23,7 @@ class CmsSupabaseDelegate implements CmsDelegate {
     required CmsFunctionsPagingParams paging,
   }) async {
     final fixedFilter = archivedFilter == null ? filter : CmsFilterAnd([archivedFilter!, filter]);
-    return supabaseService.query(
-      client,
-      table: table,
-      sorting: sorting,
-      filter: fixedFilter,
-      paging: paging,
-    );
+    return supabaseService.query(client, table: table, sorting: sorting, filter: fixedFilter, paging: paging);
   }
 
   @override

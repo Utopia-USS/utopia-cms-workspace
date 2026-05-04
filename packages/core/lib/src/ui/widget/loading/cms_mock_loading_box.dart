@@ -7,12 +7,7 @@ class CmsMockLoadingBox extends StatelessWidget {
   final double width;
   final EdgeInsets? padding;
 
-  const CmsMockLoadingBox({
-    super.key,
-    this.height = 6,
-    this.width = 60,
-    this.padding,
-  });
+  const CmsMockLoadingBox({super.key, this.height = 6, this.width = 60, this.padding});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +16,7 @@ class CmsMockLoadingBox extends StatelessWidget {
       child: Shimmer.fromColors(
         baseColor: context.colors.field,
         highlightColor: context.colors.field.withValues(alpha: 0.2),
-        child: Container(
-          height: height,
-          width: width,
-          color: context.colors.canvas,
-        ),
+        child: Container(height: height, width: width, color: context.colors.canvas),
       ),
     );
   }

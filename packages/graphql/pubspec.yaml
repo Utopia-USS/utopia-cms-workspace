@@ -6,13 +6,10 @@ homepage: https://github.com/Utopia-USS/utopia_cms
 
 environment:
   sdk: ^3.11.0
-  flutter: ">=3.0.0"
 
 dependencies:
+  utopia_cms: ^0.2.1+1
+
   gql: ^1.0.1
   graphql: ^5.2.3
-  utopia_cms:
-  utopia_utils: ^0.3.3
-  utopia_reporter: ^0.1.0+5
-dependency_overrides:
-  http: 1.0.0
+  utopia_arch: ^0.5.1+20

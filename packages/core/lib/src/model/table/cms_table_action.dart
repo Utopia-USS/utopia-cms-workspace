@@ -14,9 +14,5 @@ class CmsTableAction {
   final bool shouldUpdateTable;
   final Future<JsonMap?> Function(JsonMap value) onPressed;
 
-  CmsTableAction({
-    required this.label,
-    required this.shouldUpdateTable,
-    required this.onPressed,
-  });
+  CmsTableAction({required this.label, required this.shouldUpdateTable, required this.onPressed});
 }

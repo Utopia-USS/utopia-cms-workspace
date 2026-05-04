@@ -24,6 +24,6 @@ abstract class CmsThemeColors with _$CmsThemeColors {
     field: const Color(0xFFEDEDED),
     canvas: Colors.grey[100]!,
     disabled: Colors.grey[400]!,
-    text: Colors.black87
+    text: Colors.black87,
   );
 }

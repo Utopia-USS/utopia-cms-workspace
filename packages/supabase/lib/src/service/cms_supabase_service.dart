@@ -2,20 +2,19 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:utopia_cms/utopia_cms.dart';
 import 'package:utopia_cms_supabase/src/model/cms_supabase_table.dart';
 
+typedef _Query = PostgrestTransformBuilder<PostgrestList>;
+
 class CmsSupabaseService {
   const CmsSupabaseService();
 
   Future<List<JsonMap>> query(
-      SupabaseClient client, {
-        required CmsSupabaseTable table,
-        CmsFunctionsPagingParams? paging,
-        CmsFilter filter = const CmsFilter.all(),
-        CmsFunctionsSortingParams? sorting,
-      }) async {
-    dynamic queryBuilder = client.from(table.fullName).select();
-
-    // Apply filter
-    queryBuilder = _applyFilter(queryBuilder, filter);
+    SupabaseClient client, {
+    required CmsSupabaseTable table,
+    CmsFunctionsPagingParams? paging,
+    CmsFilter filter = const CmsFilter.all(),
+    CmsFunctionsSortingParams? sorting,
+  }) async {
+    _Query queryBuilder = _applyFilter(client.from(table.fullName).select(), filter);
 
     // Apply sorting
     if (sorting != null) {
@@ -34,33 +33,28 @@ class CmsSupabaseService {
       queryBuilder = queryBuilder.range(paging.offset, paging.offset + limit - 1);
     }
 
-    final response = await queryBuilder;
-    return _asJsonMapList(response);
+    return _asJsonMapList(await queryBuilder);
   }
 
   Future<List<JsonMap>> insert(
-      SupabaseClient client, {
-        required CmsSupabaseTable table,
-        required List<JsonMap> objects,
-      }) async {
+    SupabaseClient client, {
+    required CmsSupabaseTable table,
+    required List<JsonMap> objects,
+  }) async {
     final response = await client.from(table.fullName).insert(objects).select();
     return _asJsonMapList(response);
   }
 
-  Future<JsonMap> insertOne(
-      SupabaseClient client, {
-        required CmsSupabaseTable table,
-        required JsonMap object,
-      }) async {
+  Future<JsonMap> insertOne(SupabaseClient client, {required CmsSupabaseTable table, required JsonMap object}) async {
     final response = await client.from(table.fullName).insert(object).select();
     return _asFirstJsonMap(response);
   }
 
   Future<JsonMap> updateById(
-      SupabaseClient client, {
-        required CmsSupabaseDataTable table,
-        required JsonMap object,
-      }) async {
+    SupabaseClient client, {
+    required CmsSupabaseDataTable table,
+    required JsonMap object,
+  }) async {
     final id = object[table.idKey] as Object;
     final updateData = JsonMap.from(object)..remove(table.idKey);
     final response = await client.from(table.fullName).update(updateData).eq(table.idKey, id).select();
@@ -68,31 +62,26 @@ class CmsSupabaseService {
   }
 
   Future<List<JsonMap>> delete(
-      SupabaseClient client, {
-        required CmsSupabaseTable table,
-        required CmsFilter filter,
-      }) async {
-    dynamic queryBuilder = client.from(table.fullName).delete().select();
-    queryBuilder = _applyFilter(queryBuilder, filter);
-    final response = await queryBuilder;
+    SupabaseClient client, {
+    required CmsSupabaseTable table,
+    required CmsFilter filter,
+  }) async {
+    final queryBuilder = _applyFilter(client.from(table.fullName).delete(), filter);
+    final response = await queryBuilder.select();
     return _asJsonMapList(response);
   }
 
-  Future<JsonMap> deleteById(
-      SupabaseClient client, {
-        required CmsSupabaseDataTable table,
-        required Object id,
-      }) async {
+  Future<JsonMap> deleteById(SupabaseClient client, {required CmsSupabaseDataTable table, required Object id}) async {
     final response = await client.from(table.fullName).delete().eq(table.idKey, id).select();
     return _asFirstJsonMap(response);
   }
 
-  dynamic _applyFilter(dynamic query, CmsFilter filter) {
+  PostgrestFilterBuilder<T> _applyFilter<T>(PostgrestFilterBuilder<T> query, CmsFilter filter) {
     return filter.when(
       all: () => query,
       equals: (field, value) {
         if (value == null) {
-          return query.isFilter(field, 'is', null);
+          return query.isFilter(field, null);
         }
         return query.eq(field, value);
       },
@@ -109,7 +98,7 @@ class CmsSupabaseService {
       inList: (field, values) => query.inFilter(field, values),
       and: (filters) {
         // For AND, we apply all filters sequentially (they are ANDed by default)
-        dynamic result = query;
+        var result = query;
         for (final f in filters) {
           result = _applyFilter(result, f);
         }
@@ -130,7 +119,7 @@ class CmsSupabaseService {
       not: (filter) {
         final condition = _buildCondition(filter, isNegatedContext: true);
         if (condition.isNotEmpty) {
-          return query.not(condition);
+          return query.or('not.and($condition)');
         }
         return query;
       },
@@ -163,13 +152,9 @@ class CmsSupabaseService {
     );
   }
 
-  List<JsonMap> _asJsonMapList(dynamic response) {
-    return (response as List).cast<JsonMap>();
-  }
+  List<JsonMap> _asJsonMapList(PostgrestList response) => response.cast<JsonMap>();
 
-  JsonMap _asFirstJsonMap(dynamic response) {
-    return _asJsonMapList(response).first;
-  }
+  JsonMap _asFirstJsonMap(PostgrestList response) => _asJsonMapList(response).first;
 
   String _buildContainsCondition(String field, String value, bool caseSensitive) {
     final pattern = '%$value%';
@@ -181,11 +166,11 @@ class CmsSupabaseService {
     if (value == null) return 'null';
     if (value is String) {
       // Escape quotes and backslashes, wrap in quotes
-      return '"${value.replaceAll('\\', '\\\\').replaceAll('"', '\\"')}"';
+      return '"${value.replaceAll(r'\', r'\\').replaceAll('"', r'\"')}"';
     }
     if (value is bool) return value.toString();
     if (value is num) return value.toString();
     // For other types, convert to string and quote
-    return '"${value.toString().replaceAll('\\', '\\\\').replaceAll('"', '\\"')}"';
+    return '"${value.toString().replaceAll(r'\', r'\\').replaceAll('"', r'\"')}"';
   }
 }

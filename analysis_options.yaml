@@ -10,3 +10,6 @@ analyzer:
 linter:
   rules:
     avoid_annotating_with_dynamic: false
+
+formatter:
+  page_width: 120

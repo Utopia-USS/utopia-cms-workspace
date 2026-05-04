@@ -7,13 +7,7 @@ class CmsDialog extends StatelessWidget {
   final bool hasProceed;
   final bool hasCancel;
 
-  const CmsDialog({
-    super.key,
-    this.title,
-    this.subtitle,
-    this.hasCancel = true,
-    this.hasProceed = true,
-  });
+  const CmsDialog({super.key, this.title, this.subtitle, this.hasCancel = true, this.hasProceed = true});
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +24,16 @@ class CmsDialog extends StatelessWidget {
         ),
       ),
       actions: [
-        if(hasCancel)TextButton(
-          onPressed: () => Navigator.of(context).pop(false),
-          child: Text(
-            "Cancel",
-            style: texts.label.copyWith(color: colors.primary),
+        if (hasCancel)
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text("Cancel", style: texts.label.copyWith(color: colors.primary)),
           ),
-        ),
-        if(hasProceed)TextButton(
-          onPressed: () => Navigator.of(context).pop(true),
-          child: Text(
-            "Proceed",
-            style: texts.label,
+        if (hasProceed)
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text("Proceed", style: texts.label),
           ),
-        ),
       ],
     );
   }
@@ -52,17 +42,12 @@ class CmsDialog extends StatelessWidget {
     BuildContext context, {
     String? title,
     String? subtitle,
-         bool hasProceed = true,
-         bool hasCancel = true,
+    bool hasProceed = true,
+    bool hasCancel = true,
   }) async {
     return showDialog<bool>(
       context: context,
-      builder: (context) => CmsDialog(
-        title: title,
-        subtitle: subtitle,
-        hasCancel: true,
-        hasProceed: true,
-      ),
+      builder: (context) => CmsDialog(title: title, subtitle: subtitle),
     );
   }
 }

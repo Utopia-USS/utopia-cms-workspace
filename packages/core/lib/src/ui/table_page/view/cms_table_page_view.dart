@@ -7,11 +7,11 @@ import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/filter_entry/cms_filter_entry.dart';
 import 'package:utopia_cms/src/model/table/cms_table_action.dart';
 import 'package:utopia_cms/src/ui/table_page/state/cms_table_page_state.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table_actions.dart';
 import 'package:utopia_cms/src/ui/widget/button/cms_button.dart';
 import 'package:utopia_cms/src/ui/widget/header/cms_header.dart';
 import 'package:utopia_cms/src/ui/widget/loading/cms_loader.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
+import 'package:utopia_cms/src/ui/widget/table/cms_table_actions.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
 import 'package:utopia_cms/src/util/entries_extensions.dart';
 
@@ -35,14 +35,12 @@ class CmsTablePageView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiWidget(
-      [
-        (child) => Scaffold(backgroundColor: context.colors.canvas, body: child),
-        (child) => SizedBox.expand(child: child),
-        (child) => _buildNotificationListener(child: child),
-        (_) => _buildContent(context),
-      ],
-    );
+    return MultiWidget([
+      (child) => Scaffold(backgroundColor: context.colors.canvas, body: child),
+      (child) => SizedBox.expand(child: child),
+      (child) => _buildNotificationListener(child: child),
+      (_) => _buildContent(context),
+    ]);
   }
 
   Widget _buildNotificationListener({required Widget child}) {
@@ -67,13 +65,9 @@ class CmsTablePageView extends HookWidget {
       children: [
         SizedBox(height: context.theme.pageTopPadding),
         _buildTopRow(context),
-        Expanded(
-          child: _buildTable(context),
-        ),
+        Expanded(child: _buildTable(context)),
         if (values.isNotEmpty && state.computedState.value is ComputedStateValueInProgress)
-          const Center(
-            child: CmsLoader(),
-          ),
+          const Center(child: CmsLoader()),
       ],
     );
   }
@@ -90,26 +84,23 @@ class CmsTablePageView extends HookWidget {
               spacing: 16,
               children: [
                 CmsHeader(text: title),
-                ...filterEntries.map(
-                  (e) {
-                    return Flexible(
-                      key: Key(e.entryKey),
-                      flex: e.flex,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 12.0),
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(maxWidth: _filterWidthFactor * e.flex),
-                          child: e.buildField(
-                            context: context,
-                            value: e.fromJson(state.filterValues[e.entryKey]),
-                            onChanged: (value) => state.onFilterChanged(e.entryKey, e.toJson(value)),
-                          ),
+                ...filterEntries.map((e) {
+                  return Flexible(
+                    key: Key(e.entryKey),
+                    flex: e.flex,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 12.0),
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(maxWidth: _filterWidthFactor * e.flex),
+                        child: e.buildField(
+                          context: context,
+                          value: e.fromJson(state.filterValues[e.entryKey]),
+                          onChanged: (value) => state.onFilterChanged(e.entryKey, e.toJson(value)),
                         ),
                       ),
-                    );
-                  },
-                ),
-
+                    ),
+                  );
+                }),
               ],
             ),
           ),
@@ -159,11 +150,9 @@ class CmsTablePageView extends HookWidget {
       label: "Delete",
       shouldUpdateTable: false,
       onPressed: (value) async {
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) async {
-            await state.onDeletePressed(value, index);
-          },
-        );
+        WidgetsBinding.instance.addPostFrameCallback((_) async {
+          await state.onDeletePressed(value, index);
+        });
         return null;
       },
     );
@@ -174,11 +163,9 @@ class CmsTablePageView extends HookWidget {
       label: "Manage",
       shouldUpdateTable: false,
       onPressed: (value) async {
-        WidgetsBinding.instance.addPostFrameCallback(
-          (_) async {
-            state.onEditPressed(value, index);
-          },
-        );
+        WidgetsBinding.instance.addPostFrameCallback((_) async {
+          state.onEditPressed(value, index);
+        });
         return null;
       },
     );

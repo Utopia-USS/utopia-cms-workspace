@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/delegate/media/cms_media_delegate.dart';
+import 'package:utopia_cms/src/ui/item_management/state/cms_management_state.dart';
 import 'package:utopia_cms/src/ui/media_preview/cms_media_preview_page.dart';
 import 'package:utopia_cms/src/ui/media_preview/cms_media_type.dart';
-import 'package:utopia_cms/src/ui/item_management/state/cms_management_state.dart';
 import 'package:utopia_cms/src/ui/widget/dialog/cms_dialog.dart';
 
 class CmsMediaFieldState {
@@ -22,7 +22,7 @@ class CmsMediaFieldState {
   final void Function() setHighlightedFalse;
   final void Function(DropzoneViewController) onCreated;
   final Future<void> Function(DropzoneFileInterface)
-      onDropFile; //in flutter_dropzone docs this variable has to be dynamic
+  onDropFile; //in flutter_dropzone docs this variable has to be dynamic
   final void Function(int index, dynamic value) onUploaded;
   final Future<void> Function() onSelectFilePressed;
 
@@ -69,14 +69,15 @@ CmsMediaFieldState useCmsMediaFieldState({
     final mime = await controller.getFileMIME(event);
 
     final isCorrect = supportedMedia.getMimes.contains(mime);
-    if (!isCorrect) {
-      // ignore: use_build_context_synchronously
-      unawaited(CmsDialog.show(
-        context,
-        title: "Incorrect file",
-        subtitle: "Provided file has unsupported format",
-        hasProceed: false,
-      ));
+    if (context.mounted &&!isCorrect) {
+      unawaited(
+        CmsDialog.show(
+          context,
+          title: "Incorrect file",
+          subtitle: "Provided file has unsupported format",
+          hasProceed: false,
+        ),
+      );
     }
     return isCorrect;
   }
@@ -102,7 +103,7 @@ CmsMediaFieldState useCmsMediaFieldState({
 
   Future<void> selectFiles() async {
     if (controller.value != null) {
-      final files = await controller.value!.pickFiles(multiple: false, mime: supportedMedia.getMimes);
+      final files = await controller.value!.pickFiles(mime: supportedMedia.getMimes);
       final xFiles = await Future.wait(files.map((e) async => setUpXFile(e)));
       filesState.value = filesState.value.addAll(xFiles);
     }
@@ -127,7 +128,7 @@ CmsMediaFieldState useCmsMediaFieldState({
         barrierColor: Colors.black87,
         transitionDuration: const Duration(milliseconds: 400),
         reverseTransitionDuration: const Duration(milliseconds: 400),
-        pageBuilder: (_, animation, ___) => CmsMediaPreviewPage(
+        pageBuilder: (_, animation, _) => CmsMediaPreviewPage(
           args: CmsMediaPreviewPageArgs(
             items: uploadedItems,
             initialIndex: index,

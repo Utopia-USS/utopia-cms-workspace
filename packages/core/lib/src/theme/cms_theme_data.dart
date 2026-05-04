@@ -37,8 +37,5 @@ abstract class CmsThemeData with _$CmsThemeData {
     shortButtonWidth: 144,
   );
 
-  BoxDecoration get fieldDecoration => BoxDecoration(
-        borderRadius: borderRadius,
-        color: colors.field,
-      );
+  BoxDecoration get fieldDecoration => BoxDecoration(borderRadius: borderRadius, color: colors.field);
 }

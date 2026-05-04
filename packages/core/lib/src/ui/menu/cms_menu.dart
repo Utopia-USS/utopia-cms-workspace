@@ -31,7 +31,8 @@ class CmsMenu extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isExpandedState = useState<bool>(false);
-    final isExpanded = (canExpand && isExpandedState.value && behavior != CmsMenuBehavior.collapsed) ||
+    final isExpanded =
+        (canExpand && isExpandedState.value && behavior != CmsMenuBehavior.collapsed) ||
         behavior == CmsMenuBehavior.expanded;
 
     return LayoutBuilder(
@@ -67,8 +68,10 @@ class CmsMenu extends HookWidget {
                           CmsMenuTile(
                             item: items[index],
                             isExpanded: isExpanded,
-                            isSelected:
-                                items[index].maybeMap(page: (it) => it.id == selectedPageId, orElse: () => false),
+                            isSelected: items[index].maybeMap(
+                              page: (it) => it.id == selectedPageId,
+                              orElse: () => false,
+                            ),
                             onPressed: () => onPressed(index),
                           ),
                       const SizedBox(height: 12),
@@ -84,12 +87,7 @@ class CmsMenu extends HookWidget {
   }
 
   Widget _buildCustom(CmsWidgetItemCustom item) {
-    return MultiWidget(
-      [
-        if (item.flex != null) (child) => Expanded(flex: item.flex!, child: child),
-        (_) => item.child,
-      ],
-    );
+    return MultiWidget([if (item.flex != null) (child) => Expanded(flex: item.flex!, child: child), (_) => item.child]);
   }
 
   BorderRadius _buildBorderRadius(BoxConstraints constraints, BuildContext context) {

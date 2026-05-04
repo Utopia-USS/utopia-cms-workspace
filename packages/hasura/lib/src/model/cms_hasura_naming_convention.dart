@@ -17,7 +17,7 @@ enum CmsHasuraNamingConvention {
   });
 
   const CmsHasuraNamingConvention.uniform(StringCase stringCase)
-      : this(field: stringCase, type: stringCase, argument: stringCase, enumValue: stringCase);
+    : this(field: stringCase, type: stringCase, argument: stringCase, enumValue: stringCase);
 
   final StringCase field, type, argument, enumValue;
 }

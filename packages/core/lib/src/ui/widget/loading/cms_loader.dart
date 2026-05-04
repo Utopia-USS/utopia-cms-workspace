@@ -5,11 +5,7 @@ class CmsLoader extends StatelessWidget {
   final Color? color;
   final double size;
 
-  const CmsLoader({
-    super.key,
-    this.color,
-    this.size = 12,
-  });
+  const CmsLoader({super.key, this.color, this.size = 12});
 
   @override
   Widget build(BuildContext context) {

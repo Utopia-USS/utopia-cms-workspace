@@ -2,8 +2,9 @@ import 'dart:math';
 
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
-import 'package:utopia_cms/src/model/item_management/cms_management_section_entry.dart';
+import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
+import 'package:utopia_cms/src/model/item_management/cms_management_section_entry.dart';
 import 'package:utopia_cms/src/ui/item_management/state/cms_management_state.dart';
 import 'package:utopia_cms/src/ui/widget/button/cms_button.dart';
 import 'package:utopia_cms/src/ui/widget/header/cms_header.dart';
@@ -11,7 +12,6 @@ import 'package:utopia_cms/src/ui/widget/header/cms_title.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
 import 'package:utopia_cms/src/util/entries_extensions.dart';
 import 'package:utopia_cms/src/util/map_extensions.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
 
 class CmsManagementView extends HookWidget {
   final CmsItemManagementState state;
@@ -52,10 +52,7 @@ class CmsManagementView extends HookWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 36),
                             child: Stack(
                               fit: StackFit.expand,
-                              children: [
-                                _buildScrollView(canNest),
-                                _buildButtons(context),
-                              ],
+                              children: [_buildScrollView(canNest), _buildButtons(context)],
                             ),
                           ),
                         ),
@@ -72,57 +69,63 @@ class CmsManagementView extends HookWidget {
   }
 
   Widget _buildScrollView(bool canNest) {
-    return HookBuilder(builder: (context) {
-      final readOnlyShort = useMemoized(
-          () => state.entries.readOnly(isPageEditable: state.params.canEdit).where((e) => !e.isExpanded).toIList());
-      final readOnlyExpanded = useMemoized(
-          () => state.entries.readOnly(isPageEditable: state.params.canEdit).where((e) => e.isExpanded).toIList());
-      final editableShort = useMemoized(() => state.entries
-          .editable(isCreate: !state.isEdit, isPageEditable: state.params.canEdit)
-          .where((e) => !e.isExpanded)).toIList();
-      final editableExpanded = useMemoized(() => state.entries
-          .editable(isCreate: !state.isEdit, isPageEditable: state.params.canEdit)
-          .where((e) => e.isExpanded)
-          .toIList());
+    return HookBuilder(
+      builder: (context) {
+        final readOnlyShort = useMemoized(
+          () => state.entries.readOnly(isPageEditable: state.params.canEdit).where((e) => !e.isExpanded).toIList(),
+        );
+        final readOnlyExpanded = useMemoized(
+          () => state.entries.readOnly(isPageEditable: state.params.canEdit).where((e) => e.isExpanded).toIList(),
+        );
+        final editableShort = useMemoized(
+          () => state.entries
+              .editable(isCreate: !state.isEdit, isPageEditable: state.params.canEdit)
+              .where((e) => !e.isExpanded),
+        ).toIList();
+        final editableExpanded = useMemoized(
+          () => state.entries
+              .editable(isCreate: !state.isEdit, isPageEditable: state.params.canEdit)
+              .where((e) => e.isExpanded)
+              .toIList(),
+        );
 
-      return CustomScrollView(
-        controller: state.scrollController,
-        slivers: [
-          const SliverToBoxAdapter(child: SizedBox(height: 48)),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 12.0),
-              child: CmsHeader(
-                text: _buildHeader(),
-                navigateBack: true,
+        return CustomScrollView(
+          controller: state.scrollController,
+          slivers: [
+            const SliverToBoxAdapter(child: SizedBox(height: 48)),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 12.0),
+                child: CmsHeader(text: _buildHeader(), navigateBack: true),
               ),
             ),
-          ),
-          if (state.isEdit && (readOnlyExpanded.isNotEmpty || readOnlyShort.isNotEmpty)) ...[
-            _buildTitle("Read only", context),
-            _buildNestedSection(readOnlyShort, readOnly: true, canNest: canNest),
-            _buildSingularSection(readOnlyExpanded, readOnly: true),
+            if (state.isEdit && (readOnlyExpanded.isNotEmpty || readOnlyShort.isNotEmpty)) ...[
+              _buildTitle("Read only", context),
+              _buildNestedSection(readOnlyShort, readOnly: true, canNest: canNest),
+              _buildSingularSection(readOnlyExpanded, readOnly: true),
+            ],
+            if (state.isEdit && (editableShort.isNotEmpty || editableExpanded.isNotEmpty)) ...[
+              _buildTitle("Editable", context),
+              _buildNestedSection(editableShort, canNest: canNest),
+              _buildSingularSection(editableExpanded),
+            ],
+            if (!state.isEdit) ...[
+              _buildNestedSection(editableShort, canNest: canNest),
+              _buildSingularSection(editableExpanded),
+            ],
+            for (final entry in sectionEntries) ..._buildCustomSection(context, entry),
+            const SliverToBoxAdapter(child: SizedBox(height: 100)),
           ],
-          if (state.isEdit && (editableShort.isNotEmpty || editableExpanded.isNotEmpty)) ...[
-            _buildTitle("Editable", context),
-            _buildNestedSection(editableShort, canNest: canNest),
-            _buildSingularSection(editableExpanded),
-          ],
-          if (!state.isEdit) ...[
-            _buildNestedSection(editableShort, canNest: canNest),
-            _buildSingularSection(editableExpanded),
-          ],
-          for (final entry in sectionEntries) ..._buildCustomSection(context, entry),
-          SliverToBoxAdapter(child: SizedBox(height: 100)),
-        ],
-      );
-    });
+        );
+      },
+    );
   }
 
   List<Widget> _buildCustomSection(BuildContext context, CmsManagementSectionEntry entry) {
     final edit = state.isEdit;
-    if ((entry.showEdit && edit) || (entry.showCreate && !edit))
+    if ((entry.showEdit && edit) || (entry.showCreate && !edit)) {
       return [_buildTitle(entry.title, context), entry.sliverBuilder(state.values, state.isEdit)];
+    }
 
     return [];
   }
@@ -137,21 +140,18 @@ class CmsManagementView extends HookWidget {
     final length = (entries.length / 2).floor();
     final fixedNestedCount = entries.length.isEven ? length : length + 1;
     return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          final fixedIndex = canNest ? index * 2 : index;
-          final shouldBuildSecond = fixedIndex + 1 < entries.length && canNest;
-          return _buildTile(
-            context,
-            readOnly: readOnly,
-            firstItem: _buildEditField(context, entries[fixedIndex]),
-            secondItem: !shouldBuildSecond
-                ? _buildSecondItemPlaceholder(canNest)
-                : _buildEditField(context, entries[fixedIndex + 1]),
-          );
-        },
-        childCount: canNest ? fixedNestedCount : entries.length,
-      ),
+      delegate: SliverChildBuilderDelegate((context, index) {
+        final fixedIndex = canNest ? index * 2 : index;
+        final shouldBuildSecond = fixedIndex + 1 < entries.length && canNest;
+        return _buildTile(
+          context,
+          readOnly: readOnly,
+          firstItem: _buildEditField(context, entries[fixedIndex]),
+          secondItem: !shouldBuildSecond
+              ? _buildSecondItemPlaceholder(canNest)
+              : _buildEditField(context, entries[fixedIndex + 1]),
+        );
+      }, childCount: canNest ? fixedNestedCount : entries.length),
     );
   }
 
@@ -164,16 +164,9 @@ class CmsManagementView extends HookWidget {
 
   SliverList _buildSingularSection(IList<CmsEntry<dynamic>> entries, {bool readOnly = false}) {
     return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          return _buildTile(
-            context,
-            readOnly: readOnly,
-            firstItem: _buildEditField(context, entries[index]),
-          );
-        },
-        childCount: entries.length,
-      ),
+      delegate: SliverChildBuilderDelegate((context, index) {
+        return _buildTile(context, readOnly: readOnly, firstItem: _buildEditField(context, entries[index]));
+      }, childCount: entries.length),
     );
   }
 
@@ -227,7 +220,7 @@ class CmsManagementView extends HookWidget {
                 textAlign: TextAlign.end,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-              )
+              ),
           ],
         ),
       ),
@@ -253,10 +246,7 @@ class CmsManagementView extends HookWidget {
         child: Row(
           children: [
             Flexible(child: firstItem),
-            if (secondItem != null) ...[
-              SizedBox(width: spacing),
-              Flexible(child: secondItem),
-            ]
+            if (secondItem != null) ...[SizedBox(width: spacing), Flexible(child: secondItem)],
           ],
         ),
       ),
