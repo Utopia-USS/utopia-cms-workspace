@@ -24,6 +24,7 @@ class CmsTablePageState {
   final bool pagingEnabled;
 
   final Future<void> Function() onCreatePressed;
+  final Future<void> Function() onReloadPressed;
   final void Function(JsonMap, int index) onEditPressed;
   final Future<void> Function(JsonMap, int index) onDeletePressed;
   final void Function(JsonMap, int index) updateItem;
@@ -33,6 +34,7 @@ class CmsTablePageState {
     required this.computedState,
     required this.items,
     required this.onCreatePressed,
+    required this.onReloadPressed,
     required this.onDeletePressed,
     required this.onEditPressed,
     required this.params,
@@ -155,6 +157,11 @@ CmsTablePageState useCmsTablePageState({
 
   Future<void> onCreate() async => onManage();
 
+  Future<void> onReload() async {
+    resetState();
+    await state.refresh();
+  }
+
   Future<void> onEdit(JsonMap value, int index) async => onManage(value: value, index: index);
 
   final scrollController = useMemoized(ScrollController.new);
@@ -176,6 +183,7 @@ CmsTablePageState useCmsTablePageState({
     items: itemsState.value,
     params: params,
     onCreatePressed: onCreate,
+    onReloadPressed: onReload,
     onDeletePressed: onDelete,
     onEditPressed: onEdit,
     scrollController: scrollController,

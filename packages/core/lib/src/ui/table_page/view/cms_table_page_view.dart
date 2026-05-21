@@ -104,6 +104,16 @@ class CmsTablePageView extends HookWidget {
               ],
             ),
           ),
+          Builder(builder: (context) {
+            final isReloading = state.computedState.value is ComputedStateValueInProgress;
+            return IconButton(
+              icon: isReloading
+                  ? const SizedBox.square(dimension: 18, child: CmsLoader(size: 18))
+                  : const Icon(Icons.refresh),
+              tooltip: 'Refresh',
+              onPressed: isReloading ? null : state.onReloadPressed,
+            );
+          }),
           if (state.params.canCreate)
             Align(
               alignment: AlignmentGeometry.centerRight,
