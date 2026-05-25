@@ -15,6 +15,7 @@ export 'src/model/entry/primitives/cms_date_entry.dart';
 export 'src/model/entry/primitives/cms_dropdown_entry.dart';
 export 'src/model/entry/primitives/cms_media_entry.dart';
 export 'src/model/entry/primitives/cms_num_entry.dart';
+export 'src/model/entry/primitives/cms_single_media_entry.dart';
 export 'src/model/entry/primitives/cms_text_entry.dart';
 export 'src/model/entry/primitives/cms_to_many_dropdown_entry.dart';
 export 'src/model/filter_entry/cms_date_filter_entry.dart';

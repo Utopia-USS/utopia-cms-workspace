@@ -4,6 +4,7 @@ import 'package:cross_file/cross_file.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
+import 'package:provider/provider.dart';
 import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/delegate/media/cms_media_delegate.dart';
 import 'package:utopia_cms/src/ui/item_management/state/cms_management_state.dart';
@@ -16,6 +17,11 @@ class CmsMediaFieldState {
 
   /// if XFile it's a new one
   final IList<dynamic> files;
+
+  /// Optional cap on how many files may be present at once. `null` = unlimited.
+  /// When `files.length >= maxFiles`, the add button is hidden and drop/pick
+  /// reject extra files.
+  final int? maxFiles;
 
   final MutableValue<bool> isHighlighted;
   final void Function() setHighlightedTrue;
@@ -43,7 +49,10 @@ class CmsMediaFieldState {
     required this.onNavigateToPreview,
     required this.onReorder,
     required this.files,
+    this.maxFiles,
   });
+
+  bool get isAtMaxFiles => maxFiles != null && files.length >= maxFiles!;
 }
 
 CmsMediaFieldState useCmsMediaFieldState({
@@ -54,16 +63,20 @@ CmsMediaFieldState useCmsMediaFieldState({
   required String Function(dynamic object)? urlBuilder,
   required CmsMediaType Function(dynamic object) mediaTypeBuilder,
   required NavigatorState navigator,
+  int? maxFiles,
 }) {
   final controller = useState<DropzoneViewController?>(null);
   final isHighlightedState = useState<bool>(false);
 
-  final baseState = useProvided<CmsManagementBaseState>();
+  final context = useBuildContext();
+  // `CmsManagementOverlay` provides the base state via Flutter's
+  // [Provider.value], not via the utopia_hooks `ProviderWidget` that
+  // `useProvided` looks up. Read it through the Flutter context so the
+  // lookups match.
+  final baseState = Provider.of<CmsManagementBaseState>(context, listen: false);
   final filesState = useState<IList<dynamic>>(initialValues?.toIList() ?? IList());
   final deletedFilesState = useState<IList<dynamic>>(IList());
   final uploadedItems = filesState.value.where((e) => e is! XFile).toIList();
-
-  final context = useBuildContext();
 
   Future<bool> checkMIME(DropzoneFileInterface event, DropzoneViewController controller) async {
     final mime = await controller.getFileMIME(event);
@@ -90,8 +103,17 @@ CmsMediaFieldState useCmsMediaFieldState({
     return XFile.fromData(data, name: name, length: size, mimeType: mime);
   }
 
+  bool isAtMax() {
+    final max = maxFiles;
+    return max != null && filesState.value.length >= max;
+  }
+
   Future<void> dropFile(DropzoneFileInterface file) async {
     if (controller.value != null) {
+      if (isAtMax()) {
+        isHighlightedState.value = false;
+        return;
+      }
       final isImage = await checkMIME(file, controller.value!);
       isHighlightedState.value = false;
       if (isImage) {
@@ -103,8 +125,10 @@ CmsMediaFieldState useCmsMediaFieldState({
 
   Future<void> selectFiles() async {
     if (controller.value != null) {
+      if (isAtMax()) return;
       final files = await controller.value!.pickFiles(mime: supportedMedia.getMimes);
-      final xFiles = await Future.wait(files.map((e) async => setUpXFile(e)));
+      final remaining = maxFiles == null ? files : files.take(maxFiles - filesState.value.length);
+      final xFiles = await Future.wait(remaining.map((e) async => setUpXFile(e)));
       filesState.value = filesState.value.addAll(xFiles);
     }
   }
@@ -151,6 +175,7 @@ CmsMediaFieldState useCmsMediaFieldState({
     onSelectFilePressed: selectFiles,
     onNavigateToPreview: navigateToPreview,
     files: filesState.value,
+    maxFiles: maxFiles,
     onUploaded: (index, value) {
       filesState.value = filesState.value.removeAt(index);
       filesState.value = filesState.value.insert(index, value);

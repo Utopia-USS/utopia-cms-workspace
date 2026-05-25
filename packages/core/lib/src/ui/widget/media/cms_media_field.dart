@@ -16,6 +16,7 @@ class CmsMediaField extends HookWidget {
   final Iterable<dynamic>? initialValues;
   final List<CmsMediaType> supportedMedia;
   final CmsMediaType Function(dynamic object) mediaTypeBuilder;
+  final int? maxFiles;
 
   const CmsMediaField({
     super.key,
@@ -27,6 +28,7 @@ class CmsMediaField extends HookWidget {
     required this.valueBuilder,
     required this.supportedMedia,
     required this.mediaTypeBuilder,
+    this.maxFiles,
   });
 
   @override
@@ -40,6 +42,7 @@ class CmsMediaField extends HookWidget {
       urlBuilder: urlBuilder,
       mediaTypeBuilder: mediaTypeBuilder,
       navigator: navigator,
+      maxFiles: maxFiles,
     );
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -56,7 +59,9 @@ class CmsMediaField extends HookWidget {
               spacing: spacing,
               runSpacing: spacing,
               onReorder: state.onReorder,
-              header: [CmsMediaFieldAddButton(state: state, size: size)],
+              header: state.isAtMaxFiles
+                  ? const []
+                  : [CmsMediaFieldAddButton(state: state, size: size)],
               children: [
                 for (int i = 0; i < state.files.length; i++)
                   if (state.files[i] is XFile)

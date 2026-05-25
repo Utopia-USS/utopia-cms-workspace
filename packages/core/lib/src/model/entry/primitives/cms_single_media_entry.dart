@@ -4,26 +4,30 @@ import 'package:utopia_cms/src/ui/widget/table/cms_table_preview_media.dart';
 import 'package:utopia_cms/src/util/string_extensions.dart';
 import 'package:utopia_cms/utopia_cms.dart';
 
-/// [CmsEntry] for handling images
-class CmsMediaEntry extends CmsEntry<Iterable<dynamic>?> {
+/// Single-file variant of [CmsMediaEntry].
+///
+/// Stores a single object (typically the URL string returned by [valueBuilder])
+/// directly in the [JsonMap] under [key], instead of a one-element list.
+/// Useful for fields like a cover image where the storage shape is a scalar
+/// and callers don't want to wrap / unwrap an iterable.
+///
+/// Internally renders a [CmsMediaField] capped at one file.
+class CmsSingleMediaEntry extends CmsEntry<dynamic> {
   final CmsMediaDelegate delegate;
   final List<CmsMediaType> supportedMedia;
 
-  /// Function that determines [CmsMediaType] based on object's JsonMap
+  /// Function that determines [CmsMediaType] based on object's JsonMap.
   final CmsMediaType Function(dynamic object) mediaTypeBuilder;
 
-  /// getter for url from object's JsonMap
+  /// Getter for url from object's JsonMap.
   final String Function(dynamic object)? urlBuilder;
 
-  /// Optional custom object created from upload response and file
+  /// Optional custom object created from upload response and file.
   ///
-  /// Entry returns String url if not provided
+  /// Entry stores `String` url under [key] if not provided.
   final dynamic Function(CmsMediaUploadRes res, XFile file)? valueBuilder;
 
-  /// Optional cap on simultaneous files. `null` = unlimited.
-  final int? maxFiles;
-
-  CmsMediaEntry({
+  CmsSingleMediaEntry({
     required this.key,
     required this.delegate,
     required this.supportedMedia,
@@ -33,7 +37,6 @@ class CmsMediaEntry extends CmsEntry<Iterable<dynamic>?> {
     this.label,
     this.modifier = const CmsEntryModifier(expanded: true),
     this.flex = 2,
-    this.maxFiles,
   });
 
   @override
@@ -49,25 +52,33 @@ class CmsMediaEntry extends CmsEntry<Iterable<dynamic>?> {
   final CmsEntryModifier modifier;
 
   @override
-  Widget buildPreview(BuildContext context, Iterable<dynamic>? value) =>
-      CmsTablePreviewFile(media: value, urlBuilder: urlBuilder, mediaTypeBuilder: mediaTypeBuilder);
+  Widget buildPreview(BuildContext context, dynamic value) {
+    return CmsTablePreviewFile(
+      media: value == null ? null : [value],
+      urlBuilder: urlBuilder,
+      mediaTypeBuilder: mediaTypeBuilder,
+    );
+  }
 
   @override
   Widget buildEditField({
     required BuildContext context,
-    required Iterable<dynamic>? value,
-    required void Function(Iterable<dynamic>? value) onChanged,
+    required dynamic value,
+    required void Function(dynamic value) onChanged,
   }) {
     return CmsMediaField(
       label: (label ?? key).modifyRequired(modifier.required),
       delegate: delegate,
-      onChanged: onChanged,
-      initialValues: value,
+      onChanged: (values) {
+        final list = values?.toList();
+        onChanged(list == null || list.isEmpty ? null : list.first);
+      },
+      initialValues: value == null ? null : [value],
       urlBuilder: urlBuilder,
       valueBuilder: valueBuilder,
       supportedMedia: supportedMedia,
       mediaTypeBuilder: mediaTypeBuilder,
-      maxFiles: maxFiles,
+      maxFiles: 1,
     );
   }
 }
