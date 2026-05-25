@@ -1,4 +1,5 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
+import 'package:provider/provider.dart';
 import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/delegate/cms_to_many_delegate.dart';
 import 'package:utopia_cms/src/model/cms_filter.dart';
@@ -25,7 +26,9 @@ class CmsToManyDropdownState {
 }
 
 CmsToManyDropdownState useCmsToManyDropdownState({required CmsToManyDelegate delegate, required Object? originId}) {
-  final baseState = useProvided<CmsManagementBaseState>();
+  // `CmsManagementOverlay` provides this via Flutter [Provider.value], so we
+  // must read it through Flutter's context, not the utopia_hooks lookup.
+  final baseState = Provider.of<CmsManagementBaseState>(useBuildContext(), listen: false);
   final selectedItemsState = useState<ISet<JsonMap>>(ISet());
   final searchState = useFieldState(initialValue: '');
   final initialSelectedValuesState = useAutoComputedState<ISet<JsonMap>>(() async {
