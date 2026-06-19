@@ -102,7 +102,8 @@ CmsTablePageState useCmsTablePageState({
 
         if (result.isNotEmpty) {
           final existingIds = itemsState.value.map((e) => e[delegate.idKey]).toSet();
-          final filtered = result.where((e) => !existingIds.contains(e[delegate.idKey]));
+          final filtered = result.where((e) => !existingIds.contains(e[delegate.idKey]),
+          );
           itemsState.value = itemsState.value.addAll(filtered);
           pagingOffsetState.value += result.length;
         }
