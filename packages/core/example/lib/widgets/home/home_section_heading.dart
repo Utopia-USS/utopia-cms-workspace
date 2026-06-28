@@ -4,7 +4,7 @@ import 'package:utopia_cms/utopia_cms.dart';
 import 'home_hud.dart';
 
 /// Landing-section heading. Thin wrapper over [HudHeading] so the sections keep
-/// a stable API while rendering the Auris-style HUD label (mono kicker +
+/// a stable API while rendering the HUD-style label (mono kicker +
 /// trailing rule + muted one-line description). No big title - the kicker is
 /// the section name.
 class HomeSectionHeading extends StatelessWidget {

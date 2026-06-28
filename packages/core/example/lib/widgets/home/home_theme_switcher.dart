@@ -35,7 +35,7 @@ class HomeThemeSwitcher extends HookWidget {
 
   Widget _buildOption(ThemeModeState state, ExampleThemeMode mode, {required bool isActive}) {
     const cut = 12.0;
-    final shape = aurisBevel(
+    final shape = hudBevel(
       cut,
       side: BorderSide(color: isActive ? theme.colors.primary : theme.colors.border, width: isActive ? 2 : 1.5),
     );
@@ -44,15 +44,15 @@ class HomeThemeSwitcher extends HookWidget {
       decoration: ShapeDecoration(
         color: isActive ? theme.colors.chipBackground : theme.colors.surface,
         shape: shape,
-        shadows: isActive ? aurisGlow(theme.colors.primary, alpha: 0.35, blur: 22) : null,
+        shadows: isActive ? hudGlow(theme.colors.primary, alpha: 0.35, blur: 22) : null,
       ),
       child: ClipPath(
-        clipper: ShapeBorderClipper(shape: aurisBevel(cut)),
+        clipper: ShapeBorderClipper(shape: hudBevel(cut)),
         child: Material(
           type: MaterialType.transparency,
           child: InkWell(
             onTap: () => state.mode.value = mode,
-            customBorder: aurisBevel(cut),
+            customBorder: hudBevel(cut),
             hoverColor: theme.colors.hover,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),

@@ -31,7 +31,7 @@ class _HomePubAddChipState extends State<HomePubAddChip> {
   @override
   Widget build(BuildContext context) {
     final onColor = widget.onColor;
-    final shape = aurisBevel(8);
+    final shape = hudBevel(8);
     return Material(
       color: onColor.withValues(alpha: 0.14),
       shape: shape,

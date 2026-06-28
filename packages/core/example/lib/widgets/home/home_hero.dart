@@ -5,7 +5,7 @@ import 'home_code_card.dart';
 import 'home_hud.dart';
 import 'home_pub_add_chip.dart';
 
-/// The landing hero: a tall, chamfered gradient panel (Auris HUD) with a corner
+/// The landing hero: a tall, chamfered gradient panel (HUD style) with a corner
 /// reticle, the value proposition + CTAs on the left, and a live
 /// `CmsTablePage` code card on the right.
 ///
@@ -31,7 +31,7 @@ class HomeHero extends StatelessWidget {
     final pageType = context.pageType;
     final stacked = !pageType.isWeb;
     final onHero = theme.textStyles.button.color ?? Colors.white;
-    final bevel = aurisBevel(_cut, side: BorderSide(color: onHero.withValues(alpha: 0.25), width: 1.5));
+    final bevel = hudBevel(_cut, side: BorderSide(color: onHero.withValues(alpha: 0.25), width: 1.5));
     final copy = _buildCopy(onHero, stacked);
     return HudCornerFrame(
       color: onHero.withValues(alpha: 0.65),
@@ -44,10 +44,10 @@ class HomeHero extends StatelessWidget {
             colors: [theme.colors.primary, theme.colors.accent],
           ),
           shape: bevel,
-          shadows: aurisGlow(theme.colors.primary, alpha: 0.45, blur: 48),
+          shadows: hudGlow(theme.colors.primary, alpha: 0.45, blur: 48),
         ),
         child: ClipPath(
-          clipper: ShapeBorderClipper(shape: aurisBevel(_cut)),
+          clipper: ShapeBorderClipper(shape: hudBevel(_cut)),
           child: Stack(
             children: [
               _buildGlow(onHero),
@@ -151,11 +151,11 @@ class HomeHero extends StatelessWidget {
   }
 
   /// Mono uppercase kicker on a translucent wash of the hero foreground, with a
-  /// leading marker - the Auris data-label treatment.
+  /// leading marker - the HUD data-label treatment.
   Widget _buildEyebrow(Color onHero) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-      decoration: ShapeDecoration(color: onHero.withValues(alpha: 0.16), shape: aurisBevel(8)),
+      decoration: ShapeDecoration(color: onHero.withValues(alpha: 0.16), shape: hudBevel(8)),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -202,7 +202,7 @@ class _HeroButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fg = filled ? theme.colors.primary : onHero;
-    final shape = aurisBevel(
+    final shape = hudBevel(
       _cut,
       side: filled ? BorderSide.none : BorderSide(color: onHero.withValues(alpha: 0.55), width: 1.5),
     );

@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:utopia_cms/utopia_cms.dart';
 
-/// Shared "Auris" HUD primitives for the landing page: angular chamfered
-/// geometry, neon glow in place of drop shadow, and data-readout typography.
+/// Shared HUD primitives for the landing page: angular chamfered geometry,
+/// neon glow in place of drop shadow, and data-readout typography.
 ///
 /// Everything is theme-reactive - colours come from the active [CmsThemeData] -
 /// so the page reads full-cyberpunk on the Neon theme and as a sharp technical
 /// HUD on the others. Only the *geometry and type treatment* are fixed.
 
-/// Monospace family for HUD labels / data readouts (Share Tech Mono in Auris;
-/// we fall back to the platform monospace).
+/// Monospace family for HUD labels / data readouts (the platform monospace).
 const String kHudMono = 'monospace';
 
-/// Auris' signature cut-corner shape: chamfers the top-left and bottom-right
+/// Signature cut-corner shape: chamfers the top-left and bottom-right
 /// corners. Pass a [side] to draw an edge along the bevel.
-ShapeBorder aurisBevel(double cut, {BorderSide side = BorderSide.none}) {
+ShapeBorder hudBevel(double cut, {BorderSide side = BorderSide.none}) {
   return BeveledRectangleBorder(
     borderRadius: BorderRadius.only(topLeft: Radius.circular(cut), bottomRight: Radius.circular(cut)),
     side: side,
@@ -22,7 +21,7 @@ ShapeBorder aurisBevel(double cut, {BorderSide side = BorderSide.none}) {
 }
 
 /// A neon glow (no offset) used instead of a soft drop shadow.
-List<BoxShadow> aurisGlow(Color color, {double alpha = 0.30, double blur = 26}) => [
+List<BoxShadow> hudGlow(Color color, {double alpha = 0.30, double blur = 26}) => [
   BoxShadow(
     color: color.withValues(alpha: alpha),
     blurRadius: blur,
@@ -61,21 +60,21 @@ class HudPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final shape = aurisBevel(
+    final shape = hudBevel(
       cut,
       side: BorderSide(color: edge ?? theme.colors.border, width: edgeWidth),
     );
     // Clip the content/ink to the chamfer, but leave the glow shadow (drawn by
     // the outer DecoratedBox) un-clipped so the halo can spill past the edge.
     final clipped = ClipPath(
-      clipper: ShapeBorderClipper(shape: aurisBevel(cut)),
+      clipper: ShapeBorderClipper(shape: hudBevel(cut)),
       child: onTap == null
           ? Padding(padding: padding, child: child)
           : Material(
               type: MaterialType.transparency,
               child: InkWell(
                 onTap: onTap,
-                customBorder: aurisBevel(cut),
+                customBorder: hudBevel(cut),
                 hoverColor: theme.colors.hover,
                 child: Padding(padding: padding, child: child),
               ),
@@ -86,7 +85,7 @@ class HudPanel extends StatelessWidget {
         color: gradient == null ? (fill ?? theme.colors.surface) : null,
         gradient: gradient,
         shape: shape,
-        shadows: glow ? aurisGlow(theme.colors.primary) : null,
+        shadows: glow ? hudGlow(theme.colors.primary) : null,
       ),
       child: clipped,
     );
@@ -95,7 +94,7 @@ class HudPanel extends StatelessWidget {
 
 /// A left-aligned HUD section header: a mono uppercase kicker with a trailing
 /// hairline rule, then a muted one-line description - the "CUSTOMIZATION ___"
-/// readout label from Auris. The big section title was dropped on purpose: it
+/// readout label. The big section title was dropped on purpose: it
 /// ate vertical space for little value, so the kicker carries the section name.
 class HudHeading extends StatelessWidget {
   final CmsThemeData theme;
@@ -143,8 +142,8 @@ class HudHeading extends StatelessWidget {
   }
 }
 
-/// Overlays four L-shaped targeting brackets at the corners of [child] - the
-/// Auris reticle. Sizes to the child.
+/// Overlays four L-shaped targeting brackets at the corners of [child] - a
+/// targeting reticle. Sizes to the child.
 class HudCornerFrame extends StatelessWidget {
   final Widget child;
   final Color color;

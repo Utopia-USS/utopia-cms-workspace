@@ -28,7 +28,7 @@ class HomeCodeCard extends StatelessWidget {
     return Container(
       decoration: ShapeDecoration(
         color: _bg,
-        shape: aurisBevel(16, side: const BorderSide(color: _border, width: 1.5)),
+        shape: hudBevel(16, side: const BorderSide(color: _border, width: 1.5)),
         shadows: const [BoxShadow(color: Color(0x40000000), blurRadius: 24, offset: Offset(0, 12))],
       ),
       clipBehavior: Clip.antiAlias,

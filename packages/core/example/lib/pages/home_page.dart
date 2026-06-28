@@ -13,7 +13,7 @@ import '../widgets/home/home_theme_switcher.dart';
 
 /// "Home" - the marketing landing page and default page of the showcase.
 ///
-/// A scrolling, sectioned landing in the Auris HUD style: hero with a live code
+/// A scrolling, sectioned landing in a technical HUD style: hero with a live code
 /// card -> the live theme switcher (the interactive money-shot, right under the
 /// hero) -> backend packages -> core type abstractions -> entry catalog.
 /// Content is centred at [_maxContentWidth] so a wide viewport reads like a real

@@ -11,7 +11,7 @@ import '../theme.dart';
 ///
 /// Tapping the tile opens a small popup listing the [ExampleThemeMode]s,
 /// each with a colour-swatch preview, and selecting one re-themes the whole
-/// shell at runtime. The popup is rendered FROM A PORTAL (the "jolly pen-tool"
+/// shell at runtime. The popup is rendered FROM A PORTAL (the floating-overlay
 /// pattern, via `flutter_portal`) rather than as a Flutter route or an
 /// [OverlayEntry]: the tile is wrapped in nested [PortalTarget]s so the popup
 /// floats above sibling widgets - escaping the rail's clip and scroll - while a

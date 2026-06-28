@@ -56,7 +56,7 @@ class HomeEntriesSection extends StatelessWidget {
           Container(
             width: 42,
             height: 42,
-            decoration: ShapeDecoration(color: theme.colors.chipBackground, shape: aurisBevel(8)),
+            decoration: ShapeDecoration(color: theme.colors.chipBackground, shape: hudBevel(8)),
             child: Icon(entry.icon, size: 22, color: theme.colors.chipForeground),
           ),
           const SizedBox(width: 14),
