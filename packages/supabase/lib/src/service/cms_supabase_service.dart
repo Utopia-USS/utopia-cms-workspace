@@ -117,44 +117,75 @@ class CmsSupabaseService {
       greaterOrEq: (field, value) => query.gte(field, value),
       lesserOrEq: (field, value) => query.lte(field, value),
       not: (filter) {
-        final condition = _buildCondition(filter, isNegatedContext: true);
-        if (condition.isNotEmpty) {
-          return query.or('not.and($condition)');
-        }
-        return query;
+        final condition = _negateCondition(filter);
+        return condition.isEmpty ? query : query.or(condition);
       },
     );
   }
 
-  String _buildCondition(CmsFilter filter, {bool isNegatedContext = false}) {
+  /// Serializes a [CmsFilter] into a PostgREST condition fragment usable inside
+  /// `or(...)` / `and(...)` groups and as the argument to `query.or(...)`.
+  ///
+  /// Logical groups MUST be wrapped in `and(...)` / `or(...)` so they survive
+  /// nesting - a bare comma join collapses `and([a,b])` into two OR-ed terms
+  /// once it sits inside another group.
+  String _buildCondition(CmsFilter filter) {
     return filter.when(
       all: () => '',
-      equals: (field, value) {
-        if (value == null) return '$field.is.null';
-        return '$field.eq.${_formatValue(value)}';
-      },
-      notEquals: (field, value) => '$field.neq.${_formatValue(value)}',
+      equals: (field, value) => value == null ? '$field.is.null' : '$field.eq.${_formatValue(value)}',
+      notEquals: (field, value) => value == null ? '$field.not.is.null' : '$field.neq.${_formatValue(value)}',
       containsString: _buildContainsCondition,
       inList: (field, values) => '$field.in.(${values.map(_formatValue).join(',')})',
       and: (filters) {
-        return filters.map(_buildCondition).where((c) => c.isNotEmpty).join(',');
+        final parts = filters.map(_buildCondition).where((c) => c.isNotEmpty).join(',');
+        return parts.isEmpty ? '' : 'and($parts)';
       },
       or: (filters) {
-        return filters.map(_buildCondition).where((c) => c.isNotEmpty).join(',');
+        final parts = filters.map(_buildCondition).where((c) => c.isNotEmpty).join(',');
+        return parts.isEmpty ? '' : 'or($parts)';
       },
       greaterOrEq: (field, value) => '$field.gte.${_formatValue(value)}',
       lesserOrEq: (field, value) => '$field.lte.${_formatValue(value)}',
-      not: (filter) {
-        final condition = _buildCondition(filter, isNegatedContext: !isNegatedContext);
-        if (condition.isEmpty) return '';
-        return isNegatedContext ? condition : 'not.$condition';
+      not: _negateCondition,
+    );
+  }
+
+  /// Serializes `NOT filter`. Column conditions use the embedded
+  /// `column.not.operator.value` form; logical groups use `not.and(...)` /
+  /// `not.or(...)`. Double negation collapses back to the plain condition.
+  String _negateCondition(CmsFilter filter) {
+    return filter.when(
+      all: () => '',
+      equals: (field, value) => value == null ? '$field.not.is.null' : '$field.not.eq.${_formatValue(value)}',
+      notEquals: (field, value) => value == null ? '$field.is.null' : '$field.eq.${_formatValue(value)}',
+      containsString: (field, value, caseSensitive) {
+        final pattern = _formatValue('%$value%');
+        return caseSensitive ? '$field.not.like.$pattern' : '$field.not.ilike.$pattern';
       },
+      inList: (field, values) => '$field.not.in.(${values.map(_formatValue).join(',')})',
+      and: (filters) {
+        final parts = filters.map(_buildCondition).where((c) => c.isNotEmpty).join(',');
+        return parts.isEmpty ? '' : 'not.and($parts)';
+      },
+      or: (filters) {
+        final parts = filters.map(_buildCondition).where((c) => c.isNotEmpty).join(',');
+        return parts.isEmpty ? '' : 'not.or($parts)';
+      },
+      greaterOrEq: (field, value) => '$field.not.gte.${_formatValue(value)}',
+      lesserOrEq: (field, value) => '$field.not.lte.${_formatValue(value)}',
+      not: _buildCondition,
     );
   }
 
   List<JsonMap> _asJsonMapList(PostgrestList response) => response.cast<JsonMap>();
 
-  JsonMap _asFirstJsonMap(PostgrestList response) => _asJsonMapList(response).first;
+  JsonMap _asFirstJsonMap(PostgrestList response) {
+    final list = _asJsonMapList(response);
+    if (list.isEmpty) {
+      throw StateError('Expected at least one row from Supabase, got none.');
+    }
+    return list.first;
+  }
 
   String _buildContainsCondition(String field, String value, bool caseSensitive) {
     final pattern = '%$value%';
