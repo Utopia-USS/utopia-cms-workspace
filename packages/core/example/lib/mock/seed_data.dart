@@ -36,6 +36,7 @@ final List<JsonMap> _tags = [
   _tag('crud', 'CRUD'),
   _tag('firebase', 'Firebase'),
   _tag('hasura', 'Hasura'),
+  _tag('supabase', 'Supabase'),
   _tag('graphql', 'GraphQL'),
   _tag('cli', 'CLI'),
   _tag('scaffold', 'Scaffold'),
@@ -45,6 +46,7 @@ final List<JsonMap> _tags = [
 const Map<String, Set<String>> _libTags = {
   'lib_cms': {'cms', 'admin', 'crud', 'widgets', 'forms', 'state'},
   'lib_cms_firebase': {'cms', 'admin', 'firebase'},
+  'lib_cms_supabase': {'cms', 'admin', 'supabase'},
   'lib_cms_hasura': {'cms', 'admin', 'hasura', 'graphql'},
   'lib_cms_graphql': {'cms', 'admin', 'graphql', 'net'},
   'lib_hooks': {'state', 'hooks', 'reactive', 'async', 'forms', 'widgets', 'utils', 'di'},
@@ -88,6 +90,15 @@ final List<JsonMap> _libsSeed = [
     'github': _github('utopia_cms/tree/master/packages/firebase'),
     'layer': 'CMS',
     'description': 'Points the CMS at Firestore - your collections become editable tables.',
+    'usedHere': false,
+  },
+  {
+    'id': 'lib_cms_supabase',
+    'animal': 'frog',
+    'link': _link('utopia_cms_supabase'),
+    'github': _github('utopia_cms/tree/master/packages/supabase'),
+    'layer': 'CMS',
+    'description': 'Backs the CMS with Supabase - Postgres tables become editable, filterable lists.',
     'usedHere': false,
   },
   {
