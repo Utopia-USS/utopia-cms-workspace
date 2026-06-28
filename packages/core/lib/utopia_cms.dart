@@ -31,6 +31,7 @@ export 'src/theme/cms_theme_data.dart';
 export 'src/theme/cms_theme_text_styles.dart';
 export 'src/ui/cms_widget/cms_widget.dart';
 export 'src/ui/cms_widget/cms_widget_item.dart';
+export 'src/ui/item_management/state/cms_management_state.dart' show CmsManagementBaseState, OnSavedCallback;
 export 'src/ui/table_page/cms_table_page.dart';
 export 'src/ui/widget/button/cms_button.dart';
 export 'src/ui/widget/chip/cms_chip.dart';

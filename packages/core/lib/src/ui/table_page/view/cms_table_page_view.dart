@@ -7,6 +7,7 @@ import 'package:utopia_cms/src/model/filter_entry/cms_search_filter_entry.dart';
 import 'package:utopia_cms/src/model/table/cms_table_action.dart';
 import 'package:utopia_cms/src/ui/table_page/state/cms_table_page_state.dart';
 import 'package:utopia_cms/src/ui/widget/header/cms_header.dart';
+import 'package:utopia_cms/src/ui/widget/layout/cms_page_wrapper.dart';
 import 'package:utopia_cms/src/ui/widget/loading/cms_loader.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table_actions.dart';
@@ -86,7 +87,7 @@ class CmsTablePageView extends HookWidget {
       showLoader: state.items.isEmpty && state.computedState.value is ComputedStateValueInProgress,
       onManagePressed: state.onEditPressed,
       values: state.items,
-      entries: entries.pinned,
+      entries: entries.pinnedFor(context.pageType),
       onSortPressed: state.onSortPressed,
       currentSortParams: state.currentSortingParams,
       searchPanel: _buildSearchPanel(context),

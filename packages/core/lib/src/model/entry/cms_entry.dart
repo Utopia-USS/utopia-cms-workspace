@@ -74,8 +74,6 @@ abstract class CmsEntry<T> {
   /// Adds * at the end of the label
   String get fixedLabelRequired => fixedLabel.modifyRequired(required);
 
-  bool get pinned => modifier.pinned;
-
   bool get required => modifier.required;
 
   bool get sortable => modifier.sortable;
