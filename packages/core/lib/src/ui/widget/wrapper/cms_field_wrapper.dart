@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
-import 'package:utopia_cms/src/util/foundation.dart';
 
-class CmsFieldWrapper extends HookWidget {
+class CmsFieldWrapper extends StatelessWidget {
   final Widget child;
 
   const CmsFieldWrapper({super.key, required this.child});
@@ -35,6 +34,7 @@ class CmsFieldWrapper extends HookWidget {
 InputDecoration cmsFieldDecoration(
   BuildContext context, {
   Widget? label,
+  Widget? hint,
   FloatingLabelBehavior? floatingLabelBehavior,
 }) {
   final textStyles = context.textStyles;
@@ -51,6 +51,7 @@ InputDecoration cmsFieldDecoration(
     errorBorder: InputBorder.none,
     disabledBorder: InputBorder.none,
     label: label,
+    hint: hint,
     floatingLabelBehavior: floatingLabelBehavior,
     floatingLabelStyle: textStyles.label.copyWith(fontSize: 14, fontWeight: FontWeight.w600),
     labelStyle: textStyles.label,

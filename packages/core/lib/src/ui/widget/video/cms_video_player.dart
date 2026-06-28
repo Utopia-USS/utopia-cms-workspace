@@ -17,7 +17,7 @@ class CmsVideoPlayer extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = useCmsVidePlayerState(url: url);
+    final state = useCmsVideoPlayerState(url: url);
 
     return IgnorePointer(
       ignoring: previewOnly,

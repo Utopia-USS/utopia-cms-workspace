@@ -20,7 +20,7 @@ class CmsTablePageState {
   final ScrollController scrollController;
 
   final JsonMap filterValues;
-  final void Function(String entryKey, dynamic value) onFilterChanged;
+  final void Function(String entryKey, Object? value) onFilterChanged;
   final CmsFunctionsSortingParams? currentSortingParams;
   final bool pagingEnabled;
 
@@ -73,22 +73,17 @@ CmsTablePageState useCmsTablePageState({
   }
 
   final filtersState = useState(params.initialFilterValues);
-  void onFilterChanged(String entryKey, dynamic value) {
+  void onFilterChanged(String entryKey, Object? value) {
     resetState();
     filtersState.value = {...filtersState.value}..setAtPath(entryKey, value);
   }
 
   CmsFilter buildFilter() {
     if (filterEntries.isEmpty) return const CmsFilterAll();
-    final fixedValues = filterEntries.where((a) => filtersState.value[a.entryKey] != null);
-    if (fixedValues.isEmpty) return const CmsFilterAll();
-    if (fixedValues.length == 1) return fixedValues.first.filterFromValues(filtersState.value);
-    return CmsFilterAnd(
-      filterEntries
-          .where((a) => filtersState.value[a.entryKey] != null)
-          .map((e) => e.filterFromValues(filtersState.value))
-          .toList(),
-    );
+    final activeEntries = filterEntries.where((a) => filtersState.value[a.entryKey] != null).toList();
+    if (activeEntries.isEmpty) return const CmsFilterAll();
+    if (activeEntries.length == 1) return activeEntries.first.filterFromValues(filtersState.value);
+    return CmsFilterAnd(activeEntries.map((e) => e.filterFromValues(filtersState.value)).toList());
   }
 
   final state = useAutoComputedState<void>(

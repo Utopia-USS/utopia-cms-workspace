@@ -37,12 +37,14 @@ class CmsTablePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final navigator = Navigator.of(context);
+    final lockedEntries = entries.lock;
+    final lockedFilterEntries = (filterEntries ?? []).lock;
     final state = useCmsTablePageState(
       delegate: delegate,
       params: params,
       navigator: navigator,
-      entries: entries.lock,
-      filterEntries: (filterEntries ?? []).lock,
+      entries: lockedEntries,
+      filterEntries: lockedFilterEntries,
       confirmDelete: () async => CmsDialog.show(context),
       pagingLimit: pagingLimit,
       managementSectionEntries: managementSectionEntries,
@@ -50,8 +52,8 @@ class CmsTablePage extends HookWidget {
     return CmsPageWrapper(
       builder: (context, _) => CmsTablePageView(
         state: state,
-        entries: entries.lock,
-        filterEntries: (filterEntries ?? []).lock,
+        entries: lockedEntries,
+        filterEntries: lockedFilterEntries,
         title: title,
         customActions: (customActions ?? []).lock,
       ),

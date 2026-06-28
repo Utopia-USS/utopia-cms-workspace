@@ -35,7 +35,7 @@ class CmsWidget extends HookWidget {
         action: (it) => it.onPressed(),
         custom: (_) => null,
       );
-      // In drawer presentation a tap dismisses the overlay (jolly pattern).
+      // In drawer presentation a tap dismisses the overlay.
       if (fromDrawer) scaffoldKey.currentState?.closeDrawer();
     }
 

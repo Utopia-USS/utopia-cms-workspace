@@ -94,7 +94,6 @@ class CmsTablePageView extends HookWidget {
       actionsBuilder: !state.hasDefaultActions && customActions.isEmpty
           ? null
           : (e, index) {
-              ///workaround: force actions to the end of the [DataTable]
               return CmsTableActionsButton(
                 value: e,
                 onUpdate: (value) => state.updateItem(value, index),

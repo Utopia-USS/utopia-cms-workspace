@@ -53,7 +53,11 @@ CmsToManyDropdownState useCmsToManyDropdownState({
 
   useEffect(() {
     baseState.addOnSavedCallback((value) async {
-      final oldIds = initialSelectedValuesState.valueOrNull!.map((it) => it[delegate.foreignIdKey] as Object).toISet();
+      // The field may not have finished loading when the parent form saves; treat an
+      // unloaded field as having no previous selections (every current item is an add).
+      final oldIds = (initialSelectedValuesState.valueOrNull ?? ISet<JsonMap>())
+          .map((it) => it[delegate.foreignIdKey] as Object)
+          .toISet();
       final newIds = selectedItemsState.value.map((it) => it[delegate.foreignIdKey] as Object).toISet();
       return delegate.update(
         originId: value[delegate.originIdKey] as Object,
@@ -61,11 +65,12 @@ CmsToManyDropdownState useCmsToManyDropdownState({
         removedForeignIds: oldIds.difference(newIds),
       );
     });
+    return null;
   }, []);
 
   CmsFilter buildFilter(String query) =>
       filterBuilder?.call(query) ??
-      CmsFilter.or([for (final field in filterFields!) CmsFilter.containsString(field, query)]);
+      CmsFilter.or([for (final field in filterFields ?? const <String>[]) CmsFilter.containsString(field, query)]);
 
   final itemsState = useAutoComputedState<IList<JsonMap>>(() async {
     final result = await delegate.get(filter: buildFilter(debouncedSearch));

@@ -70,7 +70,7 @@ class CmsManagementView extends HookWidget {
   }
 
   /// Mobile: the overlay becomes a full-screen page that slides up from the
-  /// bottom (mirrors CrazyAdaptiveDialog's mobile branch). Single column,
+  /// bottom. Single column,
   /// tighter padding, dismissed via the header back action / system back.
   Widget _buildMobileScreen(BuildContext context, BoxConstraints constraints, Animation<double> animation) {
     return FractionalTranslation(
@@ -204,7 +204,7 @@ class CmsManagementView extends HookWidget {
   SliverList _buildSingularSection(IList<CmsEntry<dynamic>> entries, {bool readOnly = false}) {
     return SliverList(
       delegate: SliverChildBuilderDelegate((context, index) {
-        return _buildTile(context, readOnly: readOnly, firstItem: _buildEditField(context, entries[index]));
+        return _buildTile(readOnly: readOnly, firstItem: _buildEditField(context, entries[index]));
       }, childCount: entries.length),
     );
   }
@@ -275,18 +275,14 @@ class CmsManagementView extends HookWidget {
     );
   }
 
-  Widget _buildTile(BuildContext context, {required Widget firstItem, Widget? secondItem, required bool readOnly}) {
-    final spacing = context.theme.fieldContentPadding.left;
+  Widget _buildTile({required Widget firstItem, required bool readOnly}) {
     return IgnorePointer(
       ignoring: readOnly,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Flexible(child: firstItem),
-            if (secondItem != null) ...[SizedBox(width: spacing), Flexible(child: secondItem)],
-          ],
+          children: [Flexible(child: firstItem)],
         ),
       ),
     );

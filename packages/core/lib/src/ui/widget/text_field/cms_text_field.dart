@@ -66,6 +66,7 @@ class CmsTextField extends HookWidget {
     return CmsFieldWrapper(
       child: Row(
         children: [
+          ?prefix,
           Flexible(child: _buildTextField(context, controller)),
           ?suffix,
         ],
@@ -87,7 +88,7 @@ class CmsTextField extends HookWidget {
         obscureText: obscureText,
         textInputAction: TextInputAction.next,
         inputFormatters: formatters,
-        decoration: cmsFieldDecoration(context, label: label),
+        decoration: cmsFieldDecoration(context, label: label, hint: hint),
         style: textStyles.text,
       ),
     );

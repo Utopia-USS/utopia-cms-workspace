@@ -28,9 +28,9 @@ extension CmsPageTypeX on CmsPageType {
 /// Resolves a [CmsPageType] from the available width and exposes it to the
 /// subtree both through the [builder] callback and through `context.pageType`.
 ///
-/// CMS-native port of jolly's `CrazyPageWrapper`: a plain [LayoutBuilder]
-/// replaces `LayoutMapBuilder`, and `package:provider` replaces
-/// `utopia_arch`'s `ValueProvider`, so the wrapper carries no extra dependency.
+/// A responsive page wrapper: a plain [LayoutBuilder] resolves the size class
+/// and `package:provider` exposes it to the subtree, so the wrapper carries no
+/// extra dependency.
 class CmsPageWrapper extends StatelessWidget {
   final Widget Function(BuildContext context, CmsPageType pageType) builder;
 
@@ -47,13 +47,15 @@ class CmsPageWrapper extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final pageType = resolveType(constraints.maxWidth);
+        final child = Provider<CmsPageType>.value(
+          value: pageType,
+          child: Builder(builder: (context) => builder(context, pageType)),
+        );
+        if (!isConstrained) return child;
         return Container(
-          constraints: BoxConstraints(maxWidth: isConstrained ? maxConstrainedWidth : double.infinity),
-          alignment: isConstrained ? Alignment.topCenter : null,
-          child: Provider<CmsPageType>.value(
-            value: pageType,
-            child: Builder(builder: (context) => builder(context, pageType)),
-          ),
+          constraints: const BoxConstraints(maxWidth: maxConstrainedWidth),
+          alignment: Alignment.topCenter,
+          child: child,
         );
       },
     );

@@ -23,7 +23,7 @@ class CmsVideoPlayerState {
   });
 }
 
-CmsVideoPlayerState useCmsVidePlayerState({required String url}) {
+CmsVideoPlayerState useCmsVideoPlayerState({required String url}) {
   final player = useMemoized(Player.new);
   final videoController = useMemoized(() => VideoController(player), [player]);
 

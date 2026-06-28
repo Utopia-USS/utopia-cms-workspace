@@ -33,7 +33,6 @@ class CmsItemManagementState implements CmsManagementBaseState {
 
   final bool isUploading;
   final bool isDeleting;
-  final bool isSubmitEnabled;
   final bool isEdit;
   final bool hasChanges;
   final String? errorMessage;
@@ -60,7 +59,6 @@ class CmsItemManagementState implements CmsManagementBaseState {
     required this.params,
     required this.isUploading,
     required this.isDeleting,
-    required this.isSubmitEnabled,
     required this.isEdit,
     required this.hasChanges,
     required this.errorMessage,
@@ -112,17 +110,12 @@ CmsItemManagementState useCmsItemManagementState({
     });
   }
 
-  final submitEnabled = !args.entries.any(
-    (e) => e.required && (state.value[e.key] == null || state.value[e.key].toString() == ''),
-  );
-
   final scrollController = useMemoized(ScrollController.new);
 
   return CmsItemManagementState(
     onDelete: onDelete,
     addOnSavedCallback: (callback) => onSavedCallbacksState.value = onSavedCallbacksState.value.add(callback),
     values: state.value,
-    isSubmitEnabled: submitEnabled,
     onSubmit: onSubmit,
     onValueChanged: onValueChanged,
     isUploading: uploadSubmitState.inProgress,

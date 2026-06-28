@@ -5,9 +5,9 @@ import 'package:utopia_cms/src/util/foundation.dart';
 /// Anchors a dismissible popup beneath a trigger using the framework's
 /// [OverlayPortal] + [CompositedTransformFollower] - no external portal package.
 ///
-/// Mirrors the two-layer portal pattern used across the jolly `crazy_ui` design
-/// system (a full-screen tap-to-dismiss barrier behind an anchored follower),
-/// rebuilt on native Flutter so core ships zero extra dependencies.
+/// Uses the two-layer portal pattern (a full-screen tap-to-dismiss barrier
+/// behind an anchored follower), built on native Flutter so core ships zero
+/// extra dependencies.
 class CmsOverlayAnchor extends HookWidget {
   /// Builds the trigger. Call `open` (e.g. from a tap) to show the popup.
   final Widget Function(BuildContext context, VoidCallback open) triggerBuilder;
