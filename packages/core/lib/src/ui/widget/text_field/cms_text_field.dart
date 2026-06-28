@@ -64,7 +64,6 @@ class CmsTextField extends HookWidget {
 
   Widget _buildField(BuildContext context, TextEditingController controller) {
     return CmsFieldWrapper(
-      includePadding: label == null,
       child: Row(
         children: [
           Flexible(child: _buildTextField(context, controller)),

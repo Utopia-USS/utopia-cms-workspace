@@ -30,7 +30,6 @@ class CmsLabeledField extends StatelessWidget {
     final value = this.value ?? '';
 
     return CmsFieldWrapper(
-      includePadding: false,
       child: Row(
         children: [
           Expanded(

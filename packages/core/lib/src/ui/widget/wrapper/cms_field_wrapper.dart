@@ -4,9 +4,8 @@ import 'package:utopia_cms/src/util/foundation.dart';
 
 class CmsFieldWrapper extends HookWidget {
   final Widget child;
-  final bool includePadding;
 
-  const CmsFieldWrapper({super.key, required this.child, this.includePadding = true});
+  const CmsFieldWrapper({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +14,14 @@ class CmsFieldWrapper extends HookWidget {
 
     return Container(
       decoration: fieldTheme,
-      padding: includePadding ? const EdgeInsets.symmetric(vertical: 4.0) : EdgeInsets.zero,
-      child: Padding(padding: themeValues.fieldContentPadding, child: child),
+      padding: themeValues.fieldContentPadding,
+      // Floor every field at the interactive height (the switch field's tap
+      // target) so text, dropdown and switch fields share one height whether or
+      // not they carry a floating label; the child Row centres content within it.
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: kMinInteractiveDimension),
+        child: child,
+      ),
     );
   }
 }
