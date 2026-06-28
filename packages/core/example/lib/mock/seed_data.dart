@@ -5,7 +5,7 @@ import 'mock_to_many_delegate.dart';
 
 /// Closed-set values for the Libs "layer" dropdown - the layers actually present
 /// in the catalogue below.
-const List<String> kLayers = ['CMS', 'State', 'Arch', 'UI', 'Net', 'i18n', 'CLI'];
+const List<String> kLayers = ['CMS', 'State', 'Arch', 'UI', 'Net', 'i18n', 'CLI', 'Lints'];
 
 /// Session-scoped delegates - module level so in-memory state survives menu
 /// navigation for the whole session.
@@ -40,6 +40,7 @@ final List<JsonMap> _tags = [
   _tag('graphql', 'GraphQL'),
   _tag('cli', 'CLI'),
   _tag('scaffold', 'Scaffold'),
+  _tag('lints', 'Lints'),
 ];
 
 /// Which tags each lib carries. Some have > 6 to show the "+N more" overflow.
@@ -52,6 +53,7 @@ const Map<String, Set<String>> _libTags = {
   'lib_hooks': {'state', 'hooks', 'reactive', 'async', 'forms', 'widgets', 'utils', 'di'},
   'lib_hooks_riverpod': {'hooks', 'state', 'reactive', 'di'},
   'lib_cli': {'cli', 'scaffold', 'arch'},
+  'lib_lints': {'lints', 'arch', 'utils'},
   'lib_localization': {'i18n', 'codegen', 'utils'},
   'lib_arch': {'arch', 'hooks', 'widgets', 'state', 'di', 'forms', 'utils'},
   'lib_widgets': {'widgets', 'utils'},
@@ -70,9 +72,9 @@ Map<String, dynamic> _github(String path) => {'name': 'GitHub', 'url': 'https://
 /// showcase is built on (utopia_cms for the panel, utopia_hooks for its state).
 ///
 /// Order: the CMS family first (the star of this showcase), then the hooks it
-/// runs on and its Riverpod-interop sister, the scaffolding CLI, the localization
-/// generator, the umbrella architecture package, its widget library and the
-/// connectivity helper.
+/// runs on and its Riverpod-interop sister, the scaffolding CLI, the shared lint
+/// rules, the localization generator, the umbrella architecture package, its
+/// widget library and the connectivity helper.
 final List<JsonMap> _libsSeed = [
   {
     'id': 'lib_cms',
@@ -145,7 +147,16 @@ final List<JsonMap> _libsSeed = [
     'github': _github('utopia-cli'),
     'layer': 'CLI',
     'description': 'Scaffolds a whole Utopia app from the terminal - Screen/State/View and Claude skills included.',
-    'usedHere': false,
+    'usedHere': true,
+  },
+  {
+    'id': 'lib_lints',
+    'animal': 'ladybug',
+    'link': _link('utopia_lints'),
+    'github': _github('utopia-flutter/tree/master/packages/lints'),
+    'layer': 'Lints',
+    'description': 'The shared lint rules every Utopia package is held to - including this very example.',
+    'usedHere': true,
   },
   {
     'id': 'lib_localization',
