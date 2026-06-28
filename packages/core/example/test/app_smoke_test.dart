@@ -12,10 +12,21 @@ void main() {
     addTearDown(tester.view.resetDevicePixelRatio);
   }
 
+  /// Pumps the showcase app and lets the image-precache gate lift. The shell
+  /// holds its first paint until the menu art is decoded; asset decoding only
+  /// runs under [WidgetTester.runAsync] (the fake-async clock suspends it), so
+  /// load inside runAsync, then settle to rebuild past the gate.
+  Future<void> pumpShowcaseApp(WidgetTester tester) async {
+    await tester.runAsync(() async {
+      await tester.pumpWidget(const UtopiaShowcaseApp());
+      await Future<void>.delayed(const Duration(milliseconds: 200));
+    });
+    await tester.pumpAndSettle();
+  }
+
   testWidgets('home is the default landing page', (tester) async {
     useWideWindow(tester);
-    await tester.pumpWidget(const UtopiaShowcaseApp());
-    await tester.pump();
+    await pumpShowcaseApp(tester);
 
     // The marketing hero (brand + tagline) renders up front, with its pub.dev
     // CTA repeated in the closing band (landing pages repeat the CTA).
@@ -28,8 +39,7 @@ void main() {
 
   testWidgets('selecting Libs loads the table seed data', (tester) async {
     useWideWindow(tester);
-    await tester.pumpWidget(const UtopiaShowcaseApp());
-    await tester.pump();
+    await pumpShowcaseApp(tester);
 
     // Home is the default page (lazy stack), so the Libs table only builds once
     // its rail item is tapped.
@@ -45,8 +55,7 @@ void main() {
 
   testWidgets('home theme switcher re-themes the shell live', (tester) async {
     useWideWindow(tester);
-    await tester.pumpWidget(const UtopiaShowcaseApp());
-    await tester.pump();
+    await pumpShowcaseApp(tester);
 
     // Light is the default mode, so its option carries the active check.
     expect(find.byKey(const ValueKey('homeThemeActive_light')), findsOneWidget);
@@ -66,8 +75,7 @@ void main() {
 
   testWidgets('rail theme picker opens, lists modes, and dismisses on select', (tester) async {
     useWideWindow(tester);
-    await tester.pumpWidget(const UtopiaShowcaseApp());
-    await tester.pump();
+    await pumpShowcaseApp(tester);
 
     // The picker tile is the only palette icon in the rail (the home theme card
     // uses a different glyph).
