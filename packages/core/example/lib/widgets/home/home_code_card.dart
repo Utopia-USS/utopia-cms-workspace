@@ -36,10 +36,7 @@ class HomeCodeCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildBar(),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
-            child: _buildCode(),
-          ),
+          Padding(padding: const EdgeInsets.fromLTRB(20, 16, 20, 20), child: _buildCode()),
         ],
       ),
     );
@@ -89,7 +86,12 @@ class HomeCodeCard extends StatelessWidget {
   /// whitespace, everything else falls back to [_default].
   TextSpan _span(String token) {
     final i = token.indexOf(':');
-    if (i < 0) return TextSpan(text: token, style: const TextStyle(color: _default));
+    if (i < 0) {
+      return TextSpan(
+        text: token,
+        style: const TextStyle(color: _default),
+      );
+    }
     final role = token.substring(0, i);
     final text = token.substring(i + 1);
     final color = switch (role) {
@@ -99,6 +101,9 @@ class HomeCodeCard extends StatelessWidget {
       'punc' => _punc,
       _ => _default,
     };
-    return TextSpan(text: text, style: TextStyle(color: color));
+    return TextSpan(
+      text: text,
+      style: TextStyle(color: color),
+    );
   }
 }

@@ -19,9 +19,7 @@ void main() {
 
 /// App-wide hook providers. [ThemeModeState] holds the selected theme mode,
 /// written by the menu's theme picker and read by the shell to re-theme the CMS.
-const _providers = <Type, Object? Function()>{
-  ThemeModeState: useThemeModeState,
-};
+const _providers = <Type, Object? Function()>{ThemeModeState: useThemeModeState};
 
 /// A deployable utopia_cms showcase that catalogs the Utopia ecosystem itself:
 /// one [CmsWidget] shell with a "Libs" page (the pub.dev packages) and a
@@ -63,8 +61,7 @@ class _ShowcaseShell extends HookWidget {
     return CmsWidget(
       theme: theme,
       menuParams: CmsWidgetMenuParams(
-        headerBuilder: (context, isCollapsed) =>
-            _MenuHeader(isCollapsed: isCollapsed, isDark: isDarkMenu),
+        headerBuilder: (context, isCollapsed) => _MenuHeader(isCollapsed: isCollapsed, isDark: isDarkMenu),
       ),
       items: [
         // First page = the shell's default landing page. The marketing home
@@ -125,20 +122,11 @@ class _MenuHeader extends StatelessWidget {
       child: isCollapsed
           ? Align(
               alignment: Alignment.center,
-              child: Image(
-                image: AssetImage(mark),
-                height: _height * 0.75,
-                fit: BoxFit.contain,
-              ),
+              child: Image(image: AssetImage(mark), height: _height * 0.75, fit: BoxFit.contain),
             )
           : Padding(
               padding: const EdgeInsets.only(left: 26, right: 16),
-              child: Image.asset(
-                lockup,
-                height: _height,
-                fit: BoxFit.contain,
-                alignment: Alignment.centerLeft,
-              ),
+              child: Image.asset(lockup, height: _height, fit: BoxFit.contain, alignment: Alignment.centerLeft),
             ),
     );
   }

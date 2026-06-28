@@ -7,10 +7,7 @@ void main() {
   /// resolves the page type from that width (mobile < 600), exactly as the real
   /// edit overlay does, so `context.pageType` inside the field works.
   Future<void> pumpEditField(WidgetTester tester, {required double width}) async {
-    dynamic value = <String, dynamic>{
-      'name': 'utopia_cms',
-      'url': 'https://pub.dev/packages/utopia_cms',
-    };
+    dynamic value = <String, dynamic>{'name': 'utopia_cms', 'url': 'https://pub.dev/packages/utopia_cms'};
     final entry = CmsLinkEntry(key: 'link', label: 'Package');
     await tester.pumpWidget(
       MaterialApp(
@@ -19,11 +16,8 @@ void main() {
             child: SizedBox(
               width: width,
               child: CmsPageWrapper(
-                builder: (context, _) => entry.buildEditField(
-                  context: context,
-                  value: value,
-                  onChanged: (v) => value = v,
-                ),
+                builder: (context, _) =>
+                    entry.buildEditField(context: context, value: value, onChanged: (v) => value = v),
               ),
             ),
           ),

@@ -14,7 +14,7 @@ import 'package:utopia_cms/utopia_cms.dart';
 /// shared by the page that renders it.
 class MockDelegate implements CmsDelegate {
   MockDelegate(List<JsonMap> seed, {this.idPrefix = 'row'})
-      : _items = seed.map((e) => <String, dynamic>{...e}).toList();
+    : _items = seed.map((e) => <String, dynamic>{...e}).toList();
 
   final List<JsonMap> _items;
   final String idPrefix;
@@ -82,9 +82,7 @@ class MockDelegate implements CmsDelegate {
       notEquals: (field, value) => row.getAtPath(field) != value,
       containsString: (field, value, caseSensitive) {
         final cell = row.getAtPath(field)?.toString() ?? '';
-        return caseSensitive
-            ? cell.contains(value)
-            : cell.toLowerCase().contains(value.toLowerCase());
+        return caseSensitive ? cell.contains(value) : cell.toLowerCase().contains(value.toLowerCase());
       },
       inList: (field, values) => values.contains(row.getAtPath(field)),
       greaterOrEq: (field, value) => _compare(row.getAtPath(field), value) >= 0,

@@ -100,19 +100,13 @@ class ThemePickerMenuItem extends HookWidget {
                   final isExpanded = constraints.maxWidth > 150;
                   return Row(
                     children: [
-                      Icon(
-                        Icons.palette_outlined,
-                        size: 22,
-                        color: theme.colors.text,
-                      ),
+                      Icon(Icons.palette_outlined, size: 22, color: theme.colors.text),
                       if (isExpanded) ...[
                         const SizedBox(width: 12),
                         Flexible(
                           child: Text(
                             'Theme',
-                            style: theme.textStyles.label.copyWith(
-                              color: theme.colors.text,
-                            ),
+                            style: theme.textStyles.label.copyWith(color: theme.colors.text),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -137,10 +131,7 @@ class ThemePickerMenuItem extends HookWidget {
         decoration: BoxDecoration(
           color: theme.colors.surface,
           borderRadius: theme.cardRadius,
-          border: Border.all(
-            color: theme.colors.border,
-            width: theme.cardBorderWidth,
-          ),
+          border: Border.all(color: theme.colors.border, width: theme.cardBorderWidth),
           boxShadow: theme.cardShadow,
         ),
         padding: const EdgeInsets.all(8),
@@ -152,15 +143,9 @@ class ThemePickerMenuItem extends HookWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 6, 10, 8),
-                child: Text(
-                  'Theme',
-                  style: theme.textStyles.label.copyWith(
-                    color: theme.colors.hint,
-                  ),
-                ),
+                child: Text('Theme', style: theme.textStyles.label.copyWith(color: theme.colors.hint)),
               ),
-              for (final mode in ExampleThemeMode.values)
-                _buildOption(state, isOpen, mode),
+              for (final mode in ExampleThemeMode.values) _buildOption(state, isOpen, mode),
             ],
           ),
         ),
@@ -170,11 +155,7 @@ class ThemePickerMenuItem extends HookWidget {
 
   /// A single selectable theme row: swatches, label, and a check on the active
   /// mode. Selecting writes the mode to global state and closes the popup.
-  Widget _buildOption(
-    ThemeModeState state,
-    MutableValue<bool> isOpen,
-    ExampleThemeMode mode,
-  ) {
+  Widget _buildOption(ThemeModeState state, MutableValue<bool> isOpen, ExampleThemeMode mode) {
     final selected = mode == state.mode.value;
     return Material(
       key: ValueKey('railThemeOption_${mode.name}'),
@@ -196,17 +177,10 @@ class ThemePickerMenuItem extends HookWidget {
               Expanded(
                 child: Text(
                   mode.label,
-                  style: theme.textStyles.text.copyWith(
-                    color: selected ? theme.colors.primary : theme.colors.text,
-                  ),
+                  style: theme.textStyles.text.copyWith(color: selected ? theme.colors.primary : theme.colors.text),
                 ),
               ),
-              if (selected)
-                Icon(
-                  Icons.check_rounded,
-                  size: 18,
-                  color: theme.colors.primary,
-                ),
+              if (selected) Icon(Icons.check_rounded, size: 18, color: theme.colors.primary),
             ],
           ),
         ),

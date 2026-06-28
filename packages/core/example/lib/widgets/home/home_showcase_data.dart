@@ -41,20 +41,66 @@ class HomeAbstractionInfo {
   const HomeAbstractionInfo({required this.icon, required this.name, required this.blurb, required this.url});
 }
 
-String _ghSource(String path) => 'https://github.com/Utopia-USS/utopia-cms-workspace/blob/master/packages/core/lib/src/$path';
+String _ghSource(String path) =>
+    'https://github.com/Utopia-USS/utopia-cms-workspace/blob/master/packages/core/lib/src/$path';
 
 /// The base abstractions a CMS is built from - everything else extends one of
 /// these. Each tile opens its source file on GitHub.
 final IList<HomeAbstractionInfo> kHomeAbstractions = [
-  HomeAbstractionInfo(icon: Icons.dashboard_outlined, name: 'CmsWidget', blurb: 'The admin shell: menu, pages, theming.', url: _ghSource('ui/cms_widget/cms_widget.dart')),
-  HomeAbstractionInfo(icon: Icons.table_chart_outlined, name: 'CmsTablePage', blurb: 'List, filter, sort and CRUD - declared.', url: _ghSource('ui/table_page/cms_table_page.dart')),
-  HomeAbstractionInfo(icon: Icons.dns_outlined, name: 'CmsDelegate', blurb: 'Your backend: get / create / update / delete.', url: _ghSource('delegate/cms_delegate.dart')),
-  HomeAbstractionInfo(icon: Icons.view_column_outlined, name: 'CmsEntry', blurb: 'One column: cell, edit field and filter.', url: _ghSource('model/entry/cms_entry.dart')),
-  HomeAbstractionInfo(icon: Icons.filter_alt_outlined, name: 'CmsFilterEntry', blurb: 'A table filter: search, dropdown, date.', url: _ghSource('model/filter_entry/cms_filter_entry.dart')),
-  HomeAbstractionInfo(icon: Icons.bolt_outlined, name: 'CmsTableAction', blurb: 'A per-row popup action.', url: _ghSource('model/table/cms_table_action.dart')),
-  HomeAbstractionInfo(icon: Icons.account_tree_outlined, name: 'CmsToManyDelegate', blurb: 'One-to-many & many-to-many relations.', url: _ghSource('delegate/cms_to_many_delegate.dart')),
-  HomeAbstractionInfo(icon: Icons.perm_media_outlined, name: 'CmsMediaDelegate', blurb: 'Media upload and display.', url: _ghSource('delegate/media/cms_media_delegate.dart')),
-  HomeAbstractionInfo(icon: Icons.dashboard_customize_outlined, name: 'CmsManagementSectionEntry', blurb: 'Custom UI inside the edit overlay.', url: _ghSource('model/item_management/cms_management_section_entry.dart')),
+  HomeAbstractionInfo(
+    icon: Icons.dashboard_outlined,
+    name: 'CmsWidget',
+    blurb: 'The admin shell: menu, pages, theming.',
+    url: _ghSource('ui/cms_widget/cms_widget.dart'),
+  ),
+  HomeAbstractionInfo(
+    icon: Icons.table_chart_outlined,
+    name: 'CmsTablePage',
+    blurb: 'List, filter, sort and CRUD - declared.',
+    url: _ghSource('ui/table_page/cms_table_page.dart'),
+  ),
+  HomeAbstractionInfo(
+    icon: Icons.dns_outlined,
+    name: 'CmsDelegate',
+    blurb: 'Your backend: get / create / update / delete.',
+    url: _ghSource('delegate/cms_delegate.dart'),
+  ),
+  HomeAbstractionInfo(
+    icon: Icons.view_column_outlined,
+    name: 'CmsEntry',
+    blurb: 'One column: cell, edit field and filter.',
+    url: _ghSource('model/entry/cms_entry.dart'),
+  ),
+  HomeAbstractionInfo(
+    icon: Icons.filter_alt_outlined,
+    name: 'CmsFilterEntry',
+    blurb: 'A table filter: search, dropdown, date.',
+    url: _ghSource('model/filter_entry/cms_filter_entry.dart'),
+  ),
+  HomeAbstractionInfo(
+    icon: Icons.bolt_outlined,
+    name: 'CmsTableAction',
+    blurb: 'A per-row popup action.',
+    url: _ghSource('model/table/cms_table_action.dart'),
+  ),
+  HomeAbstractionInfo(
+    icon: Icons.account_tree_outlined,
+    name: 'CmsToManyDelegate',
+    blurb: 'One-to-many & many-to-many relations.',
+    url: _ghSource('delegate/cms_to_many_delegate.dart'),
+  ),
+  HomeAbstractionInfo(
+    icon: Icons.perm_media_outlined,
+    name: 'CmsMediaDelegate',
+    blurb: 'Media upload and display.',
+    url: _ghSource('delegate/media/cms_media_delegate.dart'),
+  ),
+  HomeAbstractionInfo(
+    icon: Icons.dashboard_customize_outlined,
+    name: 'CmsManagementSectionEntry',
+    blurb: 'Custom UI inside the edit overlay.',
+    url: _ghSource('model/item_management/cms_management_section_entry.dart'),
+  ),
 ].lock;
 
 /// The `CmsTablePage` snippet shown in the hero's code card - a real, compiling

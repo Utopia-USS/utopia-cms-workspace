@@ -12,12 +12,7 @@ class HomeSectionHeading extends StatelessWidget {
   final String eyebrow;
   final String subtitle;
 
-  const HomeSectionHeading({
-    super.key,
-    required this.theme,
-    required this.eyebrow,
-    required this.subtitle,
-  });
+  const HomeSectionHeading({super.key, required this.theme, required this.eyebrow, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {

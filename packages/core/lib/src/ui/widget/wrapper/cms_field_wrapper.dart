@@ -27,7 +27,11 @@ class CmsFieldWrapper extends HookWidget {
 /// Used by `CmsTextField` (and, through it, every text-backed field: text, num,
 /// date, country) and by the read-only `CmsLabeledField` that backs the
 /// dropdowns - so a label looks and floats the same everywhere.
-InputDecoration cmsFieldDecoration(BuildContext context, {Widget? label, FloatingLabelBehavior? floatingLabelBehavior}) {
+InputDecoration cmsFieldDecoration(
+  BuildContext context, {
+  Widget? label,
+  FloatingLabelBehavior? floatingLabelBehavior,
+}) {
   final textStyles = context.textStyles;
   return InputDecoration(
     // Dense + zero content padding: the surrounding CmsFieldWrapper already

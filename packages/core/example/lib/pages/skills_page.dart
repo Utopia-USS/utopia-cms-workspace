@@ -21,9 +21,7 @@ class SkillsPage extends StatelessWidget {
       title: 'AI Skills',
       delegate: skillsDelegate,
       pagingLimit: 10,
-      params: const CmsTableParams(
-        initialSortingParams: CmsFunctionsSortingParams(sortDesc: true, fieldKey: 'refs'),
-      ),
+      params: const CmsTableParams(initialSortingParams: CmsFunctionsSortingParams(sortDesc: true, fieldKey: 'refs')),
       filterEntries: [
         CmsFilterSearchEntry(filterKeys: const ['link.name', 'description'], entryKey: 'q', label: 'Search AI skills'),
       ],

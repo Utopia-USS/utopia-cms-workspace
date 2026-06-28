@@ -22,8 +22,12 @@ ShapeBorder aurisBevel(double cut, {BorderSide side = BorderSide.none}) {
 }
 
 /// A neon glow (no offset) used instead of a soft drop shadow.
-List<BoxShadow> aurisGlow(Color color, {double alpha = 0.30, double blur = 26}) =>
-    [BoxShadow(color: color.withValues(alpha: alpha), blurRadius: blur)];
+List<BoxShadow> aurisGlow(Color color, {double alpha = 0.30, double blur = 26}) => [
+  BoxShadow(
+    color: color.withValues(alpha: alpha),
+    blurRadius: blur,
+  ),
+];
 
 /// A chamfered surface panel - the landing's universal card. Optional [onTap]
 /// turns it into a clipped, hoverable target; [glow] adds an accent halo;
@@ -57,7 +61,10 @@ class HudPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final shape = aurisBevel(cut, side: BorderSide(color: edge ?? theme.colors.border, width: edgeWidth));
+    final shape = aurisBevel(
+      cut,
+      side: BorderSide(color: edge ?? theme.colors.border, width: edgeWidth),
+    );
     // Clip the content/ink to the chamfer, but leave the glow shadow (drawn by
     // the outer DecoratedBox) un-clipped so the halo can spill past the edge.
     final clipped = ClipPath(
@@ -95,12 +102,7 @@ class HudHeading extends StatelessWidget {
   final String label;
   final String subtitle;
 
-  const HudHeading({
-    super.key,
-    required this.theme,
-    required this.label,
-    required this.subtitle,
-  });
+  const HudHeading({super.key, required this.theme, required this.label, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +131,11 @@ class HudHeading extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 640),
           child: Text(
             subtitle,
-            style: theme.textStyles.text.copyWith(color: theme.colors.text.withValues(alpha: 0.6), fontSize: 15, height: 1.5),
+            style: theme.textStyles.text.copyWith(
+              color: theme.colors.text.withValues(alpha: 0.6),
+              fontSize: 15,
+              height: 1.5,
+            ),
           ),
         ),
       ],

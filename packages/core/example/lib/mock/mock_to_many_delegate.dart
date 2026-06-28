@@ -10,8 +10,10 @@ import 'package:utopia_cms/utopia_cms.dart';
 /// overlay persist for the session.
 class MockToManyDelegate implements CmsToManyDelegate {
   MockToManyDelegate({required List<JsonMap> tags, required Map<String, Set<String>> relations})
-      : _tags = tags,
-        _relations = {for (final entry in relations.entries) entry.key: {...entry.value}};
+    : _tags = tags,
+      _relations = {
+        for (final entry in relations.entries) entry.key: {...entry.value},
+      };
 
   final List<JsonMap> _tags;
   final Map<String, Set<String>> _relations;
@@ -56,9 +58,7 @@ class MockToManyDelegate implements CmsToManyDelegate {
       notEquals: (field, value) => row.getAtPath(field) != value,
       containsString: (field, value, caseSensitive) {
         final cell = row.getAtPath(field)?.toString() ?? '';
-        return caseSensitive
-            ? cell.contains(value)
-            : cell.toLowerCase().contains(value.toLowerCase());
+        return caseSensitive ? cell.contains(value) : cell.toLowerCase().contains(value.toLowerCase());
       },
       inList: (field, values) => values.contains(row.getAtPath(field)),
       greaterOrEq: (field, value) => _compare(row.getAtPath(field), value) >= 0,

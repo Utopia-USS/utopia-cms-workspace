@@ -47,11 +47,7 @@ class CmsDropdownFilterEntry<T> extends CmsFilterEntry<T?> {
   final int flex;
 
   @override
-  Widget buildField({
-    required BuildContext context,
-    required T? value,
-    required void Function(T?) onChanged,
-  }) {
+  Widget buildField({required BuildContext context, required T? value, required void Function(T?) onChanged}) {
     // Reuse the core portal dropdown; `null` is the synthetic "All" option.
     return CmsDropdownField<T?>(
       value: value,

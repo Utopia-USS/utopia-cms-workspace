@@ -103,7 +103,13 @@ class CmsMenu extends HookWidget {
               context,
               isExpanded: isExpanded,
               onColored: !useCard,
-              toolbar: _buildToolbar(context, isExpanded: isExpanded, isPinned: isPinned, onToggle: onToggle, onColored: !useCard),
+              toolbar: _buildToolbar(
+                context,
+                isExpanded: isExpanded,
+                isPinned: isPinned,
+                onToggle: onToggle,
+                onColored: !useCard,
+              ),
             ),
           ),
         );
@@ -116,9 +122,7 @@ class CmsMenu extends HookWidget {
   Widget _buildDrawer(BuildContext context) {
     final theme = context.theme;
     final useCard = menuParams.backgroundColors == null;
-    final body = SafeArea(
-      child: _buildBody(context, isExpanded: true, onColored: !useCard, toolbar: null),
-    );
+    final body = SafeArea(child: _buildBody(context, isExpanded: true, onColored: !useCard, toolbar: null));
     return SizedBox(
       width: _expandedWidth,
       child: Material(
@@ -219,12 +223,7 @@ class _CmsMenuIconButton extends StatelessWidget {
   final bool onColored;
   final VoidCallback? onPressed;
 
-  const _CmsMenuIconButton({
-    required this.icon,
-    required this.tooltip,
-    this.onColored = false,
-    this.onPressed,
-  });
+  const _CmsMenuIconButton({required this.icon, required this.tooltip, this.onColored = false, this.onPressed});
 
   @override
   Widget build(BuildContext context) {

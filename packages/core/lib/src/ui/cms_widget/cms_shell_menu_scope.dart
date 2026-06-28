@@ -17,6 +17,5 @@ class CmsShellMenuScope {
 
   const CmsShellMenuScope({required this.isDrawer, required this.openDrawer});
 
-  static CmsShellMenuScope? maybeOf(BuildContext context) =>
-      Provider.of<CmsShellMenuScope?>(context, listen: false);
+  static CmsShellMenuScope? maybeOf(BuildContext context) => Provider.of<CmsShellMenuScope?>(context, listen: false);
 }

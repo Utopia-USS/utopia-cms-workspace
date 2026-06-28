@@ -45,7 +45,10 @@ class _HomePubAddChipState extends State<HomePubAddChip> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('\$', style: TextStyle(color: onColor.withValues(alpha: 0.6), fontFamily: 'monospace', fontSize: 14)),
+              Text(
+                '\$',
+                style: TextStyle(color: onColor.withValues(alpha: 0.6), fontFamily: 'monospace', fontSize: 14),
+              ),
               const SizedBox(width: 10),
               Flexible(
                 child: Text(

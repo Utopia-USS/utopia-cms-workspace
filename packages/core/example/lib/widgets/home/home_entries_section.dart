@@ -39,9 +39,7 @@ class HomeEntriesSection extends StatelessWidget {
               spacing: gap,
               runSpacing: gap,
               alignment: WrapAlignment.center,
-              children: [
-                for (final entry in kHomeEntries) SizedBox(width: tileWidth, child: _buildTile(entry)),
-              ],
+              children: [for (final entry in kHomeEntries) SizedBox(width: tileWidth, child: _buildTile(entry))],
             );
           },
         ),
@@ -69,7 +67,12 @@ class HomeEntriesSection extends StatelessWidget {
               children: [
                 Text(
                   entry.name,
-                  style: TextStyle(fontFamily: kHudMono, color: theme.colors.text, fontWeight: FontWeight.w700, fontSize: 14),
+                  style: TextStyle(
+                    fontFamily: kHudMono,
+                    color: theme.colors.text,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                  ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

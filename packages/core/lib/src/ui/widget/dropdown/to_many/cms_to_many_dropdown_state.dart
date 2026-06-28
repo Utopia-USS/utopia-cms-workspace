@@ -64,7 +64,8 @@ CmsToManyDropdownState useCmsToManyDropdownState({
   }, []);
 
   CmsFilter buildFilter(String query) =>
-      filterBuilder?.call(query) ?? CmsFilter.or([for (final field in filterFields!) CmsFilter.containsString(field, query)]);
+      filterBuilder?.call(query) ??
+      CmsFilter.or([for (final field in filterFields!) CmsFilter.containsString(field, query)]);
 
   final itemsState = useAutoComputedState<IList<JsonMap>>(() async {
     final result = await delegate.get(filter: buildFilter(debouncedSearch));

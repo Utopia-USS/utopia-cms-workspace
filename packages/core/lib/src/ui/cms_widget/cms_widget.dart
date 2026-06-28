@@ -62,10 +62,7 @@ class CmsWidget extends HookWidget {
                   )
                 : null,
             body: Provider.value(
-              value: CmsShellMenuScope(
-                isDrawer: isDrawer,
-                openDrawer: () => scaffoldKey.currentState?.openDrawer(),
-              ),
+              value: CmsShellMenuScope(isDrawer: isDrawer, openDrawer: () => scaffoldKey.currentState?.openDrawer()),
               child: isDrawer
                   ? Padding(
                       padding: const EdgeInsets.symmetric(horizontal: CmsMenu.shellGutter),

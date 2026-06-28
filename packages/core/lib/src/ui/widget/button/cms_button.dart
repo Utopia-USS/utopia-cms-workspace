@@ -35,12 +35,7 @@ class CmsButton extends StatelessWidget {
     return InkWell(
       onTap: isEnabled ? onTap : null,
       child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: extent,
-          maxHeight: extent,
-          minWidth: extent,
-          maxWidth: maxWidth,
-        ),
+        constraints: BoxConstraints(minHeight: extent, maxHeight: extent, minWidth: extent, maxWidth: maxWidth),
         child: CmsGradientBackground(
           colors: colors,
           clipBehavior: Clip.antiAlias,

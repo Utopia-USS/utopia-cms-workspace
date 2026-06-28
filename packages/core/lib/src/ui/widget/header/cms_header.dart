@@ -22,10 +22,7 @@ class CmsHeader extends StatelessWidget {
         if (navigateBack) _buildNavigateBack(context),
         Row(
           children: [
-            if (showMenuButton) ...[
-              _MenuButton(onPressed: scope!.openDrawer),
-              const SizedBox(width: 8),
-            ],
+            if (showMenuButton) ...[_MenuButton(onPressed: scope!.openDrawer), const SizedBox(width: 8)],
             Flexible(child: Text(text, style: context.textStyles.header)),
           ],
         ),

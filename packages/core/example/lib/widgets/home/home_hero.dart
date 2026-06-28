@@ -19,12 +19,7 @@ class HomeHero extends StatelessWidget {
   final void Function() onOpenPubDev;
   final void Function() onOpenGithub;
 
-  const HomeHero({
-    super.key,
-    required this.theme,
-    required this.onOpenPubDev,
-    required this.onOpenGithub,
-  });
+  const HomeHero({super.key, required this.theme, required this.onOpenPubDev, required this.onOpenGithub});
 
   static const double _stackBreakpoint = 820;
   static const double _cut = 28;
@@ -69,10 +64,7 @@ class HomeHero extends StatelessWidget {
                       children: [
                         Expanded(child: copy),
                         const SizedBox(width: 48),
-                        ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 440),
-                          child: const HomeCodeCard(),
-                        ),
+                        ConstrainedBox(constraints: const BoxConstraints(maxWidth: 440), child: const HomeCodeCard()),
                       ],
                     );
                   },
@@ -134,8 +126,22 @@ class HomeHero extends StatelessWidget {
           runSpacing: 12,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            _HeroButton(theme: theme, label: 'VIEW ON PUB.DEV', icon: Icons.arrow_outward, filled: true, onHero: onHero, onTap: onOpenPubDev),
-            _HeroButton(theme: theme, label: 'GITHUB', icon: Icons.code, filled: false, onHero: onHero, onTap: onOpenGithub),
+            _HeroButton(
+              theme: theme,
+              label: 'VIEW ON PUB.DEV',
+              icon: Icons.arrow_outward,
+              filled: true,
+              onHero: onHero,
+              onTap: onOpenPubDev,
+            ),
+            _HeroButton(
+              theme: theme,
+              label: 'GITHUB',
+              icon: Icons.code,
+              filled: false,
+              onHero: onHero,
+              onTap: onOpenGithub,
+            ),
           ],
         ),
         const SizedBox(height: 16),
@@ -157,7 +163,13 @@ class HomeHero extends StatelessWidget {
           const SizedBox(width: 10),
           Text(
             'LOW-CODE FLUTTER ADMIN',
-            style: TextStyle(fontFamily: kHudMono, color: onHero, fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 2),
+            style: TextStyle(
+              fontFamily: kHudMono,
+              color: onHero,
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 2,
+            ),
           ),
         ],
       ),
@@ -190,7 +202,10 @@ class _HeroButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fg = filled ? theme.colors.primary : onHero;
-    final shape = aurisBevel(_cut, side: filled ? BorderSide.none : BorderSide(color: onHero.withValues(alpha: 0.55), width: 1.5));
+    final shape = aurisBevel(
+      _cut,
+      side: filled ? BorderSide.none : BorderSide(color: onHero.withValues(alpha: 0.55), width: 1.5),
+    );
     return Material(
       color: filled ? theme.colors.surface : Colors.transparent,
       shape: shape,
@@ -204,7 +219,15 @@ class _HeroButton extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(label, style: theme.textStyles.button.copyWith(color: fg, fontFamily: kHudMono, letterSpacing: 1.2, fontSize: 13)),
+              Text(
+                label,
+                style: theme.textStyles.button.copyWith(
+                  color: fg,
+                  fontFamily: kHudMono,
+                  letterSpacing: 1.2,
+                  fontSize: 13,
+                ),
+              ),
               const SizedBox(width: 8),
               Icon(icon, size: 16, color: fg),
             ],

@@ -141,7 +141,9 @@ class _LinkPreviewState extends State<_LinkPreview> {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Flexible(child: Text(widget.text, overflow: TextOverflow.ellipsis, style: style)),
+              Flexible(
+                child: Text(widget.text, overflow: TextOverflow.ellipsis, style: style),
+              ),
               const SizedBox(width: 4),
               Icon(Icons.arrow_outward, size: 14, color: color.withValues(alpha: _hovered ? 1.0 : 0.5)),
             ],

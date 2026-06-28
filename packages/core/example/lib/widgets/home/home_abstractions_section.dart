@@ -22,7 +22,8 @@ class HomeAbstractionsSection extends StatelessWidget {
         HomeSectionHeading(
           theme: theme,
           eyebrow: 'Core types',
-          subtitle: 'The handful of base classes you compose - subclass a delegate, list entries, add filters and '
+          subtitle:
+              'The handful of base classes you compose - subclass a delegate, list entries, add filters and '
               'actions. Each tile opens its source on GitHub.',
         ),
         const SizedBox(height: 28),
@@ -34,9 +35,7 @@ class HomeAbstractionsSection extends StatelessWidget {
             return Wrap(
               spacing: gap,
               runSpacing: gap,
-              children: [
-                for (final type in kHomeAbstractions) SizedBox(width: cardWidth, child: _buildCard(type)),
-              ],
+              children: [for (final type in kHomeAbstractions) SizedBox(width: cardWidth, child: _buildCard(type))],
             );
           },
         ),

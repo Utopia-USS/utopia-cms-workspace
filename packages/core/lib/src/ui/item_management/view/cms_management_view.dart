@@ -61,10 +61,7 @@ class CmsManagementView extends HookWidget {
               width: fixedWidth,
               height: constraints.maxHeight,
               padding: const EdgeInsets.symmetric(horizontal: 36),
-              child: Stack(
-                fit: StackFit.expand,
-                children: [_buildScrollView(canNest), _buildButtons(context)],
-              ),
+              child: Stack(fit: StackFit.expand, children: [_buildScrollView(canNest), _buildButtons(context)]),
             ),
           ),
         ),
@@ -83,10 +80,7 @@ class CmsManagementView extends HookWidget {
         width: constraints.maxWidth,
         height: constraints.maxHeight,
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [_buildScrollView(false), _buildButtons(context)],
-        ),
+        child: Stack(fit: StackFit.expand, children: [_buildScrollView(false), _buildButtons(context)]),
       ),
     );
   }
@@ -201,10 +195,7 @@ class CmsManagementView extends HookWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           for (final entry in entries)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              child: _buildEditField(context, entry),
-            ),
+            Padding(padding: const EdgeInsets.symmetric(vertical: 12.0), child: _buildEditField(context, entry)),
         ],
       ),
     );

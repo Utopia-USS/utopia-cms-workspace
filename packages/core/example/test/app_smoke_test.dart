@@ -64,9 +64,7 @@ void main() {
     expect(find.byKey(const ValueKey('homeThemeActive_light')), findsNothing);
   });
 
-  testWidgets('rail theme picker opens, lists modes, and dismisses on select', (
-    tester,
-  ) async {
+  testWidgets('rail theme picker opens, lists modes, and dismisses on select', (tester) async {
     useWideWindow(tester);
     await tester.pumpWidget(const UtopiaShowcaseApp());
     await tester.pump();

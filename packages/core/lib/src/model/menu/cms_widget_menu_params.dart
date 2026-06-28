@@ -26,8 +26,5 @@ class CmsWidgetMenuParams {
   /// is currently collapsed so the host can swap a full lockup for a bare mark.
   final CmsMenuHeaderBuilder? headerBuilder;
 
-  const CmsWidgetMenuParams({
-    this.backgroundColors,
-    this.headerBuilder,
-  });
+  const CmsWidgetMenuParams({this.backgroundColors, this.headerBuilder});
 }

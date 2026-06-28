@@ -56,18 +56,12 @@ const Map<String, Set<String>> _libTags = {
   'lib_connectivity': {'net', 'reactive', 'async', 'utils'},
 };
 
-Map<String, dynamic> _link(String name) => {
-      'name': name,
-      'url': 'https://pub.dev/packages/$name',
-    };
+Map<String, dynamic> _link(String name) => {'name': name, 'url': 'https://pub.dev/packages/$name'};
 
 /// GitHub source link. [path] is everything after the `Utopia-USS/` org - a
 /// standalone repo (`utopia_cms`, `utopia-cli`) or a `<repo>/tree/master/packages/<dir>`
 /// path into one of the monorepos (`utopia-flutter`, `utopia_cms`).
-Map<String, dynamic> _github(String path) => {
-      'name': 'GitHub',
-      'url': 'https://github.com/Utopia-USS/$path',
-    };
+Map<String, dynamic> _github(String path) => {'name': 'GitHub', 'url': 'https://github.com/Utopia-USS/$path'};
 
 /// Real Utopia packages (publisher utopiasoft.io). Descriptions are polished
 /// from the real pubspec descriptions; `usedHere` flags the packages this very

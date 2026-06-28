@@ -29,9 +29,7 @@ class HomeThemeSwitcher extends HookWidget {
     return Wrap(
       spacing: 14,
       runSpacing: 14,
-      children: [
-        for (final mode in ExampleThemeMode.values) _buildOption(state, mode, isActive: mode == selected),
-      ],
+      children: [for (final mode in ExampleThemeMode.values) _buildOption(state, mode, isActive: mode == selected)],
     );
   }
 
@@ -75,7 +73,12 @@ class HomeThemeSwitcher extends HookWidget {
                   ),
                   if (isActive) ...[
                     const SizedBox(width: 10),
-                    Icon(key: ValueKey('homeThemeActive_${mode.name}'), Icons.check_rounded, size: 18, color: theme.colors.primary),
+                    Icon(
+                      key: ValueKey('homeThemeActive_${mode.name}'),
+                      Icons.check_rounded,
+                      size: 18,
+                      color: theme.colors.primary,
+                    ),
                   ],
                 ],
               ),

@@ -22,20 +22,22 @@ class CmsDropdownField<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CmsOverlayAnchor(
-      triggerBuilder: (context, open) => GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: open,
-        child: _buildTrigger(context),
-      ),
+      triggerBuilder: (context, open) =>
+          GestureDetector(behavior: HitTestBehavior.opaque, onTap: open, child: _buildTrigger(context)),
       overlayBuilder: (context, close) => ListView(
         padding: EdgeInsets.zero,
         shrinkWrap: true,
         children: [
           for (final option in values)
-            _buildOption(context, option, selected: option == value, onTap: () {
-              onChanged(option);
-              close();
-            }),
+            _buildOption(
+              context,
+              option,
+              selected: option == value,
+              onTap: () {
+                onChanged(option);
+                close();
+              },
+            ),
         ],
       ),
     );

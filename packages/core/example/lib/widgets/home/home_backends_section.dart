@@ -64,7 +64,12 @@ class HomeBackendsSection extends StatelessWidget {
           const SizedBox(height: 14),
           Text(
             pkg.name,
-            style: TextStyle(fontFamily: kHudMono, color: theme.colors.primary, fontWeight: FontWeight.w700, fontSize: 14),
+            style: TextStyle(
+              fontFamily: kHudMono,
+              color: theme.colors.primary,
+              fontWeight: FontWeight.w700,
+              fontSize: 14,
+            ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),

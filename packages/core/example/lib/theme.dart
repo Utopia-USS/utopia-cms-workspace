@@ -36,48 +36,18 @@ CmsThemeData buildExampleTheme() {
     // surface (page title, buttons, sections), not just the table.
     textStyles: const CmsThemeTextStyles(
       // page header - jolly bigHeader (24/w700)
-      header: TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: 24,
-        letterSpacing: -0.5,
-        color: Color(0xFF141518),
-      ),
+      header: TextStyle(fontWeight: FontWeight.w700, fontSize: 24, letterSpacing: -0.5, color: Color(0xFF141518)),
       // section / sub-header + table column headers - jolly title, sized up a
       // touch (Roboto reads smaller than Quicksand), weight w600 (not bold)
-      title: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 18,
-        letterSpacing: -0.3,
-        color: Color(0xFF141518),
-      ),
+      title: TextStyle(fontWeight: FontWeight.w600, fontSize: 18, letterSpacing: -0.3, color: Color(0xFF141518)),
       // field labels / column headers - jolly label (14/w600)
-      label: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 14,
-        letterSpacing: -0.2,
-        color: Color(0xFF141518),
-      ),
+      label: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, letterSpacing: -0.2, color: Color(0xFF141518)),
       // body / cell data - medium weight, not heavy (link entry carries the bold)
-      text: TextStyle(
-        fontWeight: FontWeight.w500,
-        fontSize: 15,
-        letterSpacing: 0,
-        color: Color(0xFF141518),
-      ),
+      text: TextStyle(fontWeight: FontWeight.w500, fontSize: 15, letterSpacing: 0, color: Color(0xFF141518)),
       // chips / dense labels - jolly caption (bold)
-      caption: TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: 13,
-        letterSpacing: 0,
-        color: Color(0xFF141518),
-      ),
+      caption: TextStyle(fontWeight: FontWeight.w700, fontSize: 13, letterSpacing: 0, color: Color(0xFF141518)),
       // button label - jolly button (15/w600), white
-      button: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 15,
-        letterSpacing: 0,
-        color: Colors.white,
-      ),
+      button: TextStyle(fontWeight: FontWeight.w600, fontSize: 15, letterSpacing: 0, color: Colors.white),
     ),
   );
 }
@@ -107,35 +77,15 @@ enum ExampleThemeMode {
   /// mode's theme so the swatch always matches what the picker will apply.
   List<Color> get swatches => switch (this) {
     // jolly blue, blue accent, white card
-    ExampleThemeMode.light => const [
-      Color(0xFF4A6FFF),
-      Color(0xFF4466FF),
-      Color(0xFFFFFFFF),
-    ],
+    ExampleThemeMode.light => const [Color(0xFF4A6FFF), Color(0xFF4466FF), Color(0xFFFFFFFF)],
     // Dracula purple primary + a deeper purple accent (subtle gradient), slate card
-    ExampleThemeMode.dracula => const [
-      Color(0xFFBD93F9),
-      Color(0xFF9F7AEA),
-      Color(0xFF282A36),
-    ],
+    ExampleThemeMode.dracula => const [Color(0xFFBD93F9), Color(0xFF9F7AEA), Color(0xFF282A36)],
     // neon yellow primary + amber accent (subtle gradient), near-black card
-    ExampleThemeMode.cyberpunk => const [
-      Color(0xFFFCEE0A),
-      Color(0xFFFFC400),
-      Color(0xFF11111F),
-    ],
+    ExampleThemeMode.cyberpunk => const [Color(0xFFFCEE0A), Color(0xFFFFC400), Color(0xFF11111F)],
     // kawaii rose primary + light-pink accent, white card
-    ExampleThemeMode.kawaii => const [
-      Color(0xFFDB3E86),
-      Color(0xFFF77FBC),
-      Color(0xFFFFFFFF),
-    ],
+    ExampleThemeMode.kawaii => const [Color(0xFFDB3E86), Color(0xFFF77FBC), Color(0xFFFFFFFF)],
     // forest leaf-green primary + deeper green accent, warm bark-brown card
-    ExampleThemeMode.forest => const [
-      Color(0xFF4ECB71),
-      Color(0xFF2FA85C),
-      Color(0xFF241A11),
-    ],
+    ExampleThemeMode.forest => const [Color(0xFF4ECB71), Color(0xFF2FA85C), Color(0xFF241A11)],
   };
 }
 
@@ -177,45 +127,15 @@ CmsThemeData buildDraculaTheme() {
     // Same jolly weight hierarchy as the light theme, every foreground recoloured
     // to Dracula's foreground (0xFFF8F8F2) for contrast on the dark surfaces.
     textStyles: const CmsThemeTextStyles(
-      header: TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: 24,
-        letterSpacing: -0.5,
-        color: Color(0xFFF8F8F2),
-      ),
-      title: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 18,
-        letterSpacing: -0.3,
-        color: Color(0xFFF8F8F2),
-      ),
-      label: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 14,
-        letterSpacing: -0.2,
-        color: Color(0xFFF8F8F2),
-      ),
-      text: TextStyle(
-        fontWeight: FontWeight.w500,
-        fontSize: 15,
-        letterSpacing: 0,
-        color: Color(0xFFF8F8F2),
-      ),
-      caption: TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: 13,
-        letterSpacing: 0,
-        color: Color(0xFFF8F8F2),
-      ),
+      header: TextStyle(fontWeight: FontWeight.w700, fontSize: 24, letterSpacing: -0.5, color: Color(0xFFF8F8F2)),
+      title: TextStyle(fontWeight: FontWeight.w600, fontSize: 18, letterSpacing: -0.3, color: Color(0xFFF8F8F2)),
+      label: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, letterSpacing: -0.2, color: Color(0xFFF8F8F2)),
+      text: TextStyle(fontWeight: FontWeight.w500, fontSize: 15, letterSpacing: 0, color: Color(0xFFF8F8F2)),
+      caption: TextStyle(fontWeight: FontWeight.w700, fontSize: 13, letterSpacing: 0, color: Color(0xFFF8F8F2)),
       // The button gradient runs primary -> accent as purple -> deeper purple (a
       // tight, same-hue sweep, not a purple/pink clash), with the near-white
       // 0xFFF8F8F2 label on top.
-      button: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 15,
-        letterSpacing: 0,
-        color: Color(0xFFF8F8F2),
-      ),
+      button: TextStyle(fontWeight: FontWeight.w600, fontSize: 15, letterSpacing: 0, color: Color(0xFFF8F8F2)),
     ),
   );
 }
@@ -259,45 +179,15 @@ CmsThemeData buildCyberpunkTheme() {
     // Same jolly weight hierarchy as the light theme, foregrounds recoloured to an
     // icy 0xFFE8FBFF for crisp contrast against the near-black surfaces.
     textStyles: const CmsThemeTextStyles(
-      header: TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: 24,
-        letterSpacing: -0.5,
-        color: Color(0xFFE8FBFF),
-      ),
-      title: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 18,
-        letterSpacing: -0.3,
-        color: Color(0xFFE8FBFF),
-      ),
-      label: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 14,
-        letterSpacing: -0.2,
-        color: Color(0xFFE8FBFF),
-      ),
-      text: TextStyle(
-        fontWeight: FontWeight.w500,
-        fontSize: 15,
-        letterSpacing: 0,
-        color: Color(0xFFE8FBFF),
-      ),
-      caption: TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: 13,
-        letterSpacing: 0,
-        color: Color(0xFFE8FBFF),
-      ),
+      header: TextStyle(fontWeight: FontWeight.w700, fontSize: 24, letterSpacing: -0.5, color: Color(0xFFE8FBFF)),
+      title: TextStyle(fontWeight: FontWeight.w600, fontSize: 18, letterSpacing: -0.3, color: Color(0xFFE8FBFF)),
+      label: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, letterSpacing: -0.2, color: Color(0xFFE8FBFF)),
+      text: TextStyle(fontWeight: FontWeight.w500, fontSize: 15, letterSpacing: 0, color: Color(0xFFE8FBFF)),
+      caption: TextStyle(fontWeight: FontWeight.w700, fontSize: 13, letterSpacing: 0, color: Color(0xFFE8FBFF)),
       // The button gradient is neon yellow -> amber, so a near-black 0xFF0A0A14
       // label gives high-contrast, punchy text across the sweep (yellow + black is
       // the signature cyberpunk pairing).
-      button: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 15,
-        letterSpacing: 0,
-        color: Color(0xFF0A0A14),
-      ),
+      button: TextStyle(fontWeight: FontWeight.w600, fontSize: 15, letterSpacing: 0, color: Color(0xFF0A0A14)),
     ),
   );
 }
@@ -341,44 +231,14 @@ CmsThemeData buildKawaiiTheme() {
     // Same jolly weight hierarchy as the light theme, foregrounds recoloured to a
     // deep plum 0xFF5A2D47 for a soft-but-readable look on the pink ground.
     textStyles: const CmsThemeTextStyles(
-      header: TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: 24,
-        letterSpacing: -0.5,
-        color: Color(0xFF5A2D47),
-      ),
-      title: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 18,
-        letterSpacing: -0.3,
-        color: Color(0xFF5A2D47),
-      ),
-      label: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 14,
-        letterSpacing: -0.2,
-        color: Color(0xFF5A2D47),
-      ),
-      text: TextStyle(
-        fontWeight: FontWeight.w500,
-        fontSize: 15,
-        letterSpacing: 0,
-        color: Color(0xFF5A2D47),
-      ),
-      caption: TextStyle(
-        fontWeight: FontWeight.w700,
-        fontSize: 13,
-        letterSpacing: 0,
-        color: Color(0xFF5A2D47),
-      ),
+      header: TextStyle(fontWeight: FontWeight.w700, fontSize: 24, letterSpacing: -0.5, color: Color(0xFF5A2D47)),
+      title: TextStyle(fontWeight: FontWeight.w600, fontSize: 18, letterSpacing: -0.3, color: Color(0xFF5A2D47)),
+      label: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, letterSpacing: -0.2, color: Color(0xFF5A2D47)),
+      text: TextStyle(fontWeight: FontWeight.w500, fontSize: 15, letterSpacing: 0, color: Color(0xFF5A2D47)),
+      caption: TextStyle(fontWeight: FontWeight.w700, fontSize: 13, letterSpacing: 0, color: Color(0xFF5A2D47)),
       // The button gradient is a tight rose -> light-pink sweep; a white label keeps
       // the cute look and matches the stock light theme's white button text.
-      button: TextStyle(
-        fontWeight: FontWeight.w600,
-        fontSize: 15,
-        letterSpacing: 0,
-        color: Colors.white,
-      ),
+      button: TextStyle(fontWeight: FontWeight.w600, fontSize: 15, letterSpacing: 0, color: Colors.white),
     ),
   );
 }
