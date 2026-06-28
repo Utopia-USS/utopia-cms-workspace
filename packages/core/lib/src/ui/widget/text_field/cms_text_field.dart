@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/ui/widget/wrapper/cms_field_wrapper.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 class CmsTextField extends HookWidget {
   final String value;
@@ -88,16 +88,7 @@ class CmsTextField extends HookWidget {
         obscureText: obscureText,
         textInputAction: TextInputAction.next,
         inputFormatters: formatters,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          errorBorder: InputBorder.none,
-          disabledBorder: InputBorder.none,
-          label: label,
-          floatingLabelStyle: textStyles.label.copyWith(fontSize: 14, fontWeight: FontWeight.w600),
-          labelStyle: textStyles.label,
-        ),
+        decoration: cmsFieldDecoration(context, label: label),
         style: textStyles.text,
       ),
     );

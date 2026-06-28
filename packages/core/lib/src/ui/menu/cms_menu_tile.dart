@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:simple_shadow/simple_shadow.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/ui/cms_widget/cms_widget_item.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 class CmsMenuTile extends StatelessWidget {
   final CmsWidgetItem item;
   final bool isExpanded, isSelected;
+
+  /// Whether the tile sits on a coloured (gradient) menu rather than the default
+  /// light surface card - drives the content / selection colours.
+  final bool onColored;
   final void Function() onPressed;
 
   const CmsMenuTile({
@@ -14,35 +17,38 @@ class CmsMenuTile extends StatelessWidget {
     required this.item,
     required this.isExpanded,
     required this.isSelected,
+    required this.onColored,
     required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = context.textStyles.button;
-    return InkWell(
-      borderRadius: context.theme.borderRadius,
-      onTap: onPressed,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 14),
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            decoration: BoxDecoration(
-              border: Border(
-                left: BorderSide(width: 3, color: isSelected ? Colors.white : Colors.transparent),
-                right: const BorderSide(width: 3, color: Colors.transparent),
-              ),
-            ),
+    final colors = context.colors;
+    final contentColor = onColored
+        ? (context.textStyles.button.color ?? Colors.white)
+        : (isSelected ? colors.primary : colors.text);
+    final selectedColor = onColored ? Colors.white.withValues(alpha: 0.18) : colors.chipBackground;
+    final hoverColor = onColored ? Colors.white.withValues(alpha: 0.08) : colors.hover;
+    final baseStyle = onColored ? context.textStyles.button : context.textStyles.label;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
+      child: Material(
+        color: isSelected ? selectedColor : Colors.transparent,
+        borderRadius: context.theme.borderRadius,
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onPressed,
+          hoverColor: hoverColor,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             child: IconTheme.merge(
-              data: IconThemeData(color: textStyle.color),
+              data: IconThemeData(color: contentColor, size: 22),
               child: DefaultTextStyle(
-                style: textStyle,
+                style: baseStyle.copyWith(color: contentColor),
                 child: Row(
                   children: [
-                    _buildIcon(),
+                    item.icon,
                     Flexible(child: _buildText(context)),
                   ],
                 ),
@@ -75,9 +81,5 @@ class CmsMenuTile extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Widget _buildIcon() {
-    return SimpleShadow(opacity: 0.1, sigma: 3, child: item.icon);
   }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry_modifier.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table_preview_text.dart';
 import 'package:utopia_cms/src/ui/widget/text_field/cms_text_field.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 /// [CmsEntry] for handling basic num values
 class CmsNumEntry extends CmsEntry<num?> {
@@ -20,6 +20,7 @@ class CmsNumEntry extends CmsEntry<num?> {
     this.modifier = const CmsEntryModifier(),
     this.isDecimal = false,
     this.flex = 2,
+    this.width,
   }) {
     decimalInputFormatter = [
       FilteringTextInputFormatter.deny(',', replacementString: '.'),
@@ -32,7 +33,10 @@ class CmsNumEntry extends CmsEntry<num?> {
   final String key;
 
   @override
-  final int flex;
+  final int? flex;
+
+  @override
+  final double? width;
 
   @override
   final String? label;

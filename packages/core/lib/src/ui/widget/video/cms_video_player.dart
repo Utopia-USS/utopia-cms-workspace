@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:utopia_arch/utopia_arch.dart';
+import 'package:media_kit_video/media_kit_video.dart';
 import 'package:utopia_cms/src/ui/widget/loading/cms_loader.dart';
 import 'package:utopia_cms/src/ui/widget/video/cms_video_player_state.dart';
-import 'package:video_player/video_player.dart';
-
-export 'package:video_player/video_player.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 class CmsVideoPlayer extends HookWidget {
   final String url;
-  final Widget Function(VideoPlayerController controller, Widget player)? playerBuilder;
+
+  /// Wraps the rendered video. Receives the video's natural [Size] and the
+  /// player widget already sized to that natural size (handy for `FittedBox`
+  /// based cropping). When null, the video is shown at its own aspect ratio.
+  final Widget Function(Size naturalSize, Widget player)? playerBuilder;
   final bool previewOnly;
 
   const CmsVideoPlayer({super.key, required this.url, this.playerBuilder, this.previewOnly = false});
@@ -21,23 +23,20 @@ class CmsVideoPlayer extends HookWidget {
       ignoring: previewOnly,
       child: Focus(
         focusNode: state.focusNode,
-        child: state.controller != null ? _buildVideo(state: state) : const CmsLoader(color: Colors.white),
+        child: state.isInitialized ? _buildVideo(state: state) : const CmsLoader(color: Colors.white),
       ),
     );
   }
 
   Widget _buildVideo({required CmsVideoPlayerState state}) {
-    final controller = state.controller!;
+    final player = Video(controller: state.videoController, controls: null);
     return Stack(
       alignment: Alignment.center,
       children: [
         if (playerBuilder != null)
-          playerBuilder!(
-            controller,
-            AspectRatio(aspectRatio: controller.value.aspectRatio, child: VideoPlayer(controller)),
-          ),
-        if (playerBuilder == null)
-          AspectRatio(aspectRatio: controller.value.aspectRatio, child: VideoPlayer(controller)),
+          playerBuilder!(state.naturalSize, SizedBox.fromSize(size: state.naturalSize, child: player))
+        else
+          AspectRatio(aspectRatio: state.naturalSize.aspectRatio, child: player),
         if (!previewOnly) _buildPlayButton(state),
       ],
     );

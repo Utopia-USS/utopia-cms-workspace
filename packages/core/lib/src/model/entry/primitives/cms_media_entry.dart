@@ -33,6 +33,7 @@ class CmsMediaEntry extends CmsEntry<Iterable<dynamic>?> {
     this.label,
     this.modifier = const CmsEntryModifier(expanded: true),
     this.flex = 2,
+    this.width,
     this.maxFiles,
   });
 
@@ -40,7 +41,10 @@ class CmsMediaEntry extends CmsEntry<Iterable<dynamic>?> {
   final String key;
 
   @override
-  final int flex;
+  final int? flex;
+
+  @override
+  final double? width;
 
   @override
   final String? label;

@@ -1,4 +1,4 @@
-<img src="https://github.com/Utopia-USS/utopia_cms/raw/master/packages/graphql/cms_graphql.png" width = "399" height = "159"/>
+<img src="https://raw.githubusercontent.com/Utopia-USS/utopia-cms-workspace/master/packages/graphql/cms_graphql.png" width="305" alt="Utopia CMS GraphQL"/>
 
 # Utopia CMS GraphQL
 

@@ -1,11 +1,13 @@
-<img src="https://github.com/Utopia-USS/utopia_cms/raw/master/packages/core/cms_core.png" width = "343" height = "159"/>
+<img src="https://raw.githubusercontent.com/Utopia-USS/utopia-cms-workspace/master/packages/core/cms_core.png" width="206" alt="Utopia CMS"/>
 
 # Utopia CMS (Core)
 
-The Utopia CMS Core package is a data visualization library written in Flutter for creating beautiful,
-animated, high-performance and flexible CMS panels, which are used to manage databases for mobile apps.
+Utopia CMS is a Flutter framework for building CMS and admin panels - the back-office dashboards and
+internal tools that manage your app's data. It gives you beautiful, animated, high-performance CRUD screens:
+sortable, filterable tables with create / edit / delete flows and per-row actions, backed by Firebase,
+Supabase, Hasura or any GraphQL backend.
 
-<img src="https://github.com/Utopia-USS/utopia_cms/raw/master/packages/core/video.gif" width = "960" height = "425"/>
+<img src="https://github.com/Utopia-USS/utopia-cms-workspace/raw/master/packages/core/video.gif" width = "960" height = "425" alt="Utopia CMS admin panel demo"/>
 
 ## Motivation
 
@@ -94,6 +96,7 @@ basic data types.
 | [CmsDropdownEntry](https://pub.dev/documentation/utopia_cms/latest/utopia_cms/CmsDropdownEntry-class.html)             | For managing set of options and singular choice |
 | [CmsBoolEntry](https://pub.dev/documentation/utopia_cms/latest/utopia_cms/CmsBoolEntry-class.html)                     | Handles bool variables                          |
 | [CmsDateEntry](https://pub.dev/documentation/utopia_cms/latest/utopia_cms/CmsDateEntry-class.html)                     | Handles Date variables                          |
+| [CmsLinkEntry](https://pub.dev/documentation/utopia_cms/latest/utopia_cms/CmsLinkEntry-class.html)                     | Handles clickable links (opens via url_launcher) |
 | [CmsMediaEntry](https://pub.dev/documentation/utopia_cms/latest/utopia_cms/CmsMediaEntry-class.html)                   | Handles files (img, vid, doc, unknown)          |
 | [CmsToManyDropdownEntry](https://pub.dev/documentation/utopia_cms/latest/utopia_cms/CmsToManyDropdownEntry-class.html) | M2M relationships multi selection dropdown      |
 
@@ -122,6 +125,7 @@ The library provides pre-created delegates:
 | Name                                                                | Description                          |
 |---------------------------------------------------------------------|--------------------------------------|
 | [utopia_cms_firebase](https://pub.dev/packages/utopia_cms_firebase) | Firebase delegate integration        |
+| [utopia_cms_supabase](https://pub.dev/packages/utopia_cms_supabase) | Supabase delegate integration        |
 | [utopia_cms_graphql](https://pub.dev/packages/utopia_cms_graphql)   | Generic GraphQL delegate integration |
 | [utopia_cms_hasura](https://pub.dev/packages/utopia_cms_hasura)     | Hasura delegate integration          |
 
@@ -201,6 +205,15 @@ The package exports its basic UI components in order to allow maintaining a cohe
 * **CmsLoader**
 * **CmsMockLoadingBox**
 * **CmsHeader**
+
+## AI assistants
+
+This package ships agent rules and a skill - the CmsWidget shell, CmsTablePage,
+delegates (Firebase/Supabase/Hasura/GraphQL), the entry catalog, filters, and
+custom actions - that work with any agentic coding tool (Claude, Codex, Cursor,
+and others) via `AGENTS.md` and the
+[Utopia skills marketplace](https://github.com/Utopia-USS/utopia-flutter-skills).
+Add them with `utopia init agents` / `utopia init skills`.
 
 ## Contributions
 

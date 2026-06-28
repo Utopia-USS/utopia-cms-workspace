@@ -20,13 +20,17 @@ class CmsCountryEntry extends CmsEntry<dynamic> {
     this.modifier = const CmsEntryModifier(),
     this.overflow,
     this.flex = 2,
+    this.width,
   });
 
   @override
   final String key;
 
   @override
-  final int flex;
+  final int? flex;
+
+  @override
+  final double? width;
 
   @override
   final String? label;

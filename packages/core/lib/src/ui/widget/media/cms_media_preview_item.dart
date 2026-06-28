@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/ui/media_preview/cms_media_type.dart';
 import 'package:utopia_cms/src/ui/widget/media/cms_media_field_video_player.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 class CmsMediaPreviewItem extends StatelessWidget {
   final CmsMediaType Function(dynamic object) mediaTypeBuilder;

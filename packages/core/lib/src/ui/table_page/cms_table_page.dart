@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/delegate/cms_delegate.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/filter_entry/cms_filter_entry.dart';
@@ -9,6 +8,7 @@ import 'package:utopia_cms/src/model/table/cms_table_page_params.dart';
 import 'package:utopia_cms/src/ui/table_page/state/cms_table_page_state.dart';
 import 'package:utopia_cms/src/ui/table_page/view/cms_table_page_view.dart';
 import 'package:utopia_cms/src/ui/widget/dialog/cms_dialog.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 ///  * [CmsTablePage] by default is able to generate complete flow of data table preview, creation/edition flow.
 class CmsTablePage extends HookWidget {
@@ -30,12 +30,12 @@ class CmsTablePage extends HookWidget {
     this.customActions,
     this.filterEntries,
     this.managementSectionEntries = const [],
-    this.pagingLimit = 25,
+    this.pagingLimit = 30,
   }) : assert(pagingLimit != 0);
 
   @override
   Widget build(BuildContext context) {
-    final navigator = context.navigator;
+    final navigator = Navigator.of(context);
     final state = useCmsTablePageState(
       delegate: delegate,
       params: params,

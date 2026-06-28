@@ -22,24 +22,37 @@ import 'package:utopia_cms/src/util/string_extensions.dart';
 @optionalTypeArgs
 abstract class CmsEntry<T> {
   /// [key] is a path to the value in [JsonMap].
-  /// 
+  ///
   /// It may be staggered, e.g. `user.data.image`.
   /// To see how it works check `MapExtensions`.
   abstract final String key;
 
-  /// [label] displays the name of the entry. 
-  /// 
+  /// [label] displays the name of the entry.
+  ///
   /// To find out more check [fixedLabel].
   abstract final String? label;
 
   /// Modifies the behavior of the [CmsEntry]
   abstract final CmsEntryModifier modifier;
 
-  ///  * Defines size of the [CmsTableItem] in the [CmsTable]
-  abstract final int flex;
+  /// Defines the column's share of the [CmsTableItem] width in the [CmsTable].
+  ///
+  /// When non-null the column flexes, taking [flex] parts of the available row
+  /// width (like [Expanded.flex]). Set it to `null` to make a fixed-width,
+  /// non-flexing column - useful for icons, avatars or badges that should not
+  /// stretch. A fixed column is sized to [width] (with a sensible default when
+  /// [width] is omitted).
+  abstract final int? flex;
+
+  /// Width of a fixed (non-flexing) column, i.e. the width used when [flex] is
+  /// `null`. Ignored while [flex] is non-null.
+  ///
+  /// Defaults to `null`, in which case a fixed column falls back to a default
+  /// width so the header and the rows stay aligned.
+  double? get width => null;
 
   /// Builder for edit/create flow.
-  /// 
+  ///
   /// It provides context, current [value] and [onChanged] method.
   /// It is recommended to wrap it in [CmsFieldWrapper].
   ///

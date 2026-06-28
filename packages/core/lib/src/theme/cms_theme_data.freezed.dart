@@ -14,7 +14,13 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CmsThemeData {
 
- CmsThemeColors get colors; CmsThemeTextStyles get textStyles; BorderRadius get borderRadius; EdgeInsets get fieldContentPadding; double get pageTopPadding; List<BoxShadow> get menuShadow; BorderRadius get menuRadius; double get shortButtonWidth;
+ CmsThemeColors get colors; CmsThemeTextStyles get textStyles; BorderRadius get borderRadius; EdgeInsets get fieldContentPadding; double get pageTopPadding; List<BoxShadow> get menuShadow; BorderRadius get menuRadius; double get shortButtonWidth;/// Corner radius of the table card.
+ BorderRadius get cardRadius;/// Stroke width of the table card border.
+ double get cardBorderWidth;/// Drop shadow cast by the table card.
+ List<BoxShadow> get cardShadow;/// Height of a single table row.
+ double get tileHeight;/// Thickness of row / header dividers.
+ double get dividerThickness;/// Corner radius of a [CmsChip].
+ double get chipRadius;
 /// Create a copy of CmsThemeData
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +31,16 @@ $CmsThemeDataCopyWith<CmsThemeData> get copyWith => _$CmsThemeDataCopyWithImpl<C
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsThemeData&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.textStyles, textStyles) || other.textStyles == textStyles)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.fieldContentPadding, fieldContentPadding) || other.fieldContentPadding == fieldContentPadding)&&(identical(other.pageTopPadding, pageTopPadding) || other.pageTopPadding == pageTopPadding)&&const DeepCollectionEquality().equals(other.menuShadow, menuShadow)&&(identical(other.menuRadius, menuRadius) || other.menuRadius == menuRadius)&&(identical(other.shortButtonWidth, shortButtonWidth) || other.shortButtonWidth == shortButtonWidth));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsThemeData&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.textStyles, textStyles) || other.textStyles == textStyles)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.fieldContentPadding, fieldContentPadding) || other.fieldContentPadding == fieldContentPadding)&&(identical(other.pageTopPadding, pageTopPadding) || other.pageTopPadding == pageTopPadding)&&const DeepCollectionEquality().equals(other.menuShadow, menuShadow)&&(identical(other.menuRadius, menuRadius) || other.menuRadius == menuRadius)&&(identical(other.shortButtonWidth, shortButtonWidth) || other.shortButtonWidth == shortButtonWidth)&&(identical(other.cardRadius, cardRadius) || other.cardRadius == cardRadius)&&(identical(other.cardBorderWidth, cardBorderWidth) || other.cardBorderWidth == cardBorderWidth)&&const DeepCollectionEquality().equals(other.cardShadow, cardShadow)&&(identical(other.tileHeight, tileHeight) || other.tileHeight == tileHeight)&&(identical(other.dividerThickness, dividerThickness) || other.dividerThickness == dividerThickness)&&(identical(other.chipRadius, chipRadius) || other.chipRadius == chipRadius));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,colors,textStyles,borderRadius,fieldContentPadding,pageTopPadding,const DeepCollectionEquality().hash(menuShadow),menuRadius,shortButtonWidth);
+int get hashCode => Object.hash(runtimeType,colors,textStyles,borderRadius,fieldContentPadding,pageTopPadding,const DeepCollectionEquality().hash(menuShadow),menuRadius,shortButtonWidth,cardRadius,cardBorderWidth,const DeepCollectionEquality().hash(cardShadow),tileHeight,dividerThickness,chipRadius);
 
 @override
 String toString() {
-  return 'CmsThemeData(colors: $colors, textStyles: $textStyles, borderRadius: $borderRadius, fieldContentPadding: $fieldContentPadding, pageTopPadding: $pageTopPadding, menuShadow: $menuShadow, menuRadius: $menuRadius, shortButtonWidth: $shortButtonWidth)';
+  return 'CmsThemeData(colors: $colors, textStyles: $textStyles, borderRadius: $borderRadius, fieldContentPadding: $fieldContentPadding, pageTopPadding: $pageTopPadding, menuShadow: $menuShadow, menuRadius: $menuRadius, shortButtonWidth: $shortButtonWidth, cardRadius: $cardRadius, cardBorderWidth: $cardBorderWidth, cardShadow: $cardShadow, tileHeight: $tileHeight, dividerThickness: $dividerThickness, chipRadius: $chipRadius)';
 }
 
 
@@ -45,7 +51,7 @@ abstract mixin class $CmsThemeDataCopyWith<$Res>  {
   factory $CmsThemeDataCopyWith(CmsThemeData value, $Res Function(CmsThemeData) _then) = _$CmsThemeDataCopyWithImpl;
 @useResult
 $Res call({
- CmsThemeColors colors, CmsThemeTextStyles textStyles, BorderRadius borderRadius, EdgeInsets fieldContentPadding, double pageTopPadding, List<BoxShadow> menuShadow, BorderRadius menuRadius, double shortButtonWidth
+ CmsThemeColors colors, CmsThemeTextStyles textStyles, BorderRadius borderRadius, EdgeInsets fieldContentPadding, double pageTopPadding, List<BoxShadow> menuShadow, BorderRadius menuRadius, double shortButtonWidth, BorderRadius cardRadius, double cardBorderWidth, List<BoxShadow> cardShadow, double tileHeight, double dividerThickness, double chipRadius
 });
 
 
@@ -62,7 +68,7 @@ class _$CmsThemeDataCopyWithImpl<$Res>
 
 /// Create a copy of CmsThemeData
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? colors = null,Object? textStyles = null,Object? borderRadius = null,Object? fieldContentPadding = null,Object? pageTopPadding = null,Object? menuShadow = null,Object? menuRadius = null,Object? shortButtonWidth = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? colors = null,Object? textStyles = null,Object? borderRadius = null,Object? fieldContentPadding = null,Object? pageTopPadding = null,Object? menuShadow = null,Object? menuRadius = null,Object? shortButtonWidth = null,Object? cardRadius = null,Object? cardBorderWidth = null,Object? cardShadow = null,Object? tileHeight = null,Object? dividerThickness = null,Object? chipRadius = null,}) {
   return _then(_self.copyWith(
 colors: null == colors ? _self.colors : colors // ignore: cast_nullable_to_non_nullable
 as CmsThemeColors,textStyles: null == textStyles ? _self.textStyles : textStyles // ignore: cast_nullable_to_non_nullable
@@ -72,6 +78,12 @@ as EdgeInsets,pageTopPadding: null == pageTopPadding ? _self.pageTopPadding : pa
 as double,menuShadow: null == menuShadow ? _self.menuShadow : menuShadow // ignore: cast_nullable_to_non_nullable
 as List<BoxShadow>,menuRadius: null == menuRadius ? _self.menuRadius : menuRadius // ignore: cast_nullable_to_non_nullable
 as BorderRadius,shortButtonWidth: null == shortButtonWidth ? _self.shortButtonWidth : shortButtonWidth // ignore: cast_nullable_to_non_nullable
+as double,cardRadius: null == cardRadius ? _self.cardRadius : cardRadius // ignore: cast_nullable_to_non_nullable
+as BorderRadius,cardBorderWidth: null == cardBorderWidth ? _self.cardBorderWidth : cardBorderWidth // ignore: cast_nullable_to_non_nullable
+as double,cardShadow: null == cardShadow ? _self.cardShadow : cardShadow // ignore: cast_nullable_to_non_nullable
+as List<BoxShadow>,tileHeight: null == tileHeight ? _self.tileHeight : tileHeight // ignore: cast_nullable_to_non_nullable
+as double,dividerThickness: null == dividerThickness ? _self.dividerThickness : dividerThickness // ignore: cast_nullable_to_non_nullable
+as double,chipRadius: null == chipRadius ? _self.chipRadius : chipRadius // ignore: cast_nullable_to_non_nullable
 as double,
   ));
 }
@@ -175,10 +187,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CmsThemeColors colors,  CmsThemeTextStyles textStyles,  BorderRadius borderRadius,  EdgeInsets fieldContentPadding,  double pageTopPadding,  List<BoxShadow> menuShadow,  BorderRadius menuRadius,  double shortButtonWidth)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CmsThemeColors colors,  CmsThemeTextStyles textStyles,  BorderRadius borderRadius,  EdgeInsets fieldContentPadding,  double pageTopPadding,  List<BoxShadow> menuShadow,  BorderRadius menuRadius,  double shortButtonWidth,  BorderRadius cardRadius,  double cardBorderWidth,  List<BoxShadow> cardShadow,  double tileHeight,  double dividerThickness,  double chipRadius)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CmsThemeData() when $default != null:
-return $default(_that.colors,_that.textStyles,_that.borderRadius,_that.fieldContentPadding,_that.pageTopPadding,_that.menuShadow,_that.menuRadius,_that.shortButtonWidth);case _:
+return $default(_that.colors,_that.textStyles,_that.borderRadius,_that.fieldContentPadding,_that.pageTopPadding,_that.menuShadow,_that.menuRadius,_that.shortButtonWidth,_that.cardRadius,_that.cardBorderWidth,_that.cardShadow,_that.tileHeight,_that.dividerThickness,_that.chipRadius);case _:
   return orElse();
 
 }
@@ -196,10 +208,10 @@ return $default(_that.colors,_that.textStyles,_that.borderRadius,_that.fieldCont
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CmsThemeColors colors,  CmsThemeTextStyles textStyles,  BorderRadius borderRadius,  EdgeInsets fieldContentPadding,  double pageTopPadding,  List<BoxShadow> menuShadow,  BorderRadius menuRadius,  double shortButtonWidth)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CmsThemeColors colors,  CmsThemeTextStyles textStyles,  BorderRadius borderRadius,  EdgeInsets fieldContentPadding,  double pageTopPadding,  List<BoxShadow> menuShadow,  BorderRadius menuRadius,  double shortButtonWidth,  BorderRadius cardRadius,  double cardBorderWidth,  List<BoxShadow> cardShadow,  double tileHeight,  double dividerThickness,  double chipRadius)  $default,) {final _that = this;
 switch (_that) {
 case _CmsThemeData():
-return $default(_that.colors,_that.textStyles,_that.borderRadius,_that.fieldContentPadding,_that.pageTopPadding,_that.menuShadow,_that.menuRadius,_that.shortButtonWidth);case _:
+return $default(_that.colors,_that.textStyles,_that.borderRadius,_that.fieldContentPadding,_that.pageTopPadding,_that.menuShadow,_that.menuRadius,_that.shortButtonWidth,_that.cardRadius,_that.cardBorderWidth,_that.cardShadow,_that.tileHeight,_that.dividerThickness,_that.chipRadius);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -216,10 +228,10 @@ return $default(_that.colors,_that.textStyles,_that.borderRadius,_that.fieldCont
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CmsThemeColors colors,  CmsThemeTextStyles textStyles,  BorderRadius borderRadius,  EdgeInsets fieldContentPadding,  double pageTopPadding,  List<BoxShadow> menuShadow,  BorderRadius menuRadius,  double shortButtonWidth)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CmsThemeColors colors,  CmsThemeTextStyles textStyles,  BorderRadius borderRadius,  EdgeInsets fieldContentPadding,  double pageTopPadding,  List<BoxShadow> menuShadow,  BorderRadius menuRadius,  double shortButtonWidth,  BorderRadius cardRadius,  double cardBorderWidth,  List<BoxShadow> cardShadow,  double tileHeight,  double dividerThickness,  double chipRadius)?  $default,) {final _that = this;
 switch (_that) {
 case _CmsThemeData() when $default != null:
-return $default(_that.colors,_that.textStyles,_that.borderRadius,_that.fieldContentPadding,_that.pageTopPadding,_that.menuShadow,_that.menuRadius,_that.shortButtonWidth);case _:
+return $default(_that.colors,_that.textStyles,_that.borderRadius,_that.fieldContentPadding,_that.pageTopPadding,_that.menuShadow,_that.menuRadius,_that.shortButtonWidth,_that.cardRadius,_that.cardBorderWidth,_that.cardShadow,_that.tileHeight,_that.dividerThickness,_that.chipRadius);case _:
   return null;
 
 }
@@ -231,7 +243,7 @@ return $default(_that.colors,_that.textStyles,_that.borderRadius,_that.fieldCont
 
 
 class _CmsThemeData extends CmsThemeData {
-  const _CmsThemeData({required this.colors, required this.textStyles, required this.borderRadius, required this.fieldContentPadding, required this.pageTopPadding, required final  List<BoxShadow> menuShadow, required this.menuRadius, required this.shortButtonWidth}): _menuShadow = menuShadow,super._();
+  const _CmsThemeData({required this.colors, required this.textStyles, required this.borderRadius, required this.fieldContentPadding, required this.pageTopPadding, required final  List<BoxShadow> menuShadow, required this.menuRadius, required this.shortButtonWidth, this.cardRadius = const BorderRadius.all(Radius.circular(16)), this.cardBorderWidth = 1.5, final  List<BoxShadow> cardShadow = const <BoxShadow>[BoxShadow(color: Color(0x0D000000), blurRadius: 6, offset: Offset(0, 1))], this.tileHeight = 58.0, this.dividerThickness = 1.0, this.chipRadius = 8.0}): _menuShadow = menuShadow,_cardShadow = cardShadow,super._();
   
 
 @override final  CmsThemeColors colors;
@@ -248,6 +260,25 @@ class _CmsThemeData extends CmsThemeData {
 
 @override final  BorderRadius menuRadius;
 @override final  double shortButtonWidth;
+/// Corner radius of the table card.
+@override@JsonKey() final  BorderRadius cardRadius;
+/// Stroke width of the table card border.
+@override@JsonKey() final  double cardBorderWidth;
+/// Drop shadow cast by the table card.
+ final  List<BoxShadow> _cardShadow;
+/// Drop shadow cast by the table card.
+@override@JsonKey() List<BoxShadow> get cardShadow {
+  if (_cardShadow is EqualUnmodifiableListView) return _cardShadow;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_cardShadow);
+}
+
+/// Height of a single table row.
+@override@JsonKey() final  double tileHeight;
+/// Thickness of row / header dividers.
+@override@JsonKey() final  double dividerThickness;
+/// Corner radius of a [CmsChip].
+@override@JsonKey() final  double chipRadius;
 
 /// Create a copy of CmsThemeData
 /// with the given fields replaced by the non-null parameter values.
@@ -259,16 +290,16 @@ _$CmsThemeDataCopyWith<_CmsThemeData> get copyWith => __$CmsThemeDataCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CmsThemeData&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.textStyles, textStyles) || other.textStyles == textStyles)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.fieldContentPadding, fieldContentPadding) || other.fieldContentPadding == fieldContentPadding)&&(identical(other.pageTopPadding, pageTopPadding) || other.pageTopPadding == pageTopPadding)&&const DeepCollectionEquality().equals(other._menuShadow, _menuShadow)&&(identical(other.menuRadius, menuRadius) || other.menuRadius == menuRadius)&&(identical(other.shortButtonWidth, shortButtonWidth) || other.shortButtonWidth == shortButtonWidth));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CmsThemeData&&(identical(other.colors, colors) || other.colors == colors)&&(identical(other.textStyles, textStyles) || other.textStyles == textStyles)&&(identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius)&&(identical(other.fieldContentPadding, fieldContentPadding) || other.fieldContentPadding == fieldContentPadding)&&(identical(other.pageTopPadding, pageTopPadding) || other.pageTopPadding == pageTopPadding)&&const DeepCollectionEquality().equals(other._menuShadow, _menuShadow)&&(identical(other.menuRadius, menuRadius) || other.menuRadius == menuRadius)&&(identical(other.shortButtonWidth, shortButtonWidth) || other.shortButtonWidth == shortButtonWidth)&&(identical(other.cardRadius, cardRadius) || other.cardRadius == cardRadius)&&(identical(other.cardBorderWidth, cardBorderWidth) || other.cardBorderWidth == cardBorderWidth)&&const DeepCollectionEquality().equals(other._cardShadow, _cardShadow)&&(identical(other.tileHeight, tileHeight) || other.tileHeight == tileHeight)&&(identical(other.dividerThickness, dividerThickness) || other.dividerThickness == dividerThickness)&&(identical(other.chipRadius, chipRadius) || other.chipRadius == chipRadius));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,colors,textStyles,borderRadius,fieldContentPadding,pageTopPadding,const DeepCollectionEquality().hash(_menuShadow),menuRadius,shortButtonWidth);
+int get hashCode => Object.hash(runtimeType,colors,textStyles,borderRadius,fieldContentPadding,pageTopPadding,const DeepCollectionEquality().hash(_menuShadow),menuRadius,shortButtonWidth,cardRadius,cardBorderWidth,const DeepCollectionEquality().hash(_cardShadow),tileHeight,dividerThickness,chipRadius);
 
 @override
 String toString() {
-  return 'CmsThemeData(colors: $colors, textStyles: $textStyles, borderRadius: $borderRadius, fieldContentPadding: $fieldContentPadding, pageTopPadding: $pageTopPadding, menuShadow: $menuShadow, menuRadius: $menuRadius, shortButtonWidth: $shortButtonWidth)';
+  return 'CmsThemeData(colors: $colors, textStyles: $textStyles, borderRadius: $borderRadius, fieldContentPadding: $fieldContentPadding, pageTopPadding: $pageTopPadding, menuShadow: $menuShadow, menuRadius: $menuRadius, shortButtonWidth: $shortButtonWidth, cardRadius: $cardRadius, cardBorderWidth: $cardBorderWidth, cardShadow: $cardShadow, tileHeight: $tileHeight, dividerThickness: $dividerThickness, chipRadius: $chipRadius)';
 }
 
 
@@ -279,7 +310,7 @@ abstract mixin class _$CmsThemeDataCopyWith<$Res> implements $CmsThemeDataCopyWi
   factory _$CmsThemeDataCopyWith(_CmsThemeData value, $Res Function(_CmsThemeData) _then) = __$CmsThemeDataCopyWithImpl;
 @override @useResult
 $Res call({
- CmsThemeColors colors, CmsThemeTextStyles textStyles, BorderRadius borderRadius, EdgeInsets fieldContentPadding, double pageTopPadding, List<BoxShadow> menuShadow, BorderRadius menuRadius, double shortButtonWidth
+ CmsThemeColors colors, CmsThemeTextStyles textStyles, BorderRadius borderRadius, EdgeInsets fieldContentPadding, double pageTopPadding, List<BoxShadow> menuShadow, BorderRadius menuRadius, double shortButtonWidth, BorderRadius cardRadius, double cardBorderWidth, List<BoxShadow> cardShadow, double tileHeight, double dividerThickness, double chipRadius
 });
 
 
@@ -296,7 +327,7 @@ class __$CmsThemeDataCopyWithImpl<$Res>
 
 /// Create a copy of CmsThemeData
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? colors = null,Object? textStyles = null,Object? borderRadius = null,Object? fieldContentPadding = null,Object? pageTopPadding = null,Object? menuShadow = null,Object? menuRadius = null,Object? shortButtonWidth = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? colors = null,Object? textStyles = null,Object? borderRadius = null,Object? fieldContentPadding = null,Object? pageTopPadding = null,Object? menuShadow = null,Object? menuRadius = null,Object? shortButtonWidth = null,Object? cardRadius = null,Object? cardBorderWidth = null,Object? cardShadow = null,Object? tileHeight = null,Object? dividerThickness = null,Object? chipRadius = null,}) {
   return _then(_CmsThemeData(
 colors: null == colors ? _self.colors : colors // ignore: cast_nullable_to_non_nullable
 as CmsThemeColors,textStyles: null == textStyles ? _self.textStyles : textStyles // ignore: cast_nullable_to_non_nullable
@@ -306,6 +337,12 @@ as EdgeInsets,pageTopPadding: null == pageTopPadding ? _self.pageTopPadding : pa
 as double,menuShadow: null == menuShadow ? _self._menuShadow : menuShadow // ignore: cast_nullable_to_non_nullable
 as List<BoxShadow>,menuRadius: null == menuRadius ? _self.menuRadius : menuRadius // ignore: cast_nullable_to_non_nullable
 as BorderRadius,shortButtonWidth: null == shortButtonWidth ? _self.shortButtonWidth : shortButtonWidth // ignore: cast_nullable_to_non_nullable
+as double,cardRadius: null == cardRadius ? _self.cardRadius : cardRadius // ignore: cast_nullable_to_non_nullable
+as BorderRadius,cardBorderWidth: null == cardBorderWidth ? _self.cardBorderWidth : cardBorderWidth // ignore: cast_nullable_to_non_nullable
+as double,cardShadow: null == cardShadow ? _self._cardShadow : cardShadow // ignore: cast_nullable_to_non_nullable
+as List<BoxShadow>,tileHeight: null == tileHeight ? _self.tileHeight : tileHeight // ignore: cast_nullable_to_non_nullable
+as double,dividerThickness: null == dividerThickness ? _self.dividerThickness : dividerThickness // ignore: cast_nullable_to_non_nullable
+as double,chipRadius: null == chipRadius ? _self.chipRadius : chipRadius // ignore: cast_nullable_to_non_nullable
 as double,
   ));
 }

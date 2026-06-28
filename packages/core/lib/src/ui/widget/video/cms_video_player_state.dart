@@ -1,15 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
-import 'package:utopia_arch/utopia_arch.dart';
-import 'package:video_player/video_player.dart';
+import 'package:media_kit/media_kit.dart';
+import 'package:media_kit_video/media_kit_video.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 class CmsVideoPlayerState {
-  final VideoPlayerController? controller;
+  final VideoController videoController;
+  final bool isInitialized;
+  final Size naturalSize;
   final AnimationController animationController;
   final MutableValue<bool> isPlayingState;
   final FocusNode focusNode;
 
   const CmsVideoPlayerState({
-    required this.controller,
+    required this.videoController,
+    required this.isInitialized,
+    required this.naturalSize,
     required this.animationController,
     required this.isPlayingState,
     required this.focusNode,
@@ -17,55 +24,66 @@ class CmsVideoPlayerState {
 }
 
 CmsVideoPlayerState useCmsVidePlayerState({required String url}) {
-  final controllerState = useState<VideoPlayerController?>(null);
-
-  useEffect(() async {
-    controllerState.value = null;
-    final controller = VideoPlayerController.networkUrl(Uri.parse(url));
-    await controller.initialize().then((_) => controllerState.value = controller);
-  }, []);
+  final player = useMemoized(Player.new);
+  final videoController = useMemoized(() => VideoController(player), [player]);
 
   useEffect(() {
-    return controllerState.value?.dispose;
-  }, []);
+    unawaited(player.open(Media(url), play: false));
+    return null;
+  }, [player, url]);
 
-  final controllerValue = useValueListenable(
-    controllerState.value ?? ValueNotifier(const VideoPlayerValue.uninitialized()),
+  // [VideoController] is released together with its [Player].
+  useEffect(
+    () =>
+        () => unawaited(player.dispose()),
+    [player],
   );
+
   final focusNode = useMemoized(FocusNode.new);
   final animationController = useAnimationController(duration: const Duration(milliseconds: 300));
   final isPlayingState = useState<bool>(false);
+
+  // Drive rebuilds (and the "ready" signal) off the decoded video dimensions.
+  final width = useMemoizedStreamData(() => player.stream.width, keys: [player], initialData: player.state.width) ?? 0;
+  final height =
+      useMemoizedStreamData(() => player.stream.height, keys: [player], initialData: player.state.height) ?? 0;
+  final isInitialized = width > 0 && height > 0;
+
+  final completed =
+      useMemoizedStreamData(() => player.stream.completed, keys: [player], initialData: player.state.completed) ??
+      false;
 
   useListenable(focusNode);
 
   useEffect(() {
     if (!focusNode.hasFocus) isPlayingState.value = false;
+    return null;
   }, [focusNode.hasFocus]);
 
-  useEffect(() async {
-    if (controllerState.value != null) {
-      if (isPlayingState.value) {
-        if (!focusNode.hasFocus) focusNode.requestFocus();
-        await controllerState.value!.play();
-        await animationController.forward();
-      } else {
-        await controllerState.value!.pause();
-        await animationController.reverse();
-      }
+  useEffect(() {
+    if (isPlayingState.value) {
+      if (!focusNode.hasFocus) focusNode.requestFocus();
+      unawaited(player.play());
+      unawaited(animationController.forward());
+    } else {
+      unawaited(player.pause());
+      unawaited(animationController.reverse());
     }
+    return null;
   }, [isPlayingState.value]);
 
-  useEffect(() async {
-    if (controllerValue.duration != Duration.zero) {
-      if (controllerValue.position == controllerValue.duration) {
-        isPlayingState.value = false;
-        await controllerState.value!.seekTo(Duration.zero);
-      }
+  useEffect(() {
+    if (completed) {
+      isPlayingState.value = false;
+      unawaited(player.seek(Duration.zero));
     }
-  }, [controllerValue]);
+    return null;
+  }, [completed]);
 
   return CmsVideoPlayerState(
-    controller: controllerState.value,
+    videoController: videoController,
+    isInitialized: isInitialized,
+    naturalSize: Size(width.toDouble(), height.toDouble()),
     animationController: animationController,
     isPlayingState: isPlayingState,
     focusNode: focusNode,

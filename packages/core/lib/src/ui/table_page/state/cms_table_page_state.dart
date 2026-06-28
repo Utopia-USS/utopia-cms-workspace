@@ -1,6 +1,5 @@
-import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
-import 'package:utopia_arch/utopia_arch.dart';
+import 'package:provider/provider.dart';
 import 'package:utopia_cms/src/delegate/cms_delegate.dart';
 import 'package:utopia_cms/src/model/cms_filter.dart';
 import 'package:utopia_cms/src/model/cms_functions_params.dart';
@@ -8,7 +7,9 @@ import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/filter_entry/cms_filter_entry.dart';
 import 'package:utopia_cms/src/model/item_management/cms_management_section_entry.dart';
 import 'package:utopia_cms/src/model/table/cms_table_page_params.dart';
+import 'package:utopia_cms/src/theme/cms_theme_data.dart';
 import 'package:utopia_cms/src/ui/item_management/cms_management_page.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 import 'package:utopia_cms/src/util/map_extensions.dart';
 
@@ -102,8 +103,7 @@ CmsTablePageState useCmsTablePageState({
 
         if (result.isNotEmpty) {
           final existingIds = itemsState.value.map((e) => e[delegate.idKey]).toSet();
-          final filtered = result.where((e) => !existingIds.contains(e[delegate.idKey]),
-          );
+          final filtered = result.where((e) => !existingIds.contains(e[delegate.idKey]));
           itemsState.value = itemsState.value.addAll(filtered);
           pagingOffsetState.value += result.length;
         }
@@ -126,8 +126,16 @@ CmsTablePageState useCmsTablePageState({
     }
   }
 
+  // The overlay is pushed onto the app Navigator, outside the CmsWidget theme
+  // provider, so the theme is resolved at push time and re-provided inside it.
+  // Reading it lazily in onManage (rather than caching a value captured with
+  // listen: false at an earlier build) means a runtime theme change is picked
+  // up the next time the overlay opens, without waiting for a table refresh.
+  final buildContext = useBuildContext();
+
   ///not null params mean that it's edit
   Future<void> onManage({JsonMap? value, int? index}) async {
+    final theme = Provider.of<CmsThemeData?>(buildContext, listen: false) ?? CmsThemeData.defaultTheme;
     final result = await navigator.push<bool?>(
       PageRouteBuilder(
         opaque: false,
@@ -136,6 +144,7 @@ CmsTablePageState useCmsTablePageState({
         transitionDuration: const Duration(milliseconds: 400),
         reverseTransitionDuration: const Duration(milliseconds: 400),
         pageBuilder: (_, animation, _) => CmsManagementOverlay(
+          theme: theme,
           args: CmsManagementArgs(
             uploadChanges: (newJson, oldJson) =>
                 value != null ? delegate.update(newJson, oldJson!) : delegate.create(newJson),

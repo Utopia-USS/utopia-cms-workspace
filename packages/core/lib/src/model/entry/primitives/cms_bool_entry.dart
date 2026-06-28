@@ -6,13 +6,16 @@ import 'package:utopia_cms/src/ui/widget/switch/cms_switch_field.dart';
 
 /// [CmsEntry] for handling boolean values
 class CmsBoolEntry extends CmsEntry<bool> {
-  CmsBoolEntry({required this.key, this.label, this.modifier = const CmsEntryModifier(), this.flex = 2});
+  CmsBoolEntry({required this.key, this.label, this.modifier = const CmsEntryModifier(), this.flex = 2, this.width});
 
   @override
   final String key;
 
   @override
-  final int flex;
+  final int? flex;
+
+  @override
+  final double? width;
 
   @override
   final String? label;

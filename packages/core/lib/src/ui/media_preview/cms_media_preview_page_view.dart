@@ -1,6 +1,6 @@
-import 'package:blur/blur.dart';
+import 'dart:ui' show ImageFilter;
+
 import 'package:flutter/material.dart';
-import 'package:loop_page_view/loop_page_view.dart';
 import 'package:utopia_cms/src/ui/media_preview/cms_media_type.dart';
 import 'package:utopia_cms/src/ui/media_preview/state/cms_media_preview_page_state.dart';
 import 'package:utopia_cms/src/ui/widget/video/cms_video_player.dart';
@@ -89,7 +89,7 @@ class CmsMediaPreviewPageView extends StatelessWidget {
   // }
 
   Widget _buildMedia() {
-    return LoopPageView.builder(
+    return PageView.builder(
       controller: state.controller,
       physics: state.items.length > 1 ? null : const NeverScrollableScrollPhysics(),
       itemCount: state.items.length,
@@ -133,22 +133,21 @@ class CmsMediaPreviewPageView extends StatelessWidget {
 
   Widget _buildArrows(BuildContext context) {
     final animate = state.animateTo;
-    final controller = state.controller;
+    final lastIndex = state.items.length - 1;
+    final index = state.fixedIndex;
     return Center(
       child: SafeArea(
         minimum: const EdgeInsets.symmetric(horizontal: 80),
         child: Row(
           children: [
             _buildArrow(
-              onPressed: () async =>
-                  controller.page.round() == 0 ? animate(state.items.length - 1) : animate(controller.page.toInt() - 1),
+              onPressed: () async => index == 0 ? animate(lastIndex) : animate(index - 1),
               icon: Icons.arrow_back_ios_rounded,
             ),
             const Spacer(),
             _buildArrow(
               icon: Icons.arrow_forward_ios_rounded,
-              onPressed: () async =>
-                  controller.page.round() == state.items.length - 1 ? animate(0) : animate(controller.page.toInt() + 1),
+              onPressed: () async => index == lastIndex ? animate(0) : animate(index + 1),
             ),
           ],
         ),
@@ -190,9 +189,8 @@ class CmsMediaPreviewPageView extends StatelessWidget {
   Widget _buildBackground(double height, double width) {
     return Opacity(
       opacity: 0.85,
-      child: Blur(
-        blur: 50,
-        blurColor: Colors.transparent,
+      child: ImageFiltered(
+        imageFilter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
         child: SizedBox(
           height: height,
           width: width,

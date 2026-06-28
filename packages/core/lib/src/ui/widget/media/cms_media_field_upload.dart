@@ -1,7 +1,7 @@
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/utopia_cms.dart';
 
 class CmsMediaFieldUpload extends HookWidget {

@@ -1,10 +1,10 @@
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 import 'package:reorderables/reorderables.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/ui/widget/header/cms_title.dart';
 import 'package:utopia_cms/src/ui/widget/media/cms_media_field_video_player.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/utopia_cms.dart';
 
 class CmsMediaField extends HookWidget {
@@ -33,7 +33,7 @@ class CmsMediaField extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final navigator = context.navigator;
+    final navigator = Navigator.of(context);
     final state = useCmsMediaFieldState(
       delegate: delegate,
       initialValues: initialValues,
@@ -59,9 +59,7 @@ class CmsMediaField extends HookWidget {
               spacing: spacing,
               runSpacing: spacing,
               onReorder: state.onReorder,
-              header: state.isAtMaxFiles
-                  ? const []
-                  : [CmsMediaFieldAddButton(state: state, size: size)],
+              header: state.isAtMaxFiles ? const [] : [CmsMediaFieldAddButton(state: state, size: size)],
               children: [
                 for (int i = 0; i < state.files.length; i++)
                   if (state.files[i] is XFile)

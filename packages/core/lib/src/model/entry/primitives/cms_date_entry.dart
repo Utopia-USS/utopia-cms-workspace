@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry_modifier.dart';
 import 'package:utopia_cms/src/ui/widget/date_picker/cms_date_picker.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table_preview_text.dart';
 import 'package:utopia_cms/src/util/date_time_extension.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 /// [CmsEntry] for handling basic dates
 class CmsDateEntry extends CmsEntry<DateTime?> {
-  CmsDateEntry({required this.key, this.label, this.modifier = const CmsEntryModifier(), this.flex = 2});
+  CmsDateEntry({required this.key, this.label, this.modifier = const CmsEntryModifier(), this.flex = 2, this.width});
 
   @override
   final String key;
 
   @override
-  final int flex;
+  final int? flex;
+
+  @override
+  final double? width;
 
   @override
   final String? label;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/ui/media_preview/cms_media_preview_page_view.dart';
 import 'package:utopia_cms/src/ui/media_preview/cms_media_type.dart';
 import 'package:utopia_cms/src/ui/media_preview/state/cms_media_preview_page_state.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 class CmsMediaPreviewPageArgs {
   final int initialIndex;

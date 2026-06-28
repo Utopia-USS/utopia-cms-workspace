@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:utopia_cms/src/theme/cms_theme_data.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
 
 class CmsDialog extends StatelessWidget {
@@ -45,9 +47,15 @@ class CmsDialog extends StatelessWidget {
     bool hasProceed = true,
     bool hasCancel = true,
   }) async {
+    // showDialog roots at the app Navigator, outside the CmsWidget theme
+    // provider, so capture the resolved theme and re-provide it in the dialog.
+    final theme = Provider.of<CmsThemeData?>(context, listen: false) ?? CmsThemeData.defaultTheme;
     return showDialog<bool>(
       context: context,
-      builder: (context) => CmsDialog(title: title, subtitle: subtitle),
+      builder: (_) => Provider.value(
+        value: theme,
+        child: CmsDialog(title: title, subtitle: subtitle, hasProceed: hasProceed, hasCancel: hasCancel),
+      ),
     );
   }
 }

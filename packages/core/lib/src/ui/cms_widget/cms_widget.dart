@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/model/menu/cms_widget_menu_params.dart';
 import 'package:utopia_cms/src/theme/cms_theme_data.dart';
+import 'package:utopia_cms/src/ui/cms_widget/cms_shell_menu_scope.dart';
 import 'package:utopia_cms/src/ui/cms_widget/cms_widget_item.dart';
 import 'package:utopia_cms/src/ui/menu/cms_menu.dart';
+import 'package:utopia_cms/src/ui/widget/layout/cms_breakpoints.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 class CmsWidget extends HookWidget {
   final List<CmsWidgetItem> items;
@@ -21,58 +23,93 @@ class CmsWidget extends HookWidget {
     this.menuParams = const CmsWidgetMenuParams(),
   });
 
-  static const double contentWidth = 600;
-
   @override
   Widget build(BuildContext context) {
     final selectedPageIdState =
         selectedPageId ?? useState(useMemoized(() => items.whereType<CmsWidgetItemPage>().first.id));
+    final scaffoldKey = useMemoized(GlobalKey<ScaffoldState>.new);
+
+    void onItemPressed(int index, {required bool fromDrawer}) {
+      items[index].map(
+        page: (it) => selectedPageIdState.value = it.id,
+        action: (it) => it.onPressed(),
+        custom: (_) => null,
+      );
+      // In drawer presentation a tap dismisses the overlay (jolly pattern).
+      if (fromDrawer) scaffoldKey.currentState?.closeDrawer();
+    }
 
     return Provider.value(
       value: theme ?? CmsThemeData.defaultTheme,
-      child: Scaffold(
-        backgroundColor: context.colors.canvas,
-        body: LayoutBuilder(
-          builder: (context, constraints) {
-            final width = constraints.maxWidth;
-            return Row(
-              children: [
-                CmsMenu(
-                  canExpand: width > contentWidth * 1.3,
-                  items: items,
-                  selectedPageId: selectedPageIdState.value,
-                  menuParams: menuParams,
-                  onPressed: (index) => items[index].map(
-                    page: (it) => selectedPageIdState.value = it.id,
-                    action: (it) => it.onPressed(),
-                    custom: (it) {
-                      return null;
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 32),
-                    child: CrossFadeIndexedStack(
-                      duration: const Duration(milliseconds: 400),
-                      index: items.indexWhere((it) => it is CmsWidgetItemPage && it.id == selectedPageIdState.value),
-                      lazy: true,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          // Shell breakpoint is measured on the full window width, before the
+          // sidebar takes its share - tablet and phone both fall to the drawer.
+          final isDrawer = constraints.maxWidth < CmsBreakpoints.sidebarMin;
+          final content = _buildContent(selectedPageIdState.value);
+
+          return Scaffold(
+            key: scaffoldKey,
+            backgroundColor: context.colors.canvas,
+            drawerScrimColor: Colors.black.withValues(alpha: 0.32),
+            drawer: isDrawer
+                ? CmsMenu(
+                    presentation: CmsMenuPresentation.drawer,
+                    items: items,
+                    selectedPageId: selectedPageIdState.value,
+                    menuParams: menuParams,
+                    onPressed: (index) => onItemPressed(index, fromDrawer: true),
+                  )
+                : null,
+            body: Provider.value(
+              value: CmsShellMenuScope(
+                isDrawer: isDrawer,
+                openDrawer: () => scaffoldKey.currentState?.openDrawer(),
+              ),
+              child: isDrawer
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: CmsMenu.shellGutter),
+                      child: content,
+                    )
+                  : Row(
                       children: [
-                        for (final item in items)
-                          item.map(
-                            page: (it) => it.content,
-                            action: (_) => const SizedBox.shrink(),
-                            custom: (_) => const SizedBox.shrink(),
+                        CmsMenu(
+                          items: items,
+                          selectedPageId: selectedPageIdState.value,
+                          menuParams: menuParams,
+                          onPressed: (index) => onItemPressed(index, fromDrawer: false),
+                        ),
+                        Expanded(
+                          // Left padding is the single shell gutter between sidebar
+                          // and content (the menu carries no right margin); right
+                          // padding matches it so the shell gutters stay uniform.
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: CmsMenu.shellGutter),
+                            child: content,
                           ),
+                        ),
                       ],
                     ),
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
+    );
+  }
+
+  Widget _buildContent(String selectedPageId) {
+    return CrossFadeIndexedStack(
+      duration: const Duration(milliseconds: 400),
+      index: items.indexWhere((it) => it is CmsWidgetItemPage && it.id == selectedPageId),
+      lazy: true,
+      children: [
+        for (final item in items)
+          item.map(
+            page: (it) => it.content,
+            action: (_) => const SizedBox.shrink(),
+            custom: (_) => const SizedBox.shrink(),
+          ),
+      ],
     );
   }
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:utopia_arch/utopia_arch.dart';
-import 'package:utopia_cms/src/ui/widget/wrapper/cms_field_wrapper.dart';
+import 'package:utopia_cms/src/ui/widget/overlay/cms_overlay_anchor.dart';
+import 'package:utopia_cms/src/ui/widget/wrapper/cms_labeled_field.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
 
-class CmsDropdownField<T> extends HookWidget {
+class CmsDropdownField<T> extends StatelessWidget {
   final T? value;
   final void Function(T) onChanged;
   final List<T> values;
@@ -21,37 +21,57 @@ class CmsDropdownField<T> extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final labelStyle = context.textStyles.label;
-    return CmsFieldWrapper(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
+    return CmsOverlayAnchor(
+      triggerBuilder: (context, open) => GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: open,
+        child: _buildTrigger(context),
+      ),
+      overlayBuilder: (context, close) => ListView(
+        padding: EdgeInsets.zero,
+        shrinkWrap: true,
         children: [
-          Text(label, style: labelStyle),
-          _buildDropDown(context),
+          for (final option in values)
+            _buildOption(context, option, selected: option == value, onTap: () {
+              onChanged(option);
+              close();
+            }),
         ],
       ),
     );
   }
 
-  Widget _buildDropDown(BuildContext context) {
-    final style = context.textStyles.text;
-    return DropdownButton<T>(
-      value: value,
-      isDense: true,
-      isExpanded: true,
-      style: style,
-      onChanged: (value) {
-        if (value != null) onChanged(value);
-      },
-      icon: Icon(Icons.arrow_downward, color: style.color, size: 14),
-      underline: const SizedBox.shrink(),
-      items: values.map<DropdownMenuItem<T>>((value) {
-        return DropdownMenuItem<T>(
-          value: value,
-          child: Text(valueLabelBuilder(value), style: style),
-        );
-      }).toList(),
+  Widget _buildTrigger(BuildContext context) {
+    final value = this.value;
+    // `null` may be a real, selectable option (e.g. a filter's "All"): show its
+    // label like any other value so the default reads as a selection, not an
+    // empty field. The resting placeholder is reserved for fields where `null`
+    // is genuinely "unset" (not present in [values]).
+    final hasValue = value != null || values.contains(null);
+    return CmsLabeledField(
+      label: label,
+      value: hasValue ? valueLabelBuilder(value as T) : null,
+      suffix: Icon(Icons.keyboard_arrow_down, size: 18, color: context.textStyles.text.color),
+    );
+  }
+
+  Widget _buildOption(BuildContext context, T option, {required bool selected, required VoidCallback onTap}) {
+    return InkWell(
+      onTap: onTap,
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      hoverColor: context.colors.hover,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(valueLabelBuilder(option), style: context.textStyles.text, overflow: TextOverflow.ellipsis),
+            ),
+            if (selected) Icon(Icons.check, size: 16, color: context.colors.accent),
+          ],
+        ),
+      ),
     );
   }
 }

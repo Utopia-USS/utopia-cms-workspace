@@ -1,15 +1,22 @@
 name: utopia_cms_supabase
-version: 0.1.0+3
+version: 0.1.1
 resolution: workspace
-description: Utopia CMS - Supabase
-homepage: https://github.com/Utopia-USS/utopia_cms
+description: Supabase backend for utopia_cms - build Flutter admin and CMS panels with sortable, filterable CRUD tables and per-row actions.
+homepage: https://github.com/Utopia-USS/utopia-cms-workspace
+repository: https://github.com/Utopia-USS/utopia-cms-workspace/tree/master/packages/supabase
+topics:
+  - cms
+  - admin
+  - supabase
+  - postgresql
+  - crud
 
 environment:
   sdk: ^3.11.0
 
 dependencies:
-  utopia_cms: ^0.2.4
+  utopia_cms: ^0.3.0
 
-  supabase_flutter: ^2.0.0
-  fast_immutable_collections: ^11.1.0
+  supabase_flutter: ^2.15.0
+  fast_immutable_collections: ^11.2.0
 

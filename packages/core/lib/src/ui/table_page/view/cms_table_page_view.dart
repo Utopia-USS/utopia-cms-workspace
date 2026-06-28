@@ -1,19 +1,19 @@
 import 'dart:async';
 
-import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/filter_entry/cms_filter_entry.dart';
+import 'package:utopia_cms/src/model/filter_entry/cms_search_filter_entry.dart';
 import 'package:utopia_cms/src/model/table/cms_table_action.dart';
 import 'package:utopia_cms/src/ui/table_page/state/cms_table_page_state.dart';
-import 'package:utopia_cms/src/ui/widget/button/cms_button.dart';
 import 'package:utopia_cms/src/ui/widget/header/cms_header.dart';
 import 'package:utopia_cms/src/ui/widget/loading/cms_loader.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table_actions.dart';
+import 'package:utopia_cms/src/ui/widget/table/cms_table_search_panel.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
 import 'package:utopia_cms/src/util/entries_extensions.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 class CmsTablePageView extends HookWidget {
   final CmsTablePageState state;
@@ -30,8 +30,6 @@ class CmsTablePageView extends HookWidget {
     required this.customActions,
     required this.filterEntries,
   });
-
-  static const double _filterWidthFactor = 100.0;
 
   @override
   Widget build(BuildContext context) {
@@ -59,73 +57,27 @@ class CmsTablePageView extends HookWidget {
   }
 
   Widget _buildContent(BuildContext context) {
-    final values = state.items;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: context.theme.pageTopPadding),
-        _buildTopRow(context),
-        Expanded(child: _buildTable(context)),
-        if (values.isNotEmpty && state.computedState.value is ComputedStateValueInProgress)
-          const Center(child: CmsLoader()),
-      ],
-    );
-  }
-
-  Widget _buildTopRow(BuildContext context) {
-    //todo revisit text
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-      child: Row(
-        spacing: 16,
-        children: [
-          Expanded(
-            child: Row(
-              spacing: 16,
-              children: [
-                CmsHeader(text: title),
-                ...filterEntries.map((e) {
-                  return Flexible(
-                    key: Key(e.entryKey),
-                    flex: e.flex,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 12.0),
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(maxWidth: _filterWidthFactor * e.flex),
-                        child: e.buildField(
-                          context: context,
-                          value: e.fromJson(state.filterValues[e.entryKey]),
-                          onChanged: (value) => state.onFilterChanged(e.entryKey, e.toJson(value)),
-                        ),
-                      ),
-                    ),
-                  );
-                }),
-              ],
+    final isLoadingMore = state.items.isNotEmpty && state.computedState.value is ComputedStateValueInProgress;
+    return CustomScrollView(
+      controller: state.scrollController,
+      slivers: [
+        SliverToBoxAdapter(child: SizedBox(height: context.theme.pageTopPadding)),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 16),
+            child: CmsHeader(text: title),
+          ),
+        ),
+        SliverPadding(padding: const EdgeInsets.only(bottom: 24), sliver: _buildTable(context)),
+        if (isLoadingMore)
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Center(child: CmsLoader()),
             ),
           ),
-          Builder(builder: (context) {
-            final isReloading = state.computedState.value is ComputedStateValueInProgress;
-            return IconButton(
-              icon: isReloading
-                  ? const SizedBox.square(dimension: 18, child: CmsLoader(size: 18))
-                  : const Icon(Icons.refresh),
-              tooltip: 'Refresh',
-              onPressed: isReloading ? null : state.onReloadPressed,
-            );
-          }),
-          if (state.params.canCreate)
-            Align(
-              alignment: AlignmentGeometry.centerRight,
-              child: CmsButton(
-                maxWidth: context.theme.shortButtonWidth,
-                onTap: state.onCreatePressed,
-                dense: true,
-                child: const Text("Create"),
-              ),
-            ),
-        ],
-      ),
+        SliverToBoxAdapter(child: SizedBox(height: context.theme.pageTopPadding)),
+      ],
     );
   }
 
@@ -133,11 +85,11 @@ class CmsTablePageView extends HookWidget {
     return CmsTable(
       showLoader: state.items.isEmpty && state.computedState.value is ComputedStateValueInProgress,
       onManagePressed: state.onEditPressed,
-      scrollController: state.scrollController,
       values: state.items,
       entries: entries.pinned,
       onSortPressed: state.onSortPressed,
       currentSortParams: state.currentSortingParams,
+      searchPanel: _buildSearchPanel(context),
       actionsBuilder: !state.hasDefaultActions && customActions.isEmpty
           ? null
           : (e, index) {
@@ -153,6 +105,40 @@ class CmsTablePageView extends HookWidget {
               );
             },
     );
+  }
+
+  Widget _buildSearchPanel(BuildContext context) {
+    final search = _searchEntry();
+    return CmsTableSearchPanel(
+      searchEntry: search,
+      searchHint: _searchHint(search),
+      searchValue: search == null ? null : state.filterValues[search.entryKey] as String?,
+      otherFilters: filterEntries.where((e) => e is! CmsFilterSearchEntry).toIList(),
+      filterValues: state.filterValues,
+      onFilterChanged: state.onFilterChanged,
+      canCreate: state.params.canCreate,
+      onCreatePressed: state.onCreatePressed,
+      isReloading: state.computedState.value is ComputedStateValueInProgress,
+      onReloadPressed: state.onReloadPressed,
+    );
+  }
+
+  CmsFilterSearchEntry? _searchEntry() {
+    for (final entry in filterEntries) {
+      if (entry is CmsFilterSearchEntry) return entry;
+    }
+    return null;
+  }
+
+  String _searchHint(CmsFilterSearchEntry? search) {
+    if (search == null) return 'Search';
+    final labels = entries
+        .where((e) => search.filterKeys.any((key) => key == e.key || key.startsWith('${e.key}.')))
+        .map((e) => e.fixedLabel)
+        .toList();
+    if (labels.isNotEmpty) return 'Search by ${labels.join(', ')}';
+    final label = search.label;
+    return label == null || label.isEmpty ? 'Search' : label;
   }
 
   CmsTableAction _buildDeleteAction(int index) {

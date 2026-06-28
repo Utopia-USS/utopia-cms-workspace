@@ -18,6 +18,25 @@ abstract class CmsThemeData with _$CmsThemeData {
     required List<BoxShadow> menuShadow,
     required BorderRadius menuRadius,
     required double shortButtonWidth,
+
+    /// Corner radius of the table card.
+    @Default(BorderRadius.all(Radius.circular(16))) BorderRadius cardRadius,
+
+    /// Stroke width of the table card border.
+    @Default(1.5) double cardBorderWidth,
+
+    /// Drop shadow cast by the table card.
+    @Default(<BoxShadow>[BoxShadow(color: Color(0x0D000000), blurRadius: 6, offset: Offset(0, 1))])
+    List<BoxShadow> cardShadow,
+
+    /// Height of a single table row.
+    @Default(58.0) double tileHeight,
+
+    /// Thickness of row / header dividers.
+    @Default(1.0) double dividerThickness,
+
+    /// Corner radius of a `CmsChip`.
+    @Default(8.0) double chipRadius,
   }) = _CmsThemeData;
 
   static final CmsThemeData defaultTheme = CmsThemeData(
@@ -38,4 +57,14 @@ abstract class CmsThemeData with _$CmsThemeData {
   );
 
   BoxDecoration get fieldDecoration => BoxDecoration(borderRadius: borderRadius, color: colors.field);
+
+  /// Fill + radius + shadow for the table card (the back layer of the card).
+  BoxDecoration get cardDecoration =>
+      BoxDecoration(color: colors.surface, borderRadius: cardRadius, boxShadow: cardShadow);
+
+  /// Foreground hairline border for the table card, drawn on top of its content.
+  BoxDecoration get cardBorderDecoration => BoxDecoration(
+    borderRadius: cardRadius,
+    border: Border.all(color: colors.border, width: cardBorderWidth),
+  );
 }

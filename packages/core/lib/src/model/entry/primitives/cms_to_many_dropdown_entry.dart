@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/delegate/cms_delegate.dart';
 import 'package:utopia_cms/src/delegate/cms_to_many_delegate.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry_modifier.dart';
 import 'package:utopia_cms/src/ui/item_management/view/cms_management_view.dart' show CmsManagementView;
+import 'package:utopia_cms/src/ui/widget/chip/cms_chip_list.dart';
 import 'package:utopia_cms/src/ui/widget/dropdown/to_many/cms_to_many_dropdown_field.dart';
+import 'package:utopia_cms/src/ui/widget/loading/cms_mock_loading_box.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table_preview_text.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 
 /// [CmsEntry] for handling toMany relationships
@@ -35,10 +36,14 @@ class CmsToManyDropdownEntry extends CmsEntry<Object> {
     required this.label,
     this.modifier = const CmsEntryModifier(pinned: false),
     this.flex = 4,
+    this.width,
   });
 
   @override
-  final int flex;
+  final int? flex;
+
+  @override
+  final double? width;
 
   // Used to get originId from the containing [CmsTable].
   @override
@@ -52,12 +57,12 @@ class CmsToManyDropdownEntry extends CmsEntry<Object> {
 
   @override
   Widget buildPreview(BuildContext context, Object value) {
-    // TODO revisit
     return HookBuilder(
       builder: (context) {
         final values = useMemoizedFuture(() async => delegate.get(originId: value));
-
-        return CmsTablePreviewText(values.data?.map(previewDisplayBuilder ?? fieldDisplayBuilder).join(', ') ?? '-');
+        if (!values.hasData) return const CmsMockLoadingBox(width: 72, height: 22);
+        final labels = values.data!.map(previewDisplayBuilder ?? fieldDisplayBuilder).toIList();
+        return CmsChipList(labels: labels, maxLength: 6);
       },
     );
   }

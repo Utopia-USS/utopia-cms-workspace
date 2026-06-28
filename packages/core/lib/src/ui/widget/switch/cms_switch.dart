@@ -15,14 +15,19 @@ class CmsSwitch extends StatelessWidget {
     return IgnorePointer(
       ignoring: readOnly,
       child: MouseRegion(
-        cursor: SystemMouseCursors.click,
+        cursor: readOnly ? MouseCursor.defer : SystemMouseCursors.click,
         child: Switch(
           activeTrackColor: colors.primary,
           inactiveTrackColor: colors.disabled,
           inactiveThumbColor: Colors.white,
           activeThumbColor: Colors.white,
+          trackOutlineColor: const WidgetStatePropertyAll(Colors.transparent),
+          trackOutlineWidth: const WidgetStatePropertyAll(0),
           value: value,
-          onChanged: onChanged,
+          // When read-only we still want the full-colour look (not Flutter's
+          // faded disabled styling), so pass a no-op handler and let the
+          // surrounding IgnorePointer block interaction.
+          onChanged: onChanged ?? (readOnly ? (_) {} : null),
         ),
       ),
     );
