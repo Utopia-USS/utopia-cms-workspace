@@ -104,7 +104,7 @@ class HomeThemeSwitcher extends HookWidget {
             decoration: BoxDecoration(
               color: swatches[i],
               shape: BoxShape.circle,
-              border: Border.all(color: theme.colors.border, width: 1),
+              border: Border.all(color: theme.colors.border),
             ),
           ),
       ],

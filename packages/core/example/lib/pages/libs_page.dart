@@ -65,7 +65,7 @@ class LibsPage extends StatelessWidget {
           flex: null,
           width: 60,
         ),
-        CmsLinkEntry(key: 'link', label: 'Package', flex: 3),
+        CmsLinkEntry(key: 'link', label: 'Package'),
         CmsLinkEntry(key: 'github', label: 'GitHub', flex: 2),
         CmsDropdownEntry<String>(
           key: 'layer',
@@ -77,7 +77,6 @@ class LibsPage extends StatelessWidget {
         CmsToManyDropdownEntry(
           delegate: tagsDelegate,
           label: 'Tags',
-          flex: 4,
           filterFields: const ['name'],
           fieldDisplayBuilder: (tag) => tag['name'] as String? ?? '',
           previewDisplayBuilder: (tag) => tag['name'] as String? ?? '',

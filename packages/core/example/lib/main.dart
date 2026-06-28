@@ -31,10 +31,10 @@ class UtopiaShowcaseApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Utopia - Libs & Skills',
       debugShowCheckedModeBanner: false,
-      home: const HookProviderContainerWidget(
+      home: HookProviderContainerWidget(
         _providers,
         alwaysNotifyDependents: false,
         child: Portal(child: _ShowcaseShell()),
@@ -121,7 +121,6 @@ class _MenuHeader extends StatelessWidget {
       width: double.infinity,
       child: isCollapsed
           ? Align(
-              alignment: Alignment.center,
               child: Image(image: AssetImage(mark), height: _height * 0.75, fit: BoxFit.contain),
             )
           : Padding(

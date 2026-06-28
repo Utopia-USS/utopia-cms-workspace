@@ -60,7 +60,6 @@ class HomeHero extends StatelessWidget {
                       );
                     }
                     return Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(child: copy),
                         const SizedBox(width: 48),

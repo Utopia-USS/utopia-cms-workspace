@@ -107,13 +107,13 @@ final IList<HomeAbstractionInfo> kHomeAbstractions = [
 /// shape: a title, a delegate and a handful of entries is an entire admin page.
 const List<List<String>> kHeroCodeLines = [
   ['type:CmsTablePage', 'punc:('],
-  ['indent:  ', 'prop:title', 'punc:: ', 'str:\'Users\'', 'punc:,'],
+  ['indent:  ', 'prop:title', 'punc:: ', "str:'Users'", 'punc:,'],
   ['indent:  ', 'prop:delegate', 'punc:: ', 'type:UserDelegate', 'punc:(),'],
   ['indent:  ', 'prop:entries', 'punc:: ['],
-  ['indent:    ', 'type:CmsTextEntry', 'punc:(', 'prop:key', 'punc:: ', 'str:\'name\'', 'punc:),'],
-  ['indent:    ', 'type:CmsLinkEntry', 'punc:(', 'prop:key', 'punc:: ', 'str:\'email\'', 'punc:),'],
-  ['indent:    ', 'type:CmsBoolEntry', 'punc:(', 'prop:key', 'punc:: ', 'str:\'active\'', 'punc:),'],
-  ['indent:    ', 'type:CmsDateEntry', 'punc:(', 'prop:key', 'punc:: ', 'str:\'joined\'', 'punc:),'],
+  ['indent:    ', 'type:CmsTextEntry', 'punc:(', 'prop:key', 'punc:: ', "str:'name'", 'punc:),'],
+  ['indent:    ', 'type:CmsLinkEntry', 'punc:(', 'prop:key', 'punc:: ', "str:'email'", 'punc:),'],
+  ['indent:    ', 'type:CmsBoolEntry', 'punc:(', 'prop:key', 'punc:: ', "str:'active'", 'punc:),'],
+  ['indent:    ', 'type:CmsDateEntry', 'punc:(', 'prop:key', 'punc:: ', "str:'joined'", 'punc:),'],
   ['indent:  ', 'punc:],'],
   ['punc:)'],
 ];

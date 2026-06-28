@@ -36,7 +36,7 @@ class SkillsPage extends StatelessWidget {
           flex: null,
           width: 60,
         ),
-        CmsLinkEntry(key: 'link', label: 'Skill', flex: 3),
+        CmsLinkEntry(key: 'link', label: 'Skill'),
         CmsTextEntry(
           key: 'description',
           label: 'What it does',

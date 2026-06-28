@@ -73,7 +73,7 @@ enum ExampleThemeMode {
   };
 
   /// A 3-colour preview (primary, accent, surface) for the picker swatch. The
-  /// hex values mirror the [primary], [accent] and [surface] tokens of each
+  /// hex values mirror the `primary`, `accent` and `surface` tokens of each
   /// mode's theme so the swatch always matches what the picker will apply.
   List<Color> get swatches => switch (this) {
     // jolly blue, blue accent, white card

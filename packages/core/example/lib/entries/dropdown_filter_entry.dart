@@ -10,8 +10,8 @@ import 'package:utopia_cms/utopia_cms.dart';
 /// The stored value is nullable: `null` means "All" (no constraint). The table
 /// only treats an entry as active when its stored value is non-null, so the
 /// "All" option clears the filter for free; `filterFromValues` still returns
-/// [CmsFilter.all] for that case defensively. A non-null selection becomes a
-/// `CmsFilter.equals` on the single [filterKey], which the delegate evaluates
+/// `CmsFilter.all()` for that case defensively. A non-null selection becomes a
+/// `CmsFilter.equals` on the single `filterKey`, which the delegate evaluates
 /// server-side (here: the in-memory mock delegate's filter tree).
 ///
 /// Works for any equatable column value - a `String` enum-ish field (the

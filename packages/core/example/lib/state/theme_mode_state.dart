@@ -3,8 +3,8 @@ import 'package:utopia_hooks/utopia_hooks.dart';
 import '../theme.dart';
 
 /// App-wide selected theme mode. A UI-only selection, so the value is exposed as
-/// a [MutableValue] the picker writes directly (see the utopia_hooks global-state
-/// MutableValue idiom); the shell reads `.value` and re-themes [CmsWidget].
+/// a `MutableValue` the picker writes directly (see the utopia_hooks global-state
+/// MutableValue idiom); the shell reads `.value` and re-themes the `CmsWidget`.
 class ThemeModeState {
   final MutableValue<ExampleThemeMode> mode;
 
