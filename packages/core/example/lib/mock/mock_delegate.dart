@@ -1,5 +1,7 @@
 import 'package:utopia_cms/utopia_cms.dart';
 
+import 'mock_filter_eval.dart';
+
 /// A fully in-memory, stateful [CmsDelegate].
 ///
 /// It is the demo stand-in for a real Firebase / Supabase / Hasura delegate:
@@ -30,10 +32,10 @@ class MockDelegate implements CmsDelegate {
     required CmsFunctionsPagingParams paging,
   }) async {
     await _latency();
-    final rows = _items.where((row) => _matches(row, filter)).toList();
+    final rows = _items.where((row) => mockMatches(row, filter)).toList();
     if (sorting != null) {
       rows.sort((a, b) {
-        final result = _compare(a.getAtPath(sorting.fieldKey), b.getAtPath(sorting.fieldKey));
+        final result = mockCompare(a.getAtPath(sorting.fieldKey), b.getAtPath(sorting.fieldKey));
         return sorting.sortDesc ? -result : result;
       });
     }
@@ -73,33 +75,4 @@ class MockDelegate implements CmsDelegate {
   }
 
   Future<void> _latency() => Future<void>.delayed(const Duration(milliseconds: 280));
-
-  /// Evaluates the [CmsFilter] tree against a single in-memory row.
-  bool _matches(JsonMap row, CmsFilter filter) {
-    return filter.when(
-      all: () => true,
-      equals: (field, value) => row.getAtPath(field) == value,
-      notEquals: (field, value) => row.getAtPath(field) != value,
-      containsString: (field, value, caseSensitive) {
-        final cell = row.getAtPath(field)?.toString() ?? '';
-        return caseSensitive ? cell.contains(value) : cell.toLowerCase().contains(value.toLowerCase());
-      },
-      inList: (field, values) => values.contains(row.getAtPath(field)),
-      greaterOrEq: (field, value) => _compare(row.getAtPath(field), value) >= 0,
-      lesserOrEq: (field, value) => _compare(row.getAtPath(field), value) <= 0,
-      and: (filters) => filters.every((f) => _matches(row, f)),
-      or: (filters) => filters.any((f) => _matches(row, f)),
-      not: (inner) => !_matches(row, inner),
-    );
-  }
-
-  /// Null-safe, type-aware comparison for sorting and range filters.
-  int _compare(Object? a, Object? b) {
-    if (a == null && b == null) return 0;
-    if (a == null) return -1;
-    if (b == null) return 1;
-    if (a is num && b is num) return a.compareTo(b);
-    if (a is bool && b is bool) return (a ? 1 : 0).compareTo(b ? 1 : 0);
-    return a.toString().toLowerCase().compareTo(b.toString().toLowerCase());
-  }
 }
