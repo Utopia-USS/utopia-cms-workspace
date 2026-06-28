@@ -44,7 +44,11 @@ class HomePage extends StatelessWidget {
             child: Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: _maxContentWidth),
-                child: _buildSections(),
+                // The CMS layout builder: derives a mobile / tablet / web size class
+                // from the content width and exposes it via `context.pageType`, so the
+                // hero adapts on the same breakpoints as the rest of the CMS instead
+                // of a bespoke threshold.
+                child: CmsPageWrapper(builder: (context, _) => _buildSections()),
               ),
             ),
           ),

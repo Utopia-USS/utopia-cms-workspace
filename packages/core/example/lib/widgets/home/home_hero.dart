@@ -12,8 +12,8 @@ import 'home_pub_add_chip.dart';
 /// The fill is the theme's `primary -> accent` gradient and every label uses
 /// `theme.textStyles.button.color` - the one foreground each theme tunes to
 /// contrast that gradient - so the hero recolours wholesale on a theme switch
-/// and never breaks contrast. Below [_stackBreakpoint] the code card drops
-/// below the copy.
+/// and never breaks contrast. Below the web breakpoint (`context.pageType`) the
+/// code card drops below the copy.
 class HomeHero extends StatelessWidget {
   final CmsThemeData theme;
   final void Function() onOpenPubDev;
@@ -21,13 +21,18 @@ class HomeHero extends StatelessWidget {
 
   const HomeHero({super.key, required this.theme, required this.onOpenPubDev, required this.onOpenGithub});
 
-  static const double _stackBreakpoint = 820;
   static const double _cut = 28;
 
   @override
   Widget build(BuildContext context) {
+    // Drive the layout off the CMS size class (provided by the page's
+    // CmsPageWrapper): stack the code card under the copy on anything narrower
+    // than web, and tighten the gutters on mobile so the card has room.
+    final pageType = context.pageType;
+    final stacked = !pageType.isWeb;
     final onHero = theme.textStyles.button.color ?? Colors.white;
     final bevel = aurisBevel(_cut, side: BorderSide(color: onHero.withValues(alpha: 0.25), width: 1.5));
+    final copy = _buildCopy(onHero, stacked);
     return HudCornerFrame(
       color: onHero.withValues(alpha: 0.65),
       inset: 16,
@@ -47,27 +52,23 @@ class HomeHero extends StatelessWidget {
             children: [
               _buildGlow(onHero),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 52),
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    final stacked = constraints.maxWidth < _stackBreakpoint;
-                    final copy = _buildCopy(onHero, stacked);
-                    if (stacked) {
-                      return Column(
+                padding: EdgeInsets.symmetric(
+                  horizontal: pageType.isMobile ? 24 : 48,
+                  vertical: pageType.isMobile ? 36 : 52,
+                ),
+                child: stacked
+                    ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [copy, const SizedBox(height: 36), const HomeCodeCard()],
-                      );
-                    }
-                    return Row(
-                      children: [
-                        Expanded(child: copy),
-                        const SizedBox(width: 48),
-                        ConstrainedBox(constraints: const BoxConstraints(maxWidth: 440), child: const HomeCodeCard()),
-                      ],
-                    );
-                  },
-                ),
+                      )
+                    : Row(
+                        children: [
+                          Expanded(child: copy),
+                          const SizedBox(width: 48),
+                          ConstrainedBox(constraints: const BoxConstraints(maxWidth: 440), child: const HomeCodeCard()),
+                        ],
+                      ),
               ),
             ],
           ),

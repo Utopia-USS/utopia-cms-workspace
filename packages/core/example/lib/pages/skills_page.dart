@@ -36,6 +36,7 @@ class SkillsPage extends StatelessWidget {
           flex: null,
           width: 60,
         ),
+        // Primary identifier - always visible, including on a phone.
         CmsLinkEntry(key: 'link', label: 'Skill'),
         CmsTextEntry(
           key: 'description',
@@ -44,11 +45,13 @@ class SkillsPage extends StatelessWidget {
           maxLines: 3,
           modifier: const CmsEntryModifier(expanded: true),
         ),
+        // Refs drops on mobile so the table fits a phone; the create/manage
+        // overlay still shows it (pinned gates the column only).
         CmsNumEntry(
           key: 'refs',
           label: 'Refs',
           flex: 1,
-          modifier: const CmsEntryModifier(sortable: true),
+          modifier: CmsEntryModifier(sortable: true, pinned: (t) => !t.isMobile),
           previewBuilder: (v) => v == null ? '-' : '${v.toInt()}',
         ),
       ],

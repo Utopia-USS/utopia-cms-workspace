@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utopia_cms/utopia_cms.dart';
 
 import 'home_hud.dart';
 import 'home_showcase_data.dart';
@@ -36,7 +37,7 @@ class HomeCodeCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildBar(),
-          Padding(padding: const EdgeInsets.fromLTRB(20, 16, 20, 20), child: _buildCode()),
+          Padding(padding: const EdgeInsets.fromLTRB(20, 16, 20, 20), child: _buildCode(context)),
         ],
       ),
     );
@@ -68,8 +69,8 @@ class HomeCodeCard extends StatelessWidget {
     decoration: BoxDecoration(color: color, shape: BoxShape.circle),
   );
 
-  Widget _buildCode() {
-    return Column(
+  Widget _buildCode(BuildContext context) {
+    final code = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -80,6 +81,9 @@ class HomeCodeCard extends StatelessWidget {
           ),
       ],
     );
+    // On mobile the card is narrow; let the non-wrapping code lines scroll
+    // sideways instead of forcing the hero wider than the viewport.
+    return context.pageType.isMobile ? SingleChildScrollView(scrollDirection: Axis.horizontal, child: code) : code;
   }
 
   /// A token is `role:text`; the role picks the colour. `indent` is raw

@@ -65,14 +65,23 @@ class LibsPage extends StatelessWidget {
           flex: null,
           width: 60,
         ),
+        // Primary identifier - always visible, including on a phone.
         CmsLinkEntry(key: 'link', label: 'Package'),
-        CmsLinkEntry(key: 'github', label: 'GitHub', flex: 2),
+        // Secondary/wide columns drop on mobile so the table fits a phone; the
+        // create/manage overlay still shows them (pinned gates the column only).
+        CmsLinkEntry(
+          key: 'github',
+          label: 'GitHub',
+          flex: 2,
+          modifier: CmsEntryModifier(pinned: (t) => !t.isMobile),
+        ),
         CmsDropdownEntry<String>(
           key: 'layer',
           label: 'Layer',
           flex: 1,
           values: kLayers,
           valueLabelBuilder: (v) => v ?? '',
+          modifier: CmsEntryModifier(pinned: (t) => t.isWeb),
         ),
         CmsToManyDropdownEntry(
           delegate: tagsDelegate,
@@ -88,7 +97,12 @@ class LibsPage extends StatelessWidget {
           maxLines: 3,
           modifier: const CmsEntryModifier(expanded: true),
         ),
-        CmsBoolEntry(key: 'usedHere', label: 'Used here', flex: 1),
+        CmsBoolEntry(
+          key: 'usedHere',
+          label: 'Used here',
+          flex: 1,
+          modifier: CmsEntryModifier(pinned: (t) => t.isWeb),
+        ),
       ],
     );
   }
