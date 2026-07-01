@@ -1,5 +1,12 @@
 ## 0.3.0
 
+> Note: This release has breaking changes.
+
+ - **FEAT**(utopia_cms): add runnable showcase example app.
+ - **BREAKING** **FEAT**(utopia_cms): overhaul CMS core.
+
+## 0.3.0
+
  - **FEAT**: CMS refresh.
  - **FEAT**: single media entry.
  - **FIX**: item caching.

@@ -1,5 +1,5 @@
 name: utopia_cms_hasura
-version: 0.3.0+7
+version: 0.3.0+8
 resolution: workspace
 description: Hasura GraphQL backend for utopia_cms - Flutter admin and CMS panels with CRUD tables, filters and many-to-many relationships.
 homepage: https://github.com/Utopia-USS/utopia-cms-workspace
@@ -15,8 +15,8 @@ environment:
   sdk: ^3.11.0
 
 dependencies:
-  utopia_cms: ^0.2.3
-  utopia_cms_graphql: ^0.3.0+7
+  utopia_cms: ^0.3.0
+  utopia_cms_graphql: ^0.3.0+8
 
   gql: ^1.0.1
   graphql: ^5.2.4

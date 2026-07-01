@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2026-07-01
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`utopia_cms` - `v0.3.0`](#utopia_cms---v030)
+
+Packages with other changes:
+
+ - [`utopia_cms_graphql` - `v0.3.0+8`](#utopia_cms_graphql---v0308)
+ - [`utopia_cms_supabase` - `v0.1.0+6`](#utopia_cms_supabase---v0106)
+ - [`utopia_cms_firebase` - `v0.2.0+8`](#utopia_cms_firebase---v0208)
+ - [`utopia_cms_hasura` - `v0.3.0+8`](#utopia_cms_hasura---v0308)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `utopia_cms_firebase` - `v0.2.0+8`
+ - `utopia_cms_hasura` - `v0.3.0+8`
+
+---
+
+#### `utopia_cms` - `v0.3.0`
+
+ - **FEAT**(utopia_cms): add runnable showcase example app.
+ - **BREAKING** **FEAT**(utopia_cms): overhaul CMS core.
+
+#### `utopia_cms_graphql` - `v0.3.0+8`
+
+ - **REFACTOR**(utopia_cms_graphql): migrate to utopia_arch and drop http/reporter deps.
+
+#### `utopia_cms_supabase` - `v0.1.0+6`
+
+ - **FIX**(utopia_cms_supabase): correct NOT and nested CmsFilter translation.
+
+
 ## 2026-01-27
 
 ### Changes

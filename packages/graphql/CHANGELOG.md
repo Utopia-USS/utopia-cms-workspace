@@ -1,3 +1,7 @@
+## 0.3.0+8
+
+ - **REFACTOR**(utopia_cms_graphql): migrate to utopia_arch and drop http/reporter deps.
+
 ## 0.3.0+7
 
  - Update a dependency to the latest release.

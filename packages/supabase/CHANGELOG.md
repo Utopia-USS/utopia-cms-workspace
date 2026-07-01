@@ -1,3 +1,7 @@
+## 0.1.0+6
+
+ - **FIX**(utopia_cms_supabase): correct NOT and nested CmsFilter translation.
+
 ## 0.1.0+5
 
  - Update a dependency to the latest release.
