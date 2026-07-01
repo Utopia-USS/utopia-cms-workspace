@@ -31,11 +31,7 @@ class CmsSupabaseOneToManyDelegate implements CmsToManyDelegate {
   @override
   Future<List<JsonMap>> get({Object? originId, CmsFilter filter = const CmsFilter.all()}) async {
     final fixedFilter = archivedFilter == null ? filter : CmsFilterAnd([archivedFilter!, filter]);
-    return _supabaseService.query(
-      client,
-      table: foreignTable,
-      filter: _buildFilter(originId, fixedFilter),
-    );
+    return _supabaseService.query(client, table: foreignTable, filter: _buildFilter(originId, fixedFilter));
   }
 
   @override
@@ -53,11 +49,8 @@ class CmsSupabaseOneToManyDelegate implements CmsToManyDelegate {
   CmsFilter _buildFilter(Object? originId, CmsFilter filter) =>
       originId != null ? filter & CmsFilter.equals(foreignKey, originId) : filter;
 
-  Future<void> _update({required Object id, required Object? originId}) async => _supabaseService.updateById(
-        client,
-        table: foreignTable,
-        object: {foreignTable.idKey: id, foreignKey: originId},
-      );
+  Future<void> _update({required Object id, required Object? originId}) async =>
+      _supabaseService.updateById(client, table: foreignTable, object: {foreignTable.idKey: id, foreignKey: originId});
 }
 
 class CmsSupabaseManyToManyDelegate implements CmsToManyDelegate {
@@ -85,11 +78,7 @@ class CmsSupabaseManyToManyDelegate implements CmsToManyDelegate {
     final fixedFilter = archivedFilter == null ? filter : CmsFilterAnd([archivedFilter!, filter]);
 
     if (originId == null) {
-      return _supabaseService.query(
-        client,
-        table: associationTable.foreignTable,
-        filter: fixedFilter,
-      );
+      return _supabaseService.query(client, table: associationTable.foreignTable, filter: fixedFilter);
     }
 
     // Get foreign IDs from association table
@@ -130,11 +119,7 @@ class CmsSupabaseManyToManyDelegate implements CmsToManyDelegate {
       client,
       table: associationTable,
       objects: [
-        for (final id in foreignIds)
-          {
-            associationTable.originKey: originId,
-            associationTable.foreignKey: id,
-          }
+        for (final id in foreignIds) {associationTable.originKey: originId, associationTable.foreignKey: id},
       ],
     );
   }
