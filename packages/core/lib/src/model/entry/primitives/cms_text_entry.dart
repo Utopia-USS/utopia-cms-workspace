@@ -25,6 +25,7 @@ class CmsTextEntry extends CmsEntry<String?> {
     this.maxLines = 1,
     this.overflow,
     this.flex = 2,
+    this.width,
     this.previewBuilder,
   });
 
@@ -32,7 +33,10 @@ class CmsTextEntry extends CmsEntry<String?> {
   final String key;
 
   @override
-  final int flex;
+  final int? flex;
+
+  @override
+  final double? width;
 
   @override
   final String? label;

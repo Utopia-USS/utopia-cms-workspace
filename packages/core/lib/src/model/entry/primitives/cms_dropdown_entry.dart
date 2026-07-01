@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry_modifier.dart';
+import 'package:utopia_cms/src/ui/widget/chip/cms_chip.dart';
 import 'package:utopia_cms/src/ui/widget/dropdown/cms_dropdown_field.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table_preview_text.dart';
+import 'package:utopia_cms/src/util/context_extensions.dart';
 
 /// [CmsEntry] for handling offline items picker
 class CmsDropdownEntry<T> extends CmsEntry<T> {
@@ -18,6 +19,7 @@ class CmsDropdownEntry<T> extends CmsEntry<T> {
     this.label,
     this.modifier = const CmsEntryModifier(),
     this.flex = 2,
+    this.width,
   });
 
   CmsDropdownEntry.simple({
@@ -28,10 +30,14 @@ class CmsDropdownEntry<T> extends CmsEntry<T> {
     this.defaultValue,
     this.modifier = const CmsEntryModifier(),
     this.flex = 1,
+    this.width,
   });
 
   @override
-  final int flex;
+  final int? flex;
+
+  @override
+  final double? width;
 
   @override
   final String key;
@@ -43,14 +49,16 @@ class CmsDropdownEntry<T> extends CmsEntry<T> {
   final CmsEntryModifier modifier;
 
   @override
-  Widget buildPreview(BuildContext context, T? value) => CmsTablePreviewText(valueLabelBuilder(value));
+  Widget buildPreview(BuildContext context, T? value) {
+    final label = valueLabelBuilder(value);
+    if (label.isEmpty) {
+      return Text('-', style: context.textStyles.text.copyWith(color: context.colors.hint));
+    }
+    return CmsChip(child: Text(label, overflow: TextOverflow.ellipsis));
+  }
 
   @override
-  Widget buildEditField({
-    required BuildContext context,
-    required T? value,
-    required void Function(T value) onChanged,
-  }) {
+  Widget buildEditField({required BuildContext context, required T? value, required void Function(T value) onChanged}) {
     return IgnorePointer(
       ignoring: !modifier.editable,
       child: CmsDropdownField<T>(
@@ -62,5 +70,4 @@ class CmsDropdownEntry<T> extends CmsEntry<T> {
       ),
     );
   }
-
 }

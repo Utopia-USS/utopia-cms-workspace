@@ -1,10 +1,13 @@
-import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
-import 'package:utopia_arch/utopia_arch.dart';
+import 'package:utopia_cms/src/model/cms_functions_params.dart';
+import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
+import 'package:utopia_cms/src/ui/widget/table/cms_table_cell.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
-import 'package:utopia_cms/utopia_cms.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
+/// The column-header row that sits inside the table card's pinned header,
+/// above the divider and the rows. Columns line up with `CmsTableItem` cells.
 class CmsTableHeader extends StatelessWidget {
   final IList<CmsEntry<dynamic>> entries;
   final CmsFunctionsSortingParams? currentSortParams;
@@ -21,84 +24,73 @@ class CmsTableHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = context.textStyles.label;
-    return Padding(
-      padding: CmsTable.paddingRight,
-      child: Container(
-        height: CmsTable.tileHeight,
-        padding: CmsTable.contentPadding,
-        decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(color: context.colors.accent, width: 0.75)),
-        ),
-        child: Row(
-          children: [
-            ...entries.map(
-              (e) => Expanded(flex: e.flex, child: _buildHeaderItem(e, style)),
-            ),
-            if (hasActions)
-              _buildRowCellPadding(
-                child: const SizedBox(
-                  width: CmsTable.actionsWidth,
-                ),
-              ),
-          ],
-        ),
-      ),
+    // Column headers are a restrained take on the row data: same medium weight
+    // (capped at w500 - any heavier reads as too bold here), only a hair larger,
+    // not the full section/page title size which renders too big and too heavy.
+    final body = context.textStyles.text;
+    final style = body.copyWith(
+      color: context.colors.text,
+      fontWeight: FontWeight.w500,
+      fontSize: (body.fontSize ?? 14) + 1,
     );
-  }
-
-  Widget _buildHeaderItem(CmsEntry entry, TextStyle style) {
-    return MultiWidget(
-      [
-        if (entry.sortable) (child) => MouseRegion(cursor: SystemMouseCursors.click, child: child),
-        if (entry.sortable) (child) => GestureDetector(onTap: () => onSortPressed(entry), child: child),
-        (child) => _buildRowCellPadding(child: child),
-        (_) => Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (entry.sortable) _buildSortingIcons(entry, style.color!),
-                Flexible(
-                  child: Text(
-                    entry.fixedLabel,
-                    style: style,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-      ],
-    );
-  }
-
-  Widget _buildSortingIcons(CmsEntry entry, Color color) {
-    final isCurrent = entry.key == currentSortParams?.fieldKey;
-    final colorBottom = isCurrent && !currentSortParams!.sortDesc;
-    final colorTop = isCurrent && currentSortParams!.sortDesc;
-
-    Color getColor({required bool isActive}) => isActive ? color : color.withValues(alpha: 0.25);
-
-    ///giga hax: icons have some padding so they can't be in column
     return Padding(
-      padding: const EdgeInsets.only(right: 2.0),
-      child: Stack(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      child: Row(
         children: [
-          Align(
-            alignment: const Alignment(0, -0.16),
-            child: Icon(Icons.keyboard_arrow_up_rounded, color: getColor(isActive: colorTop), size: 18),
-          ),
-          Align(
-            alignment: const Alignment(0, 0.16),
-            child: Icon(Icons.keyboard_arrow_down_rounded, color: getColor(isActive: colorBottom), size: 18),
-          ),
+          ...entries.map((e) => e.wrapTableCell(_buildHeaderItem(context, e, style))),
+          if (hasActions)
+            const Padding(
+              padding: CmsTable.itemPadding,
+              child: SizedBox(width: CmsTable.actionsWidth),
+            ),
         ],
       ),
     );
   }
 
-  Widget _buildRowCellPadding({required Widget child}) {
-    return Padding(
+  Widget _buildHeaderItem(BuildContext context, CmsEntry entry, TextStyle style) {
+    final content = Padding(
       padding: CmsTable.itemPadding,
-      child: child,
+      child: Row(
+        children: [
+          if (entry.sortable) _buildSortingIcons(context, entry),
+          Flexible(
+            child: Text(entry.fixedLabel, style: style, overflow: TextOverflow.ellipsis),
+          ),
+        ],
+      ),
+    );
+    if (!entry.sortable) return content;
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(onTap: () => onSortPressed(entry), child: content),
+    );
+  }
+
+  Widget _buildSortingIcons(BuildContext context, CmsEntry entry) {
+    final isCurrent = entry.key == currentSortParams?.fieldKey;
+    final activeColor = context.colors.text;
+    final inactiveColor = context.colors.hint;
+    final upActive = isCurrent && currentSortParams!.sortDesc;
+    final downActive = isCurrent && !currentSortParams!.sortDesc;
+
+    Widget arrow(IconData icon, Alignment alignment, {required bool active}) => Align(
+      alignment: alignment,
+      child: Icon(icon, size: 16, color: active ? activeColor : inactiveColor),
+    );
+
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: SizedBox(
+        width: 16,
+        height: 22,
+        child: Stack(
+          children: [
+            arrow(Icons.keyboard_arrow_up_rounded, const Alignment(0, -0.6), active: upActive),
+            arrow(Icons.keyboard_arrow_down_rounded, const Alignment(0, 0.6), active: downActive),
+          ],
+        ),
+      ),
     );
   }
 }

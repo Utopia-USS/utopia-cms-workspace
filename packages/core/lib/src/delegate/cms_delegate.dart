@@ -1,3 +1,4 @@
+import 'package:utopia_cms/src/delegate/cms_delegate_exception.dart' show CmsDelegateException;
 import 'package:utopia_cms/src/delegate/cms_to_many_delegate.dart';
 import 'package:utopia_cms/src/model/cms_filter.dart';
 import 'package:utopia_cms/src/model/cms_functions_params.dart';

@@ -20,6 +20,9 @@ class CmsMediaEntry extends CmsEntry<Iterable<dynamic>?> {
   /// Entry returns String url if not provided
   final dynamic Function(CmsMediaUploadRes res, XFile file)? valueBuilder;
 
+  /// Optional cap on simultaneous files. `null` = unlimited.
+  final int? maxFiles;
+
   CmsMediaEntry({
     required this.key,
     required this.delegate,
@@ -30,13 +33,18 @@ class CmsMediaEntry extends CmsEntry<Iterable<dynamic>?> {
     this.label,
     this.modifier = const CmsEntryModifier(expanded: true),
     this.flex = 2,
+    this.width,
+    this.maxFiles,
   });
 
   @override
   final String key;
 
   @override
-  final int flex;
+  final int? flex;
+
+  @override
+  final double? width;
 
   @override
   final String? label;
@@ -45,11 +53,8 @@ class CmsMediaEntry extends CmsEntry<Iterable<dynamic>?> {
   final CmsEntryModifier modifier;
 
   @override
-  Widget buildPreview(BuildContext context, Iterable<dynamic>? value) => CmsTablePreviewFile(
-        media: value,
-        urlBuilder: urlBuilder,
-        mediaTypeBuilder: mediaTypeBuilder,
-      );
+  Widget buildPreview(BuildContext context, Iterable<dynamic>? value) =>
+      CmsTablePreviewFile(media: value, urlBuilder: urlBuilder, mediaTypeBuilder: mediaTypeBuilder);
 
   @override
   Widget buildEditField({
@@ -66,6 +71,7 @@ class CmsMediaEntry extends CmsEntry<Iterable<dynamic>?> {
       valueBuilder: valueBuilder,
       supportedMedia: supportedMedia,
       mediaTypeBuilder: mediaTypeBuilder,
+      maxFiles: maxFiles,
     );
   }
 }

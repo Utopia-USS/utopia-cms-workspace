@@ -1,8 +1,8 @@
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/utopia_cms.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
 
 class CmsMediaFieldUpload extends HookWidget {
   final CmsMediaFieldState state;
@@ -25,15 +25,12 @@ class CmsMediaFieldUpload extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final uploadingState = useState<bool>(true);
-    useAutoComputedState(
-       () async {
-        final result = await delegate.upload(file);
-        final enhancedResult = valueBuilder?.call(result, file);
-        state.onUploaded(index, enhancedResult ?? result.downloadUrl);
-        uploadingState.value = false;
-      },
-      keys: [],
-    );
+    useAutoComputedState(() async {
+      final result = await delegate.upload(file);
+      final enhancedResult = valueBuilder?.call(result, file);
+      state.onUploaded(index, enhancedResult ?? result.downloadUrl);
+      uploadingState.value = false;
+    }, keys: []);
     return CmsMediaFieldItemWrapper(
       key: Key(file.path),
       size: size,

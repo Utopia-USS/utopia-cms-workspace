@@ -1,55 +1,63 @@
-import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:utopia_arch/utopia_arch.dart';
+import 'package:provider/provider.dart';
 import 'package:utopia_cms/src/delegate/cms_to_many_delegate.dart';
 import 'package:utopia_cms/src/model/cms_filter.dart';
 import 'package:utopia_cms/src/ui/item_management/state/cms_management_state.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 
 class CmsToManyDropdownState {
   final ISet<JsonMap> selectedValues;
 
+  /// Options matching the current (debounced) search; `null` while loading.
+  final IList<JsonMap>? items;
+
   final FieldState searchState;
 
   final bool isReady;
 
-  final void Function(ISet<JsonMap>) onChanged;
-  final Future<List<JsonMap>> Function({required CmsFilter filter}) getItems;
+  final void Function(JsonMap item) onToggle;
 
   const CmsToManyDropdownState({
-    required this.searchState,
-    required this.onChanged,
     required this.selectedValues,
+    required this.items,
+    required this.searchState,
     required this.isReady,
-    required this.getItems,
+    required this.onToggle,
   });
 }
 
 CmsToManyDropdownState useCmsToManyDropdownState({
   required CmsToManyDelegate delegate,
   required Object? originId,
+  required List<String>? filterFields,
+  required CmsFilter Function(String)? filterBuilder,
 }) {
-  final baseState = useProvided<CmsManagementBaseState>();
+  // `CmsManagementOverlay` provides this via Flutter [Provider.value], so we
+  // must read it through Flutter's context, not the utopia_hooks lookup.
+  final baseState = Provider.of<CmsManagementBaseState>(useBuildContext(), listen: false);
   final selectedItemsState = useState<ISet<JsonMap>>(ISet());
   final searchState = useFieldState(initialValue: '');
-  final initialSelectedValuesState = useAutoComputedState<ISet<JsonMap>>(
-     () async {
-      if (originId != null) {
-        final result = await delegate.get(originId: originId);
-        selectedItemsState.value = result.toISet();
-        return result.toISet();
-      } else {
-        return ISet();
-      }
-    },
-    keys: [],
-  );
+  final debouncedSearch = useDebounced(searchState.value, duration: const Duration(milliseconds: 300));
+
+  final initialSelectedValuesState = useAutoComputedState<ISet<JsonMap>>(() async {
+    if (originId != null) {
+      final result = await delegate.get(originId: originId);
+      selectedItemsState.value = result.toISet();
+      return result.toISet();
+    } else {
+      return ISet();
+    }
+  }, keys: []);
 
   final initialSelectedValuesOrPrevious = usePreviousIfNull(initialSelectedValuesState.valueOrNull);
 
-
   useEffect(() {
     baseState.addOnSavedCallback((value) async {
-      final oldIds = initialSelectedValuesState.valueOrNull!.map((it) => it[delegate.foreignIdKey] as Object).toISet();
+      // The field may not have finished loading when the parent form saves; treat an
+      // unloaded field as having no previous selections (every current item is an add).
+      final oldIds = (initialSelectedValuesState.valueOrNull ?? ISet<JsonMap>())
+          .map((it) => it[delegate.foreignIdKey] as Object)
+          .toISet();
       final newIds = selectedItemsState.value.map((it) => it[delegate.foreignIdKey] as Object).toISet();
       return delegate.update(
         originId: value[delegate.originIdKey] as Object,
@@ -57,23 +65,32 @@ CmsToManyDropdownState useCmsToManyDropdownState({
         removedForeignIds: oldIds.difference(newIds),
       );
     });
+    return null;
   }, []);
 
-  Future<List<JsonMap>> getItems({required CmsFilter filter}) async {
-    final result = await delegate.get(
-      originId: null,
-      filter: filter,
-    );
+  CmsFilter buildFilter(String query) =>
+      filterBuilder?.call(query) ??
+      CmsFilter.or([for (final field in filterFields ?? const <String>[]) CmsFilter.containsString(field, query)]);
+
+  final itemsState = useAutoComputedState<IList<JsonMap>>(() async {
+    final result = await delegate.get(filter: buildFilter(debouncedSearch));
     final ids = selectedItemsState.value.map((it) => it[delegate.foreignIdKey] as Object).toISet();
-    final sorted = result.toSortedList(compareBy([(it) => ids.contains(it[delegate.foreignIdKey]) ? 0 : 1]));
-    return sorted;
+    // Keep already-selected rows pinned to the top of the list.
+    return result.toSortedList(compareBy([(it) => ids.contains(it[delegate.foreignIdKey]) ? 0 : 1])).toIList();
+  }, keys: [debouncedSearch]);
+
+  void onToggle(JsonMap item) {
+    final id = item[delegate.foreignIdKey];
+    final current = selectedItemsState.value;
+    final existing = current.where((it) => it[delegate.foreignIdKey] == id).toISet();
+    selectedItemsState.value = existing.isEmpty ? current.add(item) : current.removeAll(existing);
   }
 
   return CmsToManyDropdownState(
     isReady: initialSelectedValuesOrPrevious != null,
     searchState: searchState,
     selectedValues: selectedItemsState.value,
-    getItems: getItems,
-    onChanged: (value) => selectedItemsState.value = value,
+    items: itemsState.valueOrNull,
+    onToggle: onToggle,
   );
 }

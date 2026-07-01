@@ -9,12 +9,7 @@ class CmsTablePreviewFile extends StatelessWidget {
   final String Function(dynamic object)? urlBuilder;
   final Iterable<dynamic>? media;
 
-  const CmsTablePreviewFile({
-    required this.media,
-    required this.mediaTypeBuilder,
-    this.urlBuilder,
-    super.key,
-  });
+  const CmsTablePreviewFile({required this.media, required this.mediaTypeBuilder, this.urlBuilder, super.key});
 
   @override
   Widget build(BuildContext context) {
