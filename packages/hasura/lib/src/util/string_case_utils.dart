@@ -7,7 +7,7 @@ enum StringCase {
   camelCapitalized;
 
   String call(List<String> components) {
-    return switch(this) {
+    return switch (this) {
       snake => components.join("_"),
       snakeUppercase => components.join("_").toUpperCase(),
       camel => components.first + components.skip(1).map((e) => e.capitalize()).join(),

@@ -22,7 +22,7 @@ class CmsHasuraOneToManyDelegate implements CmsToManyDelegate {
     required this.foreignTable,
     required this.foreignFields,
     required this.foreignKey,
-        this.archivedFilter,
+    this.archivedFilter,
   });
 
   @override
@@ -75,7 +75,7 @@ class CmsHasuraManyToManyDelegate implements CmsToManyDelegate {
     required this.client,
     required this.associationTable,
     required this.foreignFields,
-        this.archivedFilter,
+    this.archivedFilter,
   });
 
   @override
@@ -115,7 +115,7 @@ class CmsHasuraManyToManyDelegate implements CmsToManyDelegate {
       client,
       table: associationTable,
       objects: [
-        for (final id in foreignIds) {associationTable.originKey: originId, associationTable.foreignKey: id}
+        for (final id in foreignIds) {associationTable.originKey: originId, associationTable.foreignKey: id},
       ],
     );
   }

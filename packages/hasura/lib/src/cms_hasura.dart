@@ -32,8 +32,7 @@ class CmsHasura {
     required CmsHasuraDataTable table,
     required CmsGraphQLFields fields,
     CmsFilterNotEquals? archivedFilter,
-  }) =>
-      CmsHasuraDelegate(service, client: client, table: table, fields: fields, archivedFilter: archivedFilter);
+  }) => CmsHasuraDelegate(service, client: client, table: table, fields: fields, archivedFilter: archivedFilter);
 
   CmsHasuraOneToManyDelegate oneToManyDelegate({
     required GraphQLClient client,
