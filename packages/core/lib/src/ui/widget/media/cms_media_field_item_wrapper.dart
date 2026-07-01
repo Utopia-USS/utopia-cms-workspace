@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 class CmsMediaFieldItemWrapper extends HookWidget {
   final Widget child;
@@ -34,11 +34,7 @@ class CmsMediaFieldItemWrapper extends HookWidget {
           color: color ?? context.colors.disabled,
           borderRadius: context.theme.borderRadius,
           boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.16),
-              blurRadius: 8,
-              offset: const Offset(2, 2),
-            ),
+            BoxShadow(color: Colors.black.withValues(alpha: 0.16), blurRadius: 8, offset: const Offset(2, 2)),
           ].takeIf((it) => hasShadow),
         ),
         child: Stack(
@@ -53,7 +49,6 @@ class CmsMediaFieldItemWrapper extends HookWidget {
                 child: _buildHover(context),
               ),
             ),
-
           ],
         ),
       ),

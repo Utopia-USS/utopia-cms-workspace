@@ -1,22 +1,8 @@
-import 'package:utopia_utils/utopia_utils.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 enum CmsMediaType {
-  video(
-    mimes: [
-      'video/mp4',
-      'video/webm',
-      'video/quicktime',
-      'video/x-m4v',
-    ],
-  ),
-  image(
-    mimes: [
-      'image/jpeg',
-      'image/png',
-      'image/gif',
-      'image/webp',
-    ],
-  ),
+  video(mimes: ['video/mp4', 'video/webm', 'video/quicktime', 'video/x-m4v']),
+  image(mimes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp']),
   doc(
     mimes: [
       'application/msword',

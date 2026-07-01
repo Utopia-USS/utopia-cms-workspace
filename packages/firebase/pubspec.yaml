@@ -1,13 +1,21 @@
 name: utopia_cms_firebase
 version: 0.2.0+7
-description: Utopia CMS - Firebase
-homepage: https://github.com/Utopia-USS/utopia_cms
+resolution: workspace
+description: Firebase / Cloud Firestore backend for utopia_cms - build Flutter admin and CMS panels with sortable, filterable CRUD tables.
+homepage: https://github.com/Utopia-USS/utopia-cms-workspace
+repository: https://github.com/Utopia-USS/utopia-cms-workspace/tree/master/packages/firebase
+topics:
+  - cms
+  - admin
+  - firebase
+  - firestore
+  - crud
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
-  flutter: ">=3.0.0"
+  sdk: ^3.11.0
 
 dependencies:
-  cloud_firestore: ^6.1.0
   utopia_cms: ^0.2.3
-  utopia_utils: ^0.3.3
+
+  cloud_firestore: ^6.6.0
+

@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/Utopia-USS/utopia-cms-workspace/master/packages/supabase/docs/header.png" width="313" alt="Utopia CMS Supabase"/>
+
 # Utopia CMS Supabase
 
 Supabase implementation of the server-layer for [utopia_cms](https://pub.dev/packages/utopia_cms)

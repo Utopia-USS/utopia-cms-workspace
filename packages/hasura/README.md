@@ -1,4 +1,4 @@
-<img src="https://github.com/Utopia-USS/utopia_cms/raw/master/packages/hasura/cms_hasura.png" width = "380" height = "159"/>
+<img src="https://raw.githubusercontent.com/Utopia-USS/utopia-cms-workspace/master/packages/hasura/cms_hasura.png" width="284" alt="Utopia CMS Hasura"/>
 
 # Utopia CMS Hasura
 

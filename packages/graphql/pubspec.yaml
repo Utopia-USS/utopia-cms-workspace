@@ -1,17 +1,22 @@
 name: utopia_cms_graphql
 version: 0.3.0+7
-description: Utopia CMS - GraphQL
-homepage: https://github.com/Utopia-USS/utopia_cms
+resolution: workspace
+description: Generic GraphQL backend for utopia_cms - build Flutter admin and CMS panels with sortable, filterable CRUD tables.
+homepage: https://github.com/Utopia-USS/utopia-cms-workspace
+repository: https://github.com/Utopia-USS/utopia-cms-workspace/tree/master/packages/graphql
+topics:
+  - cms
+  - admin
+  - graphql
+  - crud
+  - database
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
-  flutter: ">=3.0.0"
+  sdk: ^3.11.0
 
 dependencies:
-  gql: ^1.0.1
-  graphql: ^5.2.3
   utopia_cms: ^0.2.3
-  utopia_utils: ^0.3.3
-  utopia_reporter: ^0.1.0+5
-dependency_overrides:
-  http: 1.0.0
+
+  gql: ^1.0.1
+  graphql: ^5.2.4
+  utopia_arch: ^0.5.1+28

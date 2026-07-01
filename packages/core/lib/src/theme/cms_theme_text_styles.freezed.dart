@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,232 +9,278 @@ part of 'cms_theme_text_styles.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
 /// @nodoc
 mixin _$CmsThemeTextStyles {
-  TextStyle get header => throw _privateConstructorUsedError;
-  TextStyle get label => throw _privateConstructorUsedError;
-  TextStyle get text => throw _privateConstructorUsedError;
-  TextStyle get title => throw _privateConstructorUsedError;
-  TextStyle get caption => throw _privateConstructorUsedError;
-  TextStyle get button => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
-  $CmsThemeTextStylesCopyWith<CmsThemeTextStyles> get copyWith =>
-      throw _privateConstructorUsedError;
+ TextStyle get header; TextStyle get label; TextStyle get text; TextStyle get title; TextStyle get caption; TextStyle get button;
+/// Create a copy of CmsThemeTextStyles
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsThemeTextStylesCopyWith<CmsThemeTextStyles> get copyWith => _$CmsThemeTextStylesCopyWithImpl<CmsThemeTextStyles>(this as CmsThemeTextStyles, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsThemeTextStyles&&(identical(other.header, header) || other.header == header)&&(identical(other.label, label) || other.label == label)&&(identical(other.text, text) || other.text == text)&&(identical(other.title, title) || other.title == title)&&(identical(other.caption, caption) || other.caption == caption)&&(identical(other.button, button) || other.button == button));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,header,label,text,title,caption,button);
+
+@override
+String toString() {
+  return 'CmsThemeTextStyles(header: $header, label: $label, text: $text, title: $title, caption: $caption, button: $button)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CmsThemeTextStylesCopyWith<$Res> {
-  factory $CmsThemeTextStylesCopyWith(
-          CmsThemeTextStyles value, $Res Function(CmsThemeTextStyles) then) =
-      _$CmsThemeTextStylesCopyWithImpl<$Res, CmsThemeTextStyles>;
-  @useResult
-  $Res call(
-      {TextStyle header,
-      TextStyle label,
-      TextStyle text,
-      TextStyle title,
-      TextStyle caption,
-      TextStyle button});
-}
+abstract mixin class $CmsThemeTextStylesCopyWith<$Res>  {
+  factory $CmsThemeTextStylesCopyWith(CmsThemeTextStyles value, $Res Function(CmsThemeTextStyles) _then) = _$CmsThemeTextStylesCopyWithImpl;
+@useResult
+$Res call({
+ TextStyle header, TextStyle label, TextStyle text, TextStyle title, TextStyle caption, TextStyle button
+});
 
+
+
+
+}
 /// @nodoc
-class _$CmsThemeTextStylesCopyWithImpl<$Res, $Val extends CmsThemeTextStyles>
+class _$CmsThemeTextStylesCopyWithImpl<$Res>
     implements $CmsThemeTextStylesCopyWith<$Res> {
-  _$CmsThemeTextStylesCopyWithImpl(this._value, this._then);
+  _$CmsThemeTextStylesCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final CmsThemeTextStyles _self;
+  final $Res Function(CmsThemeTextStyles) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? header = null,
-    Object? label = null,
-    Object? text = null,
-    Object? title = null,
-    Object? caption = null,
-    Object? button = null,
-  }) {
-    return _then(_value.copyWith(
-      header: null == header
-          ? _value.header
-          : header // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      label: null == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      caption: null == caption
-          ? _value.caption
-          : caption // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      button: null == button
-          ? _value.button
-          : button // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-    ) as $Val);
-  }
+/// Create a copy of CmsThemeTextStyles
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? header = null,Object? label = null,Object? text = null,Object? title = null,Object? caption = null,Object? button = null,}) {
+  return _then(_self.copyWith(
+header: null == header ? _self.header : header // ignore: cast_nullable_to_non_nullable
+as TextStyle,label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as TextStyle,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as TextStyle,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as TextStyle,caption: null == caption ? _self.caption : caption // ignore: cast_nullable_to_non_nullable
+as TextStyle,button: null == button ? _self.button : button // ignore: cast_nullable_to_non_nullable
+as TextStyle,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [CmsThemeTextStyles].
+extension CmsThemeTextStylesPatterns on CmsThemeTextStyles {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CmsThemeTextStyles value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CmsThemeTextStyles() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CmsThemeTextStyles value)  $default,){
+final _that = this;
+switch (_that) {
+case _CmsThemeTextStyles():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CmsThemeTextStyles value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CmsThemeTextStyles() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextStyle header,  TextStyle label,  TextStyle text,  TextStyle title,  TextStyle caption,  TextStyle button)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CmsThemeTextStyles() when $default != null:
+return $default(_that.header,_that.label,_that.text,_that.title,_that.caption,_that.button);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextStyle header,  TextStyle label,  TextStyle text,  TextStyle title,  TextStyle caption,  TextStyle button)  $default,) {final _that = this;
+switch (_that) {
+case _CmsThemeTextStyles():
+return $default(_that.header,_that.label,_that.text,_that.title,_that.caption,_that.button);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextStyle header,  TextStyle label,  TextStyle text,  TextStyle title,  TextStyle caption,  TextStyle button)?  $default,) {final _that = this;
+switch (_that) {
+case _CmsThemeTextStyles() when $default != null:
+return $default(_that.header,_that.label,_that.text,_that.title,_that.caption,_that.button);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$_CmsThemeTextStylesCopyWith<$Res>
-    implements $CmsThemeTextStylesCopyWith<$Res> {
-  factory _$$_CmsThemeTextStylesCopyWith(_$_CmsThemeTextStyles value,
-          $Res Function(_$_CmsThemeTextStyles) then) =
-      __$$_CmsThemeTextStylesCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {TextStyle header,
-      TextStyle label,
-      TextStyle text,
-      TextStyle title,
-      TextStyle caption,
-      TextStyle button});
+
+
+class _CmsThemeTextStyles extends CmsThemeTextStyles {
+  const _CmsThemeTextStyles({required this.header, required this.label, required this.text, required this.title, required this.caption, required this.button}): super._();
+  
+
+@override final  TextStyle header;
+@override final  TextStyle label;
+@override final  TextStyle text;
+@override final  TextStyle title;
+@override final  TextStyle caption;
+@override final  TextStyle button;
+
+/// Create a copy of CmsThemeTextStyles
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CmsThemeTextStylesCopyWith<_CmsThemeTextStyles> get copyWith => __$CmsThemeTextStylesCopyWithImpl<_CmsThemeTextStyles>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CmsThemeTextStyles&&(identical(other.header, header) || other.header == header)&&(identical(other.label, label) || other.label == label)&&(identical(other.text, text) || other.text == text)&&(identical(other.title, title) || other.title == title)&&(identical(other.caption, caption) || other.caption == caption)&&(identical(other.button, button) || other.button == button));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,header,label,text,title,caption,button);
+
+@override
+String toString() {
+  return 'CmsThemeTextStyles(header: $header, label: $label, text: $text, title: $title, caption: $caption, button: $button)';
+}
+
+
 }
 
 /// @nodoc
-class __$$_CmsThemeTextStylesCopyWithImpl<$Res>
-    extends _$CmsThemeTextStylesCopyWithImpl<$Res, _$_CmsThemeTextStyles>
-    implements _$$_CmsThemeTextStylesCopyWith<$Res> {
-  __$$_CmsThemeTextStylesCopyWithImpl(
-      _$_CmsThemeTextStyles _value, $Res Function(_$_CmsThemeTextStyles) _then)
-      : super(_value, _then);
+abstract mixin class _$CmsThemeTextStylesCopyWith<$Res> implements $CmsThemeTextStylesCopyWith<$Res> {
+  factory _$CmsThemeTextStylesCopyWith(_CmsThemeTextStyles value, $Res Function(_CmsThemeTextStyles) _then) = __$CmsThemeTextStylesCopyWithImpl;
+@override @useResult
+$Res call({
+ TextStyle header, TextStyle label, TextStyle text, TextStyle title, TextStyle caption, TextStyle button
+});
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? header = null,
-    Object? label = null,
-    Object? text = null,
-    Object? title = null,
-    Object? caption = null,
-    Object? button = null,
-  }) {
-    return _then(_$_CmsThemeTextStyles(
-      header: null == header
-          ? _value.header
-          : header // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      label: null == label
-          ? _value.label
-          : label // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      caption: null == caption
-          ? _value.caption
-          : caption // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      button: null == button
-          ? _value.button
-          : button // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$CmsThemeTextStylesCopyWithImpl<$Res>
+    implements _$CmsThemeTextStylesCopyWith<$Res> {
+  __$CmsThemeTextStylesCopyWithImpl(this._self, this._then);
 
-class _$_CmsThemeTextStyles extends _CmsThemeTextStyles {
-  const _$_CmsThemeTextStyles(
-      {required this.header,
-      required this.label,
-      required this.text,
-      required this.title,
-      required this.caption,
-      required this.button})
-      : super._();
+  final _CmsThemeTextStyles _self;
+  final $Res Function(_CmsThemeTextStyles) _then;
 
-  @override
-  final TextStyle header;
-  @override
-  final TextStyle label;
-  @override
-  final TextStyle text;
-  @override
-  final TextStyle title;
-  @override
-  final TextStyle caption;
-  @override
-  final TextStyle button;
-
-  @override
-  String toString() {
-    return 'CmsThemeTextStyles(header: $header, label: $label, text: $text, title: $title, caption: $caption, button: $button)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_CmsThemeTextStyles &&
-            (identical(other.header, header) || other.header == header) &&
-            (identical(other.label, label) || other.label == label) &&
-            (identical(other.text, text) || other.text == text) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.caption, caption) || other.caption == caption) &&
-            (identical(other.button, button) || other.button == button));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, header, label, text, title, caption, button);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_CmsThemeTextStylesCopyWith<_$_CmsThemeTextStyles> get copyWith =>
-      __$$_CmsThemeTextStylesCopyWithImpl<_$_CmsThemeTextStyles>(
-          this, _$identity);
+/// Create a copy of CmsThemeTextStyles
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? header = null,Object? label = null,Object? text = null,Object? title = null,Object? caption = null,Object? button = null,}) {
+  return _then(_CmsThemeTextStyles(
+header: null == header ? _self.header : header // ignore: cast_nullable_to_non_nullable
+as TextStyle,label: null == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
+as TextStyle,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as TextStyle,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as TextStyle,caption: null == caption ? _self.caption : caption // ignore: cast_nullable_to_non_nullable
+as TextStyle,button: null == button ? _self.button : button // ignore: cast_nullable_to_non_nullable
+as TextStyle,
+  ));
 }
 
-abstract class _CmsThemeTextStyles extends CmsThemeTextStyles {
-  const factory _CmsThemeTextStyles(
-      {required final TextStyle header,
-      required final TextStyle label,
-      required final TextStyle text,
-      required final TextStyle title,
-      required final TextStyle caption,
-      required final TextStyle button}) = _$_CmsThemeTextStyles;
-  const _CmsThemeTextStyles._() : super._();
 
-  @override
-  TextStyle get header;
-  @override
-  TextStyle get label;
-  @override
-  TextStyle get text;
-  @override
-  TextStyle get title;
-  @override
-  TextStyle get caption;
-  @override
-  TextStyle get button;
-  @override
-  @JsonKey(ignore: true)
-  _$$_CmsThemeTextStylesCopyWith<_$_CmsThemeTextStyles> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

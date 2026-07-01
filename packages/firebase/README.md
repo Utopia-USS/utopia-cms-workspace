@@ -1,4 +1,4 @@
-<img src="https://github.com/Utopia-USS/utopia_cms/raw/master/packages/firebase/cms_firebase.png" width = "405" height = "159"/>
+<img src="https://raw.githubusercontent.com/Utopia-USS/utopia-cms-workspace/master/packages/firebase/cms_firebase.png" width="302" alt="Utopia CMS Firebase"/>
 
 # Utopia CMS Firebase
 

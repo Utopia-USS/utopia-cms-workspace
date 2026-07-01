@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/ui/widget/wrapper/cms_field_wrapper.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 
 class CmsTextField extends HookWidget {
   final String value;
@@ -51,7 +51,11 @@ class CmsTextField extends HookWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          if (error != null) DefaultTextStyle(style: textStyles.caption.copyWith(color: colors.error), child: error!),
+          if (error != null)
+            DefaultTextStyle(
+              style: textStyles.caption.copyWith(color: colors.error),
+              child: error!,
+            ),
           _buildField(context, controller),
         ].separatedWith(const SizedBox(height: 6)),
       ),
@@ -60,11 +64,11 @@ class CmsTextField extends HookWidget {
 
   Widget _buildField(BuildContext context, TextEditingController controller) {
     return CmsFieldWrapper(
-      includePadding: label == null,
       child: Row(
         children: [
+          ?prefix,
           Flexible(child: _buildTextField(context, controller)),
-          if(suffix != null) suffix!,
+          ?suffix,
         ],
       ),
     );
@@ -84,16 +88,7 @@ class CmsTextField extends HookWidget {
         obscureText: obscureText,
         textInputAction: TextInputAction.next,
         inputFormatters: formatters,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          errorBorder: InputBorder.none,
-          disabledBorder: InputBorder.none,
-          label: label,
-          floatingLabelStyle: textStyles.label.copyWith(fontSize: 14, fontWeight: FontWeight.w600),
-          labelStyle: textStyles.label,
-        ),
+        decoration: cmsFieldDecoration(context, label: label, hint: hint),
         style: textStyles.text,
       ),
     );

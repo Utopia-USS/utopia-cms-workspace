@@ -1,3 +1,10 @@
+## 0.3.0
+
+ - **FEAT**: CMS refresh.
+ - **FEAT**: single media entry.
+ - **FIX**: item caching.
+ - **CHORE**: upgrade `dropdown_search` to `^7.0.0`, add runnable example and pub.dev metadata.
+
 ## 0.2.3
 
  - **FEAT**: Delegate error handling.

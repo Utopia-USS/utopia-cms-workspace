@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,252 +9,316 @@ part of 'cms_theme_colors.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
 /// @nodoc
 mixin _$CmsThemeColors {
-  Color get primary => throw _privateConstructorUsedError;
-  Color get accent => throw _privateConstructorUsedError;
-  Color get field => throw _privateConstructorUsedError;
-  Color get canvas => throw _privateConstructorUsedError;
-  Color get error => throw _privateConstructorUsedError;
-  Color get disabled => throw _privateConstructorUsedError;
-  Color get text => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
-  $CmsThemeColorsCopyWith<CmsThemeColors> get copyWith =>
-      throw _privateConstructorUsedError;
+ Color get primary; Color get accent; Color get field; Color get canvas; Color get error; Color get disabled; Color get text;/// Background of the table card and other raised surfaces.
+ Color get surface;/// Hairline colour for the card border and row / header dividers.
+ Color get border;/// Tint of alternating (odd) table rows.
+ Color get rowAlt;/// Row background while hovered.
+ Color get hover;/// Fill of a [CmsChip].
+ Color get chipBackground;/// Content (text / icon) colour of a [CmsChip].
+ Color get chipForeground;/// Muted colour for hints, placeholders and secondary text.
+ Color get hint;
+/// Create a copy of CmsThemeColors
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsThemeColorsCopyWith<CmsThemeColors> get copyWith => _$CmsThemeColorsCopyWithImpl<CmsThemeColors>(this as CmsThemeColors, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsThemeColors&&(identical(other.primary, primary) || other.primary == primary)&&(identical(other.accent, accent) || other.accent == accent)&&(identical(other.field, field) || other.field == field)&&(identical(other.canvas, canvas) || other.canvas == canvas)&&(identical(other.error, error) || other.error == error)&&(identical(other.disabled, disabled) || other.disabled == disabled)&&(identical(other.text, text) || other.text == text)&&(identical(other.surface, surface) || other.surface == surface)&&(identical(other.border, border) || other.border == border)&&(identical(other.rowAlt, rowAlt) || other.rowAlt == rowAlt)&&(identical(other.hover, hover) || other.hover == hover)&&(identical(other.chipBackground, chipBackground) || other.chipBackground == chipBackground)&&(identical(other.chipForeground, chipForeground) || other.chipForeground == chipForeground)&&(identical(other.hint, hint) || other.hint == hint));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,primary,accent,field,canvas,error,disabled,text,surface,border,rowAlt,hover,chipBackground,chipForeground,hint);
+
+@override
+String toString() {
+  return 'CmsThemeColors(primary: $primary, accent: $accent, field: $field, canvas: $canvas, error: $error, disabled: $disabled, text: $text, surface: $surface, border: $border, rowAlt: $rowAlt, hover: $hover, chipBackground: $chipBackground, chipForeground: $chipForeground, hint: $hint)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CmsThemeColorsCopyWith<$Res> {
-  factory $CmsThemeColorsCopyWith(
-          CmsThemeColors value, $Res Function(CmsThemeColors) then) =
-      _$CmsThemeColorsCopyWithImpl<$Res, CmsThemeColors>;
-  @useResult
-  $Res call(
-      {Color primary,
-      Color accent,
-      Color field,
-      Color canvas,
-      Color error,
-      Color disabled,
-      Color text});
-}
+abstract mixin class $CmsThemeColorsCopyWith<$Res>  {
+  factory $CmsThemeColorsCopyWith(CmsThemeColors value, $Res Function(CmsThemeColors) _then) = _$CmsThemeColorsCopyWithImpl;
+@useResult
+$Res call({
+ Color primary, Color accent, Color field, Color canvas, Color error, Color disabled, Color text, Color surface, Color border, Color rowAlt, Color hover, Color chipBackground, Color chipForeground, Color hint
+});
 
+
+
+
+}
 /// @nodoc
-class _$CmsThemeColorsCopyWithImpl<$Res, $Val extends CmsThemeColors>
+class _$CmsThemeColorsCopyWithImpl<$Res>
     implements $CmsThemeColorsCopyWith<$Res> {
-  _$CmsThemeColorsCopyWithImpl(this._value, this._then);
+  _$CmsThemeColorsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final CmsThemeColors _self;
+  final $Res Function(CmsThemeColors) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? primary = null,
-    Object? accent = null,
-    Object? field = null,
-    Object? canvas = null,
-    Object? error = null,
-    Object? disabled = null,
-    Object? text = null,
-  }) {
-    return _then(_value.copyWith(
-      primary: null == primary
-          ? _value.primary
-          : primary // ignore: cast_nullable_to_non_nullable
-              as Color,
-      accent: null == accent
-          ? _value.accent
-          : accent // ignore: cast_nullable_to_non_nullable
-              as Color,
-      field: null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as Color,
-      canvas: null == canvas
-          ? _value.canvas
-          : canvas // ignore: cast_nullable_to_non_nullable
-              as Color,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Color,
-      disabled: null == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as Color,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as Color,
-    ) as $Val);
-  }
+/// Create a copy of CmsThemeColors
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? primary = null,Object? accent = null,Object? field = null,Object? canvas = null,Object? error = null,Object? disabled = null,Object? text = null,Object? surface = null,Object? border = null,Object? rowAlt = null,Object? hover = null,Object? chipBackground = null,Object? chipForeground = null,Object? hint = null,}) {
+  return _then(_self.copyWith(
+primary: null == primary ? _self.primary : primary // ignore: cast_nullable_to_non_nullable
+as Color,accent: null == accent ? _self.accent : accent // ignore: cast_nullable_to_non_nullable
+as Color,field: null == field ? _self.field : field // ignore: cast_nullable_to_non_nullable
+as Color,canvas: null == canvas ? _self.canvas : canvas // ignore: cast_nullable_to_non_nullable
+as Color,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as Color,disabled: null == disabled ? _self.disabled : disabled // ignore: cast_nullable_to_non_nullable
+as Color,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as Color,surface: null == surface ? _self.surface : surface // ignore: cast_nullable_to_non_nullable
+as Color,border: null == border ? _self.border : border // ignore: cast_nullable_to_non_nullable
+as Color,rowAlt: null == rowAlt ? _self.rowAlt : rowAlt // ignore: cast_nullable_to_non_nullable
+as Color,hover: null == hover ? _self.hover : hover // ignore: cast_nullable_to_non_nullable
+as Color,chipBackground: null == chipBackground ? _self.chipBackground : chipBackground // ignore: cast_nullable_to_non_nullable
+as Color,chipForeground: null == chipForeground ? _self.chipForeground : chipForeground // ignore: cast_nullable_to_non_nullable
+as Color,hint: null == hint ? _self.hint : hint // ignore: cast_nullable_to_non_nullable
+as Color,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [CmsThemeColors].
+extension CmsThemeColorsPatterns on CmsThemeColors {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CmsThemeColors value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CmsThemeColors() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CmsThemeColors value)  $default,){
+final _that = this;
+switch (_that) {
+case _CmsThemeColors():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CmsThemeColors value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CmsThemeColors() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Color primary,  Color accent,  Color field,  Color canvas,  Color error,  Color disabled,  Color text,  Color surface,  Color border,  Color rowAlt,  Color hover,  Color chipBackground,  Color chipForeground,  Color hint)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CmsThemeColors() when $default != null:
+return $default(_that.primary,_that.accent,_that.field,_that.canvas,_that.error,_that.disabled,_that.text,_that.surface,_that.border,_that.rowAlt,_that.hover,_that.chipBackground,_that.chipForeground,_that.hint);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Color primary,  Color accent,  Color field,  Color canvas,  Color error,  Color disabled,  Color text,  Color surface,  Color border,  Color rowAlt,  Color hover,  Color chipBackground,  Color chipForeground,  Color hint)  $default,) {final _that = this;
+switch (_that) {
+case _CmsThemeColors():
+return $default(_that.primary,_that.accent,_that.field,_that.canvas,_that.error,_that.disabled,_that.text,_that.surface,_that.border,_that.rowAlt,_that.hover,_that.chipBackground,_that.chipForeground,_that.hint);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Color primary,  Color accent,  Color field,  Color canvas,  Color error,  Color disabled,  Color text,  Color surface,  Color border,  Color rowAlt,  Color hover,  Color chipBackground,  Color chipForeground,  Color hint)?  $default,) {final _that = this;
+switch (_that) {
+case _CmsThemeColors() when $default != null:
+return $default(_that.primary,_that.accent,_that.field,_that.canvas,_that.error,_that.disabled,_that.text,_that.surface,_that.border,_that.rowAlt,_that.hover,_that.chipBackground,_that.chipForeground,_that.hint);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$_CmsThemeColorsCopyWith<$Res>
-    implements $CmsThemeColorsCopyWith<$Res> {
-  factory _$$_CmsThemeColorsCopyWith(
-          _$_CmsThemeColors value, $Res Function(_$_CmsThemeColors) then) =
-      __$$_CmsThemeColorsCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Color primary,
-      Color accent,
-      Color field,
-      Color canvas,
-      Color error,
-      Color disabled,
-      Color text});
+
+
+class _CmsThemeColors extends CmsThemeColors {
+   _CmsThemeColors({required this.primary, required this.accent, required this.field, required this.canvas, required this.error, required this.disabled, required this.text, this.surface = const Color(0xFFFFFFFF), this.border = const Color(0xFFE8EAF0), this.rowAlt = const Color(0xFFF7F8FB), this.hover = const Color(0xFFEFF1F8), this.chipBackground = const Color(0xFFE7EAFD), this.chipForeground = const Color(0xFF536DFE), this.hint = const Color(0xFF9AA0B5)}): super._();
+  
+
+@override final  Color primary;
+@override final  Color accent;
+@override final  Color field;
+@override final  Color canvas;
+@override final  Color error;
+@override final  Color disabled;
+@override final  Color text;
+/// Background of the table card and other raised surfaces.
+@override@JsonKey() final  Color surface;
+/// Hairline colour for the card border and row / header dividers.
+@override@JsonKey() final  Color border;
+/// Tint of alternating (odd) table rows.
+@override@JsonKey() final  Color rowAlt;
+/// Row background while hovered.
+@override@JsonKey() final  Color hover;
+/// Fill of a [CmsChip].
+@override@JsonKey() final  Color chipBackground;
+/// Content (text / icon) colour of a [CmsChip].
+@override@JsonKey() final  Color chipForeground;
+/// Muted colour for hints, placeholders and secondary text.
+@override@JsonKey() final  Color hint;
+
+/// Create a copy of CmsThemeColors
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CmsThemeColorsCopyWith<_CmsThemeColors> get copyWith => __$CmsThemeColorsCopyWithImpl<_CmsThemeColors>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CmsThemeColors&&(identical(other.primary, primary) || other.primary == primary)&&(identical(other.accent, accent) || other.accent == accent)&&(identical(other.field, field) || other.field == field)&&(identical(other.canvas, canvas) || other.canvas == canvas)&&(identical(other.error, error) || other.error == error)&&(identical(other.disabled, disabled) || other.disabled == disabled)&&(identical(other.text, text) || other.text == text)&&(identical(other.surface, surface) || other.surface == surface)&&(identical(other.border, border) || other.border == border)&&(identical(other.rowAlt, rowAlt) || other.rowAlt == rowAlt)&&(identical(other.hover, hover) || other.hover == hover)&&(identical(other.chipBackground, chipBackground) || other.chipBackground == chipBackground)&&(identical(other.chipForeground, chipForeground) || other.chipForeground == chipForeground)&&(identical(other.hint, hint) || other.hint == hint));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,primary,accent,field,canvas,error,disabled,text,surface,border,rowAlt,hover,chipBackground,chipForeground,hint);
+
+@override
+String toString() {
+  return 'CmsThemeColors(primary: $primary, accent: $accent, field: $field, canvas: $canvas, error: $error, disabled: $disabled, text: $text, surface: $surface, border: $border, rowAlt: $rowAlt, hover: $hover, chipBackground: $chipBackground, chipForeground: $chipForeground, hint: $hint)';
+}
+
+
 }
 
 /// @nodoc
-class __$$_CmsThemeColorsCopyWithImpl<$Res>
-    extends _$CmsThemeColorsCopyWithImpl<$Res, _$_CmsThemeColors>
-    implements _$$_CmsThemeColorsCopyWith<$Res> {
-  __$$_CmsThemeColorsCopyWithImpl(
-      _$_CmsThemeColors _value, $Res Function(_$_CmsThemeColors) _then)
-      : super(_value, _then);
+abstract mixin class _$CmsThemeColorsCopyWith<$Res> implements $CmsThemeColorsCopyWith<$Res> {
+  factory _$CmsThemeColorsCopyWith(_CmsThemeColors value, $Res Function(_CmsThemeColors) _then) = __$CmsThemeColorsCopyWithImpl;
+@override @useResult
+$Res call({
+ Color primary, Color accent, Color field, Color canvas, Color error, Color disabled, Color text, Color surface, Color border, Color rowAlt, Color hover, Color chipBackground, Color chipForeground, Color hint
+});
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? primary = null,
-    Object? accent = null,
-    Object? field = null,
-    Object? canvas = null,
-    Object? error = null,
-    Object? disabled = null,
-    Object? text = null,
-  }) {
-    return _then(_$_CmsThemeColors(
-      primary: null == primary
-          ? _value.primary
-          : primary // ignore: cast_nullable_to_non_nullable
-              as Color,
-      accent: null == accent
-          ? _value.accent
-          : accent // ignore: cast_nullable_to_non_nullable
-              as Color,
-      field: null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as Color,
-      canvas: null == canvas
-          ? _value.canvas
-          : canvas // ignore: cast_nullable_to_non_nullable
-              as Color,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Color,
-      disabled: null == disabled
-          ? _value.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as Color,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as Color,
-    ));
-  }
+
+
+
 }
-
 /// @nodoc
+class __$CmsThemeColorsCopyWithImpl<$Res>
+    implements _$CmsThemeColorsCopyWith<$Res> {
+  __$CmsThemeColorsCopyWithImpl(this._self, this._then);
 
-class _$_CmsThemeColors extends _CmsThemeColors {
-  _$_CmsThemeColors(
-      {required this.primary,
-      required this.accent,
-      required this.field,
-      required this.canvas,
-      required this.error,
-      required this.disabled,
-      required this.text})
-      : super._();
+  final _CmsThemeColors _self;
+  final $Res Function(_CmsThemeColors) _then;
 
-  @override
-  final Color primary;
-  @override
-  final Color accent;
-  @override
-  final Color field;
-  @override
-  final Color canvas;
-  @override
-  final Color error;
-  @override
-  final Color disabled;
-  @override
-  final Color text;
-
-  @override
-  String toString() {
-    return 'CmsThemeColors(primary: $primary, accent: $accent, field: $field, canvas: $canvas, error: $error, disabled: $disabled, text: $text)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_CmsThemeColors &&
-            (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.accent, accent) || other.accent == accent) &&
-            (identical(other.field, field) || other.field == field) &&
-            (identical(other.canvas, canvas) || other.canvas == canvas) &&
-            (identical(other.error, error) || other.error == error) &&
-            (identical(other.disabled, disabled) ||
-                other.disabled == disabled) &&
-            (identical(other.text, text) || other.text == text));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, primary, accent, field, canvas, error, disabled, text);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_CmsThemeColorsCopyWith<_$_CmsThemeColors> get copyWith =>
-      __$$_CmsThemeColorsCopyWithImpl<_$_CmsThemeColors>(this, _$identity);
+/// Create a copy of CmsThemeColors
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? primary = null,Object? accent = null,Object? field = null,Object? canvas = null,Object? error = null,Object? disabled = null,Object? text = null,Object? surface = null,Object? border = null,Object? rowAlt = null,Object? hover = null,Object? chipBackground = null,Object? chipForeground = null,Object? hint = null,}) {
+  return _then(_CmsThemeColors(
+primary: null == primary ? _self.primary : primary // ignore: cast_nullable_to_non_nullable
+as Color,accent: null == accent ? _self.accent : accent // ignore: cast_nullable_to_non_nullable
+as Color,field: null == field ? _self.field : field // ignore: cast_nullable_to_non_nullable
+as Color,canvas: null == canvas ? _self.canvas : canvas // ignore: cast_nullable_to_non_nullable
+as Color,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as Color,disabled: null == disabled ? _self.disabled : disabled // ignore: cast_nullable_to_non_nullable
+as Color,text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as Color,surface: null == surface ? _self.surface : surface // ignore: cast_nullable_to_non_nullable
+as Color,border: null == border ? _self.border : border // ignore: cast_nullable_to_non_nullable
+as Color,rowAlt: null == rowAlt ? _self.rowAlt : rowAlt // ignore: cast_nullable_to_non_nullable
+as Color,hover: null == hover ? _self.hover : hover // ignore: cast_nullable_to_non_nullable
+as Color,chipBackground: null == chipBackground ? _self.chipBackground : chipBackground // ignore: cast_nullable_to_non_nullable
+as Color,chipForeground: null == chipForeground ? _self.chipForeground : chipForeground // ignore: cast_nullable_to_non_nullable
+as Color,hint: null == hint ? _self.hint : hint // ignore: cast_nullable_to_non_nullable
+as Color,
+  ));
 }
 
-abstract class _CmsThemeColors extends CmsThemeColors {
-  factory _CmsThemeColors(
-      {required final Color primary,
-      required final Color accent,
-      required final Color field,
-      required final Color canvas,
-      required final Color error,
-      required final Color disabled,
-      required final Color text}) = _$_CmsThemeColors;
-  _CmsThemeColors._() : super._();
 
-  @override
-  Color get primary;
-  @override
-  Color get accent;
-  @override
-  Color get field;
-  @override
-  Color get canvas;
-  @override
-  Color get error;
-  @override
-  Color get disabled;
-  @override
-  Color get text;
-  @override
-  @JsonKey(ignore: true)
-  _$$_CmsThemeColorsCopyWith<_$_CmsThemeColors> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

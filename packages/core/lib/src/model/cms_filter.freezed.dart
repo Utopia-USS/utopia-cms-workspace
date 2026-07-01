@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,2022 +9,883 @@ part of 'cms_filter.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
 /// @nodoc
 mixin _$CmsFilter {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() all,
-    required TResult Function(String field, Object? value) equals,
-    required TResult Function(String field, Object value) notEquals,
-    required TResult Function(String field, String value, bool caseSensitive)
-        containsString,
-    required TResult Function(String field, List<Object> values) inList,
-    required TResult Function(List<CmsFilter> filters) and,
-    required TResult Function(List<CmsFilter> filters) or,
-    required TResult Function(String field, Object value) greaterOrEq,
-    required TResult Function(String field, Object value) lesserOrEq,
-    required TResult Function(CmsFilter filter) not,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? all,
-    TResult? Function(String field, Object? value)? equals,
-    TResult? Function(String field, Object value)? notEquals,
-    TResult? Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult? Function(String field, List<Object> values)? inList,
-    TResult? Function(List<CmsFilter> filters)? and,
-    TResult? Function(List<CmsFilter> filters)? or,
-    TResult? Function(String field, Object value)? greaterOrEq,
-    TResult? Function(String field, Object value)? lesserOrEq,
-    TResult? Function(CmsFilter filter)? not,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? all,
-    TResult Function(String field, Object? value)? equals,
-    TResult Function(String field, Object value)? notEquals,
-    TResult Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult Function(String field, List<Object> values)? inList,
-    TResult Function(List<CmsFilter> filters)? and,
-    TResult Function(List<CmsFilter> filters)? or,
-    TResult Function(String field, Object value)? greaterOrEq,
-    TResult Function(String field, Object value)? lesserOrEq,
-    TResult Function(CmsFilter filter)? not,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsFilterAll value) all,
-    required TResult Function(CmsFilterEquals value) equals,
-    required TResult Function(CmsFilterNotEquals value) notEquals,
-    required TResult Function(CmsFilterContains value) containsString,
-    required TResult Function(CmsFilterInList value) inList,
-    required TResult Function(CmsFilterAnd value) and,
-    required TResult Function(CmsFilterOr value) or,
-    required TResult Function(CmsFilterGreaterOrEq value) greaterOrEq,
-    required TResult Function(CmsFilterLesserOrEq value) lesserOrEq,
-    required TResult Function(CmsFilterNot value) not,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsFilterAll value)? all,
-    TResult? Function(CmsFilterEquals value)? equals,
-    TResult? Function(CmsFilterNotEquals value)? notEquals,
-    TResult? Function(CmsFilterContains value)? containsString,
-    TResult? Function(CmsFilterInList value)? inList,
-    TResult? Function(CmsFilterAnd value)? and,
-    TResult? Function(CmsFilterOr value)? or,
-    TResult? Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult? Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult? Function(CmsFilterNot value)? not,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsFilterAll value)? all,
-    TResult Function(CmsFilterEquals value)? equals,
-    TResult Function(CmsFilterNotEquals value)? notEquals,
-    TResult Function(CmsFilterContains value)? containsString,
-    TResult Function(CmsFilterInList value)? inList,
-    TResult Function(CmsFilterAnd value)? and,
-    TResult Function(CmsFilterOr value)? or,
-    TResult Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult Function(CmsFilterNot value)? not,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsFilter);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CmsFilter()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CmsFilterCopyWith<$Res> {
-  factory $CmsFilterCopyWith(CmsFilter value, $Res Function(CmsFilter) then) =
-      _$CmsFilterCopyWithImpl<$Res, CmsFilter>;
+class $CmsFilterCopyWith<$Res>  {
+$CmsFilterCopyWith(CmsFilter _, $Res Function(CmsFilter) __);
 }
 
-/// @nodoc
-class _$CmsFilterCopyWithImpl<$Res, $Val extends CmsFilter>
-    implements $CmsFilterCopyWith<$Res> {
-  _$CmsFilterCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [CmsFilter].
+extension CmsFilterPatterns on CmsFilter {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CmsFilterAll value)?  all,TResult Function( CmsFilterEquals value)?  equals,TResult Function( CmsFilterNotEquals value)?  notEquals,TResult Function( CmsFilterContains value)?  containsString,TResult Function( CmsFilterInList value)?  inList,TResult Function( CmsFilterAnd value)?  and,TResult Function( CmsFilterOr value)?  or,TResult Function( CmsFilterGreaterOrEq value)?  greaterOrEq,TResult Function( CmsFilterLesserOrEq value)?  lesserOrEq,TResult Function( CmsFilterNot value)?  not,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case CmsFilterAll() when all != null:
+return all(_that);case CmsFilterEquals() when equals != null:
+return equals(_that);case CmsFilterNotEquals() when notEquals != null:
+return notEquals(_that);case CmsFilterContains() when containsString != null:
+return containsString(_that);case CmsFilterInList() when inList != null:
+return inList(_that);case CmsFilterAnd() when and != null:
+return and(_that);case CmsFilterOr() when or != null:
+return or(_that);case CmsFilterGreaterOrEq() when greaterOrEq != null:
+return greaterOrEq(_that);case CmsFilterLesserOrEq() when lesserOrEq != null:
+return lesserOrEq(_that);case CmsFilterNot() when not != null:
+return not(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CmsFilterAll value)  all,required TResult Function( CmsFilterEquals value)  equals,required TResult Function( CmsFilterNotEquals value)  notEquals,required TResult Function( CmsFilterContains value)  containsString,required TResult Function( CmsFilterInList value)  inList,required TResult Function( CmsFilterAnd value)  and,required TResult Function( CmsFilterOr value)  or,required TResult Function( CmsFilterGreaterOrEq value)  greaterOrEq,required TResult Function( CmsFilterLesserOrEq value)  lesserOrEq,required TResult Function( CmsFilterNot value)  not,}){
+final _that = this;
+switch (_that) {
+case CmsFilterAll():
+return all(_that);case CmsFilterEquals():
+return equals(_that);case CmsFilterNotEquals():
+return notEquals(_that);case CmsFilterContains():
+return containsString(_that);case CmsFilterInList():
+return inList(_that);case CmsFilterAnd():
+return and(_that);case CmsFilterOr():
+return or(_that);case CmsFilterGreaterOrEq():
+return greaterOrEq(_that);case CmsFilterLesserOrEq():
+return lesserOrEq(_that);case CmsFilterNot():
+return not(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CmsFilterAll value)?  all,TResult? Function( CmsFilterEquals value)?  equals,TResult? Function( CmsFilterNotEquals value)?  notEquals,TResult? Function( CmsFilterContains value)?  containsString,TResult? Function( CmsFilterInList value)?  inList,TResult? Function( CmsFilterAnd value)?  and,TResult? Function( CmsFilterOr value)?  or,TResult? Function( CmsFilterGreaterOrEq value)?  greaterOrEq,TResult? Function( CmsFilterLesserOrEq value)?  lesserOrEq,TResult? Function( CmsFilterNot value)?  not,}){
+final _that = this;
+switch (_that) {
+case CmsFilterAll() when all != null:
+return all(_that);case CmsFilterEquals() when equals != null:
+return equals(_that);case CmsFilterNotEquals() when notEquals != null:
+return notEquals(_that);case CmsFilterContains() when containsString != null:
+return containsString(_that);case CmsFilterInList() when inList != null:
+return inList(_that);case CmsFilterAnd() when and != null:
+return and(_that);case CmsFilterOr() when or != null:
+return or(_that);case CmsFilterGreaterOrEq() when greaterOrEq != null:
+return greaterOrEq(_that);case CmsFilterLesserOrEq() when lesserOrEq != null:
+return lesserOrEq(_that);case CmsFilterNot() when not != null:
+return not(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  all,TResult Function( String field,  Object? value)?  equals,TResult Function( String field,  Object? value)?  notEquals,TResult Function( String field,  String value,  bool caseSensitive)?  containsString,TResult Function( String field,  List<Object> values)?  inList,TResult Function( List<CmsFilter> filters)?  and,TResult Function( List<CmsFilter> filters)?  or,TResult Function( String field,  Object value)?  greaterOrEq,TResult Function( String field,  Object value)?  lesserOrEq,TResult Function( CmsFilter filter)?  not,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case CmsFilterAll() when all != null:
+return all();case CmsFilterEquals() when equals != null:
+return equals(_that.field,_that.value);case CmsFilterNotEquals() when notEquals != null:
+return notEquals(_that.field,_that.value);case CmsFilterContains() when containsString != null:
+return containsString(_that.field,_that.value,_that.caseSensitive);case CmsFilterInList() when inList != null:
+return inList(_that.field,_that.values);case CmsFilterAnd() when and != null:
+return and(_that.filters);case CmsFilterOr() when or != null:
+return or(_that.filters);case CmsFilterGreaterOrEq() when greaterOrEq != null:
+return greaterOrEq(_that.field,_that.value);case CmsFilterLesserOrEq() when lesserOrEq != null:
+return lesserOrEq(_that.field,_that.value);case CmsFilterNot() when not != null:
+return not(_that.filter);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  all,required TResult Function( String field,  Object? value)  equals,required TResult Function( String field,  Object? value)  notEquals,required TResult Function( String field,  String value,  bool caseSensitive)  containsString,required TResult Function( String field,  List<Object> values)  inList,required TResult Function( List<CmsFilter> filters)  and,required TResult Function( List<CmsFilter> filters)  or,required TResult Function( String field,  Object value)  greaterOrEq,required TResult Function( String field,  Object value)  lesserOrEq,required TResult Function( CmsFilter filter)  not,}) {final _that = this;
+switch (_that) {
+case CmsFilterAll():
+return all();case CmsFilterEquals():
+return equals(_that.field,_that.value);case CmsFilterNotEquals():
+return notEquals(_that.field,_that.value);case CmsFilterContains():
+return containsString(_that.field,_that.value,_that.caseSensitive);case CmsFilterInList():
+return inList(_that.field,_that.values);case CmsFilterAnd():
+return and(_that.filters);case CmsFilterOr():
+return or(_that.filters);case CmsFilterGreaterOrEq():
+return greaterOrEq(_that.field,_that.value);case CmsFilterLesserOrEq():
+return lesserOrEq(_that.field,_that.value);case CmsFilterNot():
+return not(_that.filter);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  all,TResult? Function( String field,  Object? value)?  equals,TResult? Function( String field,  Object? value)?  notEquals,TResult? Function( String field,  String value,  bool caseSensitive)?  containsString,TResult? Function( String field,  List<Object> values)?  inList,TResult? Function( List<CmsFilter> filters)?  and,TResult? Function( List<CmsFilter> filters)?  or,TResult? Function( String field,  Object value)?  greaterOrEq,TResult? Function( String field,  Object value)?  lesserOrEq,TResult? Function( CmsFilter filter)?  not,}) {final _that = this;
+switch (_that) {
+case CmsFilterAll() when all != null:
+return all();case CmsFilterEquals() when equals != null:
+return equals(_that.field,_that.value);case CmsFilterNotEquals() when notEquals != null:
+return notEquals(_that.field,_that.value);case CmsFilterContains() when containsString != null:
+return containsString(_that.field,_that.value,_that.caseSensitive);case CmsFilterInList() when inList != null:
+return inList(_that.field,_that.values);case CmsFilterAnd() when and != null:
+return and(_that.filters);case CmsFilterOr() when or != null:
+return or(_that.filters);case CmsFilterGreaterOrEq() when greaterOrEq != null:
+return greaterOrEq(_that.field,_that.value);case CmsFilterLesserOrEq() when lesserOrEq != null:
+return lesserOrEq(_that.field,_that.value);case CmsFilterNot() when not != null:
+return not(_that.filter);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$CmsFilterAllCopyWith<$Res> {
-  factory _$$CmsFilterAllCopyWith(
-          _$CmsFilterAll value, $Res Function(_$CmsFilterAll) then) =
-      __$$CmsFilterAllCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$CmsFilterAllCopyWithImpl<$Res>
-    extends _$CmsFilterCopyWithImpl<$Res, _$CmsFilterAll>
-    implements _$$CmsFilterAllCopyWith<$Res> {
-  __$$CmsFilterAllCopyWithImpl(
-      _$CmsFilterAll _value, $Res Function(_$CmsFilterAll) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$CmsFilterAll implements CmsFilterAll {
-  const _$CmsFilterAll();
-
-  @override
-  String toString() {
-    return 'CmsFilter.all()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CmsFilterAll);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() all,
-    required TResult Function(String field, Object? value) equals,
-    required TResult Function(String field, Object value) notEquals,
-    required TResult Function(String field, String value, bool caseSensitive)
-        containsString,
-    required TResult Function(String field, List<Object> values) inList,
-    required TResult Function(List<CmsFilter> filters) and,
-    required TResult Function(List<CmsFilter> filters) or,
-    required TResult Function(String field, Object value) greaterOrEq,
-    required TResult Function(String field, Object value) lesserOrEq,
-    required TResult Function(CmsFilter filter) not,
-  }) {
-    return all();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? all,
-    TResult? Function(String field, Object? value)? equals,
-    TResult? Function(String field, Object value)? notEquals,
-    TResult? Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult? Function(String field, List<Object> values)? inList,
-    TResult? Function(List<CmsFilter> filters)? and,
-    TResult? Function(List<CmsFilter> filters)? or,
-    TResult? Function(String field, Object value)? greaterOrEq,
-    TResult? Function(String field, Object value)? lesserOrEq,
-    TResult? Function(CmsFilter filter)? not,
-  }) {
-    return all?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? all,
-    TResult Function(String field, Object? value)? equals,
-    TResult Function(String field, Object value)? notEquals,
-    TResult Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult Function(String field, List<Object> values)? inList,
-    TResult Function(List<CmsFilter> filters)? and,
-    TResult Function(List<CmsFilter> filters)? or,
-    TResult Function(String field, Object value)? greaterOrEq,
-    TResult Function(String field, Object value)? lesserOrEq,
-    TResult Function(CmsFilter filter)? not,
-    required TResult orElse(),
-  }) {
-    if (all != null) {
-      return all();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsFilterAll value) all,
-    required TResult Function(CmsFilterEquals value) equals,
-    required TResult Function(CmsFilterNotEquals value) notEquals,
-    required TResult Function(CmsFilterContains value) containsString,
-    required TResult Function(CmsFilterInList value) inList,
-    required TResult Function(CmsFilterAnd value) and,
-    required TResult Function(CmsFilterOr value) or,
-    required TResult Function(CmsFilterGreaterOrEq value) greaterOrEq,
-    required TResult Function(CmsFilterLesserOrEq value) lesserOrEq,
-    required TResult Function(CmsFilterNot value) not,
-  }) {
-    return all(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsFilterAll value)? all,
-    TResult? Function(CmsFilterEquals value)? equals,
-    TResult? Function(CmsFilterNotEquals value)? notEquals,
-    TResult? Function(CmsFilterContains value)? containsString,
-    TResult? Function(CmsFilterInList value)? inList,
-    TResult? Function(CmsFilterAnd value)? and,
-    TResult? Function(CmsFilterOr value)? or,
-    TResult? Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult? Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult? Function(CmsFilterNot value)? not,
-  }) {
-    return all?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsFilterAll value)? all,
-    TResult Function(CmsFilterEquals value)? equals,
-    TResult Function(CmsFilterNotEquals value)? notEquals,
-    TResult Function(CmsFilterContains value)? containsString,
-    TResult Function(CmsFilterInList value)? inList,
-    TResult Function(CmsFilterAnd value)? and,
-    TResult Function(CmsFilterOr value)? or,
-    TResult Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult Function(CmsFilterNot value)? not,
-    required TResult orElse(),
-  }) {
-    if (all != null) {
-      return all(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CmsFilterAll implements CmsFilter {
-  const factory CmsFilterAll() = _$CmsFilterAll;
-}
-
-/// @nodoc
-abstract class _$$CmsFilterEqualsCopyWith<$Res> {
-  factory _$$CmsFilterEqualsCopyWith(
-          _$CmsFilterEquals value, $Res Function(_$CmsFilterEquals) then) =
-      __$$CmsFilterEqualsCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String field, Object? value});
-}
-
-/// @nodoc
-class __$$CmsFilterEqualsCopyWithImpl<$Res>
-    extends _$CmsFilterCopyWithImpl<$Res, _$CmsFilterEquals>
-    implements _$$CmsFilterEqualsCopyWith<$Res> {
-  __$$CmsFilterEqualsCopyWithImpl(
-      _$CmsFilterEquals _value, $Res Function(_$CmsFilterEquals) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field = null,
-    Object? value = freezed,
-  }) {
-    return _then(_$CmsFilterEquals(
-      null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as String,
-      freezed == value ? _value.value : value,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CmsFilterEquals implements CmsFilterEquals {
-  const _$CmsFilterEquals(this.field, this.value);
 
-  @override
-  final String field;
-  @override
-  final Object? value;
+class CmsFilterAll implements CmsFilter {
+  const CmsFilterAll();
+  
 
-  @override
-  String toString() {
-    return 'CmsFilter.equals(field: $field, value: $value)';
-  }
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsFilterEquals &&
-            (identical(other.field, field) || other.field == field) &&
-            const DeepCollectionEquality().equals(other.value, value));
-  }
 
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, field, const DeepCollectionEquality().hash(value));
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsFilterEqualsCopyWith<_$CmsFilterEquals> get copyWith =>
-      __$$CmsFilterEqualsCopyWithImpl<_$CmsFilterEquals>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() all,
-    required TResult Function(String field, Object? value) equals,
-    required TResult Function(String field, Object value) notEquals,
-    required TResult Function(String field, String value, bool caseSensitive)
-        containsString,
-    required TResult Function(String field, List<Object> values) inList,
-    required TResult Function(List<CmsFilter> filters) and,
-    required TResult Function(List<CmsFilter> filters) or,
-    required TResult Function(String field, Object value) greaterOrEq,
-    required TResult Function(String field, Object value) lesserOrEq,
-    required TResult Function(CmsFilter filter) not,
-  }) {
-    return equals(field, value);
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? all,
-    TResult? Function(String field, Object? value)? equals,
-    TResult? Function(String field, Object value)? notEquals,
-    TResult? Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult? Function(String field, List<Object> values)? inList,
-    TResult? Function(List<CmsFilter> filters)? and,
-    TResult? Function(List<CmsFilter> filters)? or,
-    TResult? Function(String field, Object value)? greaterOrEq,
-    TResult? Function(String field, Object value)? lesserOrEq,
-    TResult? Function(CmsFilter filter)? not,
-  }) {
-    return equals?.call(field, value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? all,
-    TResult Function(String field, Object? value)? equals,
-    TResult Function(String field, Object value)? notEquals,
-    TResult Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult Function(String field, List<Object> values)? inList,
-    TResult Function(List<CmsFilter> filters)? and,
-    TResult Function(List<CmsFilter> filters)? or,
-    TResult Function(String field, Object value)? greaterOrEq,
-    TResult Function(String field, Object value)? lesserOrEq,
-    TResult Function(CmsFilter filter)? not,
-    required TResult orElse(),
-  }) {
-    if (equals != null) {
-      return equals(field, value);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsFilterAll value) all,
-    required TResult Function(CmsFilterEquals value) equals,
-    required TResult Function(CmsFilterNotEquals value) notEquals,
-    required TResult Function(CmsFilterContains value) containsString,
-    required TResult Function(CmsFilterInList value) inList,
-    required TResult Function(CmsFilterAnd value) and,
-    required TResult Function(CmsFilterOr value) or,
-    required TResult Function(CmsFilterGreaterOrEq value) greaterOrEq,
-    required TResult Function(CmsFilterLesserOrEq value) lesserOrEq,
-    required TResult Function(CmsFilterNot value) not,
-  }) {
-    return equals(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsFilterAll value)? all,
-    TResult? Function(CmsFilterEquals value)? equals,
-    TResult? Function(CmsFilterNotEquals value)? notEquals,
-    TResult? Function(CmsFilterContains value)? containsString,
-    TResult? Function(CmsFilterInList value)? inList,
-    TResult? Function(CmsFilterAnd value)? and,
-    TResult? Function(CmsFilterOr value)? or,
-    TResult? Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult? Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult? Function(CmsFilterNot value)? not,
-  }) {
-    return equals?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsFilterAll value)? all,
-    TResult Function(CmsFilterEquals value)? equals,
-    TResult Function(CmsFilterNotEquals value)? notEquals,
-    TResult Function(CmsFilterContains value)? containsString,
-    TResult Function(CmsFilterInList value)? inList,
-    TResult Function(CmsFilterAnd value)? and,
-    TResult Function(CmsFilterOr value)? or,
-    TResult Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult Function(CmsFilterNot value)? not,
-    required TResult orElse(),
-  }) {
-    if (equals != null) {
-      return equals(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsFilterAll);
 }
 
-abstract class CmsFilterEquals implements CmsFilter {
-  const factory CmsFilterEquals(final String field, final Object? value) =
-      _$CmsFilterEquals;
 
-  String get field;
-  Object? get value;
-  @JsonKey(ignore: true)
-  _$$CmsFilterEqualsCopyWith<_$CmsFilterEquals> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CmsFilter.all()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class CmsFilterEquals implements CmsFilter {
+  const CmsFilterEquals(this.field, this.value);
+  
+
+ final  String field;
+ final  Object? value;
+
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsFilterEqualsCopyWith<CmsFilterEquals> get copyWith => _$CmsFilterEqualsCopyWithImpl<CmsFilterEquals>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsFilterEquals&&(identical(other.field, field) || other.field == field)&&const DeepCollectionEquality().equals(other.value, value));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field,const DeepCollectionEquality().hash(value));
+
+@override
+String toString() {
+  return 'CmsFilter.equals(field: $field, value: $value)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CmsFilterNotEqualsCopyWith<$Res> {
-  factory _$$CmsFilterNotEqualsCopyWith(_$CmsFilterNotEquals value,
-          $Res Function(_$CmsFilterNotEquals) then) =
-      __$$CmsFilterNotEqualsCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String field, Object value});
+abstract mixin class $CmsFilterEqualsCopyWith<$Res> implements $CmsFilterCopyWith<$Res> {
+  factory $CmsFilterEqualsCopyWith(CmsFilterEquals value, $Res Function(CmsFilterEquals) _then) = _$CmsFilterEqualsCopyWithImpl;
+@useResult
+$Res call({
+ String field, Object? value
+});
+
+
+
+
+}
+/// @nodoc
+class _$CmsFilterEqualsCopyWithImpl<$Res>
+    implements $CmsFilterEqualsCopyWith<$Res> {
+  _$CmsFilterEqualsCopyWithImpl(this._self, this._then);
+
+  final CmsFilterEquals _self;
+  final $Res Function(CmsFilterEquals) _then;
+
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field = null,Object? value = freezed,}) {
+  return _then(CmsFilterEquals(
+null == field ? _self.field : field // ignore: cast_nullable_to_non_nullable
+as String,freezed == value ? _self.value : value ,
+  ));
 }
 
-/// @nodoc
-class __$$CmsFilterNotEqualsCopyWithImpl<$Res>
-    extends _$CmsFilterCopyWithImpl<$Res, _$CmsFilterNotEquals>
-    implements _$$CmsFilterNotEqualsCopyWith<$Res> {
-  __$$CmsFilterNotEqualsCopyWithImpl(
-      _$CmsFilterNotEquals _value, $Res Function(_$CmsFilterNotEquals) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field = null,
-    Object? value = null,
-  }) {
-    return _then(_$CmsFilterNotEquals(
-      null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == value ? _value.value : value,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CmsFilterNotEquals implements CmsFilterNotEquals {
-  const _$CmsFilterNotEquals(this.field, this.value);
 
-  @override
-  final String field;
-  @override
-  final Object value;
+class CmsFilterNotEquals implements CmsFilter {
+  const CmsFilterNotEquals(this.field, this.value);
+  
 
-  @override
-  String toString() {
-    return 'CmsFilter.notEquals(field: $field, value: $value)';
-  }
+ final  String field;
+ final  Object? value;
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsFilterNotEquals &&
-            (identical(other.field, field) || other.field == field) &&
-            const DeepCollectionEquality().equals(other.value, value));
-  }
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsFilterNotEqualsCopyWith<CmsFilterNotEquals> get copyWith => _$CmsFilterNotEqualsCopyWithImpl<CmsFilterNotEquals>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, field, const DeepCollectionEquality().hash(value));
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsFilterNotEqualsCopyWith<_$CmsFilterNotEquals> get copyWith =>
-      __$$CmsFilterNotEqualsCopyWithImpl<_$CmsFilterNotEquals>(
-          this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() all,
-    required TResult Function(String field, Object? value) equals,
-    required TResult Function(String field, Object value) notEquals,
-    required TResult Function(String field, String value, bool caseSensitive)
-        containsString,
-    required TResult Function(String field, List<Object> values) inList,
-    required TResult Function(List<CmsFilter> filters) and,
-    required TResult Function(List<CmsFilter> filters) or,
-    required TResult Function(String field, Object value) greaterOrEq,
-    required TResult Function(String field, Object value) lesserOrEq,
-    required TResult Function(CmsFilter filter) not,
-  }) {
-    return notEquals(field, value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? all,
-    TResult? Function(String field, Object? value)? equals,
-    TResult? Function(String field, Object value)? notEquals,
-    TResult? Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult? Function(String field, List<Object> values)? inList,
-    TResult? Function(List<CmsFilter> filters)? and,
-    TResult? Function(List<CmsFilter> filters)? or,
-    TResult? Function(String field, Object value)? greaterOrEq,
-    TResult? Function(String field, Object value)? lesserOrEq,
-    TResult? Function(CmsFilter filter)? not,
-  }) {
-    return notEquals?.call(field, value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? all,
-    TResult Function(String field, Object? value)? equals,
-    TResult Function(String field, Object value)? notEquals,
-    TResult Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult Function(String field, List<Object> values)? inList,
-    TResult Function(List<CmsFilter> filters)? and,
-    TResult Function(List<CmsFilter> filters)? or,
-    TResult Function(String field, Object value)? greaterOrEq,
-    TResult Function(String field, Object value)? lesserOrEq,
-    TResult Function(CmsFilter filter)? not,
-    required TResult orElse(),
-  }) {
-    if (notEquals != null) {
-      return notEquals(field, value);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsFilterAll value) all,
-    required TResult Function(CmsFilterEquals value) equals,
-    required TResult Function(CmsFilterNotEquals value) notEquals,
-    required TResult Function(CmsFilterContains value) containsString,
-    required TResult Function(CmsFilterInList value) inList,
-    required TResult Function(CmsFilterAnd value) and,
-    required TResult Function(CmsFilterOr value) or,
-    required TResult Function(CmsFilterGreaterOrEq value) greaterOrEq,
-    required TResult Function(CmsFilterLesserOrEq value) lesserOrEq,
-    required TResult Function(CmsFilterNot value) not,
-  }) {
-    return notEquals(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsFilterAll value)? all,
-    TResult? Function(CmsFilterEquals value)? equals,
-    TResult? Function(CmsFilterNotEquals value)? notEquals,
-    TResult? Function(CmsFilterContains value)? containsString,
-    TResult? Function(CmsFilterInList value)? inList,
-    TResult? Function(CmsFilterAnd value)? and,
-    TResult? Function(CmsFilterOr value)? or,
-    TResult? Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult? Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult? Function(CmsFilterNot value)? not,
-  }) {
-    return notEquals?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsFilterAll value)? all,
-    TResult Function(CmsFilterEquals value)? equals,
-    TResult Function(CmsFilterNotEquals value)? notEquals,
-    TResult Function(CmsFilterContains value)? containsString,
-    TResult Function(CmsFilterInList value)? inList,
-    TResult Function(CmsFilterAnd value)? and,
-    TResult Function(CmsFilterOr value)? or,
-    TResult Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult Function(CmsFilterNot value)? not,
-    required TResult orElse(),
-  }) {
-    if (notEquals != null) {
-      return notEquals(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsFilterNotEquals&&(identical(other.field, field) || other.field == field)&&const DeepCollectionEquality().equals(other.value, value));
 }
 
-abstract class CmsFilterNotEquals implements CmsFilter {
-  const factory CmsFilterNotEquals(final String field, final Object value) =
-      _$CmsFilterNotEquals;
 
-  String get field;
-  Object get value;
-  @JsonKey(ignore: true)
-  _$$CmsFilterNotEqualsCopyWith<_$CmsFilterNotEquals> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+int get hashCode => Object.hash(runtimeType,field,const DeepCollectionEquality().hash(value));
+
+@override
+String toString() {
+  return 'CmsFilter.notEquals(field: $field, value: $value)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CmsFilterContainsCopyWith<$Res> {
-  factory _$$CmsFilterContainsCopyWith(
-          _$CmsFilterContains value, $Res Function(_$CmsFilterContains) then) =
-      __$$CmsFilterContainsCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String field, String value, bool caseSensitive});
+abstract mixin class $CmsFilterNotEqualsCopyWith<$Res> implements $CmsFilterCopyWith<$Res> {
+  factory $CmsFilterNotEqualsCopyWith(CmsFilterNotEquals value, $Res Function(CmsFilterNotEquals) _then) = _$CmsFilterNotEqualsCopyWithImpl;
+@useResult
+$Res call({
+ String field, Object? value
+});
+
+
+
+
+}
+/// @nodoc
+class _$CmsFilterNotEqualsCopyWithImpl<$Res>
+    implements $CmsFilterNotEqualsCopyWith<$Res> {
+  _$CmsFilterNotEqualsCopyWithImpl(this._self, this._then);
+
+  final CmsFilterNotEquals _self;
+  final $Res Function(CmsFilterNotEquals) _then;
+
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field = null,Object? value = freezed,}) {
+  return _then(CmsFilterNotEquals(
+null == field ? _self.field : field // ignore: cast_nullable_to_non_nullable
+as String,freezed == value ? _self.value : value ,
+  ));
 }
 
-/// @nodoc
-class __$$CmsFilterContainsCopyWithImpl<$Res>
-    extends _$CmsFilterCopyWithImpl<$Res, _$CmsFilterContains>
-    implements _$$CmsFilterContainsCopyWith<$Res> {
-  __$$CmsFilterContainsCopyWithImpl(
-      _$CmsFilterContains _value, $Res Function(_$CmsFilterContains) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field = null,
-    Object? value = null,
-    Object? caseSensitive = null,
-  }) {
-    return _then(_$CmsFilterContains(
-      null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-      caseSensitive: null == caseSensitive
-          ? _value.caseSensitive
-          : caseSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CmsFilterContains implements CmsFilterContains {
-  const _$CmsFilterContains(this.field, this.value,
-      {this.caseSensitive = false});
 
-  @override
-  final String field;
-  @override
-  final String value;
-  @override
-  @JsonKey()
-  final bool caseSensitive;
+class CmsFilterContains implements CmsFilter {
+  const CmsFilterContains(this.field, this.value, {this.caseSensitive = false});
+  
 
-  @override
-  String toString() {
-    return 'CmsFilter.containsString(field: $field, value: $value, caseSensitive: $caseSensitive)';
-  }
+ final  String field;
+ final  String value;
+@JsonKey() final  bool caseSensitive;
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsFilterContains &&
-            (identical(other.field, field) || other.field == field) &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.caseSensitive, caseSensitive) ||
-                other.caseSensitive == caseSensitive));
-  }
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsFilterContainsCopyWith<CmsFilterContains> get copyWith => _$CmsFilterContainsCopyWithImpl<CmsFilterContains>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, field, value, caseSensitive);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsFilterContainsCopyWith<_$CmsFilterContains> get copyWith =>
-      __$$CmsFilterContainsCopyWithImpl<_$CmsFilterContains>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() all,
-    required TResult Function(String field, Object? value) equals,
-    required TResult Function(String field, Object value) notEquals,
-    required TResult Function(String field, String value, bool caseSensitive)
-        containsString,
-    required TResult Function(String field, List<Object> values) inList,
-    required TResult Function(List<CmsFilter> filters) and,
-    required TResult Function(List<CmsFilter> filters) or,
-    required TResult Function(String field, Object value) greaterOrEq,
-    required TResult Function(String field, Object value) lesserOrEq,
-    required TResult Function(CmsFilter filter) not,
-  }) {
-    return containsString(field, value, caseSensitive);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? all,
-    TResult? Function(String field, Object? value)? equals,
-    TResult? Function(String field, Object value)? notEquals,
-    TResult? Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult? Function(String field, List<Object> values)? inList,
-    TResult? Function(List<CmsFilter> filters)? and,
-    TResult? Function(List<CmsFilter> filters)? or,
-    TResult? Function(String field, Object value)? greaterOrEq,
-    TResult? Function(String field, Object value)? lesserOrEq,
-    TResult? Function(CmsFilter filter)? not,
-  }) {
-    return containsString?.call(field, value, caseSensitive);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? all,
-    TResult Function(String field, Object? value)? equals,
-    TResult Function(String field, Object value)? notEquals,
-    TResult Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult Function(String field, List<Object> values)? inList,
-    TResult Function(List<CmsFilter> filters)? and,
-    TResult Function(List<CmsFilter> filters)? or,
-    TResult Function(String field, Object value)? greaterOrEq,
-    TResult Function(String field, Object value)? lesserOrEq,
-    TResult Function(CmsFilter filter)? not,
-    required TResult orElse(),
-  }) {
-    if (containsString != null) {
-      return containsString(field, value, caseSensitive);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsFilterAll value) all,
-    required TResult Function(CmsFilterEquals value) equals,
-    required TResult Function(CmsFilterNotEquals value) notEquals,
-    required TResult Function(CmsFilterContains value) containsString,
-    required TResult Function(CmsFilterInList value) inList,
-    required TResult Function(CmsFilterAnd value) and,
-    required TResult Function(CmsFilterOr value) or,
-    required TResult Function(CmsFilterGreaterOrEq value) greaterOrEq,
-    required TResult Function(CmsFilterLesserOrEq value) lesserOrEq,
-    required TResult Function(CmsFilterNot value) not,
-  }) {
-    return containsString(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsFilterAll value)? all,
-    TResult? Function(CmsFilterEquals value)? equals,
-    TResult? Function(CmsFilterNotEquals value)? notEquals,
-    TResult? Function(CmsFilterContains value)? containsString,
-    TResult? Function(CmsFilterInList value)? inList,
-    TResult? Function(CmsFilterAnd value)? and,
-    TResult? Function(CmsFilterOr value)? or,
-    TResult? Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult? Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult? Function(CmsFilterNot value)? not,
-  }) {
-    return containsString?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsFilterAll value)? all,
-    TResult Function(CmsFilterEquals value)? equals,
-    TResult Function(CmsFilterNotEquals value)? notEquals,
-    TResult Function(CmsFilterContains value)? containsString,
-    TResult Function(CmsFilterInList value)? inList,
-    TResult Function(CmsFilterAnd value)? and,
-    TResult Function(CmsFilterOr value)? or,
-    TResult Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult Function(CmsFilterNot value)? not,
-    required TResult orElse(),
-  }) {
-    if (containsString != null) {
-      return containsString(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsFilterContains&&(identical(other.field, field) || other.field == field)&&(identical(other.value, value) || other.value == value)&&(identical(other.caseSensitive, caseSensitive) || other.caseSensitive == caseSensitive));
 }
 
-abstract class CmsFilterContains implements CmsFilter {
-  const factory CmsFilterContains(final String field, final String value,
-      {final bool caseSensitive}) = _$CmsFilterContains;
 
-  String get field;
-  String get value;
-  bool get caseSensitive;
-  @JsonKey(ignore: true)
-  _$$CmsFilterContainsCopyWith<_$CmsFilterContains> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+int get hashCode => Object.hash(runtimeType,field,value,caseSensitive);
+
+@override
+String toString() {
+  return 'CmsFilter.containsString(field: $field, value: $value, caseSensitive: $caseSensitive)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CmsFilterInListCopyWith<$Res> {
-  factory _$$CmsFilterInListCopyWith(
-          _$CmsFilterInList value, $Res Function(_$CmsFilterInList) then) =
-      __$$CmsFilterInListCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String field, List<Object> values});
+abstract mixin class $CmsFilterContainsCopyWith<$Res> implements $CmsFilterCopyWith<$Res> {
+  factory $CmsFilterContainsCopyWith(CmsFilterContains value, $Res Function(CmsFilterContains) _then) = _$CmsFilterContainsCopyWithImpl;
+@useResult
+$Res call({
+ String field, String value, bool caseSensitive
+});
+
+
+
+
+}
+/// @nodoc
+class _$CmsFilterContainsCopyWithImpl<$Res>
+    implements $CmsFilterContainsCopyWith<$Res> {
+  _$CmsFilterContainsCopyWithImpl(this._self, this._then);
+
+  final CmsFilterContains _self;
+  final $Res Function(CmsFilterContains) _then;
+
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field = null,Object? value = null,Object? caseSensitive = null,}) {
+  return _then(CmsFilterContains(
+null == field ? _self.field : field // ignore: cast_nullable_to_non_nullable
+as String,null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as String,caseSensitive: null == caseSensitive ? _self.caseSensitive : caseSensitive // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-/// @nodoc
-class __$$CmsFilterInListCopyWithImpl<$Res>
-    extends _$CmsFilterCopyWithImpl<$Res, _$CmsFilterInList>
-    implements _$$CmsFilterInListCopyWith<$Res> {
-  __$$CmsFilterInListCopyWithImpl(
-      _$CmsFilterInList _value, $Res Function(_$CmsFilterInList) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field = null,
-    Object? values = null,
-  }) {
-    return _then(_$CmsFilterInList(
-      null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == values
-          ? _value._values
-          : values // ignore: cast_nullable_to_non_nullable
-              as List<Object>,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CmsFilterInList implements CmsFilterInList {
-  const _$CmsFilterInList(this.field, final List<Object> values)
-      : _values = values;
 
-  @override
-  final String field;
-  final List<Object> _values;
-  @override
-  List<Object> get values {
-    if (_values is EqualUnmodifiableListView) return _values;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_values);
-  }
+class CmsFilterInList implements CmsFilter {
+  const CmsFilterInList(this.field, final  List<Object> values): _values = values;
+  
 
-  @override
-  String toString() {
-    return 'CmsFilter.inList(field: $field, values: $values)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsFilterInList &&
-            (identical(other.field, field) || other.field == field) &&
-            const DeepCollectionEquality().equals(other._values, _values));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, field, const DeepCollectionEquality().hash(_values));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsFilterInListCopyWith<_$CmsFilterInList> get copyWith =>
-      __$$CmsFilterInListCopyWithImpl<_$CmsFilterInList>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() all,
-    required TResult Function(String field, Object? value) equals,
-    required TResult Function(String field, Object value) notEquals,
-    required TResult Function(String field, String value, bool caseSensitive)
-        containsString,
-    required TResult Function(String field, List<Object> values) inList,
-    required TResult Function(List<CmsFilter> filters) and,
-    required TResult Function(List<CmsFilter> filters) or,
-    required TResult Function(String field, Object value) greaterOrEq,
-    required TResult Function(String field, Object value) lesserOrEq,
-    required TResult Function(CmsFilter filter) not,
-  }) {
-    return inList(field, values);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? all,
-    TResult? Function(String field, Object? value)? equals,
-    TResult? Function(String field, Object value)? notEquals,
-    TResult? Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult? Function(String field, List<Object> values)? inList,
-    TResult? Function(List<CmsFilter> filters)? and,
-    TResult? Function(List<CmsFilter> filters)? or,
-    TResult? Function(String field, Object value)? greaterOrEq,
-    TResult? Function(String field, Object value)? lesserOrEq,
-    TResult? Function(CmsFilter filter)? not,
-  }) {
-    return inList?.call(field, values);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? all,
-    TResult Function(String field, Object? value)? equals,
-    TResult Function(String field, Object value)? notEquals,
-    TResult Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult Function(String field, List<Object> values)? inList,
-    TResult Function(List<CmsFilter> filters)? and,
-    TResult Function(List<CmsFilter> filters)? or,
-    TResult Function(String field, Object value)? greaterOrEq,
-    TResult Function(String field, Object value)? lesserOrEq,
-    TResult Function(CmsFilter filter)? not,
-    required TResult orElse(),
-  }) {
-    if (inList != null) {
-      return inList(field, values);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsFilterAll value) all,
-    required TResult Function(CmsFilterEquals value) equals,
-    required TResult Function(CmsFilterNotEquals value) notEquals,
-    required TResult Function(CmsFilterContains value) containsString,
-    required TResult Function(CmsFilterInList value) inList,
-    required TResult Function(CmsFilterAnd value) and,
-    required TResult Function(CmsFilterOr value) or,
-    required TResult Function(CmsFilterGreaterOrEq value) greaterOrEq,
-    required TResult Function(CmsFilterLesserOrEq value) lesserOrEq,
-    required TResult Function(CmsFilterNot value) not,
-  }) {
-    return inList(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsFilterAll value)? all,
-    TResult? Function(CmsFilterEquals value)? equals,
-    TResult? Function(CmsFilterNotEquals value)? notEquals,
-    TResult? Function(CmsFilterContains value)? containsString,
-    TResult? Function(CmsFilterInList value)? inList,
-    TResult? Function(CmsFilterAnd value)? and,
-    TResult? Function(CmsFilterOr value)? or,
-    TResult? Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult? Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult? Function(CmsFilterNot value)? not,
-  }) {
-    return inList?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsFilterAll value)? all,
-    TResult Function(CmsFilterEquals value)? equals,
-    TResult Function(CmsFilterNotEquals value)? notEquals,
-    TResult Function(CmsFilterContains value)? containsString,
-    TResult Function(CmsFilterInList value)? inList,
-    TResult Function(CmsFilterAnd value)? and,
-    TResult Function(CmsFilterOr value)? or,
-    TResult Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult Function(CmsFilterNot value)? not,
-    required TResult orElse(),
-  }) {
-    if (inList != null) {
-      return inList(this);
-    }
-    return orElse();
-  }
+ final  String field;
+ final  List<Object> _values;
+ List<Object> get values {
+  if (_values is EqualUnmodifiableListView) return _values;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_values);
 }
 
-abstract class CmsFilterInList implements CmsFilter {
-  const factory CmsFilterInList(final String field, final List<Object> values) =
-      _$CmsFilterInList;
 
-  String get field;
-  List<Object> get values;
-  @JsonKey(ignore: true)
-  _$$CmsFilterInListCopyWith<_$CmsFilterInList> get copyWith =>
-      throw _privateConstructorUsedError;
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsFilterInListCopyWith<CmsFilterInList> get copyWith => _$CmsFilterInListCopyWithImpl<CmsFilterInList>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsFilterInList&&(identical(other.field, field) || other.field == field)&&const DeepCollectionEquality().equals(other._values, _values));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,field,const DeepCollectionEquality().hash(_values));
+
+@override
+String toString() {
+  return 'CmsFilter.inList(field: $field, values: $values)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CmsFilterAndCopyWith<$Res> {
-  factory _$$CmsFilterAndCopyWith(
-          _$CmsFilterAnd value, $Res Function(_$CmsFilterAnd) then) =
-      __$$CmsFilterAndCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<CmsFilter> filters});
+abstract mixin class $CmsFilterInListCopyWith<$Res> implements $CmsFilterCopyWith<$Res> {
+  factory $CmsFilterInListCopyWith(CmsFilterInList value, $Res Function(CmsFilterInList) _then) = _$CmsFilterInListCopyWithImpl;
+@useResult
+$Res call({
+ String field, List<Object> values
+});
+
+
+
+
+}
+/// @nodoc
+class _$CmsFilterInListCopyWithImpl<$Res>
+    implements $CmsFilterInListCopyWith<$Res> {
+  _$CmsFilterInListCopyWithImpl(this._self, this._then);
+
+  final CmsFilterInList _self;
+  final $Res Function(CmsFilterInList) _then;
+
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field = null,Object? values = null,}) {
+  return _then(CmsFilterInList(
+null == field ? _self.field : field // ignore: cast_nullable_to_non_nullable
+as String,null == values ? _self._values : values // ignore: cast_nullable_to_non_nullable
+as List<Object>,
+  ));
 }
 
-/// @nodoc
-class __$$CmsFilterAndCopyWithImpl<$Res>
-    extends _$CmsFilterCopyWithImpl<$Res, _$CmsFilterAnd>
-    implements _$$CmsFilterAndCopyWith<$Res> {
-  __$$CmsFilterAndCopyWithImpl(
-      _$CmsFilterAnd _value, $Res Function(_$CmsFilterAnd) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? filters = null,
-  }) {
-    return _then(_$CmsFilterAnd(
-      null == filters
-          ? _value._filters
-          : filters // ignore: cast_nullable_to_non_nullable
-              as List<CmsFilter>,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CmsFilterAnd implements CmsFilterAnd {
-  const _$CmsFilterAnd(final List<CmsFilter> filters) : _filters = filters;
 
-  final List<CmsFilter> _filters;
-  @override
-  List<CmsFilter> get filters {
-    if (_filters is EqualUnmodifiableListView) return _filters;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_filters);
-  }
+class CmsFilterAnd implements CmsFilter {
+  const CmsFilterAnd(final  List<CmsFilter> filters): _filters = filters;
+  
 
-  @override
-  String toString() {
-    return 'CmsFilter.and(filters: $filters)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsFilterAnd &&
-            const DeepCollectionEquality().equals(other._filters, _filters));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_filters));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsFilterAndCopyWith<_$CmsFilterAnd> get copyWith =>
-      __$$CmsFilterAndCopyWithImpl<_$CmsFilterAnd>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() all,
-    required TResult Function(String field, Object? value) equals,
-    required TResult Function(String field, Object value) notEquals,
-    required TResult Function(String field, String value, bool caseSensitive)
-        containsString,
-    required TResult Function(String field, List<Object> values) inList,
-    required TResult Function(List<CmsFilter> filters) and,
-    required TResult Function(List<CmsFilter> filters) or,
-    required TResult Function(String field, Object value) greaterOrEq,
-    required TResult Function(String field, Object value) lesserOrEq,
-    required TResult Function(CmsFilter filter) not,
-  }) {
-    return and(filters);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? all,
-    TResult? Function(String field, Object? value)? equals,
-    TResult? Function(String field, Object value)? notEquals,
-    TResult? Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult? Function(String field, List<Object> values)? inList,
-    TResult? Function(List<CmsFilter> filters)? and,
-    TResult? Function(List<CmsFilter> filters)? or,
-    TResult? Function(String field, Object value)? greaterOrEq,
-    TResult? Function(String field, Object value)? lesserOrEq,
-    TResult? Function(CmsFilter filter)? not,
-  }) {
-    return and?.call(filters);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? all,
-    TResult Function(String field, Object? value)? equals,
-    TResult Function(String field, Object value)? notEquals,
-    TResult Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult Function(String field, List<Object> values)? inList,
-    TResult Function(List<CmsFilter> filters)? and,
-    TResult Function(List<CmsFilter> filters)? or,
-    TResult Function(String field, Object value)? greaterOrEq,
-    TResult Function(String field, Object value)? lesserOrEq,
-    TResult Function(CmsFilter filter)? not,
-    required TResult orElse(),
-  }) {
-    if (and != null) {
-      return and(filters);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsFilterAll value) all,
-    required TResult Function(CmsFilterEquals value) equals,
-    required TResult Function(CmsFilterNotEquals value) notEquals,
-    required TResult Function(CmsFilterContains value) containsString,
-    required TResult Function(CmsFilterInList value) inList,
-    required TResult Function(CmsFilterAnd value) and,
-    required TResult Function(CmsFilterOr value) or,
-    required TResult Function(CmsFilterGreaterOrEq value) greaterOrEq,
-    required TResult Function(CmsFilterLesserOrEq value) lesserOrEq,
-    required TResult Function(CmsFilterNot value) not,
-  }) {
-    return and(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsFilterAll value)? all,
-    TResult? Function(CmsFilterEquals value)? equals,
-    TResult? Function(CmsFilterNotEquals value)? notEquals,
-    TResult? Function(CmsFilterContains value)? containsString,
-    TResult? Function(CmsFilterInList value)? inList,
-    TResult? Function(CmsFilterAnd value)? and,
-    TResult? Function(CmsFilterOr value)? or,
-    TResult? Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult? Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult? Function(CmsFilterNot value)? not,
-  }) {
-    return and?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsFilterAll value)? all,
-    TResult Function(CmsFilterEquals value)? equals,
-    TResult Function(CmsFilterNotEquals value)? notEquals,
-    TResult Function(CmsFilterContains value)? containsString,
-    TResult Function(CmsFilterInList value)? inList,
-    TResult Function(CmsFilterAnd value)? and,
-    TResult Function(CmsFilterOr value)? or,
-    TResult Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult Function(CmsFilterNot value)? not,
-    required TResult orElse(),
-  }) {
-    if (and != null) {
-      return and(this);
-    }
-    return orElse();
-  }
+ final  List<CmsFilter> _filters;
+ List<CmsFilter> get filters {
+  if (_filters is EqualUnmodifiableListView) return _filters;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_filters);
 }
 
-abstract class CmsFilterAnd implements CmsFilter {
-  const factory CmsFilterAnd(final List<CmsFilter> filters) = _$CmsFilterAnd;
 
-  List<CmsFilter> get filters;
-  @JsonKey(ignore: true)
-  _$$CmsFilterAndCopyWith<_$CmsFilterAnd> get copyWith =>
-      throw _privateConstructorUsedError;
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsFilterAndCopyWith<CmsFilterAnd> get copyWith => _$CmsFilterAndCopyWithImpl<CmsFilterAnd>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsFilterAnd&&const DeepCollectionEquality().equals(other._filters, _filters));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_filters));
+
+@override
+String toString() {
+  return 'CmsFilter.and(filters: $filters)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CmsFilterOrCopyWith<$Res> {
-  factory _$$CmsFilterOrCopyWith(
-          _$CmsFilterOr value, $Res Function(_$CmsFilterOr) then) =
-      __$$CmsFilterOrCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<CmsFilter> filters});
+abstract mixin class $CmsFilterAndCopyWith<$Res> implements $CmsFilterCopyWith<$Res> {
+  factory $CmsFilterAndCopyWith(CmsFilterAnd value, $Res Function(CmsFilterAnd) _then) = _$CmsFilterAndCopyWithImpl;
+@useResult
+$Res call({
+ List<CmsFilter> filters
+});
+
+
+
+
+}
+/// @nodoc
+class _$CmsFilterAndCopyWithImpl<$Res>
+    implements $CmsFilterAndCopyWith<$Res> {
+  _$CmsFilterAndCopyWithImpl(this._self, this._then);
+
+  final CmsFilterAnd _self;
+  final $Res Function(CmsFilterAnd) _then;
+
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? filters = null,}) {
+  return _then(CmsFilterAnd(
+null == filters ? _self._filters : filters // ignore: cast_nullable_to_non_nullable
+as List<CmsFilter>,
+  ));
 }
 
-/// @nodoc
-class __$$CmsFilterOrCopyWithImpl<$Res>
-    extends _$CmsFilterCopyWithImpl<$Res, _$CmsFilterOr>
-    implements _$$CmsFilterOrCopyWith<$Res> {
-  __$$CmsFilterOrCopyWithImpl(
-      _$CmsFilterOr _value, $Res Function(_$CmsFilterOr) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? filters = null,
-  }) {
-    return _then(_$CmsFilterOr(
-      null == filters
-          ? _value._filters
-          : filters // ignore: cast_nullable_to_non_nullable
-              as List<CmsFilter>,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CmsFilterOr implements CmsFilterOr {
-  const _$CmsFilterOr(final List<CmsFilter> filters) : _filters = filters;
 
-  final List<CmsFilter> _filters;
-  @override
-  List<CmsFilter> get filters {
-    if (_filters is EqualUnmodifiableListView) return _filters;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_filters);
-  }
+class CmsFilterOr implements CmsFilter {
+  const CmsFilterOr(final  List<CmsFilter> filters): _filters = filters;
+  
 
-  @override
-  String toString() {
-    return 'CmsFilter.or(filters: $filters)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsFilterOr &&
-            const DeepCollectionEquality().equals(other._filters, _filters));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_filters));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsFilterOrCopyWith<_$CmsFilterOr> get copyWith =>
-      __$$CmsFilterOrCopyWithImpl<_$CmsFilterOr>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() all,
-    required TResult Function(String field, Object? value) equals,
-    required TResult Function(String field, Object value) notEquals,
-    required TResult Function(String field, String value, bool caseSensitive)
-        containsString,
-    required TResult Function(String field, List<Object> values) inList,
-    required TResult Function(List<CmsFilter> filters) and,
-    required TResult Function(List<CmsFilter> filters) or,
-    required TResult Function(String field, Object value) greaterOrEq,
-    required TResult Function(String field, Object value) lesserOrEq,
-    required TResult Function(CmsFilter filter) not,
-  }) {
-    return or(filters);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? all,
-    TResult? Function(String field, Object? value)? equals,
-    TResult? Function(String field, Object value)? notEquals,
-    TResult? Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult? Function(String field, List<Object> values)? inList,
-    TResult? Function(List<CmsFilter> filters)? and,
-    TResult? Function(List<CmsFilter> filters)? or,
-    TResult? Function(String field, Object value)? greaterOrEq,
-    TResult? Function(String field, Object value)? lesserOrEq,
-    TResult? Function(CmsFilter filter)? not,
-  }) {
-    return or?.call(filters);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? all,
-    TResult Function(String field, Object? value)? equals,
-    TResult Function(String field, Object value)? notEquals,
-    TResult Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult Function(String field, List<Object> values)? inList,
-    TResult Function(List<CmsFilter> filters)? and,
-    TResult Function(List<CmsFilter> filters)? or,
-    TResult Function(String field, Object value)? greaterOrEq,
-    TResult Function(String field, Object value)? lesserOrEq,
-    TResult Function(CmsFilter filter)? not,
-    required TResult orElse(),
-  }) {
-    if (or != null) {
-      return or(filters);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsFilterAll value) all,
-    required TResult Function(CmsFilterEquals value) equals,
-    required TResult Function(CmsFilterNotEquals value) notEquals,
-    required TResult Function(CmsFilterContains value) containsString,
-    required TResult Function(CmsFilterInList value) inList,
-    required TResult Function(CmsFilterAnd value) and,
-    required TResult Function(CmsFilterOr value) or,
-    required TResult Function(CmsFilterGreaterOrEq value) greaterOrEq,
-    required TResult Function(CmsFilterLesserOrEq value) lesserOrEq,
-    required TResult Function(CmsFilterNot value) not,
-  }) {
-    return or(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsFilterAll value)? all,
-    TResult? Function(CmsFilterEquals value)? equals,
-    TResult? Function(CmsFilterNotEquals value)? notEquals,
-    TResult? Function(CmsFilterContains value)? containsString,
-    TResult? Function(CmsFilterInList value)? inList,
-    TResult? Function(CmsFilterAnd value)? and,
-    TResult? Function(CmsFilterOr value)? or,
-    TResult? Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult? Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult? Function(CmsFilterNot value)? not,
-  }) {
-    return or?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsFilterAll value)? all,
-    TResult Function(CmsFilterEquals value)? equals,
-    TResult Function(CmsFilterNotEquals value)? notEquals,
-    TResult Function(CmsFilterContains value)? containsString,
-    TResult Function(CmsFilterInList value)? inList,
-    TResult Function(CmsFilterAnd value)? and,
-    TResult Function(CmsFilterOr value)? or,
-    TResult Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult Function(CmsFilterNot value)? not,
-    required TResult orElse(),
-  }) {
-    if (or != null) {
-      return or(this);
-    }
-    return orElse();
-  }
+ final  List<CmsFilter> _filters;
+ List<CmsFilter> get filters {
+  if (_filters is EqualUnmodifiableListView) return _filters;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_filters);
 }
 
-abstract class CmsFilterOr implements CmsFilter {
-  const factory CmsFilterOr(final List<CmsFilter> filters) = _$CmsFilterOr;
 
-  List<CmsFilter> get filters;
-  @JsonKey(ignore: true)
-  _$$CmsFilterOrCopyWith<_$CmsFilterOr> get copyWith =>
-      throw _privateConstructorUsedError;
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsFilterOrCopyWith<CmsFilterOr> get copyWith => _$CmsFilterOrCopyWithImpl<CmsFilterOr>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsFilterOr&&const DeepCollectionEquality().equals(other._filters, _filters));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_filters));
+
+@override
+String toString() {
+  return 'CmsFilter.or(filters: $filters)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CmsFilterGreaterOrEqCopyWith<$Res> {
-  factory _$$CmsFilterGreaterOrEqCopyWith(_$CmsFilterGreaterOrEq value,
-          $Res Function(_$CmsFilterGreaterOrEq) then) =
-      __$$CmsFilterGreaterOrEqCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String field, Object value});
+abstract mixin class $CmsFilterOrCopyWith<$Res> implements $CmsFilterCopyWith<$Res> {
+  factory $CmsFilterOrCopyWith(CmsFilterOr value, $Res Function(CmsFilterOr) _then) = _$CmsFilterOrCopyWithImpl;
+@useResult
+$Res call({
+ List<CmsFilter> filters
+});
+
+
+
+
+}
+/// @nodoc
+class _$CmsFilterOrCopyWithImpl<$Res>
+    implements $CmsFilterOrCopyWith<$Res> {
+  _$CmsFilterOrCopyWithImpl(this._self, this._then);
+
+  final CmsFilterOr _self;
+  final $Res Function(CmsFilterOr) _then;
+
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? filters = null,}) {
+  return _then(CmsFilterOr(
+null == filters ? _self._filters : filters // ignore: cast_nullable_to_non_nullable
+as List<CmsFilter>,
+  ));
 }
 
-/// @nodoc
-class __$$CmsFilterGreaterOrEqCopyWithImpl<$Res>
-    extends _$CmsFilterCopyWithImpl<$Res, _$CmsFilterGreaterOrEq>
-    implements _$$CmsFilterGreaterOrEqCopyWith<$Res> {
-  __$$CmsFilterGreaterOrEqCopyWithImpl(_$CmsFilterGreaterOrEq _value,
-      $Res Function(_$CmsFilterGreaterOrEq) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field = null,
-    Object? value = null,
-  }) {
-    return _then(_$CmsFilterGreaterOrEq(
-      null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == value ? _value.value : value,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CmsFilterGreaterOrEq implements CmsFilterGreaterOrEq {
-  const _$CmsFilterGreaterOrEq(this.field, this.value);
 
-  @override
-  final String field;
-  @override
-  final Object value;
+class CmsFilterGreaterOrEq implements CmsFilter {
+  const CmsFilterGreaterOrEq(this.field, this.value);
+  
 
-  @override
-  String toString() {
-    return 'CmsFilter.greaterOrEq(field: $field, value: $value)';
-  }
+ final  String field;
+ final  Object value;
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsFilterGreaterOrEq &&
-            (identical(other.field, field) || other.field == field) &&
-            const DeepCollectionEquality().equals(other.value, value));
-  }
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsFilterGreaterOrEqCopyWith<CmsFilterGreaterOrEq> get copyWith => _$CmsFilterGreaterOrEqCopyWithImpl<CmsFilterGreaterOrEq>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, field, const DeepCollectionEquality().hash(value));
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsFilterGreaterOrEqCopyWith<_$CmsFilterGreaterOrEq> get copyWith =>
-      __$$CmsFilterGreaterOrEqCopyWithImpl<_$CmsFilterGreaterOrEq>(
-          this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() all,
-    required TResult Function(String field, Object? value) equals,
-    required TResult Function(String field, Object value) notEquals,
-    required TResult Function(String field, String value, bool caseSensitive)
-        containsString,
-    required TResult Function(String field, List<Object> values) inList,
-    required TResult Function(List<CmsFilter> filters) and,
-    required TResult Function(List<CmsFilter> filters) or,
-    required TResult Function(String field, Object value) greaterOrEq,
-    required TResult Function(String field, Object value) lesserOrEq,
-    required TResult Function(CmsFilter filter) not,
-  }) {
-    return greaterOrEq(field, value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? all,
-    TResult? Function(String field, Object? value)? equals,
-    TResult? Function(String field, Object value)? notEquals,
-    TResult? Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult? Function(String field, List<Object> values)? inList,
-    TResult? Function(List<CmsFilter> filters)? and,
-    TResult? Function(List<CmsFilter> filters)? or,
-    TResult? Function(String field, Object value)? greaterOrEq,
-    TResult? Function(String field, Object value)? lesserOrEq,
-    TResult? Function(CmsFilter filter)? not,
-  }) {
-    return greaterOrEq?.call(field, value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? all,
-    TResult Function(String field, Object? value)? equals,
-    TResult Function(String field, Object value)? notEquals,
-    TResult Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult Function(String field, List<Object> values)? inList,
-    TResult Function(List<CmsFilter> filters)? and,
-    TResult Function(List<CmsFilter> filters)? or,
-    TResult Function(String field, Object value)? greaterOrEq,
-    TResult Function(String field, Object value)? lesserOrEq,
-    TResult Function(CmsFilter filter)? not,
-    required TResult orElse(),
-  }) {
-    if (greaterOrEq != null) {
-      return greaterOrEq(field, value);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsFilterAll value) all,
-    required TResult Function(CmsFilterEquals value) equals,
-    required TResult Function(CmsFilterNotEquals value) notEquals,
-    required TResult Function(CmsFilterContains value) containsString,
-    required TResult Function(CmsFilterInList value) inList,
-    required TResult Function(CmsFilterAnd value) and,
-    required TResult Function(CmsFilterOr value) or,
-    required TResult Function(CmsFilterGreaterOrEq value) greaterOrEq,
-    required TResult Function(CmsFilterLesserOrEq value) lesserOrEq,
-    required TResult Function(CmsFilterNot value) not,
-  }) {
-    return greaterOrEq(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsFilterAll value)? all,
-    TResult? Function(CmsFilterEquals value)? equals,
-    TResult? Function(CmsFilterNotEquals value)? notEquals,
-    TResult? Function(CmsFilterContains value)? containsString,
-    TResult? Function(CmsFilterInList value)? inList,
-    TResult? Function(CmsFilterAnd value)? and,
-    TResult? Function(CmsFilterOr value)? or,
-    TResult? Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult? Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult? Function(CmsFilterNot value)? not,
-  }) {
-    return greaterOrEq?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsFilterAll value)? all,
-    TResult Function(CmsFilterEquals value)? equals,
-    TResult Function(CmsFilterNotEquals value)? notEquals,
-    TResult Function(CmsFilterContains value)? containsString,
-    TResult Function(CmsFilterInList value)? inList,
-    TResult Function(CmsFilterAnd value)? and,
-    TResult Function(CmsFilterOr value)? or,
-    TResult Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult Function(CmsFilterNot value)? not,
-    required TResult orElse(),
-  }) {
-    if (greaterOrEq != null) {
-      return greaterOrEq(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsFilterGreaterOrEq&&(identical(other.field, field) || other.field == field)&&const DeepCollectionEquality().equals(other.value, value));
 }
 
-abstract class CmsFilterGreaterOrEq implements CmsFilter {
-  const factory CmsFilterGreaterOrEq(final String field, final Object value) =
-      _$CmsFilterGreaterOrEq;
 
-  String get field;
-  Object get value;
-  @JsonKey(ignore: true)
-  _$$CmsFilterGreaterOrEqCopyWith<_$CmsFilterGreaterOrEq> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+int get hashCode => Object.hash(runtimeType,field,const DeepCollectionEquality().hash(value));
+
+@override
+String toString() {
+  return 'CmsFilter.greaterOrEq(field: $field, value: $value)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CmsFilterLesserOrEqCopyWith<$Res> {
-  factory _$$CmsFilterLesserOrEqCopyWith(_$CmsFilterLesserOrEq value,
-          $Res Function(_$CmsFilterLesserOrEq) then) =
-      __$$CmsFilterLesserOrEqCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String field, Object value});
+abstract mixin class $CmsFilterGreaterOrEqCopyWith<$Res> implements $CmsFilterCopyWith<$Res> {
+  factory $CmsFilterGreaterOrEqCopyWith(CmsFilterGreaterOrEq value, $Res Function(CmsFilterGreaterOrEq) _then) = _$CmsFilterGreaterOrEqCopyWithImpl;
+@useResult
+$Res call({
+ String field, Object value
+});
+
+
+
+
+}
+/// @nodoc
+class _$CmsFilterGreaterOrEqCopyWithImpl<$Res>
+    implements $CmsFilterGreaterOrEqCopyWith<$Res> {
+  _$CmsFilterGreaterOrEqCopyWithImpl(this._self, this._then);
+
+  final CmsFilterGreaterOrEq _self;
+  final $Res Function(CmsFilterGreaterOrEq) _then;
+
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field = null,Object? value = null,}) {
+  return _then(CmsFilterGreaterOrEq(
+null == field ? _self.field : field // ignore: cast_nullable_to_non_nullable
+as String,null == value ? _self.value : value ,
+  ));
 }
 
-/// @nodoc
-class __$$CmsFilterLesserOrEqCopyWithImpl<$Res>
-    extends _$CmsFilterCopyWithImpl<$Res, _$CmsFilterLesserOrEq>
-    implements _$$CmsFilterLesserOrEqCopyWith<$Res> {
-  __$$CmsFilterLesserOrEqCopyWithImpl(
-      _$CmsFilterLesserOrEq _value, $Res Function(_$CmsFilterLesserOrEq) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? field = null,
-    Object? value = null,
-  }) {
-    return _then(_$CmsFilterLesserOrEq(
-      null == field
-          ? _value.field
-          : field // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == value ? _value.value : value,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$CmsFilterLesserOrEq implements CmsFilterLesserOrEq {
-  const _$CmsFilterLesserOrEq(this.field, this.value);
 
-  @override
-  final String field;
-  @override
-  final Object value;
+class CmsFilterLesserOrEq implements CmsFilter {
+  const CmsFilterLesserOrEq(this.field, this.value);
+  
 
-  @override
-  String toString() {
-    return 'CmsFilter.lesserOrEq(field: $field, value: $value)';
-  }
+ final  String field;
+ final  Object value;
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsFilterLesserOrEq &&
-            (identical(other.field, field) || other.field == field) &&
-            const DeepCollectionEquality().equals(other.value, value));
-  }
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsFilterLesserOrEqCopyWith<CmsFilterLesserOrEq> get copyWith => _$CmsFilterLesserOrEqCopyWithImpl<CmsFilterLesserOrEq>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, field, const DeepCollectionEquality().hash(value));
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsFilterLesserOrEqCopyWith<_$CmsFilterLesserOrEq> get copyWith =>
-      __$$CmsFilterLesserOrEqCopyWithImpl<_$CmsFilterLesserOrEq>(
-          this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() all,
-    required TResult Function(String field, Object? value) equals,
-    required TResult Function(String field, Object value) notEquals,
-    required TResult Function(String field, String value, bool caseSensitive)
-        containsString,
-    required TResult Function(String field, List<Object> values) inList,
-    required TResult Function(List<CmsFilter> filters) and,
-    required TResult Function(List<CmsFilter> filters) or,
-    required TResult Function(String field, Object value) greaterOrEq,
-    required TResult Function(String field, Object value) lesserOrEq,
-    required TResult Function(CmsFilter filter) not,
-  }) {
-    return lesserOrEq(field, value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? all,
-    TResult? Function(String field, Object? value)? equals,
-    TResult? Function(String field, Object value)? notEquals,
-    TResult? Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult? Function(String field, List<Object> values)? inList,
-    TResult? Function(List<CmsFilter> filters)? and,
-    TResult? Function(List<CmsFilter> filters)? or,
-    TResult? Function(String field, Object value)? greaterOrEq,
-    TResult? Function(String field, Object value)? lesserOrEq,
-    TResult? Function(CmsFilter filter)? not,
-  }) {
-    return lesserOrEq?.call(field, value);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? all,
-    TResult Function(String field, Object? value)? equals,
-    TResult Function(String field, Object value)? notEquals,
-    TResult Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult Function(String field, List<Object> values)? inList,
-    TResult Function(List<CmsFilter> filters)? and,
-    TResult Function(List<CmsFilter> filters)? or,
-    TResult Function(String field, Object value)? greaterOrEq,
-    TResult Function(String field, Object value)? lesserOrEq,
-    TResult Function(CmsFilter filter)? not,
-    required TResult orElse(),
-  }) {
-    if (lesserOrEq != null) {
-      return lesserOrEq(field, value);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsFilterAll value) all,
-    required TResult Function(CmsFilterEquals value) equals,
-    required TResult Function(CmsFilterNotEquals value) notEquals,
-    required TResult Function(CmsFilterContains value) containsString,
-    required TResult Function(CmsFilterInList value) inList,
-    required TResult Function(CmsFilterAnd value) and,
-    required TResult Function(CmsFilterOr value) or,
-    required TResult Function(CmsFilterGreaterOrEq value) greaterOrEq,
-    required TResult Function(CmsFilterLesserOrEq value) lesserOrEq,
-    required TResult Function(CmsFilterNot value) not,
-  }) {
-    return lesserOrEq(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsFilterAll value)? all,
-    TResult? Function(CmsFilterEquals value)? equals,
-    TResult? Function(CmsFilterNotEquals value)? notEquals,
-    TResult? Function(CmsFilterContains value)? containsString,
-    TResult? Function(CmsFilterInList value)? inList,
-    TResult? Function(CmsFilterAnd value)? and,
-    TResult? Function(CmsFilterOr value)? or,
-    TResult? Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult? Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult? Function(CmsFilterNot value)? not,
-  }) {
-    return lesserOrEq?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsFilterAll value)? all,
-    TResult Function(CmsFilterEquals value)? equals,
-    TResult Function(CmsFilterNotEquals value)? notEquals,
-    TResult Function(CmsFilterContains value)? containsString,
-    TResult Function(CmsFilterInList value)? inList,
-    TResult Function(CmsFilterAnd value)? and,
-    TResult Function(CmsFilterOr value)? or,
-    TResult Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult Function(CmsFilterNot value)? not,
-    required TResult orElse(),
-  }) {
-    if (lesserOrEq != null) {
-      return lesserOrEq(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsFilterLesserOrEq&&(identical(other.field, field) || other.field == field)&&const DeepCollectionEquality().equals(other.value, value));
 }
 
-abstract class CmsFilterLesserOrEq implements CmsFilter {
-  const factory CmsFilterLesserOrEq(final String field, final Object value) =
-      _$CmsFilterLesserOrEq;
 
-  String get field;
-  Object get value;
-  @JsonKey(ignore: true)
-  _$$CmsFilterLesserOrEqCopyWith<_$CmsFilterLesserOrEq> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+int get hashCode => Object.hash(runtimeType,field,const DeepCollectionEquality().hash(value));
+
+@override
+String toString() {
+  return 'CmsFilter.lesserOrEq(field: $field, value: $value)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$CmsFilterNotCopyWith<$Res> {
-  factory _$$CmsFilterNotCopyWith(
-          _$CmsFilterNot value, $Res Function(_$CmsFilterNot) then) =
-      __$$CmsFilterNotCopyWithImpl<$Res>;
-  @useResult
-  $Res call({CmsFilter filter});
+abstract mixin class $CmsFilterLesserOrEqCopyWith<$Res> implements $CmsFilterCopyWith<$Res> {
+  factory $CmsFilterLesserOrEqCopyWith(CmsFilterLesserOrEq value, $Res Function(CmsFilterLesserOrEq) _then) = _$CmsFilterLesserOrEqCopyWithImpl;
+@useResult
+$Res call({
+ String field, Object value
+});
 
-  $CmsFilterCopyWith<$Res> get filter;
+
+
+
+}
+/// @nodoc
+class _$CmsFilterLesserOrEqCopyWithImpl<$Res>
+    implements $CmsFilterLesserOrEqCopyWith<$Res> {
+  _$CmsFilterLesserOrEqCopyWithImpl(this._self, this._then);
+
+  final CmsFilterLesserOrEq _self;
+  final $Res Function(CmsFilterLesserOrEq) _then;
+
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? field = null,Object? value = null,}) {
+  return _then(CmsFilterLesserOrEq(
+null == field ? _self.field : field // ignore: cast_nullable_to_non_nullable
+as String,null == value ? _self.value : value ,
+  ));
 }
 
-/// @nodoc
-class __$$CmsFilterNotCopyWithImpl<$Res>
-    extends _$CmsFilterCopyWithImpl<$Res, _$CmsFilterNot>
-    implements _$$CmsFilterNotCopyWith<$Res> {
-  __$$CmsFilterNotCopyWithImpl(
-      _$CmsFilterNot _value, $Res Function(_$CmsFilterNot) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? filter = null,
-  }) {
-    return _then(_$CmsFilterNot(
-      null == filter
-          ? _value.filter
-          : filter // ignore: cast_nullable_to_non_nullable
-              as CmsFilter,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CmsFilterCopyWith<$Res> get filter {
-    return $CmsFilterCopyWith<$Res>(_value.filter, (value) {
-      return _then(_value.copyWith(filter: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$CmsFilterNot implements CmsFilterNot {
-  const _$CmsFilterNot(this.filter);
 
-  @override
-  final CmsFilter filter;
+class CmsFilterNot implements CmsFilter {
+  const CmsFilterNot(this.filter);
+  
 
-  @override
-  String toString() {
-    return 'CmsFilter.not(filter: $filter)';
-  }
+ final  CmsFilter filter;
 
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CmsFilterNot &&
-            (identical(other.filter, filter) || other.filter == filter));
-  }
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CmsFilterNotCopyWith<CmsFilterNot> get copyWith => _$CmsFilterNotCopyWithImpl<CmsFilterNot>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, filter);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CmsFilterNotCopyWith<_$CmsFilterNot> get copyWith =>
-      __$$CmsFilterNotCopyWithImpl<_$CmsFilterNot>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() all,
-    required TResult Function(String field, Object? value) equals,
-    required TResult Function(String field, Object value) notEquals,
-    required TResult Function(String field, String value, bool caseSensitive)
-        containsString,
-    required TResult Function(String field, List<Object> values) inList,
-    required TResult Function(List<CmsFilter> filters) and,
-    required TResult Function(List<CmsFilter> filters) or,
-    required TResult Function(String field, Object value) greaterOrEq,
-    required TResult Function(String field, Object value) lesserOrEq,
-    required TResult Function(CmsFilter filter) not,
-  }) {
-    return not(filter);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? all,
-    TResult? Function(String field, Object? value)? equals,
-    TResult? Function(String field, Object value)? notEquals,
-    TResult? Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult? Function(String field, List<Object> values)? inList,
-    TResult? Function(List<CmsFilter> filters)? and,
-    TResult? Function(List<CmsFilter> filters)? or,
-    TResult? Function(String field, Object value)? greaterOrEq,
-    TResult? Function(String field, Object value)? lesserOrEq,
-    TResult? Function(CmsFilter filter)? not,
-  }) {
-    return not?.call(filter);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? all,
-    TResult Function(String field, Object? value)? equals,
-    TResult Function(String field, Object value)? notEquals,
-    TResult Function(String field, String value, bool caseSensitive)?
-        containsString,
-    TResult Function(String field, List<Object> values)? inList,
-    TResult Function(List<CmsFilter> filters)? and,
-    TResult Function(List<CmsFilter> filters)? or,
-    TResult Function(String field, Object value)? greaterOrEq,
-    TResult Function(String field, Object value)? lesserOrEq,
-    TResult Function(CmsFilter filter)? not,
-    required TResult orElse(),
-  }) {
-    if (not != null) {
-      return not(filter);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(CmsFilterAll value) all,
-    required TResult Function(CmsFilterEquals value) equals,
-    required TResult Function(CmsFilterNotEquals value) notEquals,
-    required TResult Function(CmsFilterContains value) containsString,
-    required TResult Function(CmsFilterInList value) inList,
-    required TResult Function(CmsFilterAnd value) and,
-    required TResult Function(CmsFilterOr value) or,
-    required TResult Function(CmsFilterGreaterOrEq value) greaterOrEq,
-    required TResult Function(CmsFilterLesserOrEq value) lesserOrEq,
-    required TResult Function(CmsFilterNot value) not,
-  }) {
-    return not(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CmsFilterAll value)? all,
-    TResult? Function(CmsFilterEquals value)? equals,
-    TResult? Function(CmsFilterNotEquals value)? notEquals,
-    TResult? Function(CmsFilterContains value)? containsString,
-    TResult? Function(CmsFilterInList value)? inList,
-    TResult? Function(CmsFilterAnd value)? and,
-    TResult? Function(CmsFilterOr value)? or,
-    TResult? Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult? Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult? Function(CmsFilterNot value)? not,
-  }) {
-    return not?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CmsFilterAll value)? all,
-    TResult Function(CmsFilterEquals value)? equals,
-    TResult Function(CmsFilterNotEquals value)? notEquals,
-    TResult Function(CmsFilterContains value)? containsString,
-    TResult Function(CmsFilterInList value)? inList,
-    TResult Function(CmsFilterAnd value)? and,
-    TResult Function(CmsFilterOr value)? or,
-    TResult Function(CmsFilterGreaterOrEq value)? greaterOrEq,
-    TResult Function(CmsFilterLesserOrEq value)? lesserOrEq,
-    TResult Function(CmsFilterNot value)? not,
-    required TResult orElse(),
-  }) {
-    if (not != null) {
-      return not(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CmsFilterNot&&(identical(other.filter, filter) || other.filter == filter));
 }
 
-abstract class CmsFilterNot implements CmsFilter {
-  const factory CmsFilterNot(final CmsFilter filter) = _$CmsFilterNot;
 
-  CmsFilter get filter;
-  @JsonKey(ignore: true)
-  _$$CmsFilterNotCopyWith<_$CmsFilterNot> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+int get hashCode => Object.hash(runtimeType,filter);
+
+@override
+String toString() {
+  return 'CmsFilter.not(filter: $filter)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class $CmsFilterNotCopyWith<$Res> implements $CmsFilterCopyWith<$Res> {
+  factory $CmsFilterNotCopyWith(CmsFilterNot value, $Res Function(CmsFilterNot) _then) = _$CmsFilterNotCopyWithImpl;
+@useResult
+$Res call({
+ CmsFilter filter
+});
+
+
+$CmsFilterCopyWith<$Res> get filter;
+
+}
+/// @nodoc
+class _$CmsFilterNotCopyWithImpl<$Res>
+    implements $CmsFilterNotCopyWith<$Res> {
+  _$CmsFilterNotCopyWithImpl(this._self, this._then);
+
+  final CmsFilterNot _self;
+  final $Res Function(CmsFilterNot) _then;
+
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? filter = null,}) {
+  return _then(CmsFilterNot(
+null == filter ? _self.filter : filter // ignore: cast_nullable_to_non_nullable
+as CmsFilter,
+  ));
+}
+
+/// Create a copy of CmsFilter
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CmsFilterCopyWith<$Res> get filter {
+  
+  return $CmsFilterCopyWith<$Res>(_self.filter, (value) {
+    return _then(_self.copyWith(filter: value));
+  });
+}
+}
+
+// dart format on

@@ -1,13 +1,11 @@
-import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:utopia_arch/utopia_arch.dart';
 import 'package:utopia_cms/src/delegate/cms_delegate_exception.dart';
-import 'package:utopia_cms/src/model/table/cms_table_page_params.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
+import 'package:utopia_cms/src/model/table/cms_table_page_params.dart';
 import 'package:utopia_cms/src/ui/item_management/cms_management_page.dart';
+import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 import 'package:utopia_cms/src/util/map_extensions.dart';
-import 'package:utopia_hooks/utopia_hooks.dart';
 
 typedef OnSavedCallback = Future<void> Function(JsonMap);
 
@@ -35,8 +33,8 @@ class CmsItemManagementState implements CmsManagementBaseState {
 
   final bool isUploading;
   final bool isDeleting;
-  final bool isSubmitEnabled;
   final bool isEdit;
+  final bool hasChanges;
   final String? errorMessage;
   final ScrollController scrollController;
   final CmsTableParams params;
@@ -45,8 +43,14 @@ class CmsItemManagementState implements CmsManagementBaseState {
 
   bool get canCreate => !isEdit || params.canEdit;
 
-  bool get isButtonAvailable =>
-      !entries.where((e) => e.required && e.editable).any((element) => values.getAtPath(element.key) == null);
+  bool get isButtonAvailable {
+    final requiredFieldsFilled = !entries
+        .where((e) => e.required && e.editable)
+        .any((element) => values.getAtPath(element.key) == null);
+    if (!requiredFieldsFilled) return false;
+    if (!isEdit) return true;
+    return hasChanges;
+  }
 
   const CmsItemManagementState({
     required this.values,
@@ -55,8 +59,8 @@ class CmsItemManagementState implements CmsManagementBaseState {
     required this.params,
     required this.isUploading,
     required this.isDeleting,
-    required this.isSubmitEnabled,
     required this.isEdit,
+    required this.hasChanges,
     required this.errorMessage,
     required this.scrollController,
     required this.addOnSavedCallback,
@@ -67,14 +71,17 @@ class CmsItemManagementState implements CmsManagementBaseState {
 
 CmsItemManagementState useCmsItemManagementState({
   required CmsManagementArgs args,
+  // ignore: avoid_positional_boolean_parameters
   required void Function(bool) moveBack,
 }) {
   final state = useState<JsonMap>({...?args.initialValue});
+  final hasChangesState = useState(false);
 
   void onValueChanged(String key, Object? value) {
     final newMap = Map.fromEntries(state.value.entries);
     newMap.setAtPath(key, value);
     state.value = newMap;
+    hasChangesState.value = true;
   }
 
   final onSavedCallbacksState = useState<IList<OnSavedCallback>>(IList());
@@ -103,21 +110,18 @@ CmsItemManagementState useCmsItemManagementState({
     });
   }
 
-  final submitEnabled =
-      !args.entries.any((e) => e.required && (state.value[e.key] == null || state.value[e.key].toString() == ''));
-
   final scrollController = useMemoized(ScrollController.new);
 
   return CmsItemManagementState(
     onDelete: onDelete,
     addOnSavedCallback: (callback) => onSavedCallbacksState.value = onSavedCallbacksState.value.add(callback),
     values: state.value,
-    isSubmitEnabled: submitEnabled,
     onSubmit: onSubmit,
     onValueChanged: onValueChanged,
     isUploading: uploadSubmitState.inProgress,
     isDeleting: deleteSubmitState.inProgress,
     isEdit: args.initialValue != null,
+    hasChanges: hasChangesState.value,
     errorMessage: errorMessageState.value,
     scrollController: scrollController,
     params: args.params,

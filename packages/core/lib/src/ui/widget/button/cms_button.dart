@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:utopia_cms/src/ui/widget/layout/cms_gradient_background.dart';
+import 'package:utopia_cms/src/ui/widget/loading/cms_three_bounce.dart';
 import 'package:utopia_cms/src/util/context_extensions.dart';
 
 class CmsButton extends StatelessWidget {
@@ -12,6 +12,11 @@ class CmsButton extends StatelessWidget {
   final double maxWidth;
   final List<Color>? colors;
 
+  /// Overrides the fixed square extent (min/max height and min width). Defaults
+  /// to 44 when [dense], 60 otherwise. Pair with [maxWidth] == [height] for a
+  /// square icon button.
+  final double? height;
+
   const CmsButton({
     super.key,
     required this.child,
@@ -21,28 +26,22 @@ class CmsButton extends StatelessWidget {
     this.dense = false,
     this.maxWidth = 300,
     this.colors,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
+    final extent = height ?? (dense ? 44 : 60);
     return InkWell(
       onTap: isEnabled ? onTap : null,
       child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: dense ? 44 : 60,
-          maxHeight: dense ? 44 : 60,
-          minWidth: dense ? 44 : 60,
-          maxWidth: maxWidth,
-        ),
+        constraints: BoxConstraints(minHeight: extent, maxHeight: extent, minWidth: extent, maxWidth: maxWidth),
         child: CmsGradientBackground(
           colors: colors,
           clipBehavior: Clip.antiAlias,
           borderRadius: context.theme.borderRadius,
           isEnabled: isEnabled,
-          child: Center(
-            heightFactor: 1,
-            child: _buildTitle(context),
-          ),
+          child: Center(heightFactor: 1, child: _buildTitle(context)),
         ),
       ),
     );
@@ -51,14 +50,11 @@ class CmsButton extends StatelessWidget {
   Widget _buildTitle(BuildContext context) {
     final style = context.textStyles.button;
     if (loading) {
-      return SpinKitThreeBounce(color: style.color, size: 20);
+      return CmsThreeBounce(color: style.color);
     } else {
       return IconTheme.merge(
         data: IconThemeData(color: style.color),
-        child: DefaultTextStyle(
-          style: style,
-          child: child,
-        ),
+        child: DefaultTextStyle(style: style, child: child),
       );
     }
   }

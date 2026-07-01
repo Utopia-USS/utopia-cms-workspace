@@ -1,8 +1,38 @@
-name: utopia_cms
+name: utopia_cms_workspace
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ^3.11.0
 
 dev_dependencies:
-  melos: ^3.0.0
+  melos: ^7.4.0
   utopia_lints: ^0.0.3+1
+
+workspace:
+  - packages/core
+  - packages/firebase
+  - packages/graphql
+  - packages/hasura
+  - packages/supabase
+  - packages/core/example
+
+melos:
+  sdkPath: .fvm/flutter_sdk
+
+  scripts:
+    build_runner:build: dart run build_runner build --delete-conflicting-outputs --workspace
+    build_runner:watch: dart run build_runner watch --delete-conflicting-outputs --workspace
+    build_runner:clean: dart run build_runner clean --workspace
+
+    run:example:
+      description: Run the Libs & Skills example app on Chrome (hot reload works)
+      run: cd packages/core/example && fvm flutter run -d chrome
+    build:example:
+      description: Build the example as a deployable web bundle (packages/core/example/build/web)
+      run: cd packages/core/example && fvm flutter build web
+
+    release: melos version --yes && git push --follow-tags && melos publish --yes --no-dry-run
+
+  command:
+    bootstrap:
+      hooks:
+        pre: fvm use --force

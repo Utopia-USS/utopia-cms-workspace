@@ -3,18 +3,11 @@ import 'package:intl/intl.dart';
 
 extension DateTimeExtension on DateTime {
   DateTime addTime({int? year, int? month, int? day}) {
-    return copyWith(
-      year: this.year + (year ?? 0),
-      month: this.month + (month ?? 0),
-      day: this.day + (day ?? 0),
-    );
+    return copyWith(year: this.year + (year ?? 0), month: this.month + (month ?? 0), day: this.day + (day ?? 0));
   }
 
   DateTime withTime(TimeOfDay timeOfDay) {
-    return copyWith(
-      hour: timeOfDay.hour,
-      minute: timeOfDay.minute,
-    );
+    return copyWith(hour: timeOfDay.hour, minute: timeOfDay.minute);
   }
 
   String toDisplayString() {

@@ -14,17 +14,10 @@ class CmsFilterSearchEntry extends CmsFilterEntry<String?> {
   @override
   final List<String> filterKeys;
 
-  CmsFilterSearchEntry({
-    required this.filterKeys,
-    required this.entryKey,
-    this.label,
-    this.formatters,
-    this.flex = 4,
-  });
+  CmsFilterSearchEntry({required this.filterKeys, required this.entryKey, this.label, this.formatters, this.flex = 4});
 
   @override
   final String entryKey;
-
 
   @override
   final int flex;
@@ -42,24 +35,17 @@ class CmsFilterSearchEntry extends CmsFilterEntry<String?> {
       key: Key(filterKeys.join()),
       value: value as String? ?? '',
       onChanged: onChanged,
-      lines: 1,
       label: Text(fixedLabel, overflow: TextOverflow.ellipsis),
     );
   }
-
-
 
   @override
   CmsFilter filterFromValues(JsonMap value) {
     final searchValue = value.getAtPath(entryKey) as String?;
     if (filterKeys.isEmpty || searchValue == null || searchValue.isEmpty) return const CmsFilterAll();
     if (filterKeys.length == 1) {
-      return CmsFilterContains(filterKeys.first, searchValue, caseSensitive: false);
+      return CmsFilterContains(filterKeys.first, searchValue);
     }
-    return CmsFilterOr(
-      filterKeys
-          .map((e) => CmsFilterContains(e, searchValue, caseSensitive: false))
-          .toList(),
-    );
+    return CmsFilterOr(filterKeys.map((e) => CmsFilterContains(e, searchValue)).toList());
   }
 }
