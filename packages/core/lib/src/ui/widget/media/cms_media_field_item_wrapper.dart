@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:utopia_cms/src/util/context_extensions.dart';
 import 'package:utopia_cms/src/util/foundation.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 class CmsMediaFieldItemWrapper extends HookWidget {
   final Widget child;

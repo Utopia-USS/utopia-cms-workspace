@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:utopia_cms/src/model/cms_filter.dart';
 import 'package:utopia_cms/src/model/filter_entry/cms_filter_entry.dart';
-import 'package:utopia_cms/src/ui/widget/text_field/cms_text_field.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 import 'package:utopia_cms/src/util/map_extensions.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 /// [CmsFilterEntry] for handling basic search
 class CmsFilterSearchEntry extends CmsFilterEntry<String?> {

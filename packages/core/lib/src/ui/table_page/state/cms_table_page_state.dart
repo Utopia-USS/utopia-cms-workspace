@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:utopia_cms/src/delegate/cms_delegate.dart';
 import 'package:utopia_cms/src/model/cms_filter.dart';
 import 'package:utopia_cms/src/model/cms_functions_params.dart';
@@ -7,11 +6,13 @@ import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/filter_entry/cms_filter_entry.dart';
 import 'package:utopia_cms/src/model/item_management/cms_management_section_entry.dart';
 import 'package:utopia_cms/src/model/table/cms_table_page_params.dart';
-import 'package:utopia_cms/src/theme/cms_theme_data.dart';
 import 'package:utopia_cms/src/ui/item_management/cms_management_page.dart';
+import 'package:utopia_cms/src/ui/table_page/cms_entry_columns.dart';
+import 'package:utopia_cms/src/util/entries_extensions.dart';
 import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 import 'package:utopia_cms/src/util/map_extensions.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 class CmsTablePageState {
   final MutableComputedState<void> computedState;
@@ -31,6 +32,12 @@ class CmsTablePageState {
   final void Function(JsonMap, int index) updateItem;
   final void Function(CmsEntry) onSortPressed;
 
+  /// Resolves the (pinned) column list for a page type, adapted to the ui
+  /// table's entry shape. Cached per page type so column and cell-builder
+  /// identity stays stable across rebuilds - the view must not re-derive
+  /// this per frame (fresh closures would rebuild every visible row).
+  final IList<CmsTableEntry<JsonMap>> Function(CmsPageType pageType) tableEntriesFor;
+
   const CmsTablePageState({
     required this.computedState,
     required this.items,
@@ -46,6 +53,7 @@ class CmsTablePageState {
     required this.pagingEnabled,
     required this.onFilterChanged,
     required this.filterValues,
+    required this.tableEntriesFor,
   });
 
   bool get hasDefaultActions => params.canDelete || params.canEdit;
@@ -130,7 +138,9 @@ CmsTablePageState useCmsTablePageState({
 
   ///not null params mean that it's edit
   Future<void> onManage({JsonMap? value, int? index}) async {
-    final theme = Provider.of<CmsThemeData?>(buildContext, listen: false) ?? CmsThemeData.defaultTheme;
+    // Non-listening read: this runs from a tap handler, and CmsTheme.of would
+    // subscribe the whole table page to theme changes as a side effect.
+    final theme = CmsTheme.read(buildContext);
     final result = await navigator.push<bool?>(
       PageRouteBuilder(
         opaque: false,
@@ -181,6 +191,13 @@ CmsTablePageState useCmsTablePageState({
     resetState();
   }
 
+  // Per-page-type cache of the adapted column lists, so column (and thus
+  // cell-builder) identity is stable across rebuilds. Recreated only when the
+  // entry list itself changes.
+  final tableEntriesCache = useMemoized(() => <CmsPageType, IList<CmsTableEntry<JsonMap>>>{}, [entries]);
+  IList<CmsTableEntry<JsonMap>> tableEntriesFor(CmsPageType pageType) =>
+      tableEntriesCache.putIfAbsent(pageType, () => entries.pinnedFor(pageType).toTableEntries());
+
   return CmsTablePageState(
     computedState: state,
     pagingEnabled: pagingEnabledState.value,
@@ -196,5 +213,6 @@ CmsTablePageState useCmsTablePageState({
     currentSortingParams: sortingParamsState.value,
     onFilterChanged: onFilterChanged,
     filterValues: filtersState.value,
+    tableEntriesFor: tableEntriesFor,
   );
 }

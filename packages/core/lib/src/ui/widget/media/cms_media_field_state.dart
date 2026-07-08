@@ -8,8 +8,8 @@ import 'package:utopia_cms/src/delegate/media/cms_media_delegate.dart';
 import 'package:utopia_cms/src/ui/item_management/state/cms_management_state.dart';
 import 'package:utopia_cms/src/ui/media_preview/cms_media_preview_page.dart';
 import 'package:utopia_cms/src/ui/media_preview/cms_media_type.dart';
-import 'package:utopia_cms/src/ui/widget/dialog/cms_dialog.dart';
 import 'package:utopia_cms/src/util/foundation.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 /// Drag-and-drop file formats and their canonical MIME type, covering the MIME
 /// types declared by [CmsMediaType]. super_clipboard does not expose a format's
@@ -153,11 +153,11 @@ CmsMediaFieldState useCmsMediaFieldState({
   void showUnsupported() {
     if (context.mounted) {
       unawaited(
-        CmsDialog.show(
+        CmsConfirmDialog.show(
           context,
           title: "Incorrect file",
           subtitle: "Provided file has unsupported format",
-          hasProceed: false,
+          hasConfirm: false,
         ),
       );
     }
@@ -240,14 +240,19 @@ CmsMediaFieldState useCmsMediaFieldState({
         barrierColor: Colors.black87,
         transitionDuration: const Duration(milliseconds: 400),
         reverseTransitionDuration: const Duration(milliseconds: 400),
-        pageBuilder: (_, animation, _) => CmsMediaPreviewPage(
-          args: CmsMediaPreviewPageArgs(
-            items: uploadedItems,
-            initialIndex: index,
-            urlBuilder: urlBuilder,
-            mediaTypeBuilder: mediaTypeBuilder,
+        // Like the sibling dialog helpers, re-attach the ambient theme: the
+        // route roots at the app Navigator, outside the CmsTheme subtree.
+        pageBuilder: (_, animation, _) => CmsTheme.captured(
+          context,
+          child: CmsMediaPreviewPage(
+            args: CmsMediaPreviewPageArgs(
+              items: uploadedItems,
+              initialIndex: index,
+              urlBuilder: urlBuilder,
+              mediaTypeBuilder: mediaTypeBuilder,
+            ),
+            animation: animation,
           ),
-          animation: animation,
         ),
       ),
     );

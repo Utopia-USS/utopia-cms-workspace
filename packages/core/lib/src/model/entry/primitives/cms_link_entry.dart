@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry_modifier.dart';
-import 'package:utopia_cms/src/ui/widget/layout/cms_page_wrapper.dart';
-import 'package:utopia_cms/src/ui/widget/text_field/cms_text_field.dart';
-import 'package:utopia_cms/src/util/context_extensions.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 /// [CmsEntry] that renders a value as a clickable hyperlink.
 ///

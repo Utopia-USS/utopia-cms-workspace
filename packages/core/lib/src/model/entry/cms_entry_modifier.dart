@@ -1,8 +1,7 @@
 import 'package:utopia_cms/src/delegate/cms_delegate.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/ui/item_management/view/cms_management_view.dart' show CmsManagementView;
-import 'package:utopia_cms/src/ui/widget/layout/cms_page_wrapper.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 /// Default [CmsEntryModifier.pinned]: the column shows on every page type.
 bool _alwaysPinned(CmsPageType pageType) => true;

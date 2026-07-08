@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry_modifier.dart';
 import 'package:utopia_cms/src/ui/widget/country_picker/cms_country_field.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table_preview_text.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 /// [CmsEntry] for picking countries
 class CmsCountryEntry extends CmsEntry<dynamic> {
@@ -40,7 +40,7 @@ class CmsCountryEntry extends CmsEntry<dynamic> {
 
   @override
   Widget buildPreview(BuildContext context, dynamic value) =>
-      CmsTablePreviewText(displayBuilder?.call(value) ?? value?.toString() ?? '-');
+      CmsCopyableText(displayBuilder?.call(value) ?? value?.toString() ?? '-');
 
   @override
   Widget buildEditField({

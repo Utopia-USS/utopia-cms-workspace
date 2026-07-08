@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry_modifier.dart';
-import 'package:utopia_cms/src/ui/widget/chip/cms_chip.dart';
-import 'package:utopia_cms/src/ui/widget/dropdown/cms_dropdown_field.dart';
-import 'package:utopia_cms/src/util/context_extensions.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 /// [CmsEntry] for handling offline items picker
 class CmsDropdownEntry<T> extends CmsEntry<T> {

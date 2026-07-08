@@ -1,11 +1,10 @@
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 import 'package:reorderables/reorderables.dart';
-import 'package:utopia_cms/src/ui/widget/header/cms_title.dart';
 import 'package:utopia_cms/src/ui/widget/media/cms_media_field_video_player.dart';
-import 'package:utopia_cms/src/util/context_extensions.dart';
 import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/utopia_cms.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 class CmsMediaField extends HookWidget {
   final String Function(dynamic object)? urlBuilder;

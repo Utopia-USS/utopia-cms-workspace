@@ -6,17 +6,15 @@ import 'package:utopia_cms/src/model/filter_entry/cms_filter_entry.dart';
 import 'package:utopia_cms/src/model/filter_entry/cms_search_filter_entry.dart';
 import 'package:utopia_cms/src/model/table/cms_table_action.dart';
 import 'package:utopia_cms/src/ui/table_page/state/cms_table_page_state.dart';
+import 'package:utopia_cms/src/ui/table_page/view/cms_table_filter_panel.dart';
 import 'package:utopia_cms/src/ui/widget/header/cms_header.dart';
-import 'package:utopia_cms/src/ui/widget/layout/cms_page_wrapper.dart';
-import 'package:utopia_cms/src/ui/widget/loading/cms_loader.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table_actions.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table_search_panel.dart';
-import 'package:utopia_cms/src/util/context_extensions.dart';
 import 'package:utopia_cms/src/util/entries_extensions.dart';
 import 'package:utopia_cms/src/util/foundation.dart';
+import 'package:utopia_cms/src/util/json_map.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
-class CmsTablePageView extends HookWidget {
+class CmsTablePageView extends StatelessWidget {
   final CmsTablePageState state;
   final IList<CmsEntry<dynamic>> entries;
   final IList<CmsFilterEntry<dynamic>> filterEntries;
@@ -34,11 +32,16 @@ class CmsTablePageView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Column derivation (pinning + adaptation) lives on the state
+    // (state.tableEntriesFor) so this view stays hook-free and column/cell
+    // identity survives rebuilds.
+    final pinnedEntries = entries.pinnedFor(context.pageType);
+    final tableEntries = state.tableEntriesFor(context.pageType);
     return MultiWidget([
       (child) => Scaffold(backgroundColor: context.colors.canvas, body: child),
       (child) => SizedBox.expand(child: child),
       (child) => _buildNotificationListener(child: child),
-      (_) => _buildContent(context),
+      (_) => _buildContent(context, pinnedEntries: pinnedEntries, tableEntries: tableEntries),
     ]);
   }
 
@@ -57,7 +60,11 @@ class CmsTablePageView extends HookWidget {
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _buildContent(
+    BuildContext context, {
+    required IList<CmsEntry<dynamic>> pinnedEntries,
+    required IList<CmsTableEntry<JsonMap>> tableEntries,
+  }) {
     final isLoadingMore = state.items.isNotEmpty && state.computedState.value is ComputedStateValueInProgress;
     return CustomScrollView(
       controller: state.scrollController,
@@ -69,7 +76,10 @@ class CmsTablePageView extends HookWidget {
             child: CmsHeader(text: title),
           ),
         ),
-        SliverPadding(padding: const EdgeInsets.only(bottom: 24), sliver: _buildTable(context)),
+        SliverPadding(
+          padding: const EdgeInsets.only(bottom: 24),
+          sliver: _buildTable(context, pinnedEntries: pinnedEntries, tableEntries: tableEntries),
+        ),
         if (isLoadingMore)
           const SliverToBoxAdapter(
             child: Padding(
@@ -82,20 +92,33 @@ class CmsTablePageView extends HookWidget {
     );
   }
 
-  Widget _buildTable(BuildContext context) {
-    return CmsTable(
-      showLoader: state.items.isEmpty && state.computedState.value is ComputedStateValueInProgress,
-      onManagePressed: state.onEditPressed,
-      values: state.items,
-      entries: entries.pinnedFor(context.pageType),
-      onSortPressed: state.onSortPressed,
-      currentSortParams: state.currentSortingParams,
+  Widget _buildTable(
+    BuildContext context, {
+    required IList<CmsEntry<dynamic>> pinnedEntries,
+    required IList<CmsTableEntry<JsonMap>> tableEntries,
+  }) {
+    final currentSortingParams = state.currentSortingParams;
+    return CmsTable<JsonMap>(
+      rows: state.items.isEmpty && state.computedState.value is ComputedStateValueInProgress ? null : state.items,
+      entries: tableEntries,
+      // Object identity: the delegate replaces row instances wholesale on every
+      // refetch (see CmsTablePageState.updateItem/resetState), so identity is a
+      // stable-enough key - matching the previous un-keyed row list behavior.
+      rowKey: (row) => row,
+      currentSort: currentSortingParams == null
+          ? null
+          : (columnId: currentSortingParams.fieldKey, descending: currentSortingParams.sortDesc),
+      onSortPressed: (tableEntry) {
+        final matches = pinnedEntries.where((entry) => entry.key == tableEntry.id);
+        if (matches.isNotEmpty) state.onSortPressed(matches.first);
+      },
+      onRowPressed: state.onEditPressed,
       searchPanel: _buildSearchPanel(context),
       actionsBuilder: !state.hasDefaultActions && customActions.isEmpty
           ? null
-          : (e, index) {
+          : (context, row, index) {
               return CmsTableActionsButton(
-                value: e,
+                value: row,
                 onUpdate: (value) => state.updateItem(value, index),
                 actions: [
                   _buildManageAction(index),
@@ -109,7 +132,7 @@ class CmsTablePageView extends HookWidget {
 
   Widget _buildSearchPanel(BuildContext context) {
     final search = _searchEntry();
-    return CmsTableSearchPanel(
+    return CmsTableFilterPanel(
       searchEntry: search,
       searchHint: _searchHint(search),
       searchValue: search == null ? null : state.filterValues[search.entryKey] as String?,

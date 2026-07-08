@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:media_kit_video/media_kit_video.dart';
-import 'package:utopia_cms/src/ui/widget/loading/cms_loader.dart';
 import 'package:utopia_cms/src/ui/widget/video/cms_video_player_state.dart';
 import 'package:utopia_cms/src/util/foundation.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 class CmsVideoPlayer extends HookWidget {
   final String url;
