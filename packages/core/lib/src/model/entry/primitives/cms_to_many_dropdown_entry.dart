@@ -4,13 +4,10 @@ import 'package:utopia_cms/src/delegate/cms_to_many_delegate.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry_modifier.dart';
 import 'package:utopia_cms/src/ui/item_management/view/cms_management_view.dart' show CmsManagementView;
-import 'package:utopia_cms/src/ui/widget/chip/cms_chip_list.dart';
 import 'package:utopia_cms/src/ui/widget/dropdown/to_many/cms_to_many_dropdown_field.dart';
-import 'package:utopia_cms/src/ui/widget/layout/cms_page_wrapper.dart';
-import 'package:utopia_cms/src/ui/widget/loading/cms_mock_loading_box.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
 import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 /// Default pin gate for to-many columns: never shown as a table column.
 bool _neverPinned(CmsPageType pageType) => false;
@@ -49,7 +46,7 @@ class CmsToManyDropdownEntry extends CmsEntry<Object> {
   @override
   final double? width;
 
-  // Used to get originId from the containing [CmsTable].
+  // Used to get originId from the containing CmsTable.
   @override
   String get key => delegate.originIdKey;
 

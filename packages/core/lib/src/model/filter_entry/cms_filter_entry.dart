@@ -4,9 +4,8 @@ import 'package:utopia_cms/src/model/cms_filter.dart';
 import 'package:utopia_cms/src/model/entry/primitives/cms_date_entry.dart';
 import 'package:utopia_cms/src/model/filter_entry/cms_search_filter_entry.dart';
 import 'package:utopia_cms/src/ui/table_page/cms_table_page.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
-import 'package:utopia_cms/src/ui/widget/wrapper/cms_field_wrapper.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 /// [CmsFilterEntry] is an interface of a basic [CmsTablePage] filter component.
 ///

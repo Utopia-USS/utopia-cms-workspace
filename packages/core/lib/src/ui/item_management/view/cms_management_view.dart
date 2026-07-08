@@ -4,14 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/item_management/cms_management_section_entry.dart';
 import 'package:utopia_cms/src/ui/item_management/state/cms_management_state.dart';
-import 'package:utopia_cms/src/ui/widget/button/cms_button.dart';
 import 'package:utopia_cms/src/ui/widget/header/cms_header.dart';
-import 'package:utopia_cms/src/ui/widget/header/cms_title.dart';
-import 'package:utopia_cms/src/ui/widget/layout/cms_page_wrapper.dart';
-import 'package:utopia_cms/src/util/context_extensions.dart';
 import 'package:utopia_cms/src/util/entries_extensions.dart';
 import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/src/util/map_extensions.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 class CmsManagementView extends HookWidget {
   final CmsItemManagementState state;

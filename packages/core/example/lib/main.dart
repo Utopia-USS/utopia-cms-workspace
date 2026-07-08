@@ -6,6 +6,7 @@ import 'package:utopia_cms/utopia_cms.dart';
 import 'package:utopia_hooks/utopia_hooks.dart';
 
 import 'app_images.dart';
+import 'pages/components_page.dart';
 import 'pages/home_page.dart';
 import 'pages/libs_page.dart';
 import 'pages/skills_page.dart';
@@ -37,8 +38,9 @@ class ShowcasePages {
   static const home = 'home';
   static const libs = 'libs';
   static const skills = 'skills';
+  static const components = 'components';
 
-  static const all = {home, libs, skills};
+  static const all = {home, libs, skills, components};
 }
 
 /// The URL is the single source of truth for the selected page. `/:pageId` builds
@@ -163,6 +165,12 @@ class _ShowcaseShell extends HookWidget {
           icon: const Icon(Icons.bolt),
           title: const Text('AI Skills'),
           content: const SkillsPage(),
+        ),
+        CmsWidgetItem.page(
+          id: ShowcasePages.components,
+          icon: const Icon(Icons.widgets_outlined),
+          title: const Text('Components'),
+          content: const ComponentsPage(),
         ),
         CmsWidgetItem.custom(flex: 1),
         // The bottom "About" entry is replaced by the theme picker, which writes

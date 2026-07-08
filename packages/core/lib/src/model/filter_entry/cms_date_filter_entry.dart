@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:utopia_cms/src/model/cms_filter.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/filter_entry/cms_filter_entry.dart';
-import 'package:utopia_cms/src/ui/widget/date_picker/cms_date_picker.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 import 'package:utopia_cms/src/util/map_extensions.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 enum CmsFilterDateEntryMode { lesser, greater }
 
@@ -67,11 +67,13 @@ class CmsFilterDateEntry extends CmsFilterEntry<DateTime?> {
       case CmsFilterDateEntryUnit.dateTime:
         return DateTime.parse(json as String);
       case CmsFilterDateEntryUnit.secondsSinceEpoch:
-        return DateTime.fromMillisecondsSinceEpoch((json as int) * 1000);
+        // toJson emits fractional seconds (ms / 1000), so accept any num and
+        // convert via ms to keep sub-second precision on the round trip.
+        return DateTime.fromMillisecondsSinceEpoch(((json as num) * 1000).round());
       case CmsFilterDateEntryUnit.millisecondsSinceEpoch:
-        return DateTime.fromMillisecondsSinceEpoch(json as int);
+        return DateTime.fromMillisecondsSinceEpoch((json as num).toInt());
       case CmsFilterDateEntryUnit.microsecondsSinceEpoch:
-        return DateTime.fromMicrosecondsSinceEpoch(json as int);
+        return DateTime.fromMicrosecondsSinceEpoch((json as num).toInt());
     }
   }
 
@@ -82,7 +84,7 @@ class CmsFilterDateEntry extends CmsFilterEntry<DateTime?> {
 
     if (filterKeys.length == 1) return _buildFilter(filterKeys.first, date! as Object);
 
-    return CmsFilterOr(filterKeys.map((e) => _buildFilter(filterKeys.first, date! as Object)).toList());
+    return CmsFilterOr(filterKeys.map((e) => _buildFilter(e, date! as Object)).toList());
   }
 
   CmsFilter _buildFilter(String key, Object value) {

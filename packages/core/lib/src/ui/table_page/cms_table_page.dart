@@ -7,9 +7,8 @@ import 'package:utopia_cms/src/model/table/cms_table_action.dart';
 import 'package:utopia_cms/src/model/table/cms_table_page_params.dart';
 import 'package:utopia_cms/src/ui/table_page/state/cms_table_page_state.dart';
 import 'package:utopia_cms/src/ui/table_page/view/cms_table_page_view.dart';
-import 'package:utopia_cms/src/ui/widget/dialog/cms_dialog.dart';
-import 'package:utopia_cms/src/ui/widget/layout/cms_page_wrapper.dart';
 import 'package:utopia_cms/src/util/foundation.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 ///  * [CmsTablePage] by default is able to generate complete flow of data table preview, creation/edition flow.
 class CmsTablePage extends HookWidget {
@@ -45,7 +44,11 @@ class CmsTablePage extends HookWidget {
       navigator: navigator,
       entries: lockedEntries,
       filterEntries: lockedFilterEntries,
-      confirmDelete: () async => CmsDialog.show(context),
+      confirmDelete: () async => CmsConfirmDialog.show(
+        context,
+        title: 'Delete item',
+        subtitle: 'Are you sure you want to delete this item? You cannot undo this action.',
+      ),
       pagingLimit: pagingLimit,
       managementSectionEntries: managementSectionEntries,
     );

@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry_modifier.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table_preview_text.dart';
-import 'package:utopia_cms/src/ui/widget/text_field/cms_text_field.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 /// [CmsEntry] for handling basic String values
 class CmsTextEntry extends CmsEntry<String?> {
@@ -45,7 +44,7 @@ class CmsTextEntry extends CmsEntry<String?> {
   final CmsEntryModifier modifier;
 
   @override
-  Widget buildPreview(BuildContext context, String? value) => CmsTablePreviewText(previewBuilder?.call(value) ?? value);
+  Widget buildPreview(BuildContext context, String? value) => CmsCopyableText(previewBuilder?.call(value) ?? value);
 
   @override
   Widget buildEditField({

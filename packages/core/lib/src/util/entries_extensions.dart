@@ -1,7 +1,7 @@
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/entry/primitives/cms_text_entry.dart';
-import 'package:utopia_cms/src/ui/widget/layout/cms_page_wrapper.dart';
 import 'package:utopia_cms/src/util/foundation.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 extension EntriesExtensions on IList<CmsEntry<dynamic>> {
   IList<CmsEntry<dynamic>> editable({required bool isCreate, required bool isPageEditable}) =>

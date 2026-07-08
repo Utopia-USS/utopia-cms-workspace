@@ -3,11 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:utopia_cms/src/model/entry/cms_entry.dart';
 import 'package:utopia_cms/src/model/item_management/cms_management_section_entry.dart';
 import 'package:utopia_cms/src/model/table/cms_table_page_params.dart';
-import 'package:utopia_cms/src/theme/cms_theme_data.dart';
 import 'package:utopia_cms/src/ui/item_management/state/cms_management_state.dart';
 import 'package:utopia_cms/src/ui/item_management/view/cms_management_view.dart';
 import 'package:utopia_cms/src/util/foundation.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 class CmsManagementArgs {
   final JsonMap? initialValue;
@@ -46,8 +46,8 @@ class CmsManagementOverlay extends HookWidget {
     final panelTheme = theme.copyWith(
       colors: theme.colors.copyWith(canvas: theme.colors.surface, field: theme.colors.canvas),
     );
-    return Provider.value(
-      value: panelTheme,
+    return CmsTheme(
+      data: panelTheme,
       child: Provider<CmsManagementBaseState>.value(
         value: state,
         child: CmsManagementView(state: state, animation: animation, sectionEntries: args.sectionEntries),

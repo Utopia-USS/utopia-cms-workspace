@@ -1,8 +1,7 @@
 import 'package:utopia_cms/src/model/cms_functions_params.dart';
 import 'package:utopia_cms/src/model/table/cms_table_action.dart';
 import 'package:utopia_cms/src/ui/item_management/cms_management_page.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table_item.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 /// Modifies basic actions' behavior in the [CmsTable]
 class CmsTableParams {
@@ -13,12 +12,12 @@ class CmsTableParams {
 
   /// Defines whether new objects can be deleted by user
   ///
-  /// If true [CmsTableAction] appears in the [CmsTableItem]
+  /// If true [CmsTableAction] appears in the table row
   final bool canDelete;
 
   /// Defines whether new objects can be edited by user
   ///
-  /// If true [CmsTableAction] appears in the [CmsTableItem]
+  /// If true [CmsTableAction] appears in the table row
   final bool canEdit;
 
   /// Initializes table with sorting params

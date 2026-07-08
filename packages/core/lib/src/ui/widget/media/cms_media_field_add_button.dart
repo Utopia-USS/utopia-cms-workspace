@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:super_drag_and_drop/super_drag_and_drop.dart';
 import 'package:utopia_cms/src/ui/widget/media/cms_media_field_item_wrapper.dart';
 import 'package:utopia_cms/src/ui/widget/media/cms_media_field_state.dart';
-import 'package:utopia_cms/src/util/context_extensions.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 class CmsMediaFieldAddButton extends StatelessWidget {
   final CmsMediaFieldState state;

@@ -1,9 +1,8 @@
 import 'package:utopia_cms/src/model/table/cms_table_page_params.dart';
 import 'package:utopia_cms/src/ui/widget/table/cms_table_actions.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table_item.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 
-///  * [CmsTableAction] appears in the [CmsTableItem] popUpMenu. Default actions "delete" and "edit" are generated
+///  * [CmsTableAction] appears in the table row's popUpMenu. Default actions "delete" and "edit" are generated
 ///  automatically based on [CmsTableParams]
 ///  * [label] is displayed after pressing [CmsTableActionsButton]
 ///  * [onPressed] is triggered after pressing the item. It provides current item [JsonMap] value. If [shouldUpdateTable]

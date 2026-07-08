@@ -6,11 +6,9 @@ import 'package:utopia_cms/src/model/entry/primitives/cms_date_entry.dart';
 import 'package:utopia_cms/src/model/entry/primitives/cms_text_entry.dart';
 import 'package:utopia_cms/src/model/entry/primitives/cms_to_many_dropdown_entry.dart';
 import 'package:utopia_cms/src/ui/table_page/cms_table_page.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table.dart';
-import 'package:utopia_cms/src/ui/widget/table/cms_table_item.dart';
-import 'package:utopia_cms/src/ui/widget/wrapper/cms_field_wrapper.dart';
 import 'package:utopia_cms/src/util/json_map.dart';
 import 'package:utopia_cms/src/util/string_extensions.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 /// [CmsEntry] is an interface of a basic [CmsTablePage] component.
 ///
@@ -35,7 +33,7 @@ abstract class CmsEntry<T> {
   /// Modifies the behavior of the [CmsEntry]
   abstract final CmsEntryModifier modifier;
 
-  /// Defines the column's share of the [CmsTableItem] width in the [CmsTable].
+  /// Defines the column's share of the row width in the [CmsTable].
   ///
   /// When non-null the column flexes, taking [flex] parts of the available row
   /// width (like [Expanded.flex]). Set it to `null` to make a fixed-width,

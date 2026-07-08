@@ -8,12 +8,14 @@ dev_dependencies:
   utopia_lints: ^0.0.3+1
 
 workspace:
+  - packages/ui
   - packages/core
   - packages/firebase
   - packages/graphql
   - packages/hasura
   - packages/supabase
   - packages/core/example
+  - packages/ui/example
 
 melos:
   sdkPath: .fvm/flutter_sdk
@@ -29,6 +31,13 @@ melos:
     build:example:
       description: Build the example as a deployable web bundle (packages/core/example/build/web)
       run: cd packages/core/example && fvm flutter build web
+
+    run:ui-example:
+      description: Run the utopia_cms_ui design-system sheet on Chrome (hot reload works)
+      run: cd packages/ui/example && fvm flutter run -d chrome
+    build:ui-example:
+      description: Build the utopia_cms_ui example as a deployable web bundle (packages/ui/example/build/web)
+      run: cd packages/ui/example && fvm flutter build web
 
     release: melos version --yes && git push --follow-tags && melos publish --yes --no-dry-run
 

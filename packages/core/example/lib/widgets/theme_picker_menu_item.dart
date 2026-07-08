@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:utopia_cms/utopia_cms.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart' show CmsSidebar;
 import 'package:utopia_hooks/utopia_hooks.dart';
 
 import '../state/theme_mode_state.dart';
@@ -36,16 +37,13 @@ class ThemePickerMenuItem extends HookWidget {
 
   const ThemePickerMenuItem({super.key, required this.theme});
 
-  /// Fixed height of the trigger tile. It mirrors a native `CmsMenuTile` (outer 3
-  /// + inner 12 vertical padding + a 22px icon, top and bottom = 52) so the picker
-  /// lines up with the page items above it, and it is PINNED for a specific
-  /// reason: the tile uses a [LayoutBuilder] to switch expanded / collapsed by
-  /// rail width, and a LayoutBuilder cannot answer intrinsic-height queries. The
-  /// CMS rail measures every menu item's intrinsic height (its body is an
-  /// [IntrinsicHeight] inside a fill-viewport scroll view), so an unbounded tile
-  /// would throw there. A tight-height [SizedBox] short-circuits that query
-  /// without ever descending into the LayoutBuilder.
-  static const double _tileHeight = 52;
+  /// Fixed height of the trigger tile. It reuses [CmsSidebar.tileHeight] so
+  /// the picker lines up with the page items above it. The tile itself uses
+  /// a [LayoutBuilder] to switch expanded / collapsed by rail width; pinning a
+  /// fixed height here just keeps that purely a design match with sibling
+  /// tiles - the sidebar body scrolls rather than measuring intrinsic heights,
+  /// so an unbounded custom item is not a correctness issue here either way.
+  static const double _tileHeight = CmsSidebar.tileHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +75,7 @@ class ThemePickerMenuItem extends HookWidget {
     );
   }
 
-  /// The trigger tile. Mirrors `CmsMenuTile`'s metrics (outer 12/3 padding,
+  /// The trigger tile. Mirrors `CmsSidebarTile`'s metrics (outer 12/3 padding,
   /// themed border radius, inner 14/12 padding, hover colour) so it reads as a
   /// native menu item, and collapses to a bare icon when the rail is narrow.
   Widget _buildTile(MutableValue<bool> isOpen) {

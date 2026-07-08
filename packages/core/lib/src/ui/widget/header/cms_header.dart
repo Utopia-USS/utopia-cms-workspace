@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utopia_cms/src/ui/cms_widget/cms_shell_menu_scope.dart';
-import 'package:utopia_cms/src/util/context_extensions.dart';
+import 'package:utopia_cms_ui/utopia_cms_ui.dart';
 
 class CmsHeader extends StatelessWidget {
   final String text;

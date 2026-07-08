@@ -1,0 +1,24 @@
+name: utopia_cms_ui_example
+description: "Design-system sheet for utopia_cms_ui - every component and token on one themable web page."
+publish_to: none
+version: 0.1.0
+resolution: workspace
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  utopia_cms_ui:
+    path: ..
+  utopia_hooks: ^0.4.25
+  fast_immutable_collections: ^11.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  utopia_lints: ^0.0.3+1
+
+flutter:
+  uses-material-design: true
