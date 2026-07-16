@@ -24,20 +24,32 @@ class CmsMediaFieldUpload extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final uploadingState = useState<bool>(true);
-    useAutoComputedState(() async {
+    final upload = useAutoComputedState(() async {
       final result = await delegate.upload(file);
       final enhancedResult = valueBuilder?.call(result, file);
       state.onUploaded(index, enhancedResult ?? result.downloadUrl);
-      uploadingState.value = false;
     }, keys: []);
+    // A failed upload must not spin forever - show an error tile the user can
+    // tap to dismiss (the real cause is logged by the delegate).
+    final failed = upload.value is ComputedStateValueFailed;
     return CmsMediaFieldItemWrapper(
       key: Key(file.path),
       size: size,
-      child: ColoredBox(
-        color: context.colors.primary,
-        child: const CmsLoader(color: Colors.white),
-      ),
+      child: failed
+          ? Tooltip(
+              message: 'Upload failed - tap to remove',
+              child: InkWell(
+                onTap: () => state.onRemove(index),
+                child: ColoredBox(
+                  color: Colors.red.shade700,
+                  child: const Icon(Icons.error_outline, color: Colors.white, size: 36),
+                ),
+              ),
+            )
+          : ColoredBox(
+              color: context.colors.primary,
+              child: const CmsLoader(color: Colors.white),
+            ),
     );
   }
 }
